@@ -1,0 +1,176 @@
+﻿@using Portal_MVC.Models
+@model Portal_MVC.Models.DirectorSummaryViewModel
+@{
+    ViewBag.Title = "Director Dashboard - New Estates";
+
+}
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+@if (Model.BankAccountList != null)
+{
+    <div class="container">
+        <div class="panel GradientBackground panelContainer">
+            <table class="LinkedTable tableHover">
+                <tbody>
+                    @foreach (BankAccount i in Model.BankAccountList)
+                    {
+                        <tr>
+
+                            <td>@Html.ActionLink(i.Name + " " + i.AccountNumber, Model.ViewName, Model.ControllerName, new { AccountID = i.ID }, null)</td>
+
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+else
+{
+
+
+    <div class="col-lg-5">
+        <div class="col-lg-12">
+            <div class="btn-group" style="margin-left: -15px">
+                <button type="button" class="btn btn-default dropdown-toggle col-lg-12" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <p>@Model.DefaulBudget.BudgetName<span>  </span><span class="caret"></span></p>
+
+                </button>
+
+                <ul class="dropdown-menu">
+                    @foreach (ServiceCharges s in Model.BudgetList)
+                    {
+                        <li>
+                            @Ajax.ActionLink(s.BudgetName, "DisplayBudgetData", new { BudgetID = s.BudgetID }, new AjaxOptions()
+                         {
+                           HttpMethod = "Get",
+                           UpdateTargetId = "BudgetData",
+                           InsertionMode = InsertionMode.Replace
+
+                          })
+
+                        </li>
+                    }
+                </ul>
+            </div>
+
+            <div class="" id="BudgetData">
+                @Html.Action("DisplayBudgetData", new { BudgetID = Model.DefaulBudget.BudgetID })
+            </div>
+        </div>
+
+        <div class="" style="margin-top: 20px;">
+            <div class="panel GradientBackground panelContainer">
+                <div class="panel-heading" style="padding-left: 8px;">
+                    <h4>Unit Balances</h4>
+                </div>
+
+                @if (Model.UnitBalancesVM.BalancesList != null && Model.UnitBalancesVM.BalancesList.Count > 0)
+                {
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Unit</th>
+                                <th>Balance</th>
+
+                            </tr>
+                        </thead>
+
+
+                        @foreach (ServiceCharges s in Model.UnitBalancesVM.BalancesList)
+                        {
+                            <tr>
+                                <td>@s.TransDescription</td>
+                                <td>@s.BalanceStr</td>
+                            </tr>
+                        }
+                    </table>
+                }
+                else
+                {
+                    <div class="container">
+                        <h5>No Unit Balances to display</h5>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+   
+
+    <div class="col-lg-1">
+        @*spacer col*@
+    </div>
+
+    <div class="col-lg-6">
+        <div class="panel GradientBackground">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Sort Code</th>
+                        <th>Account Number</th>
+                        <th>Balance</th>
+                    </tr>
+                </thead>
+                @foreach (BankAccount s in Model.BankAccountBalanceList)
+            {
+                <tr>
+                    <td>@s.Name</td>
+                    <td>@s.SortCode</td>
+                    <td>@s.AccountNumber</td>
+                    <td>@s.TotalBalanceStr</td>
+                </tr>
+        }
+            </table>
+        </div>
+
+        
+        <div class="panel GradientBackground panelContainer">
+            <div class="panel-heading" style="padding-left: 8px;">
+                <h4>Invoices Awaiting Payment</h4>
+            </div>
+
+            @if (Model.AwaitingPaymentList.Count > 0)
+            {
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Supplier</th>
+                            <th>Description</th>
+                            <th>Amount</th>
+
+                        </tr>
+                    </thead>
+
+
+                    @foreach (ServiceCharges s in Model.AwaitingPaymentList)
+                    {
+                        <tr>
+                            <td>@s.SupplierName</td>
+                            <td>@s.TransDescription</td>
+                            <td>@s.TransAmountstr</td>
+                        </tr>
+                    }
+                </table>
+            } else
+            {
+                <div class="container">
+                    <h5>No Invoices Awaiting Payment</h5>
+                </div>
+            }
+            </div>
+
+         
+
+
+    </div>
+
+
+   
+
+}
+

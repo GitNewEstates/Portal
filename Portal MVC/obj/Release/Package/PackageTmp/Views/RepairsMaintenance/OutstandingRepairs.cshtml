@@ -1,0 +1,80 @@
+﻿@using Portal_MVC.Models
+@model Portal_MVC.Models.RepairsMaintenanceViewModel
+
+@if (Session["SelectedPropertyID"] == null || (int)Session["SelectedPropertyID"] == 0)
+{
+    <div class="container">
+        @Html.Partial("_SelectProperty", Model.PropListViewModel)
+    </div>
+}
+else
+{
+    if (Model.Repair.AllRepairs.Count > 0)
+    {
+    <h4>@Session["EstateName"] - Outstanding Repairs</h4>
+    <div class="panel GradientBackground">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th style="visibility:hidden"></th>
+                    <th class="MobileCollapse">Date Raised</th>
+                    <th>Summary</th>
+                    <th>Status</th>
+                    <th class="MobileCollapse">Target Completion</th>
+
+                </tr>
+            </thead>
+            @foreach (Repairs repair in Model.Repair.AllRepairs)
+            {
+
+                <tr class="FurtherDetailsBelow">
+                    <td class="ShowDetails">
+                        <span class="glyphicon glyphicon-info-sign InfoToolTip" aria-hidden="true"></span>
+                    </td>
+                    <td class="MobileCollapse"> <p>@repair.RaisedDatestr</p></td>
+                    <td><p>@repair.Title</p></td>
+
+                    <td><p>@repair.Status</p></td>
+                    <td class="MobileCollapse"><p>@repair.TargetDatestr</p></td>
+                </tr>
+
+                //HideShowTableRow
+                <tr class="HideTableRow">
+                    <td colspan="5">
+                        @*ShowTableDetail*@
+                        <div class="panel ShowTableDetail">
+                            <div class="ShowDetailHeader">
+                                <div class="col-xs-10 col-sm-11 col-md-11 col-lg-11">
+                                    <p></p>
+                                </div>
+
+                                <div class="col-xs-2 col-sm-1 col-md-1 col-lg-1 ShowDetailCollapse">
+                                    <span class="glyphicon glyphicon-chevron-up CollapseTableRow" aria-hidden="true"></span>
+                                </div>
+
+                            </div>
+                            <div class="ShowDetailBody MobileDetails">
+                                <p>Date Raised: @repair.RaisedDatestr</p>
+                            </div>
+                            <div class="ShowDetailBody MobileDetails">
+                                <p>Target Completion Date: @repair.TargetDatestr</p>
+                            </div>
+
+                            <div class="col-md-10">
+                                <p style="width: 100%;">@repair.Details </p>
+
+                            </div>
+                            <div class="col-md-2 ViewMoreDetail">
+                                <p>@Html.ActionLink("View More", "RepairDetail", "RepairsMaintenance", new { repairID = repair.ID }, null)</p>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+    } else
+    {
+        <h4 style="margin-bottom: 40px;">There are no outstanding repairs for @Session["EstateName"]<br /></h4>
+    }
+}

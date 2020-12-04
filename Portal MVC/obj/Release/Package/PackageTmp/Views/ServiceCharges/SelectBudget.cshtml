@@ -1,0 +1,26 @@
+﻿@using Portal_MVC.Models
+@using System.Globalization
+@model Portal_MVC.Models.ServiceChargeBudgetViewModel
+
+@{
+    /**/
+
+    ViewBag.Title = "Select Budget";
+}
+
+@if (Session["SelectedPropertyID"] == null ||(int)Session["SelectedPropertyID"] == 0)
+{
+    <div class="container">
+        @Html.Partial("_SelectProperty", Model)
+    </div>
+}
+else
+{
+
+
+    <div class="container">
+        @Html.Partial("_SelectBudget", Model)
+    </div>
+}
+
+

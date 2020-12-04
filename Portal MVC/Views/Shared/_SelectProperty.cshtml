@@ -1,0 +1,39 @@
+﻿
+@using Portal_MVC.Models
+@model Portal_MVC.Models.ServiceChargeBudgetViewModel
+
+
+    @if (Session["SelectedPropertyID"] == null || (int)Session["SelectedPropertyID"] == 0)
+    {
+
+        <div class="container">
+            <h5>Select the property that you wish view.</h5>
+            <div class="panel GradientBackground panelContainer">
+                <table class="LinkedTable tableHover">
+                    <tbody>
+                        @if (Model != null && Model.PropertyList != null)
+                        {
+
+                            foreach (Properties item in Model.PropertyList)
+                            {
+                                <tr>
+
+                                    @if (item.Address1 != null && item.Address1 != "")
+                                    {
+                                        <td class="PropSelection" >
+                                    @Html.ActionLink(item.PropertyType.ToString(), Model.ViewName, Model.ControllerName, new { PropID = item.ID, PropName = item.Address1, id = "Prop" + item.ID, PropType = item.PropertyType }, null)</td>
+                                    }
+
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+
+
+
+
+

@@ -1,0 +1,88 @@
+﻿
+@model Portal_MVC.Models.DirectorBudgetSummaryViewModel
+
+<div>
+    <div class="row BudgetSummaryBorder BudgetSummaryPadding">
+
+        <div class="col-lg-6">
+            <h4 >Total Budget</h4>
+        </div>
+        <div class="col-lg-6">
+            <h4>@Model.BudgetSummary.TotalBudgetStr</h4>
+        </div>
+
+    </div>
+
+    <div class="row BudgetSummaryPadding">
+        <div class="col-lg-6">
+            <h4>Charges to date</h4>
+        </div>
+        <div class="col-lg-6">
+            <h4>@Model.BudgetSummary.TotalChargesStr</h4>
+        </div>
+    </div>
+
+    <div class="row BudgetSummaryBorder BudgetSummaryPadding">
+        <div class="col-lg-6">
+            <h4 style="margin-top: 0px">Future Charges<span class="glyphicon glyphicon-info-sign InfoToolTip" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Future Charges are unbilled service charges. These will occur if service charges are paid bi-annually, quarterly or monthly."></span></h4>
+        </div>
+        <div class="col-lg-3">
+            <h4 style="margin-top: 0px">@Model.BudgetSummary.FutureChargesStr</h4>
+        </div>
+        <div class="col-lg-3">
+
+        </div>
+    </div>
+
+    <div class="row  BudgetSummaryPadding">
+        <div class="col-lg-6">
+            <h4>Payments to date</h4>
+        </div>
+        <div class="col-lg-3">
+            <h4>@Model.BudgetSummary.TotalPaymentsStr</h4>
+        </div>
+        <div class="col-lg-3">
+
+        </div>
+    </div>
+
+   
+
+    <div class="row BudgetSummaryPadding BudgetSummaryBorder">
+        <div class="col-lg-6">
+            <h4 style="margin-top: 0px">Arrears</h4>
+        </div>
+        <div class="col-lg-3">
+            <h4 style="margin-top: 0px">@Model.BudgetSummary.TotalArrearsStr</h4>
+        </div>
+        <div class="col-lg-3">
+
+        </div>
+    </div>
+
+
+    <div class="row BudgetSummaryPadding">
+        <div class="col-lg-6">
+            <h4>Expenditure to date</h4>
+        </div>
+        <div class="col-lg-3">
+
+        </div>
+
+        <div class="col-lg-3 BudgetSummaryPadding">
+            <h4>@Model.BudgetSummary.TotalExpenditureStr</h4>
+        </div>
+    </div>
+
+    <div class="row BudgetSummaryPadding">
+        <div class="col-lg-6">
+            <h4 style="margin-top: 0px">Committed Funds  <span class="glyphicon glyphicon-info-sign InfoToolTip" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Committed Funds are the estimated cost of repairs that have been raised but not yet invoiced for."></span></h4>
+        </div>
+        <div class="col-lg-3">
+
+        </div>
+        <div class="col-lg-3">
+            <h4 style="margin-top: 0px">@Model.BudgetSummary.CommittedFundsStr</h4>
+        </div>
+    </div>
+</div>

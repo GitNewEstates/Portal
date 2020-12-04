@@ -1,0 +1,93 @@
+﻿@using Portal_MVC.Models
+@using System.Globalization
+@model Portal_MVC.Models.ServiceChargeBudgetViewModel
+
+@{
+    ViewBag.Title = "Budget -v- Actual";
+}
+
+@if (Session["SelectedPropertyID"] == null)
+{
+    <div class="container">
+        @Html.Partial("_SelectProperty", Model)
+    </div>
+}
+else
+{
+    
+    if (Model.Estate.BVAList != null && Model.Estate.BVAList.Count > 0)
+    {
+        <div>
+            <h3>Service Charge Budget vs Expenditure</h3>
+            <h4>@Model.Estate.EstateName</h4>
+            <h5>@Model.Estate.SCStartDate - @Model.Estate.SCEndDate</h5>
+        </div>
+        if (Model.Estate.Schedules != null)
+        {
+            foreach (string sched in Model.Estate.Schedules)
+            {
+                Model.Estate.TotalBudget = 0;
+                Model.Estate.TotalExp = 0;
+                Model.Estate.TotalDiff = 0;
+            <div class="panel GradientBackground col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+                <h4>Schedule: @sched</h4>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Cost Heading</th>
+                            <th>Budget Cost</th>
+                            <th>Current Cost</th>
+                            <th>Budget Remaining</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (Estates es in Model.Estate.BVAList)
+                        {
+                            if (es.SCScheduleName == sched && es.SCHeading != "Income")
+                            {
+                                Model.Estate.TotalBudget = Model.Estate.TotalBudget + es.SCCost;
+                                Model.Estate.TotalExp = Model.Estate.TotalExp + es.TrCost;
+                                Model.Estate.TotalDiff = Model.Estate.TotalBudget - Model.Estate.TotalExp;
+                                <tr>
+                                    @*<td>
+                                        <p>@es.SCScheduleName</p>
+                                    </td>*@
+                                    <td>
+                                        <p>@es.SCHeading</p>
+                                    </td>
+                                    <td>
+                                        <p>@es.SCCoststr</p>
+                                    </td>
+                                    <td>
+                                        <p>@es.TrCoststr</p>
+                                    </td>
+                                    <td>
+                                        <p>@es.BVADiffstr</p>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                    <tfoot>
+
+                        <tr class="TotalsRow">
+                            <td><p>Totals</p></td>
+                           
+                            <td><p>@Controls.CurrencyString(Model.Estate.TotalBudget)</p></td>
+                            <td><p>@Controls.CurrencyString(Model.Estate.TotalExp)
+                            <td><p>@Controls.CurrencyString(Model.Estate.TotalDiff)
+
+                        </tr>
+                    </tfoot>
+
+                </table>
+            </div>
+            }
+        }
+    }
+}
+
+
+
+

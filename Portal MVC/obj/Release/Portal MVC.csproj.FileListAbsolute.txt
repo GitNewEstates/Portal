@@ -1,0 +1,531 @@
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\roslyn\csc.exe
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\roslyn\vbc.exe
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\roslyn\VBCSCompiler.exe
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\Portal MVC.dll.config
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\Portal MVC.dll
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\Portal MVC.pdb
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\Antlr3.Runtime.dll
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\dbConn.dll
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\EntityFramework.dll
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\EntityFramework.SqlServer.dll
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\Microsoft.Owin.dll
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.dll
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\Newtonsoft.Json.dll
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\Owin.dll
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\System.Web.Helpers.dll
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\System.Web.Mvc.dll
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\System.Web.Optimization.dll
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\System.Web.Razor.dll
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\System.Web.WebPages.dll
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\System.Web.WebPages.Razor.dll
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\WebGrease.dll
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\CustomErrorHandling.dll
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\dbConn.pdb
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\System.Web.Helpers.xml
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\System.Web.Mvc.xml
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\System.Web.Optimization.xml
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\System.Web.Razor.xml
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\System.Web.WebPages.xml
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\System.Web.WebPages.Razor.xml
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\Antlr3.Runtime.pdb
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\Newtonsoft.Json.xml
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\EntityFramework.xml
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\EntityFramework.SqlServer.xml
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\Microsoft.Owin.xml
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.xml
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\bin\CustomErrorHandling.pdb
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\obj\Release\Portal MVC.csprojResolveAssemblyReference.cache
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\obj\Release\Portal MVC.dll
+C:\Users\Adam\documents\visual studio 2015\Projects\Portal MVC\Portal MVC\obj\Release\Portal MVC.pdb
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\roslyn\csc.exe
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\roslyn\vbc.exe
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\roslyn\VBCSCompiler.exe
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Portal MVC.dll.config
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Portal MVC.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Portal MVC.pdb
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Antlr3.Runtime.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\EntityFramework.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\EntityFramework.SqlServer.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.Owin.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Newtonsoft.Json.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Owin.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\System.Web.Helpers.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\System.Web.Mvc.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\System.Web.Optimization.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\System.Web.Razor.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\System.Web.WebPages.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\System.Web.WebPages.Razor.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\WebGrease.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\CustomErrorHandling.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\dbConn.pdb
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\System.Web.Helpers.xml
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\System.Web.Mvc.xml
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\System.Web.Optimization.xml
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\System.Web.Razor.xml
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\System.Web.WebPages.xml
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\System.Web.WebPages.Razor.xml
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Antlr3.Runtime.pdb
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Newtonsoft.Json.xml
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\EntityFramework.xml
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\EntityFramework.SqlServer.xml
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.Owin.xml
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.xml
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\CustomErrorHandling.pdb
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\obj\Release\Portal MVC.csprojResolveAssemblyReference.cache
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\obj\Release\Portal MVC.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\obj\Release\Portal MVC.pdb
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\dbConn.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\BCrypt.Net.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\roslyn\csc.exe
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\roslyn\vbc.exe
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\roslyn\VBCSCompiler.exe
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Portal MVC.dll.config
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Portal MVC.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Portal MVC.pdb
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Antlr3.Runtime.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\BCrypt.Net.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\dbConn.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\EntityFramework.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\EntityFramework.SqlServer.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.Owin.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Newtonsoft.Json.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Owin.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\System.Web.Helpers.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\System.Web.Mvc.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\System.Web.Optimization.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\System.Web.Razor.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\System.Web.WebPages.Deployment.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\System.Web.WebPages.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\System.Web.WebPages.Razor.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\WebGrease.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\CustomErrorHandling.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\dbConn.pdb
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\System.Web.Helpers.xml
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\System.Web.Mvc.xml
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\System.Web.Optimization.xml
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\System.Web.Razor.xml
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\System.Web.WebPages.xml
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\System.Web.WebPages.Deployment.xml
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\System.Web.WebPages.Razor.xml
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Antlr3.Runtime.pdb
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Newtonsoft.Json.xml
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\EntityFramework.xml
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\EntityFramework.SqlServer.xml
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.Owin.xml
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.xml
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\CustomErrorHandling.pdb
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\obj\Release\Portal MVC.csprojResolveAssemblyReference.cache
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\obj\Release\Portal MVC.csproj.CoreCompileInputs.cache
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\obj\Release\Portal MVC.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\obj\Release\Portal MVC.pdb
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\obj\Release\Portal MVC.csproj.CopyComplete
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\EstateDirectors.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\EstateDirectors.pdb
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\roslyn\csc.exe
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\roslyn\vbc.exe
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\roslyn\VBCSCompiler.exe
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Portal MVC.dll.config
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Portal MVC.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Portal MVC.pdb
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Antlr3.Runtime.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\BCrypt.Net.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\dbConn.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\EntityFramework.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\EntityFramework.SqlServer.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\EstateDirectors.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.Owin.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Newtonsoft.Json.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Owin.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\System.Web.Helpers.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\System.Web.Mvc.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\System.Web.Optimization.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\System.Web.Razor.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\System.Web.WebPages.Deployment.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\System.Web.WebPages.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\System.Web.WebPages.Razor.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\WebGrease.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\CustomErrorHandling.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\dbConn.pdb
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\EstateDirectors.pdb
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.Owin.xml
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\System.Web.Helpers.xml
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\System.Web.Mvc.xml
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\System.Web.Razor.xml
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\System.Web.WebPages.xml
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\System.Web.WebPages.Deployment.xml
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\System.Web.WebPages.Razor.xml
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\System.Web.Optimization.xml
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Antlr3.Runtime.pdb
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Newtonsoft.Json.xml
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\EntityFramework.xml
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\EntityFramework.SqlServer.xml
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.xml
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\bin\CustomErrorHandling.pdb
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\obj\Release\Portal MVC.csprojAssemblyReference.cache
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\obj\Release\Portal MVC.csproj.CoreCompileInputs.cache
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\obj\Release\Portal MVC.csproj.CopyComplete
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\obj\Release\Portal MVC.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal\Portal MVC\Portal MVC\obj\Release\Portal MVC.pdb
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\obj\Release\Portal MVC.csprojAssemblyReference.cache
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\obj\Release\Portal MVC.csproj.CoreCompileInputs.cache
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\obj\Release\Portal MVC.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\obj\Release\Portal MVC.pdb
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\roslyn\csc.exe
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\roslyn\vbc.exe
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\roslyn\VBCSCompiler.exe
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Portal MVC.dll.config
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Portal MVC.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Portal MVC.pdb
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Antlr3.Runtime.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\BCrypt.Net.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\EntityFramework.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\EntityFramework.SqlServer.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.Owin.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Newtonsoft.Json.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Owin.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\System.Web.Helpers.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\System.Web.Mvc.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\System.Web.Optimization.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\System.Web.Razor.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\System.Web.WebPages.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\System.Web.WebPages.Razor.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\WebGrease.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\CustomErrorHandling.dll
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\dbConn.pdb
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\EstateDirectors.pdb
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.Owin.xml
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\System.Web.Helpers.xml
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\System.Web.Mvc.xml
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\System.Web.Razor.xml
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\System.Web.WebPages.xml
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\System.Web.WebPages.Razor.xml
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\System.Web.Optimization.xml
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Antlr3.Runtime.pdb
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Newtonsoft.Json.xml
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\EntityFramework.xml
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\EntityFramework.SqlServer.xml
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.xml
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\CustomErrorHandling.pdb
+C:\Users\Adam\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\obj\Release\Portal MVC.csproj.CopyComplete
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\obj\Release\Portal MVC.csprojAssemblyReference.cache
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\obj\Release\Portal MVC.csproj.CoreCompileInputs.cache
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\obj\Release\Portal MVC.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\obj\Release\Portal MVC.pdb
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\roslyn\csc.exe
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\roslyn\vbc.exe
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\roslyn\VBCSCompiler.exe
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Portal MVC.dll.config
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Portal MVC.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Portal MVC.pdb
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Antlr3.Runtime.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\BCrypt.Net.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\EntityFramework.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\EntityFramework.SqlServer.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.Owin.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Newtonsoft.Json.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Owin.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\System.Web.Helpers.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\System.Web.Mvc.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\System.Web.Optimization.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\System.Web.Razor.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\System.Web.WebPages.Deployment.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\System.Web.WebPages.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\System.Web.WebPages.Razor.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\WebGrease.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\CustomErrorHandling.dll
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\dbConn.pdb
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\EstateDirectors.pdb
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.Owin.xml
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\System.Web.Helpers.xml
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\System.Web.Mvc.xml
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\System.Web.Razor.xml
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\System.Web.WebPages.xml
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\System.Web.WebPages.Deployment.xml
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\System.Web.WebPages.Razor.xml
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\System.Web.Optimization.xml
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Antlr3.Runtime.pdb
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Newtonsoft.Json.xml
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\EntityFramework.xml
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\EntityFramework.SqlServer.xml
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.xml
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\CustomErrorHandling.pdb
+C:\Users\adamn\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\obj\Release\Portal MVC.csproj.CopyComplete
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\roslyn\csc.exe
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\roslyn\vbc.exe
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\roslyn\VBCSCompiler.exe
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Portal MVC.dll.config
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Portal MVC.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Portal MVC.pdb
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Antlr3.Runtime.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\BCrypt.Net.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\EntityFramework.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\EntityFramework.SqlServer.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.Owin.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Newtonsoft.Json.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Owin.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\System.Web.Helpers.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\System.Web.Mvc.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\System.Web.Optimization.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\System.Web.Razor.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\System.Web.WebPages.Deployment.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\System.Web.WebPages.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\System.Web.WebPages.Razor.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\WebGrease.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\CustomErrorHandling.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\dbConn.pdb
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\EstateDirectors.pdb
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.Owin.xml
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\System.Web.Helpers.xml
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\System.Web.Mvc.xml
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\System.Web.Razor.xml
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\System.Web.WebPages.xml
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\System.Web.WebPages.Deployment.xml
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\System.Web.WebPages.Razor.xml
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\System.Web.Optimization.xml
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Antlr3.Runtime.pdb
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Newtonsoft.Json.xml
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\EntityFramework.xml
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\EntityFramework.SqlServer.xml
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.xml
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\bin\CustomErrorHandling.pdb
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\obj\Release\Portal MVC.csprojAssemblyReference.cache
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\obj\Release\Portal MVC.csproj.CoreCompileInputs.cache
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\obj\Release\Portal MVC.csproj.CopyComplete
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\obj\Release\Portal MVC.dll
+C:\Users\User\OneDrive - New Estate Management\Development\Portal MVC\Portal MVC\obj\Release\Portal MVC.pdb

@@ -1,0 +1,175 @@
+﻿@using Portal_MVC.Models
+@model Portal_MVC.Models.InsurancesViewModel
+
+@{
+    ViewBag.Title = "Property Insurances - New Estates";
+}
+
+@if (Session["SelectedPropertyID"] == null || (int)Session["SelectedPropertyID"] == 0)
+{
+    <div class="container">
+        @Html.Partial("_SelectProperty", Model.PropListViewModel)
+    </div>
+}
+else
+{
+    if (Model != null && Model.InsuranceList != null)
+    {
+        <div class="container">
+            <div class="panel GradientBackground panelContainer">
+                <table class="LinkedTable tableHover">
+                    <tbody>
+                        @foreach (Insurance i in Model.InsuranceList)
+                        {
+                            <tr>
+                                @if (!string.IsNullOrWhiteSpace(i.PolicyName))
+                                {
+                                    <td>@Html.ActionLink(i.PolicyName + " " + i.StartDate.ToLongDateString() + " - " + i.EndDate.ToLongDateString(), Model.ViewName, Model.ControllerName, new { PolicyID = i.PolicyID }, null)</td>
+
+                                }
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+    else //when policy has been selected
+    {
+        @*<div class="container">
+            <div class="panel GradientBackground col-lg-6" />
+            <table class="InsuranceDetailTable">
+                <tbody>
+                    <tr>
+                        <td><h5>Policy Name</h5></td>
+                        <td><h5>@Model.SelectedInsurance.PolicyName</h5></td>
+                    </tr>
+                    <tr>
+                        <td><p>Policy Start Date</p></td>
+                        <td><p>@Model.SelectedInsurance.StartDate.ToLongDateString()</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>Policy End Date</p></td>
+                        <td><p>@Model.SelectedInsurance.EndDate.ToLongDateString()</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>Policy Number</p></td>
+                        <td><p>@Model.SelectedInsurance.PolicyNumber</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>Policy Premium</p></td>
+                        <td><p>@Model.SelectedInsurance.PremiumAmountString</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>Broker</p></td>
+                        <td><p>@Model.SelectedInsurance.BrokerName</p></td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>*@
+        <div class="panel col-lg-6" >
+            <div class="panel-body">
+                <div class="AssetRowContainer">
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-4 col-md-4 col-lg-3 AssetLabel">
+                            <p>Policy Name</p>
+                        </div>
+                        <div class="col-xs-6 col-sm-8 col-md-8 col-lg-9 AssetData">
+                            <p>@Model.SelectedInsurance.PolicyName</p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="AssetRowContainer">
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 AssetLabel">
+                            <p>Policy Start Date</p>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 AssetData">
+                            <p>@Model.SelectedInsurance.StartDate.ToLongDateString()</p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="AssetRowContainer">
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 AssetLabel">
+                            <p>Policy End Date</p>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 AssetData">
+                            <p>@Model.SelectedInsurance.EndDate.ToLongDateString()</p>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="AssetRowContainer">
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 AssetLabel">
+                            <p>Policy Number</p>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 AssetData">
+                            <p>@Model.SelectedInsurance.PolicyNumber</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="AssetRowContainer">
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 AssetLabel">
+                            <p>Policy Premium</p>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 AssetData">
+                            <p>@Model.SelectedInsurance.PremiumAmountString</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="AssetRowContainer">
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 AssetLabel">
+                            <p>Broker</p>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 AssetData">
+                            <p>@Model.SelectedInsurance.BrokerName</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="AssetRowContainer">
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4 AssetLabel">
+                            <p>Claim Instructions</p>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-8">
+                            <p>@Model.SelectedInsurance.ClaimInstructions</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        if (Model.SelectedInsurance.Documents != null && Model.SelectedInsurance.Documents.Count > 0)
+        {
+        <div class="col-lg-6 GradientBackground panel panelContainer" style="margin-top: 30px;">
+            <h4>Documents</h4>
+            <table class="LinkedTable tableHover">
+                <tbody>
+                    @foreach (Documents d in Model.SelectedInsurance.Documents)
+            {
+                <tr>
+                    <td>@Html.ActionLink(d.Name, "DownloadFile", new { policyID = Model.SelectedInsurance.PolicyID, DocID = d.docID, filename = d.Name })</td>
+                </tr>
+    }
+                </tbody>
+            </table>
+
+        </div>
+            
+            }
+        }
+
+}
+
+

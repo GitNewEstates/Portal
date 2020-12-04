@@ -1,0 +1,157 @@
+﻿@using Portal_MVC.Models
+@using System.Globalization
+@model Portal_MVC.Models.ServiceChargeBudgetViewModel
+
+
+
+@if (Session["SelectedPropertyID"] == null || (int)Session["SelectedPropertyID"] == 0)
+{
+    ViewBag.Title = "Select Property - New Estates";
+    <div class="container">
+       @Html.Partial("_SelectProperty", Model)
+        </div>
+}
+else
+{
+    
+        ViewBag.Title = "Service Charge Budget - New Estates";
+    
+    if (Model.Estate.BudgetList.Count > 0)
+    {
+
+
+    <div>
+        <h3>Service Charge Budget</h3>
+        <h4>@Model.Estate.EstateName</h4>
+        
+        <h5>@Model.Estate.BudgetList[0].SCStartDate - @Model.Estate.BudgetList[0].SCEndDate</h5>
+    
+           
+            @foreach (var schedule in Model.Estate.Schedules)
+            {
+                Model.Estate.TotalBudget = 0;
+                Model.Estate.TotalExp = 0;
+                if (Model.Estate.PieChartData != null)
+                {
+                    Model.Estate.PieChartData.Clear();
+                }
+
+
+                <div class="panel GradientBackground col-md-12 col-lg-10 col-lg-offset-1">
+                    <h4>Schedule: @schedule</h4>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Cost Heading</th>
+                                <th>Cost</th>
+                                <th>Apportionment</th>
+                                <th>Contribution</th>
+                                <th>Comments</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                        @foreach (Estates item in Model.Estate.BudgetList)
+                        {
+                            if (item.SCScheduleName == schedule && item.SCHeading != "Income" && item.SCHeading != "Roundings")
+                            {
+                                Model.Estate.TotalBudget = Model.Estate.TotalBudget + item.SCCost;
+                                Model.Estate.TotalExp = Model.Estate.TotalExp + item.contribution;
+                                //implement when do pie charts
+                                //Model.Estate.PieChartData.Rows.Add();
+                                //int rowIndex = Model.Estate.PieChartData.Rows.Count - 1;
+                                //Model.Estate.PieChartData.Rows[rowIndex][0] = item.SCHeading;
+                                //Model.Estate.PieChartData.Rows[rowIndex][1] = item.SCCost;
+
+                            <tr>
+                                <td>
+                                    <p>@item.SCHeading</p>
+                                </td>
+                                
+                                <td>
+                                    <p>@item.SCCoststr</p>
+                                </td>
+                                <td>
+                                    @if (@item.strApportionment == "0%")
+                                    {
+                                        <p>Not Set</p>
+                                    }
+                                    else
+                                    {
+                                        <div style="text-align: center;">
+                                            <p>@item.strApportionment</p>
+                                        </div>
+                                    }
+                 
+                                </td>
+                                <td>
+                                    @if (@item.strContribution == "£0.00")
+                                    {
+                                        <p>Not Set</p>
+                                    }
+                                    else
+                                    {
+                                        <p>@item.strContribution</p>
+                                    }
+                    
+                                </td>
+                                 <td class="MobileCollapse">
+                                    @if (string.IsNullOrWhiteSpace(@item.BudgetNotes))
+                                    {
+                                        <p></p>
+                                    }
+                                    else
+                                    {
+                                        <p>@item.BudgetNotes</p>
+                                    }
+                    
+                                </td>
+                            </tr>
+                            }
+                        }
+                            </tbody>
+                        <tfoot>
+
+                            <tr class="TotalsRow">
+                                <td><p>Totals</p></td>
+                                <td><p>@Controls.CurrencyString(Model.Estate.TotalBudget)</p></td>
+                                <td style="visibility: hidden">Placeholder</td>
+                                <td><p>@Controls.CurrencyString(Model.Estate.TotalExp)</p></td>
+                                <td style="visibility: hidden">Placeholder</td>
+
+                            </tr>
+                        </tfoot>
+                    </table>
+                 </div>
+                 <div class="col-md-6 col-lg-6">
+                     @*@GlobalVariables.PieChartDataTable = Model.Estate.PieChartData;*@
+                    @*<p><img src="BudgetPie.cshtml" /></p>*@
+                     @*@{
+                         System.Data.DataView dv = new System.Data.DataView(Model.Estate.PieChartData);
+                         var myChart = new Chart(width: 600, height: 400)
+                             .AddTitle("Chart Title")
+                             .AddSeries(
+                                 name: "Employee",
+                                 chartType: "Pie",
+                                  xValue: dv, xField: "Heading",
+                                  yValues: dv, yFields: "Cost")
+                             .Write();
+                     }*@
+                 
+                 </div>
+        
+            }
+        
+    </div>
+    } else
+    {
+        <div class="container">
+            <h5>Currently there are no budgets for this property</h5>
+        </div>
+    }
+}
+
+
+
+
+

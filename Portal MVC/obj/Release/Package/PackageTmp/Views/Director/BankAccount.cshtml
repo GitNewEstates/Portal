@@ -1,0 +1,124 @@
+﻿@using Portal_MVC.Models
+@model Portal_MVC.Models.DirectorBankAccountViewModel
+
+
+@{
+    ViewBag.Title = "Bank Account - New Estates";
+}
+
+@if (Model.BankAccountList != null)
+{
+
+    <div class="container">
+        <div class="panel GradientBackground panelContainer">
+            <table class="LinkedTable tableHover">
+                <tbody>
+                    @foreach (BankAccount i in Model.BankAccountList)
+                    {
+                        <tr>
+
+                            <td>@Html.ActionLink(i.Name + " " + i.AccountNumber, Model.ViewName, Model.ControllerName, new { AccountID = i.ID }, null)</td>
+
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+
+}
+else
+{
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="col-lg-5">
+                <h5>Account Name:</h5>
+                <h5>Sort Code:</h5>
+                <h5>Account Number:</h5>
+            </div>
+            <div class="col-lg-7">
+                <h5>@Model.SelectedBankAccount.Name</h5>
+                <h5>@Model.SelectedBankAccount.SortCode</h5>
+                <h5>@Model.SelectedBankAccount.AccountNumber</h5>
+            </div>
+
+        </div>
+        <div class="col-lg-3">
+            <div class="col-lg-6">
+                <h5>Total Money In</h5>
+                <h5>Total Money Out</h5>
+                <h5>Total Balance</h5>
+            </div>
+            <div class="col-lg-6">
+                <h5>@Model.SelectedBankAccount.TotalMoneyInStr</h5>
+                <h5>@Model.SelectedBankAccount.TotalMoneyOutStr</h5>
+                <h5>@Model.SelectedBankAccount.TotalBalanceStr</h5>
+            </div>
+        </div>
+    </div>
+
+
+        <div class="panel GradientBackground">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th class="MobileCollapse">Description</th>
+                        <th>Credit</th>
+                        <th>Debit</th>
+
+                        <th>Balance</th>
+                    </tr>
+                </thead>
+                @*@if (Model.MyServiceCharges != null && Model.MyServiceCharges.AllTrans != null)
+                {*@
+
+                @foreach (ServiceCharges s in Model.TransactionList)
+                {
+
+                    <tr>
+                        <td>@s.TransDatestr</td>
+
+                        <td class="MobileCollapse">@s.TransDescription</td>
+
+                        @if (s.CrDr == "Cr")
+                        {
+                            <td>@s.TransAmountstr</td>
+                            Model.SelectedBankAccount.TotalMoneyIn += s.TransAmount;
+                        }
+                        else
+                        {
+                            <td></td>
+                            Model.SelectedBankAccount.TotalMoneyIn += s.TransAmount;
+
+                        }
+
+                        @if (s.CrDr == "Dr")
+                        {
+                            <td>@s.TransAmountstr</td>
+                            Model.SelectedBankAccount.TotalMoneyOut += s.TransAmount;
+                        }
+                        else
+                        {
+                            <td></td>
+                            Model.SelectedBankAccount.TotalMoneyOut += s.TransAmount;
+                        }
+
+
+                        <td>@s.BalanceStr</td>
+
+                    </tr>
+                }
+                @*}*@
+            </table>
+        </div>
+
+
+}
+
+
+

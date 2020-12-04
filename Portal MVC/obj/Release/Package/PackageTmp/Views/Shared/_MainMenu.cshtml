@@ -1,0 +1,51 @@
+﻿<ul class="CustomSideBarNav CustomMenuUL" style="min-width: 600px">
+
+    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Account<span class="caret"></span></a>
+        <ul class="dropdown-menu CustomSideBarNav CustomMenuUL SidebarDropDown">
+            <li>@Html.ActionLink("Contact Preferences", "MyAccount", "Home")</li>
+            <li>@Html.ActionLink("Change Password", "ChangePassword", "Home")</li>
+
+
+        </ul>
+    </li>
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Repairs &amp; Maintenance<span class="caret"></span></a>
+        <ul class="dropdown-menu CustomSideBarNav CustomMenuUL SidebarDropDown">
+            <li>@Html.ActionLink("All Repairs", "ViewAllRepairs", "RepairsMaintenance")</li>
+            <li>@Html.ActionLink("Outstanding Repairs", "OutstandingRepairs", "RepairsMaintenance")</li>
+
+        </ul>
+    </li>
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Service Charges <span class="caret"></span></a>
+        <ul class="dropdown-menu CustomSideBarNav CustomMenuUL SidebarDropDown">
+            <li>@Html.ActionLink("Service Charge Budget", "Index", "ServiceCharges")</li>
+            <li>@Html.ActionLink("Service Charge Expenditure", "ServiceChargeExpenditure", "ServiceCharges")</li>
+            <li>@Html.ActionLink("Budget V Actual", "BVA", "ServiceCharges")</li>
+            <li>@Html.ActionLink("My Service Charges", "ServiceChargeAccount", "ServiceCharges")</li>
+
+        </ul>
+    </li>
+
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Property Details<span class="caret"></span></a>
+        <ul class="dropdown-menu CustomSideBarNav CustomMenuUL SidebarDropDown">
+            <li>@Html.ActionLink("Insurances", "Insurances", "PropertyDetails")</li>
+           
+
+        </ul>
+    </li>
+</ul>
+
+@if (Session["IsDirector"] != null && Session["IsDirector"].ToString() == "True")
+{
+    @Html.Partial("_DirectorMenu")
+}
+
+@*keep this here so always shows at bottom of menu*@
+<ul class="CustomSideBarNav CustomMenuUL">
+    <li>@Html.ActionLink("Log Out", "LogOut", "Home")</li>
+</ul>
+

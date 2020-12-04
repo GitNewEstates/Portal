@@ -1,0 +1,363 @@
+﻿/*SETS THE BODY TO BE SIZE OF DISPLAY*/
+/*Specific to login page*/
+#body{
+    min-height:100vh !important;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+ }
+
+
+/*For all other pages*/
+body{
+    padding-top: 0 !important;
+}
+
+/*Menu CSS*/
+#TopNav {
+    background: transparent !important;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    
+}
+@media (min-width: 768px) {
+#MenuTextColour {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+        vertical-align:middle;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+}
+
+@media (max-width: 1200px) {
+.footer-wrapper .site-foot {
+        margin: 0 !important
+            ;
+    }
+.footer-wrapper .site-foot .bigFooter .address {
+    width: 200px;
+    display: inline-block;
+    margin-top: 25px !important;
+   
+}
+}
+
+
+@media (max-width: 1000px) {
+.footer-wrapper .site-foot .bigFooter .address {
+    width: 200px;
+    display: inline-block;
+    margin-top: 50px !important;
+   
+}
+}
+
+@media only screen and (min-width: 1000px) {
+#MenuTextColour {
+        -webkit-box-align: center;
+        -moz-box-align: center;
+        box-align: center;
+        -webkit-align-items: center;
+        -moz-align-items: center;
+        -ms-align-items: center;
+        -o-align-items: center;
+        align-items: center;
+        -ms-flex-align: center;
+        display: -webkit-box;
+        display: -moz-box;
+        display: box;
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flexbox;
+        display: flex;
+        margin-right: 10px;
+        position: relative;
+        width: auto;
+        
+        
+    }
+}
+@media only screen and (min-width: 1000px) {
+ul.nav.navbar-nav.navbar-right {
+        display: block;
+            vertical-align: baseline;
+            font-size: 100%; 
+            display: -webkit-box;
+    display: -moz-box;
+    display: box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    height: 75px;  
+    
+        
+    }
+}
+
+#MenuTextColour a {
+    color: #656565;
+    font-size: 18px;
+    padding: 10px;
+    margin: 0;
+}
+
+#MenuTextColour {
+    padding: 20px;
+}
+
+#UL {
+    height: 96px;
+}
+
+
+
+
+#MenuTextColour:hover a {
+    color: #808a9f;
+    font-weight: 600;
+}
+#MenuTextColour:hover {
+    
+  
+    background: #f6f6f6;
+    box-shadow: 5px 0px 0 rgba(0,0,0,.1);
+    
+}
+
+#MenuTextColour ul li a:hover {
+   
+    background: #f6f6f6;
+    box-shadow: 5px 0px 0 rgba(0,0,0,.1);
+}
+
+/*FOOTER*/
+.footer-wrapper{
+background: transparent !important;
+}
+
+.footer-wrapper .site-foot{
+  
+    display: block;
+    
+    margin-left: 100px;
+    margin-right: 100px;
+    background: transparent !important;
+}
+
+.footer-wrapper .site-footContainer{
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 0 20px;
+    width: 100%;
+       background: transparent !important;
+}
+
+.site-foot .bigFooter {
+    text-align: center;
+}
+
+@media only screen and (min-width: 1000px) {
+    .footer-wrapper .site-foot .bigFooter {
+        -webkit-box-align: center;
+        -moz-box-align: center;
+        box-align: center;
+        -webkit-align-items: center;
+        -moz-align-items: center;
+        -ms-align-items: center;
+        -o-align-items: center;
+        align-items: center;
+        -ms-flex-align: center;
+        display: -webkit-box;
+        display: -moz-box;
+        display: box;
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -moz-box-pack: justify;
+        box-pack: justify;
+        -webkit-justify-content: space-between;
+        -moz-justify-content: space-between;
+        -ms-justify-content: space-between;
+        -o-justify-content: space-between;
+        justify-content: space-between;
+        -ms-flex-pack: justify;
+        text-align: center;
+           background: transparent !important;
+    }
+}
+
+@media only screen and (min-width: 1000px) {
+    .footer-wrapper .site-foot .bigFooter .irpm {
+        -webkit-box-ordinal-group: 1;
+        -moz-box-ordinal-group: 1;
+        box-ordinal-group: 1;
+        -webkit-order: 1;
+        -moz-order: 1;
+        order: 1;
+        -ms-flex-order: 1;
+    }
+}
+
+.footer-wrapper .site-foot .bigFooter .irpm {
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    box-align: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    -ms-align-items: center;
+    -o-align-items: center;
+    align-items: center;
+    -ms-flex-align: center;
+    display: -webkit-box;
+    display: -moz-box;
+    display: box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    box-orient: vertical;
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+    box-direction: normal;
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-direction: column;
+    margin: 0 0 20px;
+}
+
+@media only screen and (min-width: 1000px) {
+    .footer-wrapper .site-foot .bigFooter .foot-navigation {
+        margin-right: 0;
+        padding-right: 60px;
+    }
+    .footer-wrapper .site-foot .bigFooter .address {
+            margin-left: -100px;
+    }
+}
+
+
+@media only screen and (min-width: 600px) {
+.footer-wrapper .site-foot .bigFooter .foot-navigation {
+    border-bottom: none;
+    border-right: solid 1px #656565;
+    /*margin-right: 70px;*/
+    padding-bottom: 0;
+    padding-right: 50px;
+}
+}
+
+.footer-wrapper .site-foot .bigFooter .foot-navigation {
+    /*border-bottom: solid 1px #656565;*/
+    display: inline-block;
+    margin-bottom: 30px;
+    /*min-width: 205px;*/
+    padding-bottom: 10px;
+    margin-top: 10px;
+    text-align: left;
+    
+}
+
+
+
+/*over rides the default bootstrap css*/
+.footer-wrapper .site-foot .bigFooter .foot-navigation ul.nav li a:hover {
+   background: #fff;     
+}
+
+.footer-wrapper .site-foot .bigFooter .foot-navigation ul.nav li a {
+   padding: 0px;   
+   display: inline;
+   color: #656565;
+   font-size: 1.5rem;  
+   
+}
+.footer-wrapper .site-foot .bigFooter .foot-navigation ul.nav li {
+   margin-bottom: 10px;     
+}
+
+.footer-wrapper .site-foot .bigFooter .foot-navigation ul.nav {
+   margin-top: 10px;     
+}
+
+.footer-wrapper .site-foot .bigFooter .address {
+   margin: 0px; 
+   padding: 0px;  
+}
+
+.footer-wrapper .site-foot .bigFooter .address p {
+   text-align: left;   
+}
+
+site-foot .bigFooter .irpm img {
+    margin: 10px 0;
+}
+
+img#menuLogo {
+max-width: 80%;
+
+
+}
+
+.navbar-header a.navbar-brand {
+display: block;
+margin: 0px;
+padding: 10px;
+vertical-align: baseline;
+}
+
+.footer-wrapper .site-foot .bigFooter .logo a.logo img{
+    max-width: 80%;
+    max-height: 80%;
+    margin-bottom: 20px;
+}
+
+.footer-wrapper .site-foot .bigFooter .irpm img#irpm{
+    max-width: 55%;
+    max-height: 55%;
+    margin-bottom: 20px;
+}
+
+.footer-wrapper .site-foot .bigFooter .irpm img#omb{
+    max-width: 85%;
+    max-height: 75%;
+}
+
+div.theEnd {
+    text-align: center;
+    padding: 20px;
+    color: #fff;
+    font-size: 75%;
+    background: Transparent; /*if browser does not support gradients*/
+    background: -moz-linear-gradient(top,#0591bc 0%,#045f88 100%);
+    background: -webkit-linear-gradient(top,#0591bc 0%,#045f88 100%);
+    background: linear-gradient(to bottom,#0591bc 0%,#045f88 100%);
+}
+
+div.theEnd .registered{
+        display: block;
+    font-size: 1.2rem;
+    margin-bottom: 10px
+}
+
+
+div.theEnd .copyright{
+        display: block;
+    font-size: 1.2rem;
+    margin-bottom: 10px
+}
+
+#navbar {
+    border-bottom: solid 2px #e9e9e9;
+}
+
+
+
+
+/*#656565*/ 
+/*#808a9f*/

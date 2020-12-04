@@ -1,0 +1,9 @@
+﻿@using Portal_MVC.Models
+@model Portal_MVC.Models.MyAccountViewModel
+
+
+<div class="radio">
+    <label class="radio-inline">
+        @Html.RadioButtonFor(m => m.accountDetails.ContactPref, AccountDetails.ContactPreferences.proplevel) @Html.DisplayNameFor(m => m.accountDetails.PropLevel)
+    </label>
+</div>

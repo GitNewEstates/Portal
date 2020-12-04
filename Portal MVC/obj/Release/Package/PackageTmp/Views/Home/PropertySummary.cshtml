@@ -1,0 +1,23 @@
+﻿@using Portal_MVC.Models
+@model Portal_MVC.Models.MyAccountViewModel
+
+@{
+    ViewBag.Title = "Home - New Estates";
+}
+
+
+<div class="container">
+    @Html.Partial("../RepairsMaintenance/OutstandingRepairs", Model.RepairVM)
+</div>
+
+<div class="row">
+    <div class="container">
+        <div class="panel LineBreak">
+
+        </div>
+    </div>
+</div>
+
+@Html.Partial("_AccountDetails", Model)
+
+

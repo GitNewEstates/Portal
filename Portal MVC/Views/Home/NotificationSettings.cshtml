@@ -1,0 +1,187 @@
+﻿@using Portal_MVC.Models
+@model Portal_MVC.Models.NotificationSettingsViewModels
+
+@{
+    /**/
+
+    ViewBag.Title = "My Account - New Estates";
+}
+
+
+@if (Session["SelectedPropertyID"] == null || (int)Session["SelectedPropertyID"] == 0)
+{
+    <div class="container">
+        @Html.Partial("_SelectProperty", Model.PropListViewModel)
+    </div>
+}
+else
+{
+    if (Model != null)
+    {
+        using (Html.BeginForm("UpdateNotificationSettings", "Home", new { viewmodel = Model.NotificationSettingObj.NewRepairNotification }, FormMethod.Post))
+        {
+            <div class="row">
+                <div class="container">
+                    <div @*class="col-lg-1 col-md-1 col-sm-1 col-xs-1"*@ class="NotificationCheck">
+                        <label class="containerChk">
+                            New Repair Raised
+                            @Html.CheckBoxFor(m => m.NotificationSettingObj.NewRepairNotification,
+                           new { onclick = "this.form.submit();" })
+                            <span class="checkmark"></span>
+                        </label>
+
+                    </div>
+
+                </div>
+                @if (!string.IsNullOrWhiteSpace(Model.NotificationSettingObj.NewRepairConfirmation))
+                {
+                    <div class="row">
+                        <div class="container">
+                            <div class="panel" id="NewRepairConfirmation" style="display: none;">
+                                <div class="alert alert-success alert-dismissible">
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                    <p>@Model.NotificationSettingObj.NewRepairConfirmation</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+
+        using (Html.BeginForm("UpdateChargeNotificationSettings", "Home", new { viewmodel = Model.NotificationSettingObj.NewRepairNotification }, FormMethod.Post))
+        {
+            <div class="row">
+                <div class="container">
+                    <div @*class="col-lg-1 col-md-1 col-sm-1 col-xs-1"*@ class="NotificationCheck">
+                        <label class="containerChk">
+                            New Charge Raised
+                            @Html.CheckBoxFor(m => m.NotificationSettingObj.NewAccountCharge,
+                           new { onclick = "this.form.submit();" })
+                            <span class="checkmark"></span>
+                        </label>
+
+                    </div>
+
+                </div>
+                @if (!string.IsNullOrWhiteSpace(Model.NotificationSettingObj.NewAccountChargeConfirmation))
+                {
+                    <div class="row">
+                        <div class="container">
+                            <div class="panel" id="NewAccountChargeConfirmation" style="display: none;">
+                                <div class="alert alert-success alert-dismissible">
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                    <p>@Model.NotificationSettingObj.NewAccountChargeConfirmation</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+
+        using (Html.BeginForm("UpdatePaymentNotificationSettings", "Home", new { viewmodel = Model.NotificationSettingObj.NewRepairNotification }, FormMethod.Post))
+        {
+            <div class="row">
+                <div class="container">
+                    <div @*class="col-lg-1 col-md-1 col-sm-1 col-xs-1"*@ class="NotificationCheck">
+                        <label class="containerChk">
+                            New Payment Posted
+                            @Html.CheckBoxFor(m => m.NotificationSettingObj.NewAccountPayment,
+                           new { onclick = "this.form.submit();" })
+                            <span class="checkmark"></span>
+                        </label>
+
+                    </div>
+
+                </div>
+                @if (!string.IsNullOrWhiteSpace(Model.NotificationSettingObj.NewAccountPaymentConfirmation))
+                {
+                    <div class="row">
+                        <div class="container">
+                            <div class="panel" id="NewAccountPaymentConfirmation" style="display: none;">
+                                <div class="alert alert-success alert-dismissible">
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                    <p>@Model.NotificationSettingObj.NewAccountPaymentConfirmation</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+
+
+        using (Html.BeginForm("UpdateSCBudgetNotificationSettings", "Home", new { viewmodel = Model.NotificationSettingObj.NewRepairNotification }, FormMethod.Post))
+        {
+            <div class="row">
+                <div class="container">
+                    <div @*class="col-lg-1 col-md-1 col-sm-1 col-xs-1"*@ class="NotificationCheck">
+                        <label class="containerChk">
+                            New Service Charge Budget Created
+                            @Html.CheckBoxFor(m => m.NotificationSettingObj.NewSCBudget,
+                           new { onclick = "this.form.submit();" })
+                            <span class="checkmark"></span>
+                        </label>
+
+                    </div>
+
+                </div>
+                @if (!string.IsNullOrWhiteSpace(Model.NotificationSettingObj.NewSCBudgetConfirmation))
+                {
+                    <div class="row">
+                        <div class="container">
+                            <div class="panel" id="NewSCBudgetConfirmation" style="display: none;">
+                                <div class="alert alert-success alert-dismissible">
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                    <p>@Model.NotificationSettingObj.NewSCBudgetConfirmation</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+
+
+
+        using (Html.BeginForm("UpdateInsuranceNotificationSettings", "Home", new { viewmodel = Model.NotificationSettingObj.NewRepairNotification }, FormMethod.Post))
+        {
+            <div class="row">
+                <div class="container">
+                    <div @*class="col-lg-1 col-md-1 col-sm-1 col-xs-1"*@ class="NotificationCheck">
+                        <label class="containerChk">
+                            New Insurance Schedule Created
+                            @Html.CheckBoxFor(m => m.NotificationSettingObj.NewInsurance,
+                           new { onclick = "this.form.submit();" })
+                            <span class="checkmark"></span>
+                        </label>
+
+                    </div>
+
+                </div>
+                @if (!string.IsNullOrWhiteSpace(Model.NotificationSettingObj.NewInsuranceConfrimation))
+                {
+                    <div class="row">
+                        <div class="container">
+                            <div class="panel" id="NewInsuranceConfrimation" style="display: none;">
+                                <div class="alert alert-success alert-dismissible">
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                    <p>@Model.NotificationSettingObj.NewInsuranceConfrimation</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+
+    }
+
+}
+

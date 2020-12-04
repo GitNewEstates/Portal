@@ -1,0 +1,6 @@
+<publishData><publishProfile profileName="NEMCustomerPortal - Web Deploy" publishMethod="MSDeploy" 
+publishUrl="nemcustomerportal.scm.azurewebsites.net:443" 
+msdeploySite="NEMCustomerPortal" 
+userName="$NEMCustomerPortal" 
+userPWD="emlaZorwjkeEW7RTZGYqRqWXgK2cBd1DanPMMx6ZBGWRFFkR7FvehRaZEz5M" 
+destinationAppUrl="http://nemcustomerportal.azurewebsites.net" SQLServerDBConnectionString="" mySQLDBConnectionString="" hostingProviderForumLink="" controlPanelLink="http://windows.azure.com" webSystem="WebSites"><databases /></publishProfile><publishProfile profileName="NEMCustomerPortal - FTP" publishMethod="FTP" publishUrl="ftp://waws-prod-ln1-005.ftp.azurewebsites.windows.net/site/wwwroot" ftpPassiveMode="True" userName="NEMCustomerPortal\$NEMCustomerPortal" userPWD="emlaZorwjkeEW7RTZGYqRqWXgK2cBd1DanPMMx6ZBGWRFFkR7FvehRaZEz5M" destinationAppUrl="http://nemcustomerportal.azurewebsites.net" SQLServerDBConnectionString="" mySQLDBConnectionString="" hostingProviderForumLink="" controlPanelLink="http://windows.azure.com" webSystem="WebSites"><databases /></publishProfile></publishData>

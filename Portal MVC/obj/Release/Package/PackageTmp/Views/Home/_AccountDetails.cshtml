@@ -1,0 +1,194 @@
+﻿@using Portal_MVC.Models
+@model Portal_MVC.Models.MyAccountViewModel
+
+
+
+@using (Html.BeginForm("MyAccount", "Home", FormMethod.Post))
+{
+    <div class="container" style="margin-bottom: 20px;">
+        <div class="panel GradientBackground psuedoPanelHeading">
+            <div class="row">
+                <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11">
+                   
+                        @if (Model != null && !string.IsNullOrWhiteSpace(Model.PageTitle))
+                        { <h4>@Model.PageTitle</h4>
+                        }
+                        
+                   
+                </div>
+
+
+            </div>
+            <div class="row">
+                <div style="padding: 10px;">
+                    @*CONTACT ADDRESS   *@
+                    <div class="col-md-4 col-lg-3 col-sm-6" style="max-width: 290px;">
+                        <div class="form-group">
+                            @if (Model != null)
+                            {
+                            <label>Contact Address</label>
+                            @Html.TextBoxFor(m => m.accountDetails.ContactAdd1, new { @class = "form-control", id = "CustomTextBox" })
+                            @Html.ValidationMessageFor(m => m.accountDetails.ContactAdd1)
+                            @Html.TextBoxFor(m => m.accountDetails.ContactAdd2, new { @class = "form-control", id = "CustomTextBox" })
+                            @Html.ValidationMessageFor(m => m.accountDetails.ContactAdd2)
+                            @Html.TextBoxFor(m => m.accountDetails.ContactAdd3, new { @class = "form-control", id = "CustomTextBox" })
+                            @Html.ValidationMessageFor(m => m.accountDetails.ContactAdd3)
+                            @Html.TextBoxFor(m => m.accountDetails.ContactAdd4, new { @class = "form-control", id = "CustomTextBox" })
+                            @Html.ValidationMessageFor(m => m.accountDetails.ContactAdd4)
+                            @Html.TextBoxFor(m => m.accountDetails.ContactAdd5, new { @class = "form-control", id = "CustomTextBox" })
+                            @Html.ValidationMessageFor(m => m.accountDetails.ContactAdd5)
+
+                            @Html.TextBoxFor(m => m.StaticaccountDetails.ContactAdd1, new { @style = "Display: none;" })
+                            @Html.TextBoxFor(m => m.StaticaccountDetails.ContactAdd2, new { @style = "Display: none;" })
+                            @Html.TextBoxFor(m => m.StaticaccountDetails.ContactAdd3, new { @style = "Display: none;" })
+                            @Html.TextBoxFor(m => m.StaticaccountDetails.ContactAdd4, new { @style = "Display: none;" })
+                            @Html.TextBoxFor(m => m.StaticaccountDetails.ContactAdd5, new { @style = "Display: none;" })
+
+
+
+                            }
+                        </div>
+                    </div>
+
+
+                    @*CONTACT DETAILS*@
+                    <div class="col-md-4 col-lg-4 col-sm-6" style="max-width: 290px;">
+                        <div class="form-group inputTexts">
+                            @if (Model != null)
+                            {
+                            <label style="margin-top: 10px;">Contact Phone Number</label>
+                            @Html.TextBoxFor(m => m.accountDetails.phoneNumber, new { @class = "form-control", id = "CustomTextBox" })
+                            @Html.ValidationMessageFor(m => m.accountDetails.phoneNumber)
+
+                            <label>Email Address</label>
+                            @Html.TextBoxFor(m => m.accountDetails.Email, new { @class = "form-control", id = "CustomTextBox" })
+                            @Html.ValidationMessageFor(m => m.accountDetails.Email)
+
+                                if (Session["SelectedPropertyID"] == null)
+                                {
+                            <div class="checkbox">
+                                <label>
+                                    @Html.CheckBoxFor(m => m.accountDetails.UpdateLoginEmail) @Html.DisplayNameFor(m => m.accountDetails.UpdateLoginEmail)
+                                </label>
+                                <span class="glyphicon glyphicon-info-sign InfoToolTip" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="You can change the email address that you log in with by selecting this checkbox."></span>
+                            </div>
+                                }
+
+                                //Will only display if view loaded into account level
+                                if (Session["SelectedPropertyID"] == null)
+                                {
+                            <div class="checkbox">
+                                <label>
+                                    @Html.CheckBoxFor(m => m.accountDetails.UseforAllProperties) @Html.DisplayNameFor(m => m.accountDetails.UseforAllProperties)
+                                </label>
+                                <span class="glyphicon glyphicon-info-sign InfoToolTip" 
+                                      aria-hidden="true" data-toggle="tooltip" 
+                                      data-placement="bottom" 
+                                      title="You can change the Contact Preferences for all of your properties by selecting this checkbox."></span>
+                            </div>
+                                }
+
+                                ////option all all changed for Account level
+                                if (Session["SelectedPropertyID"] != null)
+                                {
+                            <div class="checkbox">
+                                <label>
+                                    @Html.CheckBoxFor(m => m.accountDetails.UpdateMainAccountDetails) @Html.DisplayNameFor(m => m.accountDetails.UpdateMainAccountDetails)
+                                </label>
+                                <span class="glyphicon glyphicon-info-sign InfoToolTip" 
+                                      aria-hidden="true" data-toggle="tooltip" 
+                                      data-placement="bottom" 
+                                      title="This will also update your Account Level Contact Preferences availble through 'My Account'."></span>
+                            </div>
+                                }
+
+                                if (Model.accountDetails != null && Model.accountDetails.UnableToUpdateLoginEmail == true)
+                                {
+                            <div>
+                                <p>Unable to update email address for login.</p>
+                            </div>
+                                }
+
+                                //static variables
+                            @Html.TextBoxFor(m => m.StaticaccountDetails.Email, new { @style = "Display: none;", })
+                            @Html.TextBoxFor(m => m.StaticaccountDetails.phoneNumber, new { @style = "Display: none;" })
+
+                            }
+                        </div>
+                    </div>
+
+                    @*CONTACT PREFERENCES*@
+                    <div class="col-md-4 col-sm-6 inputContainer" style="max-width: 290px;">
+                        <div class="form-group inputTexts">
+                            <div class="radio">
+                                <label class="radio-inline">
+                                    @Html.RadioButtonFor(m => m.accountDetails.ContactPref, AccountDetails.ContactPreferences.Post) @Html.DisplayNameFor(m => m.accountDetails.PostOnly)
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label class="radio-inline">
+                                    @Html.RadioButtonFor(m => m.accountDetails.ContactPref, AccountDetails.ContactPreferences.email) @Html.DisplayNameFor(m => m.accountDetails.EmailOnly)
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label class="radio-inline">
+                                    @Html.RadioButtonFor(m => m.accountDetails.ContactPref, AccountDetails.ContactPreferences.postandemail) @Html.DisplayNameFor(m => m.accountDetails.PostAndEmail)
+                                </label>
+                            </div>
+
+                            <div>
+                                
+                                <p><strong>@Model.GuidanceHeader</strong> @Model.Guidance</p>
+                            </div>
+
+
+                            @Html.TextBoxFor(m => m.StaticaccountDetails.PostOnly, new { @style = "Display: none;" })
+                            @Html.TextBoxFor(m => m.StaticaccountDetails.EmailOnly, new { @style = "Display: none;" })
+                            @Html.TextBoxFor(m => m.StaticaccountDetails.PostAndEmail, new { @style = "Display: none;" })
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div id="validationContainer">
+                    @Html.ValidationSummary(true)
+                    @if (Model != null && Model.SuccessfulAddressUpdate == true)
+                    {
+                    <p>@Model.SuccessfulAddressUpdateMessage</p>
+                    }
+                    @if (Model != null && Model.accountDetails != null && Model.accountDetails.updateError != null)
+                    {
+                        if (Model.accountDetails.updateError != "")
+                        {
+                    <p>@Model.accountDetails.updateError</p>
+                        }
+                    }
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="centreButton">
+                <button class="btn btn-primary " type="submit" value="UpdateAddress" , id="customButton">Update</button>
+            </div>
+        </div>
+
+
+
+
+    </div>
+}
+
+
+            <script type="text/javascript">
+                $('document').ready(function () {
+
+                })
+
+            </script>
