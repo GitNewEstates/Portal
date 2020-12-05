@@ -2,10 +2,12 @@
 
 <ul class="CustomSideBarNav CustomMenuUL" style="min-width: 600px">
 
-    @*@if (Session["UserType"] != null && Session["UserType"].ToString() == "2")
+    @if (Session["UserType"] != null && Session["UserType"].ToString() == "3")
     {
-        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-    }*@
+        <li>@Html.ActionLink("Attendance Log", "AttendanceLog", "Caretaking")</li>
+    }
+    else
+    {
 
     <li>@Html.ActionLink("Home", "Index", "Home")</li>
     <li class="dropdown">
@@ -45,6 +47,7 @@
 
         </ul>
     </li>
+    }
 </ul>
 
 

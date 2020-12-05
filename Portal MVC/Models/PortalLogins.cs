@@ -24,55 +24,6 @@ namespace Portal_MVC.Models
             
            
 
-            //List<string> ColNames = new List<string>();
-
-
-            //ColNames.Add("core.CustomerPortal.PWord");
-            //ColNames.Add("core.CustomerPortal.CustomerID");
-            //ColNames.Add("Core.Leaseholders.Title");
-            //ColNames.Add("Core.Leaseholders.FirstName");
-            //ColNames.Add("Core.Leaseholders.Surname");
-            //ColNames.Add("Core.CustomerPortal.salt");
-            //ColNames.Add("Core.CustomerPortal.UserType");
-
-
-            //dbConnection db = new dbConnection();
-
-            //DataTable dt = db.QueryCommandWithWhereAsParameter(GlobalVariables.CS, 
-            //    "Core.CustomerPortal", ColNames, 
-            //    "inner join Core.Leaseholders on core.CustomerPortal.customerID = core.Leaseholders.id where core.CustomerPortal.Username = ", "@username", username);
-            ////try
-            //{
-
-
-            //foreach (DataRow dr in dt.Rows)
-            //{
-            //    if (dr[1] != DBNull.Value)
-            //    {
-            //        //GlobalVariables.CustomerID = Convert.ToInt32(dr[1]);
-
-            //        r.CustomerID = Convert.ToInt32(dr[1]);
-
-
-            //    }
-
-            //    if (dr[6] != DBNull.Value)
-            //    {
-            //        //GlobalVariables.CustomerID = Convert.ToInt32(dr[1]);
-
-            //       r.UserType = Convert.ToInt32(dr[6]);
-
-
-            //    }
-
-            //    //GlobalVariables.CustomerName = CommonMethods.SetNameString(dr[2].ToString(), dr[3].ToString(), dr[4].ToString());
-
-            //    r.customerName = CommonMethods.SetNameString(dr[2].ToString(), dr[3].ToString(), dr[4].ToString());
-
-            //    pcheck = dr[0].ToString();
-            //    salt = dr[5].ToString();
-            //}
-
             PortalLogins r = new PortalLogins();
             try
             {
@@ -99,6 +50,9 @@ namespace Portal_MVC.Models
                     r.LoginVerified = true;
                     r.UserType = UserType;
                     r.CustomerID = UserID;
+
+                    //user id 1 = customer
+                    //user id 2 = NEM User
 
                     string nameQ = "";
                     //get name

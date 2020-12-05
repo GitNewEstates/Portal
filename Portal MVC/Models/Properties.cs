@@ -166,6 +166,8 @@ namespace Portal_MVC.Models
 
         }
 
+
+
         public static List<Properties> GetAllEstates()
         {
             string q = "select * FROM CORE.Estates";
@@ -182,7 +184,8 @@ namespace Portal_MVC.Models
                     id = Convert.ToInt32(dr[0]);
                 }
                 string Add1 = SetAddress1(dr[0].ToString(), dr[1].ToString(), dr[2].ToString());
-                rList.Add(new Properties(PropertyTypes.Estate) { ID = id, Address1 = dr[1].ToString(),
+                rList.Add(new Properties(PropertyTypes.Estate) { ID = id,
+                    Address1 = dr[1].ToString(),
                     Address2 = dr[2].ToString(),
                     Address3 = dr[3].ToString(),
                     Address4 = dr[4].ToString(),

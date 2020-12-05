@@ -46,7 +46,7 @@ namespace Portal_MVC.Controllers
                         anonObj = StaticVariables.PropList;
 
                     }
-                    else
+                    else 
                     {
                         //Sends to summary of the property
                         viewName = "PropertySummary";
@@ -78,7 +78,7 @@ namespace Portal_MVC.Controllers
                         vm.PageTitle = "Property Level Contact Preferences";
                         anonObj = vm;
                     }
-                } else
+                } else if (Session["UserType"].ToString() == "2")
                 {
                     //get estates
                     StaticVariables.PropList = Models.PropertyMethods.GetAllEstates();
@@ -91,6 +91,14 @@ namespace Portal_MVC.Controllers
                     //Models.GlobalVariables.SelectedPropertyID = 0;
                     //Models.GlobalVariables.SelectedProperty = null;
                     anonObj = StaticVariables.PropList;
+                } else if (Session["UserType"].ToString() == "3")
+                {
+                    viewName = @"../Caretaking/CaretakingDashboard";
+                    Session["SelectedPropertyID"] = 0;
+                    Session["SelectedProperty"] = null;
+                    Session["IsDirector"] = null;
+
+                    return RedirectToAction("Index", "Caretaking");
                 }
 
             }
