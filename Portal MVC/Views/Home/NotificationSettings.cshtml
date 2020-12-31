@@ -18,26 +18,36 @@ else
 {
     if (Model != null)
     {
-        using (Html.BeginForm("UpdateNotificationSettings", "Home", new { viewmodel = Model.NotificationSettingObj.NewRepairNotification }, FormMethod.Post))
-        {
+        using (Ajax.BeginForm("UpdateNotificationSettings", "Home",
+            new AjaxOptions
+            {
+                HttpMethod = "POST",
+                UpdateTargetId = "RepairNotification",
+                InsertionMode = InsertionMode.Replace
+            }))
+
+
+        { 
+
             <div class="row">
                 <div class="container">
-                    <div @*class="col-lg-1 col-md-1 col-sm-1 col-xs-1"*@ class="NotificationCheck">
+                    <div @*class="col-lg-1 col-md-1 col-sm-1 col-xs-1"*@ class="NotificationCheck" id="RepairNotification">
                         <label class="containerChk">
                             New Repair Raised
                             @Html.CheckBoxFor(m => m.NotificationSettingObj.NewRepairNotification,
                            new { onclick = "this.form.submit();" })
+                            @Html.CheckBoxFor(m => m.RepairNotificationStatic,
+                           new { @style ="display:None;"})
                             <span class="checkmark"></span>
                         </label>
 
                     </div>
-
                 </div>
-                @if (!string.IsNullOrWhiteSpace(Model.NotificationSettingObj.NewRepairConfirmation))
+                @if (Model.RepairNotificationReceiveMessage)
                 {
                     <div class="row">
                         <div class="container">
-                            <div class="panel" id="NewRepairConfirmation" style="display: none;">
+                            <div class="panel" id="NewRepairConfirmation">
                                 <div class="alert alert-success alert-dismissible">
                                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                     <p>@Model.NotificationSettingObj.NewRepairConfirmation</p>

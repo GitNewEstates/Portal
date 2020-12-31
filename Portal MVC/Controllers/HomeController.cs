@@ -359,29 +359,35 @@ namespace Portal_MVC.Controllers
         }
 
 
-        //UpdateChargeNotificationSettings
+        #region UpdateChargeNotificationSettings
 
         [HttpPost]
-        public ActionResult UpdateNotificationSettings(Models.NotificationSettings SettingsObj)
+        public ActionResult UpdateNotificationSettings(Models.NotificationSettingsViewModels SettingsObj)
         {
            
 
-            bool b = SettingsObj.NewRepairNotification;
+            bool b = SettingsObj.NotificationSettingObj.NewRepairNotification;
+            if(SettingsObj.RepairNotificationStatic == false && SettingsObj.NotificationSettingObj.NewRepairNotification)
+            {
+                SettingsObj.RepairNotificationReceiveMessage = true;
+                SettingsObj.RepairNotificationCancelMessage = false;
+            }
             if (Nmv == null)
             {
                 Nmv = new Models.NotificationSettingsViewModels();
 
 
             }
-            return View("NotificationSettings", Nmv);
+            
+            return View("NotificationSettings", SettingsObj);
         }
 
         [HttpPost]
-        public ActionResult UpdateChargeNotificationSettings(Models.NotificationSettings SettingsObj)
+        public ActionResult UpdateChargeNotificationSettings(Models.NotificationSettingsViewModels SettingsObj)
         {
 
 
-            bool b = SettingsObj.NewRepairNotification;
+            bool b = SettingsObj.NotificationSettingObj.NewRepairNotification;
             if (Nmv == null)
             {
                 Nmv = new Models.NotificationSettingsViewModels();
@@ -435,6 +441,8 @@ namespace Portal_MVC.Controllers
             }
             return View("NotificationSettings", Nmv);
         }
+
+        #endregion
 
         public ActionResult ChangePassword()
         {

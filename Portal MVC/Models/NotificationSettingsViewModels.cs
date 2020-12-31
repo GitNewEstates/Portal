@@ -17,5 +17,9 @@ namespace Portal_MVC.Models
         public string ViewName { get; set; }
         public string ControllerName { get; set; }
         public NotificationSettings NotificationSettingObj { get; set; }
+
+        public bool RepairNotificationStatic { get; set; }
+        public bool RepairNotificationReceiveMessage { get; set; }
+        public bool RepairNotificationCancelMessage { get; set; }
     }
 }
