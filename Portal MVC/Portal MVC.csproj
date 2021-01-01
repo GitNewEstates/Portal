@@ -204,7 +204,6 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MeterReadingsViewModel.cs" />
     <Compile Include="Models\MyAccountViewModel.cs" />
-    <Compile Include="Models\NotificationSettings.cs" />
     <Compile Include="Models\NotificationSettingsViewModels.cs" />
     <Compile Include="Models\OwnerNotes.cs" />
     <Compile Include="Models\PortalLogins.cs" />
@@ -348,6 +347,12 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\PMDevelopment\NotificationSettings\NotificationSettings.csproj">
+      <Project>{79fbc414-8ad4-4cf5-a57a-d04b0afca92a}</Project>
+      <Name>NotificationSettings</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

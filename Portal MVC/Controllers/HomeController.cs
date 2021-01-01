@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Configuration;
 using System.Web.Mvc;
 using Portal_MVC.Models;
+using NotificationSettings;
 
 namespace Portal_MVC.Controllers
 {
@@ -330,7 +331,10 @@ namespace Portal_MVC.Controllers
                 if (Nmv == null)
                 {
                     Nmv = new Models.NotificationSettingsViewModels();
-                    Nmv.NotificationSettingObj.NewRepairNotification = true;
+                    //get the settings
+                    
+                    Nmv.NotificationSettingObj.NewAccountCharge = true;
+                    Nmv.ChargeNotificationStatic = true;
 
                 }
                 if (Session["SelectedPropertyID"] != null && (int)Session["SelectedPropertyID"] != 0)
@@ -364,82 +368,85 @@ namespace Portal_MVC.Controllers
         [HttpPost]
         public ActionResult UpdateNotificationSettings(Models.NotificationSettingsViewModels SettingsObj)
         {
-           
+            SettingsObj.NotificationSettingObj.UnitID = (int)Session["SelectedPropertyID"];
+            SettingsObj.NotificationSettingObj.CustomerID = (int)Session["CustomerID"];
 
-            bool b = SettingsObj.NotificationSettingObj.NewRepairNotification;
-            if(SettingsObj.RepairNotificationStatic == false && SettingsObj.NotificationSettingObj.NewRepairNotification)
+
+            //pass the full view model
+            System.Threading.Thread t = new System.Threading.Thread(new System.Threading.ThreadStart(SettingsObj.UpdateSettings));
+            //t.Start();
+
+            //Below works out which settings have been changed so that correct messages can be displayed
+            if(!SettingsObj.RepairNotificationStatic && SettingsObj.NotificationSettingObj.NewRepairNotification)
             {
                 SettingsObj.RepairNotificationReceiveMessage = true;
                 SettingsObj.RepairNotificationCancelMessage = false;
-            }
-            if (Nmv == null)
+                SettingsObj.RepairNotificationStatic = SettingsObj.NotificationSettingObj.NewRepairNotification;
+
+            }else if(SettingsObj.RepairNotificationStatic && !SettingsObj.NotificationSettingObj.NewRepairNotification)
             {
-                Nmv = new Models.NotificationSettingsViewModels();
+                SettingsObj.RepairNotificationReceiveMessage = true;
+                SettingsObj.RepairNotificationCancelMessage = false;
+                SettingsObj.RepairNotificationStatic = SettingsObj.NotificationSettingObj.NewRepairNotification;
+            }
 
+            if (!SettingsObj.ChargeNotificationStatic && SettingsObj.NotificationSettingObj.NewAccountCharge)
+            {
+                SettingsObj.ChargeNotificationReceiveMessage = true;
+                SettingsObj.ChargeNotificationCancelMessage = false;
+                SettingsObj.ChargeNotificationStatic = SettingsObj.NotificationSettingObj.NewAccountCharge;
 
             }
-            
+            else if (SettingsObj.ChargeNotificationStatic && !SettingsObj.NotificationSettingObj.NewRepairNotification)
+            {
+                SettingsObj.ChargeNotificationCancelMessage = true;
+                SettingsObj.ChargeNotificationReceiveMessage = false;
+                SettingsObj.ChargeNotificationStatic = SettingsObj.NotificationSettingObj.NewAccountCharge;
+            }
+
+            if (!SettingsObj.PaymentNotificationStatic && SettingsObj.NotificationSettingObj.NewAccountPayment)
+            {
+                SettingsObj.PaymentNotificationReceiveMessage = true;
+                SettingsObj.PaymentNotificationCancelMessage = false;
+                SettingsObj.PaymentNotificationStatic = SettingsObj.NotificationSettingObj.NewAccountPayment;
+
+            }
+            else if (SettingsObj.PaymentNotificationStatic && !SettingsObj.NotificationSettingObj.NewRepairNotification)
+            {
+                SettingsObj.PaymentNotificationCancelMessage = true;
+                SettingsObj.PaymentNotificationReceiveMessage = false;
+                SettingsObj.PaymentNotificationStatic = SettingsObj.NotificationSettingObj.NewAccountPayment;
+            }
+
+            if (!SettingsObj.BudgetNotificationStatic && SettingsObj.NotificationSettingObj.NewSCBudget)
+            {
+                SettingsObj.BudgetNotificationReceiveMessage = true;
+                SettingsObj.BudgetNotificationCancelMessage = false;
+                SettingsObj.BudgetNotificationStatic = SettingsObj.NotificationSettingObj.NewSCBudget;
+
+            }
+            else if (SettingsObj.BudgetNotificationStatic && !SettingsObj.NotificationSettingObj.NewRepairNotification)
+            {
+                SettingsObj.BudgetNotificationCancelMessage = true;
+                SettingsObj.BudgetNotificationReceiveMessage = false;
+                SettingsObj.BudgetNotificationStatic = SettingsObj.NotificationSettingObj.NewSCBudget;
+            }
+
+            if (!SettingsObj.BudgetNotificationStatic && SettingsObj.NotificationSettingObj.NewSCBudget)
+            {
+                SettingsObj.BudgetNotificationReceiveMessage = true;
+                SettingsObj.BudgetNotificationCancelMessage = false;
+                SettingsObj.BudgetNotificationStatic = SettingsObj.NotificationSettingObj.NewSCBudget;
+
+            }
+            else if (SettingsObj.BudgetNotificationStatic && !SettingsObj.NotificationSettingObj.NewRepairNotification)
+            {
+                SettingsObj.BudgetNotificationCancelMessage = true;
+                SettingsObj.BudgetNotificationReceiveMessage = false;
+                SettingsObj.BudgetNotificationStatic = SettingsObj.NotificationSettingObj.NewSCBudget;
+            }
+
             return View("NotificationSettings", SettingsObj);
-        }
-
-        [HttpPost]
-        public ActionResult UpdateChargeNotificationSettings(Models.NotificationSettingsViewModels SettingsObj)
-        {
-
-
-            bool b = SettingsObj.NotificationSettingObj.NewRepairNotification;
-            if (Nmv == null)
-            {
-                Nmv = new Models.NotificationSettingsViewModels();
-
-
-            }
-            return View("NotificationSettings", Nmv);
-        }
-
-        //UpdatePaymentNotificationSettings
-        public ActionResult UpdatePaymentNotificationSettings(Models.NotificationSettings SettingsObj)
-        {
-
-
-            bool b = SettingsObj.NewRepairNotification;
-            if (Nmv == null)
-            {
-                Nmv = new Models.NotificationSettingsViewModels();
-
-
-            }
-            return View("NotificationSettings", Nmv);
-        }
-
-        //UpdateSCBudgetNotificationSettings
-        public ActionResult UpdateSCBudgetNotificationSettings(Models.NotificationSettings SettingsObj)
-        {
-
-
-            bool b = SettingsObj.NewRepairNotification;
-            if (Nmv == null)
-            {
-                Nmv = new Models.NotificationSettingsViewModels();
-
-
-            }
-            return View("NotificationSettings", Nmv);
-        }
-
-        //UpdateInsuranceNotificationSettings
-        public ActionResult UpdateInsuranceNotificationSettings(Models.NotificationSettings SettingsObj)
-        {
-
-
-            bool b = SettingsObj.NewRepairNotification;
-            if (Nmv == null)
-            {
-                Nmv = new Models.NotificationSettingsViewModels();
-
-
-            }
-            return View("NotificationSettings", Nmv);
         }
 
         #endregion

@@ -607,3 +607,5 @@ C:\Users\adamn\Documents\Development\Property Management Dev\PortalDev\Portal MV
 C:\Users\adamn\Documents\Development\Property Management Dev\PortalDev\Portal MVC\obj\Debug\Portal MVC.csproj.CopyComplete
 C:\Users\adamn\Documents\Development\Property Management Dev\PortalDev\Portal MVC\obj\Debug\Portal MVC.dll
 C:\Users\adamn\Documents\Development\Property Management Dev\PortalDev\Portal MVC\obj\Debug\Portal MVC.pdb
+C:\Users\adamn\Documents\Development\Property Management Dev\PortalDev\Portal MVC\bin\NotificationSettings.dll
+C:\Users\adamn\Documents\Development\Property Management Dev\PortalDev\Portal MVC\bin\NotificationSettings.pdb
