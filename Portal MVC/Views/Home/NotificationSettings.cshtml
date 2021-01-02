@@ -18,7 +18,7 @@
     {
         if (Model != null)
         {
-            using (Html.BeginForm("UpdateNotificationSettings", "Home", new { viewmodel = Model.NotificationSettingObj.NewRepairNotification }, FormMethod.Post))
+            using (Html.BeginForm("UpdateNotificationSettings", "Home", new { viewmodel = Model.NotificationSettingObj }, FormMethod.Post))
             {
                 Html.AntiForgeryToken();
 
@@ -29,8 +29,6 @@
                             New Repair Raised
                             @Html.CheckBoxFor(m => m.NotificationSettingObj.NewRepairNotification,
                 new { onclick = "this.form.submit();" })
-                            @Html.CheckBoxFor(m => m.RepairNotificationStatic,
-                new { @style = "display:None;" })
                             <span class="checkmark"></span>
                         </label>
 
@@ -71,10 +69,7 @@
                         </label>
 
                     </div>
-                    <div>
-                        @Html.CheckBoxFor(m => m.ChargeNotificationStatic,
-                 new { @style = "display:block;" })
-                    </div>
+                 
 
                 </div>
                 @if (Model.ChargeNotificationReceiveMessage || Model.ChargeNotificationCancelMessage)
@@ -104,9 +99,7 @@
                     </div>
                 }
             </div>
-
-
-
+            
             <div class="row">
                 <div class="container">
                     <div @*class="col-lg-1 col-md-1 col-sm-1 col-xs-1"*@ class="NotificationCheck">
@@ -120,25 +113,34 @@
                     </div>
 
                 </div>
-                @if (!string.IsNullOrWhiteSpace(Model.NotificationSettingObj.NewAccountPaymentConfirmation))
+                @if (Model.PaymentNotificationReceiveMessage || Model.PaymentNotificationCancelMessage)
                 {
                     <div class="row">
                         <div class="container">
-                            <div class="panel" id="NewAccountPaymentConfirmation" style="display: none;">
-                                <div class="alert alert-success alert-dismissible">
-                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                    <p>@Model.NotificationSettingObj.NewAccountPaymentConfirmation</p>
-                                </div>
+                            <div class="panel" id="NewRepairConfirmation">
+
+                                @if (Model.PaymentNotificationReceiveMessage)
+                                {
+                                    <div class="alert alert-success alert-dismissible">
+                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                        <p>@Model.NotificationSettingObj.NewAccountPaymentConfirmation</p>
+                                    </div>
+                                }
+                                else if (Model.PaymentNotificationCancelMessage)
+                                {
+                                    <div class="alert alert-danger alert-dismissible">
+                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                        <p>@Model.NotificationSettingObj.CancelNewPaymentChargeConfirmation</p>
+                                    </div>
+                                }
                             </div>
+
 
                         </div>
                     </div>
                 }
             </div>
-
-
-
-
+            
             <div class="row">
                 <div class="container">
                     <div @*class="col-lg-1 col-md-1 col-sm-1 col-xs-1"*@ class="NotificationCheck">
@@ -152,26 +154,34 @@
                     </div>
 
                 </div>
-                @if (!string.IsNullOrWhiteSpace(Model.NotificationSettingObj.NewSCBudgetConfirmation))
+                @if (Model.BudgetNotificationReceiveMessage || Model.BudgetNotificationCancelMessage)
                 {
                     <div class="row">
                         <div class="container">
-                            <div class="panel" id="NewSCBudgetConfirmation" style="display: none;">
-                                <div class="alert alert-success alert-dismissible">
-                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                    <p>@Model.NotificationSettingObj.NewSCBudgetConfirmation</p>
-                                </div>
+                            <div class="panel" id="NewRepairConfirmation">
+
+                                @if (Model.BudgetNotificationReceiveMessage)
+                                {
+                                    <div class="alert alert-success alert-dismissible">
+                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                        <p>@Model.NotificationSettingObj.NewSCBudgetConfirmation</p>
+                                    </div>
+                                }
+                                else if (Model.BudgetNotificationCancelMessage)
+                                {
+                                    <div class="alert alert-danger alert-dismissible">
+                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                        <p>@Model.NotificationSettingObj.CancelNewBudgettChargeConfirmation</p>
+                                    </div>
+                                }
                             </div>
+
 
                         </div>
                     </div>
                 }
             </div>
-
-
-
-
-
+            
             <div class="row">
                 <div class="container">
                     <div @*class="col-lg-1 col-md-1 col-sm-1 col-xs-1"*@ class="NotificationCheck">
@@ -185,16 +195,28 @@
                     </div>
 
                 </div>
-                @if (!string.IsNullOrWhiteSpace(Model.NotificationSettingObj.NewInsuranceConfrimation))
+                @if (Model.InsuranceNotificationReceiveMessage || Model.InsuranceNotificationCancelMessage)
                 {
                     <div class="row">
                         <div class="container">
-                            <div class="panel" id="NewInsuranceConfrimation" style="display: none;">
-                                <div class="alert alert-success alert-dismissible">
-                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                    <p>@Model.NotificationSettingObj.NewInsuranceConfrimation</p>
-                                </div>
+                            <div class="panel" id="NewRepairConfirmation">
+
+                                @if (Model.InsuranceNotificationReceiveMessage)
+                                {
+                                    <div class="alert alert-success alert-dismissible">
+                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                        <p>@Model.NotificationSettingObj.NewInsuranceConfrimation</p>
+                                    </div>
+                                }
+                                else if (Model.InsuranceNotificationCancelMessage)
+                                {
+                                    <div class="alert alert-danger alert-dismissible">
+                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                        <p>@Model.NotificationSettingObj.CancelNewInsuranceChargeConfirmation</p>
+                                    </div>
+                                }
                             </div>
+
 
                         </div>
                     </div>

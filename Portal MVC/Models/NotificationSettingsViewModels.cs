@@ -47,5 +47,93 @@ namespace Portal_MVC.Models
             NotificationSettingObj.Delete(GlobalVariables.CS);
             NotificationSettingObj.Insert(GlobalVariables.CS);
         }
+
+        public void CompareNotificationSettings()
+        {
+            //compares old notification settings with those submitted and displays relevant 
+            NotificationSettings.NotificationSettings NewObj = new NotificationSettings.NotificationSettings();
+            NewObj.UnitID = NotificationSettingObj.UnitID;
+            NewObj.CustomerID = NotificationSettingObj.CustomerID;
+            NewObj.GetNotificationSettings(GlobalVariables.CS);
+
+            if (!NewObj.NewRepairNotification || !NotificationSettingObj.NewRepairNotification)
+            {
+                if (!NewObj.NewRepairNotification && NotificationSettingObj.NewRepairNotification)
+                {
+                    this.RepairNotificationReceiveMessage = true;
+                }
+                else if (NewObj.NewRepairNotification && !NotificationSettingObj.NewRepairNotification)
+                {
+                    this.RepairNotificationCancelMessage = true;
+                }
+            }
+
+            if (!NewObj.NewAccountCharge || !NotificationSettingObj.NewAccountCharge)
+            {
+                if (!NewObj.NewAccountCharge && NotificationSettingObj.NewAccountCharge)
+                {
+                    this.ChargeNotificationReceiveMessage = true;
+                }
+                else if (NewObj.NewAccountCharge && !NotificationSettingObj.NewAccountCharge)
+                {
+                    this.ChargeNotificationCancelMessage = true;
+                }
+            }
+
+            if (!NewObj.NewAccountPayment || !NotificationSettingObj.NewAccountPayment)
+            {
+                if (!NewObj.NewAccountPayment && NotificationSettingObj.NewAccountPayment)
+                {
+                    this.PaymentNotificationReceiveMessage = true;
+                }
+                else if (NewObj.NewAccountPayment && !NotificationSettingObj.NewAccountPayment)
+                {
+                    this.PaymentNotificationCancelMessage = true;
+                }
+            }
+
+            if (!NewObj.NewSCBudget || !NotificationSettingObj.NewSCBudget)
+            {
+                if (!NewObj.NewSCBudget && NotificationSettingObj.NewSCBudget)
+                {
+                    this.BudgetNotificationReceiveMessage = true;
+                }
+                else if (NewObj.NewSCBudget && !NotificationSettingObj.NewSCBudget)
+                {
+                    this.BudgetNotificationCancelMessage = true;
+                }
+            }
+
+            if (!NewObj.NewInsurance || !NotificationSettingObj.NewInsurance)
+            {
+                if (!NewObj.NewInsurance && NotificationSettingObj.NewInsurance)
+                {
+                    this.InsuranceNotificationReceiveMessage = true;
+                }
+                else if (NewObj.NewInsurance && !NotificationSettingObj.NewInsurance)
+                {
+                    this.InsuranceNotificationCancelMessage = true;
+                }
+            }
+        }
+
+        public void HideAllConfirmations()
+        {
+            InsuranceNotificationCancelMessage = false;
+            InsuranceNotificationReceiveMessage = false;
+
+            BudgetNotificationCancelMessage = false;
+            BudgetNotificationReceiveMessage = false;
+
+            PaymentNotificationCancelMessage = false;
+            PaymentNotificationReceiveMessage = false;
+
+            ChargeNotificationCancelMessage = false;
+            PaymentNotificationReceiveMessage = false;
+
+            RepairNotificationCancelMessage = false;
+            RepairNotificationReceiveMessage = false;
+        }
+
     }
 }

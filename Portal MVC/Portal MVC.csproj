@@ -349,7 +349,7 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\PMDevelopment\NotificationSettings\NotificationSettings.csproj">
+    <ProjectReference Include="..\..\DesktopMod\NotificationSettings\NotificationSettings.csproj">
       <Project>{79fbc414-8ad4-4cf5-a57a-d04b0afca92a}</Project>
       <Name>NotificationSettings</Name>
     </ProjectReference>

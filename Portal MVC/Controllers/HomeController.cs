@@ -332,9 +332,9 @@ namespace Portal_MVC.Controllers
                 {
                     Nmv = new Models.NotificationSettingsViewModels();
                     //get the settings
-                    
-                    Nmv.NotificationSettingObj.NewAccountCharge = true;
-                    Nmv.ChargeNotificationStatic = true;
+                    Nmv.NotificationSettingObj.UnitID = (int)Session["SelectedPropertyID"];
+                    Nmv.NotificationSettingObj.CustomerID = (int)Session["CustomerID"];
+                    Nmv.NotificationSettingObj.GetNotificationSettings(GlobalVariables.CS);
 
                 }
                 if (Session["SelectedPropertyID"] != null && (int)Session["SelectedPropertyID"] != 0)
@@ -371,80 +371,82 @@ namespace Portal_MVC.Controllers
             SettingsObj.NotificationSettingObj.UnitID = (int)Session["SelectedPropertyID"];
             SettingsObj.NotificationSettingObj.CustomerID = (int)Session["CustomerID"];
 
+            SettingsObj.HideAllConfirmations();
 
+            SettingsObj.CompareNotificationSettings();
             //pass the full view model
             System.Threading.Thread t = new System.Threading.Thread(new System.Threading.ThreadStart(SettingsObj.UpdateSettings));
-            //t.Start();
+            t.Start();
+            
+            ////Below works out which settings have been changed so that correct messages can be displayed
+            //if(!SettingsObj.RepairNotificationStatic && SettingsObj.NotificationSettingObj.NewRepairNotification)
+            //{
+            //    SettingsObj.RepairNotificationReceiveMessage = true;
+            //    SettingsObj.RepairNotificationCancelMessage = false;
+            //    SettingsObj.RepairNotificationStatic = SettingsObj.NotificationSettingObj.NewRepairNotification;
 
-            //Below works out which settings have been changed so that correct messages can be displayed
-            if(!SettingsObj.RepairNotificationStatic && SettingsObj.NotificationSettingObj.NewRepairNotification)
-            {
-                SettingsObj.RepairNotificationReceiveMessage = true;
-                SettingsObj.RepairNotificationCancelMessage = false;
-                SettingsObj.RepairNotificationStatic = SettingsObj.NotificationSettingObj.NewRepairNotification;
+            //}else if(SettingsObj.RepairNotificationStatic && !SettingsObj.NotificationSettingObj.NewRepairNotification)
+            //{
+            //    SettingsObj.RepairNotificationReceiveMessage = true;
+            //    SettingsObj.RepairNotificationCancelMessage = false;
+            //    SettingsObj.RepairNotificationStatic = SettingsObj.NotificationSettingObj.NewRepairNotification;
+            //}
 
-            }else if(SettingsObj.RepairNotificationStatic && !SettingsObj.NotificationSettingObj.NewRepairNotification)
-            {
-                SettingsObj.RepairNotificationReceiveMessage = true;
-                SettingsObj.RepairNotificationCancelMessage = false;
-                SettingsObj.RepairNotificationStatic = SettingsObj.NotificationSettingObj.NewRepairNotification;
-            }
+            //if (!SettingsObj.ChargeNotificationStatic && SettingsObj.NotificationSettingObj.NewAccountCharge)
+            //{
+            //    SettingsObj.ChargeNotificationReceiveMessage = true;
+            //    SettingsObj.ChargeNotificationCancelMessage = false;
+            //    SettingsObj.ChargeNotificationStatic = SettingsObj.NotificationSettingObj.NewAccountCharge;
 
-            if (!SettingsObj.ChargeNotificationStatic && SettingsObj.NotificationSettingObj.NewAccountCharge)
-            {
-                SettingsObj.ChargeNotificationReceiveMessage = true;
-                SettingsObj.ChargeNotificationCancelMessage = false;
-                SettingsObj.ChargeNotificationStatic = SettingsObj.NotificationSettingObj.NewAccountCharge;
+            //}
+            //else if (SettingsObj.ChargeNotificationStatic && !SettingsObj.NotificationSettingObj.NewRepairNotification)
+            //{
+            //    SettingsObj.ChargeNotificationCancelMessage = true;
+            //    SettingsObj.ChargeNotificationReceiveMessage = false;
+            //    SettingsObj.ChargeNotificationStatic = SettingsObj.NotificationSettingObj.NewAccountCharge;
+            //}
 
-            }
-            else if (SettingsObj.ChargeNotificationStatic && !SettingsObj.NotificationSettingObj.NewRepairNotification)
-            {
-                SettingsObj.ChargeNotificationCancelMessage = true;
-                SettingsObj.ChargeNotificationReceiveMessage = false;
-                SettingsObj.ChargeNotificationStatic = SettingsObj.NotificationSettingObj.NewAccountCharge;
-            }
+            //if (!SettingsObj.PaymentNotificationStatic && SettingsObj.NotificationSettingObj.NewAccountPayment)
+            //{
+            //    SettingsObj.PaymentNotificationReceiveMessage = true;
+            //    SettingsObj.PaymentNotificationCancelMessage = false;
+            //    SettingsObj.PaymentNotificationStatic = SettingsObj.NotificationSettingObj.NewAccountPayment;
 
-            if (!SettingsObj.PaymentNotificationStatic && SettingsObj.NotificationSettingObj.NewAccountPayment)
-            {
-                SettingsObj.PaymentNotificationReceiveMessage = true;
-                SettingsObj.PaymentNotificationCancelMessage = false;
-                SettingsObj.PaymentNotificationStatic = SettingsObj.NotificationSettingObj.NewAccountPayment;
+            //}
+            //else if (SettingsObj.PaymentNotificationStatic && !SettingsObj.NotificationSettingObj.NewRepairNotification)
+            //{
+            //    SettingsObj.PaymentNotificationCancelMessage = true;
+            //    SettingsObj.PaymentNotificationReceiveMessage = false;
+            //    SettingsObj.PaymentNotificationStatic = SettingsObj.NotificationSettingObj.NewAccountPayment;
+            //}
 
-            }
-            else if (SettingsObj.PaymentNotificationStatic && !SettingsObj.NotificationSettingObj.NewRepairNotification)
-            {
-                SettingsObj.PaymentNotificationCancelMessage = true;
-                SettingsObj.PaymentNotificationReceiveMessage = false;
-                SettingsObj.PaymentNotificationStatic = SettingsObj.NotificationSettingObj.NewAccountPayment;
-            }
+            //if (!SettingsObj.BudgetNotificationStatic && SettingsObj.NotificationSettingObj.NewSCBudget)
+            //{
+            //    SettingsObj.BudgetNotificationReceiveMessage = true;
+            //    SettingsObj.BudgetNotificationCancelMessage = false;
+            //    SettingsObj.BudgetNotificationStatic = SettingsObj.NotificationSettingObj.NewSCBudget;
 
-            if (!SettingsObj.BudgetNotificationStatic && SettingsObj.NotificationSettingObj.NewSCBudget)
-            {
-                SettingsObj.BudgetNotificationReceiveMessage = true;
-                SettingsObj.BudgetNotificationCancelMessage = false;
-                SettingsObj.BudgetNotificationStatic = SettingsObj.NotificationSettingObj.NewSCBudget;
+            //}
+            //else if (SettingsObj.BudgetNotificationStatic && !SettingsObj.NotificationSettingObj.NewRepairNotification)
+            //{
+            //    SettingsObj.BudgetNotificationCancelMessage = true;
+            //    SettingsObj.BudgetNotificationReceiveMessage = false;
+            //    SettingsObj.BudgetNotificationStatic = SettingsObj.NotificationSettingObj.NewSCBudget;
+            //}
 
-            }
-            else if (SettingsObj.BudgetNotificationStatic && !SettingsObj.NotificationSettingObj.NewRepairNotification)
-            {
-                SettingsObj.BudgetNotificationCancelMessage = true;
-                SettingsObj.BudgetNotificationReceiveMessage = false;
-                SettingsObj.BudgetNotificationStatic = SettingsObj.NotificationSettingObj.NewSCBudget;
-            }
+            //if (!SettingsObj.BudgetNotificationStatic && SettingsObj.NotificationSettingObj.NewSCBudget)
+            //{
+            //    SettingsObj.BudgetNotificationReceiveMessage = true;
+            //    SettingsObj.BudgetNotificationCancelMessage = false;
+            //    SettingsObj.BudgetNotificationStatic = SettingsObj.NotificationSettingObj.NewSCBudget;
 
-            if (!SettingsObj.BudgetNotificationStatic && SettingsObj.NotificationSettingObj.NewSCBudget)
-            {
-                SettingsObj.BudgetNotificationReceiveMessage = true;
-                SettingsObj.BudgetNotificationCancelMessage = false;
-                SettingsObj.BudgetNotificationStatic = SettingsObj.NotificationSettingObj.NewSCBudget;
-
-            }
-            else if (SettingsObj.BudgetNotificationStatic && !SettingsObj.NotificationSettingObj.NewRepairNotification)
-            {
-                SettingsObj.BudgetNotificationCancelMessage = true;
-                SettingsObj.BudgetNotificationReceiveMessage = false;
-                SettingsObj.BudgetNotificationStatic = SettingsObj.NotificationSettingObj.NewSCBudget;
-            }
+            //}
+            //else if (SettingsObj.BudgetNotificationStatic && !SettingsObj.NotificationSettingObj.NewRepairNotification)
+            //{
+            //    SettingsObj.BudgetNotificationCancelMessage = true;
+            //    SettingsObj.BudgetNotificationReceiveMessage = false;
+            //    SettingsObj.BudgetNotificationStatic = SettingsObj.NotificationSettingObj.NewSCBudget;
+            //}
 
             return View("NotificationSettings", SettingsObj);
         }
