@@ -23,7 +23,7 @@
                                
                                 @if (item.Address1 != null && item.Address1 != "")
                                 {
-                                    <td class="PropSelection">@Html.ActionLink(item.FullAddress, "PropertySummary", new { PropID = item.ID })</td>
+                                    <td class="PropSelection">@Html.ActionLink(item.FullAddress, "PropertySummary", new { PropID = item.ID, PropType = item.PropertyType })</td>
                                 }
                                
                              

@@ -20,7 +20,8 @@
 
                                     @if (item.Address1 != null && item.Address1 != "")
                                     {
-                                        <td class="PropSelection" >@Html.ActionLink(item.FullAddress, Model.ViewName, Model.ControllerName, new { PropID = item.ID, PropName = item.Address1, id = "Prop" + item.ID }, null)</td>
+                                        <td class="PropSelection" >
+                                    @Html.ActionLink(item.PropertyType.ToString(), Model.ViewName, Model.ControllerName, new { PropID = item.ID, PropName = item.Address1, id = "Prop" + item.ID, PropType = item.PropertyType }, null)</td>
                                     }
 
                                 </tr>

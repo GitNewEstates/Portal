@@ -170,7 +170,7 @@ namespace Portal_MVC.Models
 
         public static List<Properties> GetAllEstates()
         {
-            string q = "select * FROM CORE.Estates";
+            string q = "select * FROM CORE.Estates where _statusID = 1";
 
             List<Properties> rList = new List<Properties>();
             dbConnection db = new dbConnection();

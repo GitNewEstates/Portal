@@ -1,0 +1,230 @@
+﻿@using Portal_MVC.Models
+@model Portal_MVC.Models.NotificationSettingsViewModels
+
+@{
+    /**/
+
+    ViewBag.Title = "My Account - New Estates";
+}
+
+
+@if (Session["SelectedPropertyID"] == null || (int)Session["SelectedPropertyID"] == 0)
+{
+    <div class="container">
+        @Html.Partial("_SelectProperty", Model.PropListViewModel)
+    </div>
+    }
+    else
+    {
+        if (Model != null)
+        {
+            using (Html.BeginForm("UpdateNotificationSettings", "Home", new { viewmodel = Model.NotificationSettingObj }, FormMethod.Post))
+            {
+                Html.AntiForgeryToken();
+
+            <div class="row">
+                <div class="container">
+                    <div @*class="col-lg-1 col-md-1 col-sm-1 col-xs-1"*@ class="NotificationCheck" id="RepairNotification">
+                        <label class="containerChk">
+                            New Repair Raised
+                            @Html.CheckBoxFor(m => m.NotificationSettingObj.NewRepairNotification,
+                new { onclick = "this.form.submit();" })
+                            <span class="checkmark"></span>
+                        </label>
+
+                    </div>
+                </div>
+                @if (Model.RepairNotificationReceiveMessage || Model.RepairNotificationCancelMessage)
+                {
+                    <div class="row">
+                        <div class="container">
+                            <div class="panel" id="NewRepairConfirmation">
+                                <div class="alert alert-success alert-dismissible">
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                    @if (Model.RepairNotificationReceiveMessage)
+                                    {
+                                        <p>@Model.NotificationSettingObj.NewRepairConfirmation</p>
+                                    }
+                                    else if (Model.RepairNotificationCancelMessage)
+                                    {
+                                        <p>@Model.NotificationSettingObj.CancelRepairConfirmation</p>
+                                    }
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                } 
+            </div>
+
+            <div class="row">
+                <div class="container">
+                    <div @*class="col-lg-1 col-md-1 col-sm-1 col-xs-1"*@ class="NotificationCheck" id="UpdateChargeNotification">
+                        <label class="containerChk">
+                            New Charge Raised
+                            @Html.CheckBoxFor(m => m.NotificationSettingObj.NewAccountCharge,
+                new { onclick = "this.form.submit();" })
+                          
+                            <span class="checkmark"></span>
+                        </label>
+
+                    </div>
+                 
+
+                </div>
+                @if (Model.ChargeNotificationReceiveMessage || Model.ChargeNotificationCancelMessage)
+                {
+                    <div class="row">
+                        <div class="container">
+                            <div class="panel" id="NewRepairConfirmation">
+
+                                @if (Model.ChargeNotificationReceiveMessage)
+                                {
+                                    <div class="alert alert-success alert-dismissible">
+                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                        <p>@Model.NotificationSettingObj.NewAccountChargeConfirmation</p>
+                                    </div>
+                                }
+                                else if (Model.ChargeNotificationCancelMessage)
+                                {
+                                    <div class="alert alert-danger alert-dismissible">
+                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                        <p>@Model.NotificationSettingObj.CancelNewAccountChargeConfirmation</p>
+                                    </div>
+                                }
+                            </div>
+                                
+
+                        </div>
+                    </div>
+                }
+            </div>
+            
+            <div class="row">
+                <div class="container">
+                    <div @*class="col-lg-1 col-md-1 col-sm-1 col-xs-1"*@ class="NotificationCheck">
+                        <label class="containerChk">
+                            New Payment Posted
+                            @Html.CheckBoxFor(m => m.NotificationSettingObj.NewAccountPayment,
+                new { onclick = "this.form.submit();" })
+                            <span class="checkmark"></span>
+                        </label>
+
+                    </div>
+
+                </div>
+                @if (Model.PaymentNotificationReceiveMessage || Model.PaymentNotificationCancelMessage)
+                {
+                    <div class="row">
+                        <div class="container">
+                            <div class="panel" id="NewRepairConfirmation">
+
+                                @if (Model.PaymentNotificationReceiveMessage)
+                                {
+                                    <div class="alert alert-success alert-dismissible">
+                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                        <p>@Model.NotificationSettingObj.NewAccountPaymentConfirmation</p>
+                                    </div>
+                                }
+                                else if (Model.PaymentNotificationCancelMessage)
+                                {
+                                    <div class="alert alert-danger alert-dismissible">
+                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                        <p>@Model.NotificationSettingObj.CancelNewPaymentChargeConfirmation</p>
+                                    </div>
+                                }
+                            </div>
+
+
+                        </div>
+                    </div>
+                }
+            </div>
+            
+            <div class="row">
+                <div class="container">
+                    <div @*class="col-lg-1 col-md-1 col-sm-1 col-xs-1"*@ class="NotificationCheck">
+                        <label class="containerChk">
+                            New Service Charge Budget Created
+                            @Html.CheckBoxFor(m => m.NotificationSettingObj.NewSCBudget,
+                new { onclick = "this.form.submit();" })
+                            <span class="checkmark"></span>
+                        </label>
+
+                    </div>
+
+                </div>
+                @if (Model.BudgetNotificationReceiveMessage || Model.BudgetNotificationCancelMessage)
+                {
+                    <div class="row">
+                        <div class="container">
+                            <div class="panel" id="NewRepairConfirmation">
+
+                                @if (Model.BudgetNotificationReceiveMessage)
+                                {
+                                    <div class="alert alert-success alert-dismissible">
+                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                        <p>@Model.NotificationSettingObj.NewSCBudgetConfirmation</p>
+                                    </div>
+                                }
+                                else if (Model.BudgetNotificationCancelMessage)
+                                {
+                                    <div class="alert alert-danger alert-dismissible">
+                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                        <p>@Model.NotificationSettingObj.CancelNewBudgettChargeConfirmation</p>
+                                    </div>
+                                }
+                            </div>
+
+
+                        </div>
+                    </div>
+                }
+            </div>
+            
+            <div class="row">
+                <div class="container">
+                    <div @*class="col-lg-1 col-md-1 col-sm-1 col-xs-1"*@ class="NotificationCheck">
+                        <label class="containerChk">
+                            New Insurance Schedule Created
+                            @Html.CheckBoxFor(m => m.NotificationSettingObj.NewInsurance,
+                new { onclick = "this.form.submit();" })
+                            <span class="checkmark"></span>
+                        </label>
+
+                    </div>
+
+                </div>
+                @if (Model.InsuranceNotificationReceiveMessage || Model.InsuranceNotificationCancelMessage)
+                {
+                    <div class="row">
+                        <div class="container">
+                            <div class="panel" id="NewRepairConfirmation">
+
+                                @if (Model.InsuranceNotificationReceiveMessage)
+                                {
+                                    <div class="alert alert-success alert-dismissible">
+                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                        <p>@Model.NotificationSettingObj.NewInsuranceConfrimation</p>
+                                    </div>
+                                }
+                                else if (Model.InsuranceNotificationCancelMessage)
+                                {
+                                    <div class="alert alert-danger alert-dismissible">
+                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                        <p>@Model.NotificationSettingObj.CancelNewInsuranceChargeConfirmation</p>
+                                    </div>
+                                }
+                            </div>
+
+
+                        </div>
+                    </div>
+                }
+            </div>
+
+        }
+    }
+
+}
+

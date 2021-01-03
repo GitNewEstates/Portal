@@ -12,52 +12,58 @@ namespace Portal_MVC.Controllers
         // GET: Caretaking
         public ActionResult Index()
         {
-            return View("CaretakingDashboard");
+            if (Session["CustomerID"] != null && (int)Session["CustomerID"] > 0)
+            { 
+                return View("CaretakingDashboard");
+            } else
+            {
+                return View("../Home/NotLoggedIn");
+            }
         }
 
         public ActionResult AttendanceLog()
         {
-            Models.AttendanceLogViewModel vm = new Models.AttendanceLogViewModel();
-            vm.SetLists();
+            if (Session["CustomerID"] != null && (int)Session["CustomerID"] > 0)
+            {
+                Models.AttendanceLogViewModel vm = new Models.AttendanceLogViewModel();
+                vm.SetLists();
 
-            return View(vm);
+                return View(vm);
+            }
+            else
+            {
+                return View("../Home/NotLoggedIn");
+            }
+            
         }
 
         [HttpPost]
         public ActionResult SubmitAttendance(Models.AttendanceLogViewModel ViewModel)
         {
-            var httpPostedFile = System.Web.HttpContext.Current.Request.Files["UploadFiles"];
-            var fileSave = System.Web.HttpContext.Current.Server.MapPath("UploadedFiles");
-            var fileSavePath = Path.Combine(fileSave, httpPostedFile.FileName);
 
-            byte[] fileData = null;
-            using (var binaryReader = new BinaryReader(Request.Files[0].InputStream))
+            if (Session["CustomerID"] != null && (int)Session["CustomerID"] > 0)
             {
-                fileData = binaryReader.ReadBytes(Request.Files[0].ContentLength);
-            }
-            
-            foreach (var file in Request.Files)
-            {
-                if (file != null)
+                if (ModelState.IsValid)
                 {
-                    using (var ms = new MemoryStream())
-                    {
-                        file.CopyTo(ms);
-                        var fileBytes = ms.ToArray();
-                        string s = Convert.ToBase64String(fileBytes);
-                        // act on the Base64 data
-                    }
+                    ViewModel.AttendanceObj.AttendingUser = (int)Session["CustomerID"];
+                    System.Threading.Thread t = new System.Threading.Thread(new System.Threading.ThreadStart( ViewModel.Insert));
+                    t.Start();
+                    return View("CaretakingDashboard");
                 }
+                else
+                {
+
+                    ViewModel.SetLists();
+                }
+                return View("AttendanceLog", ViewModel);
+            }
+            else
+            {
+                return View("../Home/NotLoggedIn");
             }
 
-            if (ModelState.IsValid)
-            {
 
-            } else
-            {
-                ViewModel.SetLists();
-            }
-            return View("AttendanceLog", ViewModel);
+            
         }
     }
 }

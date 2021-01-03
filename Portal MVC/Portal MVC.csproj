@@ -37,9 +37,9 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
- <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
-   <TypeScriptLib>dom,es2015</TypeScriptLib>
-    <TypeScriptOutFile />    
+    <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
+    <TypeScriptLib>dom,es2015</TypeScriptLib>
+    <TypeScriptOutFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -48,14 +48,14 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
- 	<TypeScriptRemoveComments>False</TypeScriptRemoveComments>
-   <TypeScriptLib>dom,es2015</TypeScriptLib>
-    <TypeScriptOutFile />    
+    <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
+    <TypeScriptLib>dom,es2015</TypeScriptLib>
+    <TypeScriptOutFile />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AttendanceVisits, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\PM Dev Current\DesktopMod\AttendanceVisits\bin\Debug\AttendanceVisits.dll</HintPath>
+      <HintPath>..\..\..\DesktopMod\AttendanceVisits\bin\Debug\AttendanceVisits.dll</HintPath>
     </Reference>
     <Reference Include="BCrypt.Net, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\BCrypt.Net-PCL.1.0.1\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\BCrypt.Net.dll</HintPath>
@@ -63,6 +63,9 @@
     <Reference Include="dbConn, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Shared DLLs\dbConn\dbConn\bin\Debug\dbConn.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentsDLL">
+      <HintPath>..\..\..\DesktopMod\DocumentsDLL\bin\Debug\DocumentsDLL.dll</HintPath>
     </Reference>
     <Reference Include="EstateDirectors">
       <HintPath>..\..\..\Shared DLLs\Estate Directors\EstateDirectors\EstateDirectors\bin\Debug\EstateDirectors.dll</HintPath>
@@ -243,6 +246,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\upload %281%29.svg" />
     <Content Include="Content\331-x-59 %281%29.png" />
     <Content Include="Content\400-x-71.png" />
     <Content Include="Content\bootstrap.css" />
@@ -282,6 +286,7 @@
     <None Include="Properties\PublishProfiles\NEMCustomerPortal - Web Deploy.pubxml" />
     <Content Include="Scripts\ej2\ej2.min.js" />
     <Content Include="Scripts\ej2\ej2.min.js.map" />
+    <None Include="Properties\PublishProfiles\PortalMVC20210103102705 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Custom.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

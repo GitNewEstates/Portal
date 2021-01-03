@@ -8,6 +8,11 @@
 
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/material.css" />
+    <script type="text/javascript"
+            src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
+    <!-- Syncfusion Essential JS 2 Scripts -->
+    <script src="https://cdn.syncfusion.com/ej2/dist/ej2.min.js"></script>
     <link href="~/Content/dashboard.css" rel="stylesheet">
     <link href="~/Content/SideBarNav.css" rel="stylesheet">
     <link href="~/Content/NEM-menu.css" rel="stylesheet" />
@@ -102,7 +107,7 @@
         <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 LoggedInHeader GradientBackground">
             @if (Session["SelectedProperty"] != null && Session["CustomerName"] != null)
             {
-                
+
                 <div class="SelectedProperty">
                     <h6>@Session["SelectedProperty"]</h6>
                 </div>
@@ -111,11 +116,11 @@
                 </div>
             }
         </div>
-            
+
 
         <div class="row">
             <div class="col-sm-2 col-md-2 col-lg-2 sidebar" id="sideNav" style="min-width: 175px">
-                
+
                 @Html.Partial("_MainMenu")
 
             </div>
@@ -130,83 +135,12 @@
     </div>
 
 
-    @*<div class="footer-wrapper">
-            <div class="site-foot">
-                <div class="site-footContainer">
-                    <div class="bigFooter">
-                        <div class="logo">
-                            <a href="/" class="logo">
-
-                                <img src="~/Content/331-x-59 (1).png" />
-                            </a>
-                        </div>
-                        <div class="irpm">
-                            <img id="irpm" src="https://static1.squarespace.com/static/ta/585124c637c5816bf24f2fcc/55/assets/irpm.png" alt="IRPM">
-                            <img id="omb" src="https://static1.squarespace.com/static/ta/585124c637c5816bf24f2fcc/55/assets/ombudsman.png" alt="The Property Ombudsman">
-                        </div>
-                        <nav class="foot-navigation">
-                            <ul class="nav">
-                                <li>
-                                    <!--COLLECTION-->
-                                    <!--EXTERNAL LINK-->
-                                    <a href="https://www.newestates.co.uk/about-us/">
-                                        About Us
-                                    </a>
-                                </li>
-                                <li>
-                                    <!--COLLECTION-->
-                                    <!--EXTERNAL LINK-->
-                                    <a href="https://www.newestates.co.uk/property-owners">
-                                        Services
-                                    </a>
-                                </li>
-                                <li>
-                                    <!--COLLECTION-->
-                                    <!--EXTERNAL LINK-->
-                                    <a href="https://www.newestates.co.uk/latest-news/">
-                                        Latest News
-                                    </a>
-                                </li>
-                                <li>
-                                    <!--COLLECTION-->
-                                    <!--EXTERNAL LINK-->
-                                    <a href="https://www.newestates.co.uk/contact/">
-                                        Contact
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
-                        <div class="address">
-                            <p>Step Business Centre<br>14-16 Bridgford Road<br>West Bridgford<br>Nottingham<br>NG2 6AB</p>
-                            <p>info@newestates.co.uk</p>
-                            <p>0115 727 0214</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="theEnd">
-            <span class="registered">
-                Registered in England &amp; Wales: Bridgford Business Centre, 29 Bridgford Road, West Bridgford, Nottingham, NG2 6AU<br>
-                Company No; 09670513
-            </span>
-
-            <span class="copyright">
-                <span>
-                    Copyright
-                    <script>document.write(new Date().getFullYear())</script>2017. All Rights Reserved.
-                </span> <a href="http://www.skylightmedia.co.uk" class="skylight" target="_blank">Web Design</a>
-            </span>
-        </div>*@
-
-
-
     @Scripts.Render("~/bundles/jquery")
     <script src="~/Scripts/Custom.js"></script>
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    @Html.EJS().ScriptManager()
 
-   
 </body>
 
 
