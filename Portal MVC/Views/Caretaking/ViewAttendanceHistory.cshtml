@@ -1,0 +1,31 @@
+﻿@using Portal_MVC.Models
+@model Portal_MVC.Models.AttendanceHistoryViewModel
+@{
+    ViewBag.Title = "Attendance History";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+@using (Ajax.BeginForm("LoadAttendanceHistory", "Caretaking", new AjaxOptions()
+{
+    HttpMethod = "Post",
+    UpdateTargetId = "TableContainer",
+    InsertionMode = InsertionMode.Replace
+}))
+{
+<div>
+    <div class="row">
+        <div class="form-group col-lg-3 col-md-6 col-sm-12 col-xs-12">
+            @Html.DropDownListFor(m => m.SelectedPropertyid, Model.EstateList, new { onchange = "this.form.submit();",  @class = "form-control" })
+        </div>
+
+    </div>
+
+    
+</div>
+}
+
+<div class="row">
+    <div id="TableContainer">
+        <p>@Model.TestString</p>
+    </div>
+</div>

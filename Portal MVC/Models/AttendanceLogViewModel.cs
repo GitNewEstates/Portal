@@ -35,9 +35,7 @@ namespace Portal_MVC.Models
         public bool CaretakingVisit { get; set; }
         public bool InspectionVisit { get; set; }
         public bool CallOutVisit { get; set; }
-
-       
-
+        
         public void SetLists()
         {
             List<Properties> estates = Models.PropertyMethods.GetAllEstates();
@@ -79,9 +77,7 @@ namespace Portal_MVC.Models
             }
 
         }
-
         
-
         public void Insert()
         {
             AttendanceObj.AttendanceTypeID = SelectedAttendanceTypeID;
@@ -92,6 +88,38 @@ namespace Portal_MVC.Models
 
             AttendanceObj.Insert(GlobalVariables.CS);
             
+        }
+    }
+
+    public class AttendanceHistoryViewModel
+    {
+        public List<SelectListItem> EstateList { get; set; }
+        public int SelectedPropertyid { get; set; }
+        public int SelectedAttendanceTypeID { get; set; }
+
+        public List<AttendanceVisits.AttendanceVisits> AttendanceList { get; set; }
+        public string TestString { get; set; }
+
+
+        public void SetList()
+        {
+            List<Properties> estates = Models.PropertyMethods.GetAllEstates();
+            EstateList = new List<SelectListItem>();
+            foreach (Properties p in estates)
+            {
+                bool IsSelected = false;
+                if (p.ID == SelectedPropertyid && SelectedPropertyid > 0)
+                {
+                    IsSelected = true;
+                }
+
+                EstateList.Add(new SelectListItem
+                {
+                    Text = p.Address1,
+                    Value = p.ID.ToString(),
+                    Selected = IsSelected
+                });
+            }
         }
     }
 }

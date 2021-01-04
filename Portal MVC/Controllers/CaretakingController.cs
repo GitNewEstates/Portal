@@ -36,7 +36,6 @@ namespace Portal_MVC.Controllers
             }
             
         }
-
         [HttpPost]
         public ActionResult SubmitAttendance(Models.AttendanceLogViewModel ViewModel)
         {
@@ -46,7 +45,7 @@ namespace Portal_MVC.Controllers
                 if (ModelState.IsValid)
                 {
                     ViewModel.AttendanceObj.AttendingUser = (int)Session["CustomerID"];
-                    System.Threading.Thread t = new System.Threading.Thread(new System.Threading.ThreadStart( ViewModel.Insert));
+                    System.Threading.Thread t = new System.Threading.Thread(new System.Threading.ThreadStart(ViewModel.Insert));
                     t.Start();
                     return View("CaretakingDashboard");
                 }
@@ -63,7 +62,31 @@ namespace Portal_MVC.Controllers
             }
 
 
-            
+
         }
+        public ActionResult AttendanceHistory()
+        {
+            if (Session["CustomerID"] != null && (int)Session["CustomerID"] > 0)
+            {
+                Models.AttendanceHistoryViewModel vm = new Models.AttendanceHistoryViewModel();
+                vm.SetList();
+
+                return View("ViewAttendanceHistory", vm);
+            }
+            else
+            {
+                return View("../Home/NotLoggedIn");
+            }
+        }
+
+        [HttpPost]
+        public PartialViewResult LoadAttendanceHistory(Models.AttendanceHistoryViewModel viewmodel)
+        {
+            viewmodel.SetList();
+            viewmodel.TestString = "Test";
+            return PartialView("ViewAttendanceHistory", viewmodel);
+        }
+
+      
     }
 }

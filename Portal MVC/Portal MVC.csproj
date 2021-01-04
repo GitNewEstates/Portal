@@ -311,7 +311,9 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_HomeLayout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
@@ -377,6 +379,7 @@
     <Content Include="Views\Caretaking\CaretakingDashboard.cshtml" />
     <Content Include="Views\Caretaking\Caretaking.cshtml" />
     <Content Include="Views\Caretaking\AttendanceLog.cshtml" />
+    <Content Include="Views\Caretaking\ViewAttendanceHistory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
