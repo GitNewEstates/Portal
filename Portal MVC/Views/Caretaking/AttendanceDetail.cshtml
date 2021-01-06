@@ -1,0 +1,98 @@
+﻿@using Portal_MVC.Models
+@model Portal_MVC.Models.AttendanceHistoryViewModel
+@{
+    ViewBag.Title = "AttendanceDetail";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<div class="row">
+    <div class="">
+        <div class="col-lg-5 col-md-6 col-sm-12 col-xs-12">
+            @if (Model.Visit != null)
+            {
+                <div class="panel CallReportPanel col-lg-12" style="width:100% !important; max-width:none !important;">
+                    <div class="panel-heading col-md-11 col-md-push-1 col-sm-11 col-sm-push-1 col-xs-11 col-xs-push-1" style="padding-left: 0px;">
+                        <h4>Attendance Visit</h4>
+
+                    </div>
+                    <div class="panel-body ">
+                        <div class="row">
+                            <div class="col-xs-11 col-sm-10 col-md-10 col-md-push-1 col-lg-10 col-lg-push-1 CallReportRow">
+                                <div class="panelBodyLabel">
+                                    <p>Estate</p>
+                                </div>
+                                <div class="panelBodyLabel PanelBodyData">
+                                    <p></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-11 col-sm-10 col-md-10 col-md-push-1 col-lg-10 col-lg-push-1 CallReportRow">
+                                <div class="panelBodyLabel">
+                                    <p>Visit Type</p>
+                                </div>
+                                <div class="panelBodyLabel PanelBodyData">
+                                    <p>@Model.Visit.AttendanceStr</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-11 col-sm-10 col-md-10 col-md-push-1 col-lg-10 col-lg-push-1 CallReportRow">
+                                <div class="panelBodyLabel">
+                                    <p>Visit Date</p>
+                                </div>
+                                <div class="panelBodyLabel PanelBodyData">
+                                    <p>@Model.Visit.VisitDate.ToLongDateString()</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-11 col-sm-10 col-md-10 col-md-push-1 col-lg-10 col-lg-push-1 CallReportRow">
+                                <div class="panelBodyLabel">
+                                    <p>Visit Details</p>
+                                </div>
+                                <div class="panelBodyLabel PanelBodyData">
+                                    <p></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-11 col-sm-10 col-md-10 col-md-push-1 col-lg-10 col-lg-push-1 CallReportRow">
+                                <div class="panelBodyLabel ">
+                                    <p>@Model.Visit.VisitDescription</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="col-lg-6">
+            
+            <div class="col-lg-12">
+                @if (Model.Visit.UrlList != null)
+                {
+                    foreach (string link in Model.Visit.UrlList)
+                    {
+                        <div class="col-lg-3">
+                            <img class="img-rounded" src=@link style="width:100%; height:200px; margin-bottom: 10px;" />
+                        </div>
+                    }
+                }
+            </div>
+            
+        </div>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6 col-lg-push-5">
+        <div class="col-lg-12">
+            <button class="btn btn-primary mb-2" style="display: inline; margin-top: 5px; margin-left: 15px;" id="SelectImg2">
+                <img src="/Assets/upload (1).svg" style="height: 25px; width:25px;" id="SelectImg1" />
+            </button>
+        </div>
+    </div>
+</div>
+

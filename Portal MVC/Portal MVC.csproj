@@ -380,6 +380,7 @@
     <Content Include="Views\Caretaking\Caretaking.cshtml" />
     <Content Include="Views\Caretaking\AttendanceLog.cshtml" />
     <Content Include="Views\Caretaking\ViewAttendanceHistory.cshtml" />
+    <Content Include="Views\Caretaking\AttendanceDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

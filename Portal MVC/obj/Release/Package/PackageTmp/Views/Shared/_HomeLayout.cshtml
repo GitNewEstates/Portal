@@ -136,10 +136,12 @@
 
 
     @Scripts.Render("~/bundles/jquery")
-    <script src="~/Scripts/Custom.js"></script>
+
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
     @Html.EJS().ScriptManager()
+    <script src="~/Scripts/Custom.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
 
 </body>
 

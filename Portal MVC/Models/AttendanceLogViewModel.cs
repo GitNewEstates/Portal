@@ -93,15 +93,27 @@ namespace Portal_MVC.Models
 
     public class AttendanceHistoryViewModel
     {
+        public ServiceChargeBudgetViewModel PropListViewModel { get; set; }
+        public IEnumerable<Models.Properties> PropertyList { get; set; }
+
         public List<SelectListItem> EstateList { get; set; }
         public int SelectedPropertyid { get; set; }
         public int SelectedAttendanceTypeID { get; set; }
 
+        public string ViewName { get; set; }
+        public string ControllerName { get; set; }
+
+        public AttendanceVisits.AttendanceVisits Visit { get; set; }
+        public void GetVisit(int id)
+        {
+            Visit = new AttendanceVisits.AttendanceVisits();
+            Visit = AttendanceVisits.AttendanceVisitsMethods.GetAttendanceObj(id, GlobalVariables.CS);
+        }
+
         public List<AttendanceVisits.AttendanceVisits> AttendanceList { get; set; }
         public string TestString { get; set; }
-
-
-        public void SetList()
+        
+        public void SetEstateList()
         {
             List<Properties> estates = Models.PropertyMethods.GetAllEstates();
             EstateList = new List<SelectListItem>();
@@ -120,6 +132,13 @@ namespace Portal_MVC.Models
                     Selected = IsSelected
                 });
             }
+        }
+
+        public void SetAttendanceList()
+        {
+            AttendanceList = new List<AttendanceVisits.AttendanceVisits>();
+            AttendanceList = AttendanceVisits.AttendanceVisitsMethods.AttendanceHistoryList(SelectedPropertyid, GlobalVariables.CS);
+
         }
     }
 }

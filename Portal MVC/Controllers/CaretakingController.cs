@@ -45,8 +45,9 @@ namespace Portal_MVC.Controllers
                 if (ModelState.IsValid)
                 {
                     ViewModel.AttendanceObj.AttendingUser = (int)Session["CustomerID"];
-                    System.Threading.Thread t = new System.Threading.Thread(new System.Threading.ThreadStart(ViewModel.Insert));
-                    t.Start();
+                    ViewModel.Insert();
+                    //System.Threading.Thread t = new System.Threading.Thread(new System.Threading.ThreadStart(ViewModel.Insert));
+                    //t.Start();
                     return View("CaretakingDashboard");
                 }
                 else
@@ -64,12 +65,27 @@ namespace Portal_MVC.Controllers
 
 
         }
-        public ActionResult AttendanceHistory()
+        public ActionResult AttendanceHistory(int PropID = 0, string PropName = "")
         {
+            Models.AttendanceHistoryViewModel vm = new Models.AttendanceHistoryViewModel();
+           
             if (Session["CustomerID"] != null && (int)Session["CustomerID"] > 0)
             {
-                Models.AttendanceHistoryViewModel vm = new Models.AttendanceHistoryViewModel();
-                vm.SetList();
+                Session["SelectedPropertyID"] = PropID;
+                Session["SelectedProperty"] = PropName;
+                if ((int)Session["SelectedPropertyID"] == 0) //get list of properties
+                {
+                    vm.PropListViewModel = new Models.ServiceChargeBudgetViewModel();
+                    vm.PropListViewModel.PropertyList = Models.PropertyMethods.GetAllEstates();
+                    vm.PropListViewModel.ControllerName = "Caretaking";
+                    vm.PropListViewModel.ViewName = "AttendanceHistory";
+                }
+                else
+                {
+                    vm.SelectedPropertyid = PropID;
+                    vm.SetAttendanceList();
+                    
+                }
 
                 return View("ViewAttendanceHistory", vm);
             }
@@ -79,12 +95,22 @@ namespace Portal_MVC.Controllers
             }
         }
 
-        [HttpPost]
-        public PartialViewResult LoadAttendanceHistory(Models.AttendanceHistoryViewModel viewmodel)
+     
+  
+
+        public ViewResult AttendanceDetail(int VisitID)
         {
-            viewmodel.SetList();
-            viewmodel.TestString = "Test";
-            return PartialView("ViewAttendanceHistory", viewmodel);
+            Models.AttendanceHistoryViewModel vm = new Models.AttendanceHistoryViewModel();
+            if (Session["CustomerID"] != null && (int)Session["CustomerID"] > 0)
+            {
+                vm.GetVisit(VisitID);
+               // return View("ViewAttendanceHistory", vm);
+            }
+            else
+            {
+                return View("../Home/NotLoggedIn");
+            }
+            return View(vm);
         }
 
       
