@@ -87,7 +87,13 @@ namespace Portal_MVC.Models
             AttendanceObj.VisitDescription = AttendanceDescription;
 
             AttendanceObj.Insert(GlobalVariables.CS);
-            
+
+            AttendanceVisits.AttendanceNotifications notification = new AttendanceVisits.AttendanceNotifications(AttendanceObj.EstateID,
+                 AttendanceObj.id, GlobalVariables.CS, AttendanceObj.AttendingUser);
+            System.Threading.Thread t = new System.Threading.Thread(new System.Threading.ThreadStart(notification.SendColleagueNotifications));
+            t.Start();
+
+
         }
     }
 

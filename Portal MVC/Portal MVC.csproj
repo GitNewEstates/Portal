@@ -94,6 +94,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\PM Dev Current\DesktopMod\NotificationSettings\bin\Debug\NotificationSettings.dll</HintPath>
     </Reference>
+    <Reference Include="SettingsDLL">
+      <HintPath>..\..\..\DesktopMod\SettingsDLL\bin\Debug\SettingsDLL.dll</HintPath>
+    </Reference>
     <Reference Include="Syncfusion.EJ2, Version=18.4500.0.32, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <HintPath>..\packages\Syncfusion.EJ2.MVC5.18.4.0.32\lib\net45\Syncfusion.EJ2.dll</HintPath>
     </Reference>
