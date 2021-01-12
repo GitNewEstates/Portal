@@ -8,6 +8,7 @@ namespace Portal_MVC.Models
 {
     public static class GlobalVariables
     {
+        public static int DbConfig { get; set; } = 2; //defaults to 2 being the live database
         public static string CS { get; set; }
         //public static int CustomerID { get; set; }
         //public static string CustomerName { get; set; }

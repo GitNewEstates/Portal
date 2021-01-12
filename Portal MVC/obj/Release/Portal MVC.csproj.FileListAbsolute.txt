@@ -617,3 +617,26 @@ C:\Users\User\Development\Property Management Dev\Portal Current\Portal\Portal M
 C:\Users\User\Development\Property Management Dev\Portal Current\Portal\Portal MVC\obj\Release\Portal MVC.csproj.CopyComplete
 C:\Users\User\Development\Property Management Dev\Portal Current\Portal\Portal MVC\obj\Release\Portal MVC.dll
 C:\Users\User\Development\Property Management Dev\Portal Current\Portal\Portal MVC\obj\Release\Portal MVC.pdb
+C:\Users\User\Development\Property Management Dev\Portal Current\Portal\Portal MVC\bin\SettingsDLL.dll
+C:\Users\User\Development\Property Management Dev\Portal Current\Portal\Portal MVC\bin\MailServiceDLL.dll
+C:\Users\User\Development\Property Management Dev\Portal Current\Portal\Portal MVC\bin\EstatesDLL.dll
+C:\Users\User\Development\Property Management Dev\Portal Current\Portal\Portal MVC\bin\HTMLEmail.dll
+C:\Users\User\Development\Property Management Dev\Portal Current\Portal\Portal MVC\bin\UsersDLL.dll
+C:\Users\User\Development\Property Management Dev\Portal Current\Portal\Portal MVC\bin\MimeKit.dll
+C:\Users\User\Development\Property Management Dev\Portal Current\Portal\Portal MVC\bin\MailKit.dll
+C:\Users\User\Development\Property Management Dev\Portal Current\Portal\Portal MVC\bin\HtmlAgilityPack.dll
+C:\Users\User\Development\Property Management Dev\Portal Current\Portal\Portal MVC\bin\BouncyCastle.Crypto.dll
+C:\Users\User\Development\Property Management Dev\Portal Current\Portal\Portal MVC\bin\System.Buffers.dll
+C:\Users\User\Development\Property Management Dev\Portal Current\Portal\Portal MVC\bin\SettingsDLL.pdb
+C:\Users\User\Development\Property Management Dev\Portal Current\Portal\Portal MVC\bin\MailServiceDLL.pdb
+C:\Users\User\Development\Property Management Dev\Portal Current\Portal\Portal MVC\bin\EstatesDLL.pdb
+C:\Users\User\Development\Property Management Dev\Portal Current\Portal\Portal MVC\bin\HTMLEmail.pdb
+C:\Users\User\Development\Property Management Dev\Portal Current\Portal\Portal MVC\bin\UsersDLL.pdb
+C:\Users\User\Development\Property Management Dev\Portal Current\Portal\Portal MVC\bin\MimeKit.pdb
+C:\Users\User\Development\Property Management Dev\Portal Current\Portal\Portal MVC\bin\MimeKit.xml
+C:\Users\User\Development\Property Management Dev\Portal Current\Portal\Portal MVC\bin\MailKit.pdb
+C:\Users\User\Development\Property Management Dev\Portal Current\Portal\Portal MVC\bin\MailKit.xml
+C:\Users\User\Development\Property Management Dev\Portal Current\Portal\Portal MVC\bin\HtmlAgilityPack.pdb
+C:\Users\User\Development\Property Management Dev\Portal Current\Portal\Portal MVC\bin\HtmlAgilityPack.xml
+C:\Users\User\Development\Property Management Dev\Portal Current\Portal\Portal MVC\bin\BouncyCastle.Crypto.xml
+C:\Users\User\Development\Property Management Dev\Portal Current\Portal\Portal MVC\bin\System.Buffers.xml

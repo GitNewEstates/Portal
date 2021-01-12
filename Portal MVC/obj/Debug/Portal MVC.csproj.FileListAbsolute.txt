@@ -881,3 +881,5 @@ C:\Users\User\Development\Property Management Dev\Portal Current\Portal\Portal M
 C:\Users\User\Development\Property Management Dev\Portal Current\Portal\Portal MVC\bin\HtmlAgilityPack.xml
 C:\Users\User\Development\Property Management Dev\Portal Current\Portal\Portal MVC\bin\BouncyCastle.Crypto.xml
 C:\Users\User\Development\Property Management Dev\Portal Current\Portal\Portal MVC\bin\System.Buffers.xml
+C:\Users\User\Development\Property Management Dev\Portal Current\Portal\Portal MVC\bin\UsersDLL.dll
+C:\Users\User\Development\Property Management Dev\Portal Current\Portal\Portal MVC\bin\UsersDLL.pdb
