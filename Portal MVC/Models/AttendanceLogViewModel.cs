@@ -90,7 +90,7 @@ namespace Portal_MVC.Models
 
             AttendanceVisits.AttendanceNotifications notification = new AttendanceVisits.AttendanceNotifications(AttendanceObj.EstateID,
                  AttendanceObj.id, GlobalVariables.CS, AttendanceObj.AttendingUser, GlobalVariables.DbConfig);
-            //notification.SendColleagueNotifications();
+           // notification.SendColleagueNotifications();
 
             System.Threading.Thread t = new System.Threading.Thread(new System.Threading.ThreadStart(notification.SendColleagueNotifications));
             t.Start();

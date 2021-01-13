@@ -79,26 +79,36 @@ $(document).ready(function () {
             imageUrlBox.value = imageurlText2 + ' ' + e.filesUploaded[i].url;
         }
     }
+
+    function FileSelected(e) {
+        //alert();
+    }
     
     function LaunchPicker(CallBackFunction) {
 
         const client = filestack.init('AHkEsan7gQgWv4t8ooIkQz');
 
         const options = {
-            fromSources: ["local_file_system"],
+            fromSources: ["local_file_system", "video"],
             accept: [
                 "image/jpeg",
                 "image/jpg",
                 "image/png",
                 "image/bmp",
                 "image/gif",
-                "application/pdf"
+                "application/pdf",
+                "video/*"
             ],
 
             onUploadDone: file => {
-                CallBackFunction(file)
+                CallBackFunction(file);
                 //SetUploadedImages(file);
 
+            },
+
+            onFileSelected: file => {
+                //alert(file.size);
+                //FileSelected(file);
             }
         };
         client.picker(options).open();
