@@ -66,17 +66,19 @@ $(document).ready(function () {
      
 
         for (i = 0; i < e.filesUploaded.length; i++) {
-
+           // alert('https://cdn.filestackcontent.com/AHkEsan7gQgWv4t8ooIkQz/'
+             //   + 'resize=height:300,width:300/' + e.filesUploaded[i].handle);
             var ImageContainer = document.getElementById('ImgageContainer');
             var Image = document.createElement('img');
             Image.setAttribute('class', 'AttendanceImgContainer');
-            Image.setAttribute('src', e.filesUploaded[i].url);
+            Image.setAttribute('src', 'https://cdn.filestackcontent.com/AHkEsan7gQgWv4t8ooIkQz/'
+               + 'resize=height:300,width:300/' + e.filesUploaded[i].handle);
             Image.setAttribute('style', 'display:inline-block;');
             ImageContainer.appendChild(Image);
 
             var imageUrlBox = document.getElementById('ImageUrlsbox');
             var imageurlText2 = imageUrlBox.value;
-            imageUrlBox.value = imageurlText2 + ' ' + e.filesUploaded[i].url;
+            imageUrlBox.value = imageurlText2 + ' ' + e.filesUploaded[i].handle;
         }
     }
 
@@ -103,7 +105,7 @@ $(document).ready(function () {
             onUploadDone: file => {
                 CallBackFunction(file);
                 //SetUploadedImages(file);
-
+                
             },
 
             onFileSelected: file => {

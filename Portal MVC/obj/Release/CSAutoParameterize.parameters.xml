@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
   <parameter name="LocalConnection-Web.config Connection String" description="LocalConnection Connection String used in web.config by the application to access the database." defaultValue="Data Source=(localdb)\ProjectsV13;Initial Catalog=NEMDb2;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="C:\\Users\\User\\Development\\Property\ Management\ Dev\\Portal\ Current\\Portal\\Portal\ MVC\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='LocalConnection']/@connectionString" />
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\adamn\\Documents\\Development\\Property\ Management\ Dev\\Portal\\Portal\\Portal\ MVC\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='LocalConnection']/@connectionString" />
   </parameter>
   <parameter name="DeployConnection-Web.config Connection String" description="DeployConnection Connection String used in web.config by the application to access the database." defaultValue="Server=tcp:nemserver2017.database.windows.net,1433;Initial Catalog=NEMDb2;Persist Security Info=False;User ID=adam.new;Password=N3westates1!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="C:\\Users\\User\\Development\\Property\ Management\ Dev\\Portal\ Current\\Portal\\Portal\ MVC\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DeployConnection']/@connectionString" />
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\adamn\\Documents\\Development\\Property\ Management\ Dev\\Portal\\Portal\\Portal\ MVC\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DeployConnection']/@connectionString" />
   </parameter>
   <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Connection String used in web.config by the application to access the database." defaultValue="DefaultConnection_ConnectionString" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="C:\\Users\\User\\Development\\Property\ Management\ Dev\\Portal\ Current\\Portal\\Portal\ MVC\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\adamn\\Documents\\Development\\Property\ Management\ Dev\\Portal\\Portal\\Portal\ MVC\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
   </parameter>
 </parameters>

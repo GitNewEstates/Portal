@@ -88,7 +88,8 @@ namespace Portal_MVC.Models
 
             AttendanceObj.Insert(GlobalVariables.CS);
 
-            AttendanceVisits.AttendanceNotifications notification = new AttendanceVisits.AttendanceNotifications(AttendanceObj.EstateID,
+            AttendanceVisits.AttendanceNotifications notification = 
+                new AttendanceVisits.AttendanceNotifications(AttendanceObj.EstateID,
                  AttendanceObj.id, GlobalVariables.CS, AttendanceObj.AttendingUser, GlobalVariables.DbConfig);
            // notification.SendColleagueNotifications();
 
@@ -115,7 +116,8 @@ namespace Portal_MVC.Models
         public void GetVisit(int id)
         {
             Visit = new AttendanceVisits.AttendanceVisits();
-            Visit = AttendanceVisits.AttendanceVisitsMethods.GetAttendanceObj(id, GlobalVariables.CS);
+            Visit = AttendanceVisits.AttendanceVisitsMethods.GetAttendanceObj(id, GlobalVariables.CS, 
+                new AttendanceVisits.ImageParams { width = 300, height = 300 });
         }
 
         public List<AttendanceVisits.AttendanceVisits> AttendanceList { get; set; }
