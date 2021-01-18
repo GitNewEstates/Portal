@@ -993,3 +993,5 @@ C:\Users\adamn\Documents\Development\Property Management Dev\Portal\Portal\Porta
 C:\Users\adamn\Documents\Development\Property Management Dev\Portal\Portal\Portal MVC\obj\Debug\Portal MVC.dll
 C:\Users\adamn\Documents\Development\Property Management Dev\Portal\Portal\Portal MVC\obj\Debug\Portal MVC.pdb
 C:\Users\adamn\Documents\Development\Property Management Dev\Portal\Portal\Portal MVC\bin\AttendanceVisits.dll
+C:\Users\adamn\Documents\Development\Property Management Dev\Portal\Portal\Portal MVC\bin\ProcessLogDLL.dll
+C:\Users\adamn\Documents\Development\Property Management Dev\Portal\Portal\Portal MVC\bin\ProcessLogDLL.pdb

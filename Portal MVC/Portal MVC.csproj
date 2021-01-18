@@ -70,6 +70,10 @@
     <Reference Include="EstateDirectors">
       <HintPath>..\..\..\Shared DLLs\Estate Directors\EstateDirectors\EstateDirectors\bin\Debug\EstateDirectors.dll</HintPath>
     </Reference>
+    <Reference Include="EstatesDLL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\PM Dev Current\DesktopMod\EstatesDLL\bin\Debug\EstatesDLL.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
@@ -384,6 +388,7 @@
     <Content Include="Views\Caretaking\AttendanceLog.cshtml" />
     <Content Include="Views\Caretaking\ViewAttendanceHistory.cshtml" />
     <Content Include="Views\Caretaking\AttendanceDetail.cshtml" />
+    <Content Include="Views\Shared\TestView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

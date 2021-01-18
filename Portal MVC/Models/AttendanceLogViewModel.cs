@@ -104,6 +104,7 @@ namespace Portal_MVC.Models
     {
         public ServiceChargeBudgetViewModel PropListViewModel { get; set; }
         public IEnumerable<Models.Properties> PropertyList { get; set; }
+        public string EstateName { get; set; }
 
         public List<SelectListItem> EstateList { get; set; }
         public int SelectedPropertyid { get; set; }
@@ -118,9 +119,12 @@ namespace Portal_MVC.Models
             Visit = new AttendanceVisits.AttendanceVisits();
             Visit = AttendanceVisits.AttendanceVisitsMethods.GetAttendanceObj(id, GlobalVariables.CS, 
                 new AttendanceVisits.ImageParams { width = 300, height = 300 });
+
+            EstateName = EstatesDLL.EstateMethods.GetEstateNameByID(Visit.EstateID, GlobalVariables.CS);
         }
 
         public List<AttendanceVisits.AttendanceVisits> AttendanceList { get; set; }
+        public List<Syncfusion.EJ2.Navigations.AccordionAccordionItem> AccordionList { get; set; }
         public string TestString { get; set; }
         
         public void SetEstateList()
@@ -147,8 +151,56 @@ namespace Portal_MVC.Models
         public void SetAttendanceList()
         {
             AttendanceList = new List<AttendanceVisits.AttendanceVisits>();
-            AttendanceList = AttendanceVisits.AttendanceVisitsMethods.AttendanceHistoryList(SelectedPropertyid, GlobalVariables.CS);
+            AttendanceList = 
+                AttendanceVisits.AttendanceVisitsMethods.AttendanceHistoryList(SelectedPropertyid, 
+                GlobalVariables.CS, new AttendanceVisits.ImageParams { width = 200, height = 100 });
 
+            AccordionList = new List<Syncfusion.EJ2.Navigations.AccordionAccordionItem>();
+            foreach(AttendanceVisits.AttendanceVisits item in AttendanceList)
+            {
+                AccordionList.Add(new Syncfusion.EJ2.Navigations.AccordionAccordionItem
+                { Header = item.VisitDate.ToLongDateString(),
+                Content = ContentHTML(item)});
+            }
         }
+
+        private string ContentHTML(AttendanceVisits.AttendanceVisits item)
+        {
+            string r  =
+                "<div class=\"row\"><div class=\"container\"> " +
+                       "<div>" +
+                            "<h4>" + item.AttendanceStr + "</H4>" +
+                        "</div>" +
+                        "<div class=\"col-lg-5 col-md-6 col-sm-12 col-xs-12\" style=\"padding-left: 0px !Important\">" +
+                            "<p>" + item.VisitDescription + "</p>" +
+                            
+                        "</div>" +
+                        "<div class=\"col-lg-7 col-md-6 col-sm-12 col-xs-12\">";
+
+          
+            foreach(string url in item.UrlList)
+            {
+               
+                r += "<img class=\"img-responsive thumbPreview\" style=\"display: inline-block; padding-right: 5px; margin-bottom: 5px !Important; vertical-align: top;\" src = \"" + url + "\" />";
+                
+            }
+
+            r += "</div></div>";
+   
+
+            r += "<div class=\"container\">" +
+                      "<div class=\"\">" +
+                          "<div>" +
+                             "<a style=\"width:150px !Important;\" class=\"CentreSmallButton\" href=\"http://localhost:63056/Caretaking/AttendanceDetail?VisitID=" + item.id.ToString() + "\">view more</a>" +
+                          "</div>" +
+                  "</div>" +
+              "</div>";
+
+         
+
+            return r;
+        }
+
+        
     }
 }

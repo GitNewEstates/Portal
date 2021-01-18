@@ -42,6 +42,8 @@ $(document).ready(function () {
 
     document.getElementById('SelectImg1').addEventListener('click', LoadImage);
     document.getElementById('SelectImg2').addEventListener('click', LoadImage2);
+
+   
     //UploadButton.preventDefault();
     //UploadButton.addEventListener('click', test);
 
