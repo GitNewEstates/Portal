@@ -71,12 +71,18 @@ namespace Portal_MVC.Controllers
            
             if (Session["CustomerID"] != null && (int)Session["CustomerID"] > 0)
             {
-                Session["SelectedPropertyID"] = PropID;
-                Session["SelectedProperty"] = PropName;
-                if ((int)Session["SelectedPropertyID"] == 0) //get list of properties
+                PropID =  (int)Session["SelectedPropertyID"];
+
+                if (PropID == 0 && (int)Session["UserType"] == 2) //get list of properties
                 {
                     vm.PropListViewModel = new Models.ServiceChargeBudgetViewModel();
                     vm.PropListViewModel.PropertyList = Models.PropertyMethods.GetAllEstates();
+                    vm.PropListViewModel.ControllerName = "Caretaking";
+                    vm.PropListViewModel.ViewName = "AttendanceHistory";
+                } else if(PropID == 0 && (int)Session["UserType"] != 2)
+                {
+                    vm.PropListViewModel = new Models.ServiceChargeBudgetViewModel();
+                    vm.PropListViewModel.PropertyList = Models.PropertyMethods.GetAllOwnedProperties((int)Session["CustomerID"]);
                     vm.PropListViewModel.ControllerName = "Caretaking";
                     vm.PropListViewModel.ViewName = "AttendanceHistory";
                 }
