@@ -75,15 +75,14 @@
     <Reference Include="EstateDirectors">
       <HintPath>..\..\..\Shared DLLs\Estate Directors\EstateDirectors\EstateDirectors\bin\Debug\EstateDirectors.dll</HintPath>
     </Reference>
-<<<<<<< HEAD
     <Reference Include="EstatesDLL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\PM Dev Current\DesktopMod\EstatesDLL\bin\Debug\EstatesDLL.dll</HintPath>
-=======
+    </Reference>
     <Reference Include="HTMLEmail, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\DesktopMod\HTMLEmail\bin\Debug\HTMLEmail.dll</HintPath>
->>>>>>> 34b02383d0179da9681814729dba9ee46a6e58b9
+
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>

@@ -18,7 +18,16 @@ else
         <div class="container">
             @if (Model.AttendanceList != null && Model.AttendanceList.Count > 0)
             {
-                <div class="panel GradientBackground panelContainer">
+
+            <div class="">
+                @using Syncfusion.EJ2.Navigations;
+
+                @(Html.EJS().Accordion("defaultAccordion")
+                        .Items(Model.AccordionList).Render()
+                )
+            </div>
+
+                @*<div class="panel GradientBackground panelContainer">
                     <table class="LinkedTable tableHover">
                         <tbody>
                             @foreach (AttendanceVisits.AttendanceVisits visit in Model.AttendanceList)
@@ -34,7 +43,7 @@ else
                             }
                         </tbody>
                     </table>
-                </div>
+                </div>*@
             }
             else
             {
@@ -47,4 +56,5 @@ else
         </div>
     </div>
 
-}
+} 
+

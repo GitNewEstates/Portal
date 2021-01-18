@@ -82,7 +82,7 @@ namespace Portal_MVC.Models
         {
             AttendanceObj.AttendanceTypeID = SelectedAttendanceTypeID;
             AttendanceObj.EstateID = SelectedPropertyid;
-            AttendanceObj.urlString = ImageUrls;
+            AttendanceObj.urlString = ImageUrls.Trim();
             AttendanceObj.VisitDate = VisitDate;
             AttendanceObj.VisitDescription = AttendanceDescription;
 
@@ -191,7 +191,7 @@ namespace Portal_MVC.Models
             r += "<div class=\"container\">" +
                       "<div class=\"\">" +
                           "<div>" +
-                             "<a style=\"width:150px !Important;\" class=\"CentreSmallButton\" href=\"http://localhost:63056/Caretaking/AttendanceDetail?VisitID=" + item.id.ToString() + "\">view more</a>" +
+                             "<a style=\"width:150px !Important;\" class=\"CentreSmallButton\" href=\"/Caretaking/AttendanceDetail?VisitID=" + item.id.ToString() + "\">view more</a>" +
                           "</div>" +
                   "</div>" +
               "</div>";
