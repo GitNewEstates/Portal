@@ -55,24 +55,35 @@
   <ItemGroup>
     <Reference Include="AttendanceVisits, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\PM Dev Current\DesktopMod\AttendanceVisits\bin\Debug\AttendanceVisits.dll</HintPath>
+      <HintPath>..\..\..\DesktopMod\AttendanceVisits\bin\Debug\AttendanceVisits.dll</HintPath>
     </Reference>
     <Reference Include="BCrypt.Net, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\BCrypt.Net-PCL.1.0.1\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\BCrypt.Net.dll</HintPath>
     </Reference>
+    <Reference Include="CustomErrorHandling, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\DesktopMod\AttendanceVisits\bin\Debug\CustomErrorHandling.dll</HintPath>
+    </Reference>
     <Reference Include="dbConn, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Shared DLLs\dbConn\dbConn\bin\Debug\dbConn.dll</HintPath>
+      <HintPath>..\..\..\DesktopMod\AttendanceVisits\bin\Debug\dbConn.dll</HintPath>
     </Reference>
-    <Reference Include="DocumentsDLL">
+    <Reference Include="DocumentsDLL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\DesktopMod\DocumentsDLL\bin\Debug\DocumentsDLL.dll</HintPath>
     </Reference>
     <Reference Include="EstateDirectors">
       <HintPath>..\..\..\Shared DLLs\Estate Directors\EstateDirectors\EstateDirectors\bin\Debug\EstateDirectors.dll</HintPath>
     </Reference>
+<<<<<<< HEAD
     <Reference Include="EstatesDLL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\PM Dev Current\DesktopMod\EstatesDLL\bin\Debug\EstatesDLL.dll</HintPath>
+=======
+    <Reference Include="HTMLEmail, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\DesktopMod\HTMLEmail\bin\Debug\HTMLEmail.dll</HintPath>
+>>>>>>> 34b02383d0179da9681814729dba9ee46a6e58b9
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
@@ -96,9 +107,10 @@
     </Reference>
     <Reference Include="NotificationSettings, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\PM Dev Current\DesktopMod\NotificationSettings\bin\Debug\NotificationSettings.dll</HintPath>
+      <HintPath>..\..\..\DesktopMod\NotificationSettings\bin\Debug\NotificationSettings.dll</HintPath>
     </Reference>
-    <Reference Include="SettingsDLL">
+    <Reference Include="SettingsDLL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\DesktopMod\SettingsDLL\bin\Debug\SettingsDLL.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.EJ2, Version=18.4500.0.32, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
