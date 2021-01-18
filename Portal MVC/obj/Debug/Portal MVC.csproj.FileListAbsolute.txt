@@ -1061,8 +1061,6 @@ C:\Users\User\Development\Property Management Dev\New Portal\Portal\Portal MVC\b
 C:\Users\User\Development\Property Management Dev\New Portal\Portal\Portal MVC\bin\CustomErrorHandling.pdb
 C:\Users\User\Development\Property Management Dev\New Portal\Portal\Portal MVC\bin\dbConn.pdb
 C:\Users\User\Development\Property Management Dev\New Portal\Portal\Portal MVC\bin\DocumentsDLL.pdb
-C:\Users\User\Development\Property Management Dev\New Portal\Portal\Portal MVC\bin\EstateDirectors.pdb
-C:\Users\User\Development\Property Management Dev\New Portal\Portal\Portal MVC\bin\EstatesDLL.pdb
 C:\Users\User\Development\Property Management Dev\New Portal\Portal\Portal MVC\bin\HTMLEmail.pdb
 C:\Users\User\Development\Property Management Dev\New Portal\Portal\Portal MVC\bin\Microsoft.AspNet.Identity.Core.xml
 C:\Users\User\Development\Property Management Dev\New Portal\Portal\Portal MVC\bin\Microsoft.AspNet.Identity.Owin.xml
