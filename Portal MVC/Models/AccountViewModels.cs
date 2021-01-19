@@ -60,6 +60,8 @@ namespace Portal_MVC.Models
 
         [Display(Name = "Remember me?")]
         public bool RememberMe { get; set; }
+
+        public string forwardurl { get; set; } = "Caretaking/AttendanceHistory";
     }
 
     public class RegisterViewModel

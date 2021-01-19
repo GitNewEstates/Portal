@@ -115,7 +115,7 @@ namespace Portal_MVC.Controllers
         [HttpPost]
         [AllowAnonymous]
         //[ValidateAntiForgeryToken]
-        public ActionResult Login(LoginViewModel model, string returnUrl)
+        public ActionResult Login(LoginViewModel model, string returnUrl,string forwardurl = "")
         {
             
 

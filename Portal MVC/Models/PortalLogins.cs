@@ -17,6 +17,7 @@ namespace Portal_MVC.Models
         public bool LoginVerified { get; set; }
         public bool IsDirector { get; set; }
         public int UserType { get; set; }
+        
 
 
         public static PortalLogins Login(object username, string password)
