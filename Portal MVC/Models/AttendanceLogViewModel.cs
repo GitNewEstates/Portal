@@ -203,4 +203,27 @@ namespace Portal_MVC.Models
 
         
     }
+
+    public class BuildingAreaViewModel
+    {
+        [Required(ErrorMessage = "Area Name is required.")]
+        public string AreaName { get; set; }
+
+        public List<SelectListItem> EstateList { get; set; }
+        public int SelectedPropertyid { get; set; }
+        public int SelectedAttendanceTypeID { get; set; }
+
+        public string ViewName { get; set; }
+        public string ControllerName { get; set; }
+
+        public void SetLists()
+        {
+            List<Properties> estates = Models.PropertyMethods.GetAllEstates();
+            EstateList = new List<SelectListItem>();
+        }
+
+        public string ImageUrls { get; set; }
+
+        public string UpdateIDHeading { get; set; }
+    }
 }

@@ -108,10 +108,7 @@ namespace Portal_MVC.Controllers
                 return View("../Home/NotLoggedIn");
             }
         }
-
-     
-  
-
+        
         public ViewResult AttendanceDetail(int VisitID)
         {
             Models.AttendanceHistoryViewModel vm = new Models.AttendanceHistoryViewModel();
@@ -127,6 +124,28 @@ namespace Portal_MVC.Controllers
             return View(vm);
         }
 
-      
+        //public ActionResult LightingReview()
+        //{
+        //    vm.PropListViewModel = new Models.ServiceChargeBudgetViewModel();
+        //    vm.PropListViewModel.PropertyList = Models.PropertyMethods.GetAllEstates();
+        //    vm.PropListViewModel.ControllerName = "Caretaking";
+        //    vm.PropListViewModel.ViewName = "AttendanceHistory";
+        //}
+
+        public ActionResult BuildingAreas()
+        {
+            Models.BuildingAreaViewModel vm = new Models.BuildingAreaViewModel();
+            vm.SetLists();
+            return View("BuildingArea", vm);
+        }
+        [HttpPost]
+        public ActionResult GEtEstateBuildingAreas()
+        {
+            Models.BuildingAreaViewModel vm = new Models.BuildingAreaViewModel();
+            vm.SetLists();
+            vm.UpdateIDHeading = "Updated";
+
+            return View("BuildingArea", vm);
+        }
     }
 }
