@@ -745,7 +745,6 @@ C:\Users\User\Development\Property Management Dev\Portal\Portal\Portal MVC\bin\P
 C:\Users\User\Development\Property Management Dev\Portal\Portal\Portal MVC\bin\Portal MVC.pdb
 C:\Users\User\Development\Property Management Dev\Portal\Portal\Portal MVC\bin\Antlr3.Runtime.dll
 C:\Users\User\Development\Property Management Dev\Portal\Portal\Portal MVC\bin\BCrypt.Net.dll
-C:\Users\User\Development\Property Management Dev\Portal\Portal\Portal MVC\bin\DocumentsDLL.dll
 C:\Users\User\Development\Property Management Dev\Portal\Portal\Portal MVC\bin\EntityFramework.dll
 C:\Users\User\Development\Property Management Dev\Portal\Portal\Portal MVC\bin\EntityFramework.SqlServer.dll
 C:\Users\User\Development\Property Management Dev\Portal\Portal\Portal MVC\bin\Microsoft.AspNet.Identity.Core.dll
@@ -764,7 +763,6 @@ C:\Users\User\Development\Property Management Dev\Portal\Portal\Portal MVC\bin\M
 C:\Users\User\Development\Property Management Dev\Portal\Portal\Portal MVC\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\User\Development\Property Management Dev\Portal\Portal\Portal MVC\bin\Newtonsoft.Json.dll
 C:\Users\User\Development\Property Management Dev\Portal\Portal\Portal MVC\bin\Owin.dll
-C:\Users\User\Development\Property Management Dev\Portal\Portal\Portal MVC\bin\SettingsDLL.dll
 C:\Users\User\Development\Property Management Dev\Portal\Portal\Portal MVC\bin\Syncfusion.EJ2.dll
 C:\Users\User\Development\Property Management Dev\Portal\Portal\Portal MVC\bin\Syncfusion.Licensing.dll
 C:\Users\User\Development\Property Management Dev\Portal\Portal\Portal MVC\bin\System.Web.Helpers.dll
@@ -776,12 +774,8 @@ C:\Users\User\Development\Property Management Dev\Portal\Portal\Portal MVC\bin\S
 C:\Users\User\Development\Property Management Dev\Portal\Portal\Portal MVC\bin\System.Web.WebPages.Razor.dll
 C:\Users\User\Development\Property Management Dev\Portal\Portal\Portal MVC\bin\WebGrease.dll
 C:\Users\User\Development\Property Management Dev\Portal\Portal\Portal MVC\bin\Notes2DLL.dll
-C:\Users\User\Development\Property Management Dev\Portal\Portal\Portal MVC\bin\MailServiceDLL.dll
-C:\Users\User\Development\Property Management Dev\Portal\Portal\Portal MVC\bin\EstatesDLL.dll
-C:\Users\User\Development\Property Management Dev\Portal\Portal\Portal MVC\bin\HTMLEmail.dll
 C:\Users\User\Development\Property Management Dev\Portal\Portal\Portal MVC\bin\UsersDLL.dll
 C:\Users\User\Development\Property Management Dev\Portal\Portal\Portal MVC\bin\CustomErrorHandling.dll
-C:\Users\User\Development\Property Management Dev\Portal\Portal\Portal MVC\bin\ControlsDLL.dll
 C:\Users\User\Development\Property Management Dev\Portal\Portal\Portal MVC\bin\MimeKit.dll
 C:\Users\User\Development\Property Management Dev\Portal\Portal\Portal MVC\bin\MailKit.dll
 C:\Users\User\Development\Property Management Dev\Portal\Portal\Portal MVC\bin\HtmlAgilityPack.dll
@@ -797,7 +791,6 @@ C:\Users\User\Development\Property Management Dev\Portal\Portal\Portal MVC\bin\M
 C:\Users\User\Development\Property Management Dev\Portal\Portal\Portal MVC\bin\Microsoft.Owin.xml
 C:\Users\User\Development\Property Management Dev\Portal\Portal\Portal MVC\bin\Microsoft.Owin.Host.SystemWeb.xml
 C:\Users\User\Development\Property Management Dev\Portal\Portal\Portal MVC\bin\Newtonsoft.Json.xml
-C:\Users\User\Development\Property Management Dev\Portal\Portal\Portal MVC\bin\NotificationSettings.pdb
 C:\Users\User\Development\Property Management Dev\Portal\Portal\Portal MVC\bin\SettingsDLL.pdb
 C:\Users\User\Development\Property Management Dev\Portal\Portal\Portal MVC\bin\Syncfusion.EJ2.xml
 C:\Users\User\Development\Property Management Dev\Portal\Portal\Portal MVC\bin\System.Web.Helpers.xml
@@ -838,9 +831,6 @@ C:\Users\User\Development\Property Management Dev\Portal\Portal\Portal MVC\obj\R
 C:\Users\User\Development\Property Management Dev\Portal\Portal\Portal MVC\obj\Release\Portal MVC.csproj.CopyComplete
 C:\Users\User\Development\Property Management Dev\Portal\Portal\Portal MVC\obj\Release\Portal MVC.dll
 C:\Users\User\Development\Property Management Dev\Portal\Portal\Portal MVC\obj\Release\Portal MVC.pdb
-C:\Users\User\Development\Property Management Dev\Portal\Portal\Portal MVC\bin\AttendanceVisits.dll
-C:\Users\User\Development\Property Management Dev\Portal\Portal\Portal MVC\bin\dbConn.dll
-C:\Users\User\Development\Property Management Dev\Portal\Portal\Portal MVC\bin\NotificationSettings.dll
 C:\Users\User\Development\Property Management Dev\Portal\Portal\Portal MVC\bin\ProcessLogDLL.dll
 C:\Users\User\Development\Property Management Dev\Portal\Portal\Portal MVC\bin\ProcessLogDLL.pdb
 C:\Users\User\Development\Property Management Dev\New Portal\Portal\Portal MVC\bin\roslyn\csc.exe
@@ -1082,3 +1072,7 @@ C:\Users\adamn\Documents\Development\Property Management Dev\Portal\Portal\Porta
 C:\Users\adamn\Documents\Development\Property Management Dev\Portal\Portal\Portal MVC\bin\Notes2DLL.pdb
 C:\Users\adamn\Documents\Development\Property Management Dev\Portal\Portal\Portal MVC\bin\UsersDLL.pdb
 C:\Users\adamn\Documents\Development\Property Management Dev\Portal\Portal\Portal MVC\bin\DocumentsDLL.dll
+C:\Users\User\Development\Property Management Dev\Portal\Portal\Portal MVC\bin\AttendanceVisits.dll.config
+C:\Users\User\Development\Property Management Dev\Portal\Portal\Portal MVC\bin\AttendanceVisits.dll
+C:\Users\User\Development\Property Management Dev\Portal\Portal\Portal MVC\bin\DocumentsDLL.dll
+C:\Users\User\Development\Property Management Dev\Portal\Portal\Portal MVC\bin\HTMLEmail.dll

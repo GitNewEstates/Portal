@@ -55,7 +55,7 @@
   <ItemGroup>
     <Reference Include="AttendanceVisits, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Desktop\DesktopMod\DocumentsDLL\bin\Debug\AttendanceVisits.dll</HintPath>
+      <HintPath>..\..\..\Desktop App\DesktopMod\HTMLEmail\bin\Debug\AttendanceVisits.dll</HintPath>
     </Reference>
     <Reference Include="BCrypt.Net, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\BCrypt.Net-PCL.1.0.1\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\BCrypt.Net.dll</HintPath>
@@ -70,7 +70,7 @@
     </Reference>
     <Reference Include="DocumentsDLL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Desktop\DesktopMod\DocumentsDLL\bin\Debug\DocumentsDLL.dll</HintPath>
+      <HintPath>..\..\..\Desktop App\DesktopMod\DocumentsDLL\bin\Debug\DocumentsDLL.dll</HintPath>
     </Reference>
     <Reference Include="EstateDirectors, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -79,10 +79,6 @@
     <Reference Include="EstatesDLL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\PM Dev Current\DesktopMod\EstatesDLL\bin\Debug\EstatesDLL.dll</HintPath>
-    </Reference>
-    <Reference Include="HTMLEmail, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\PM Dev Current\DesktopMod\DocumentsDLL\bin\Debug\HTMLEmail.dll</HintPath>
     </Reference>
     <Reference Include="MailServiceDLL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
