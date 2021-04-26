@@ -109,20 +109,55 @@ namespace Portal_MVC.Controllers
             }
         }
         
-        public ViewResult AttendanceDetail(int VisitID)
+        public ViewResult AttendanceDetail(int VisitID = 0, bool isStatic = false, string guid = "")
         {
-            Models.AttendanceHistoryViewModel vm = new Models.AttendanceHistoryViewModel();
-            if (Session["CustomerID"] != null && (int)Session["CustomerID"] > 0)
+            
+            if (isStatic)
             {
-                vm.GetVisit(VisitID);
-               // return View("ViewAttendanceHistory", vm);
-            }
-            else
+                //not logged in - must have guid and id
+                if (!string.IsNullOrWhiteSpace(guid) && VisitID > 0)
+                {
+
+                    Models.AttendanceHistoryViewModel vm1 = new Models.AttendanceHistoryViewModel();
+                    vm1.GetVisit(VisitID);
+                    vm1.FromApp = true;
+                    // return View("ViewAttendanceHistory", vm);
+                    return View(vm1);
+                } else
+                {
+                    return View("NotFound");
+                }
+
+            } else
             {
-                return View("../Home/NotLoggedIn");
+               
+                
+                if (Session["CustomerID"] != null && (int)Session["CustomerID"] > 0)
+                {
+                    if (VisitID > 0)
+                    {
+                        Models.AttendanceHistoryViewModel vm = new Models.AttendanceHistoryViewModel();
+                        vm.FromApp = isStatic;
+                        vm.GetVisit(VisitID);
+                        return View(vm);
+                    } else
+                    {
+                        return View("NotFound");
+                    }
+                }
+                else
+                {
+                    return View("../Home/NotLoggedIn");
+                }
+              
             }
-            return View(vm);
+
+           
         }
+
+        
+       
+
 
         //public ActionResult LightingReview()
         //{

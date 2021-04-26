@@ -25,6 +25,7 @@ namespace Portal_MVC
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/FontAwesone.css",
                       "~/Content/site.css"));
         }
     }

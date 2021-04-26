@@ -1,0 +1,50 @@
+﻿@using Portal_MVC.Models
+@model IEnumerable<Properties> 
+
+@{
+    ViewBag.Title = "Select Property - New Estates";
+}
+
+
+<div class="container">
+    <h4>Welcome to your Customer Portal</h4><br />
+    
+</div>
+    @if (Model != null)
+    {
+        <div class="container">
+            <h5>Select the property that you wish view.</h5>
+            <div class="panel GradientBackground panelContainer">
+                <table class="LinkedTable tableHover">
+                    <tbody>
+                        @foreach (Properties item in Model)
+                        {
+                            <tr>
+                               
+                                @if (item.Address1 != null && item.Address1 != "")
+                                {
+                                    <td class="PropSelection">@Html.ActionLink(item.FullAddress, "PropertySummary", new { PropID = item.ID, PropType = item.PropertyType })</td>
+                                }
+                               
+                             
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+
+
+
+    @*<div class="well well-lg NotificationWell">
+            <div class="NotificationTtiel">
+                <h5>Notifications</h5>
+            </div>
+        </div>
+
+        <div class="jumbotron">
+            <h1>Second</h1>
+
+        </div>*@
+

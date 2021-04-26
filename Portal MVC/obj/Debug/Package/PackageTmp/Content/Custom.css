@@ -1,0 +1,243 @@
+﻿div.LogoBackground {
+    background: url(https://static1.squarespace.com/static/ta/585124c637c5816bf24f2fcc/55/assets/background.png) no-repeat;
+    background-position: 100% 10%;
+    /*min-height: 65vh !important;*/
+}
+
+body {
+    color: #656565 !important;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+#formText {
+    color: #04517a;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+#LoginControls{
+    
+    margin-bottom: 5%;
+    margin-top: 5%;
+}
+
+@media (max-width: 768px) {
+#LoginControls {
+        width: 300px;
+        margin-left:auto;
+        margin-right: auto;
+        /*margin-bottom: 100px;*/
+        
+    }
+}
+
+/*@media (min-width: 1230px) {
+#LoginControls {
+     
+        
+    }
+}*/
+
+#CustomTextBox {
+    border: solid 1px #656565;
+    border-radius: 0;
+    color: #656565;
+    padding: 10px;
+    font-size: 1.6rem;
+    margin: 6px 0 4px;
+    height: 45px;
+}
+
+#CustomTextBox.Centre {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #CustomTextBox.Centre.validationTextBox {
+      background-color: transparent;
+      border-color: transparent;
+    }
+ 
+
+label.Centre {
+    width: 280px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#navbar {
+    border-bottom: solid 2px #e9e9e9;
+}
+
+.centreButton {
+    width: 240px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.CentreSmallButton {
+    border-radius: 0;
+    background: #0596c2;
+    min-width: 100px;
+    line-height: 2.4;
+    font-weight: 500;
+    color: #fff;
+    font-size: 1rem;
+    border: none;
+    padding: 10px;
+    text-transform: uppercase;
+}
+
+.centreLable148 {
+    width: 148px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.CentreDiv {
+    
+    width: 100%
+}
+
+
+#customButton {
+    border-radius: 0;
+    background: #0596c2;
+    min-width: 240px;
+    line-height: 1.4;
+    font-weight: 700;
+    color: #fff;
+    font-size: 1.5rem;
+    border: none;
+    padding: 18px;
+    text-transform: uppercase;
+}
+
+@media only screen and (min-width: 1000px) {
+    #DashHeading {
+        margin-bottom: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    #DashHeading {
+        margin-bottom: 20px;
+    }
+
+   
+}
+
+.panel.LineBreak {
+    border-top: solid 1px #656565;
+    margin-bottom: 40px;
+}
+    
+
+/* Customize the label (the container) */
+.containerChk {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+    /* Hide the browser's default checkbox */
+.containerChk input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.containerChk:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.containerChk input:checked ~ .checkmark {
+    background-color: #045f88;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.containerChk input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.containerChk .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.BudgetSummaryBorder {
+    border-bottom: 1px solid #656565;
+}
+
+.BudgetSummaryPadding div {
+    padding-left: 0px;
+}
+.dropdown-menu > li > a:hover{
+    color: #333333;
+}
+
+.NotificationCheck {
+    margin-left: 25px;
+    margin-right: auto; 
+   
+}
+
+.AttendanceImgContainer {
+    width: 200px;
+    height: 200px;
+    display: none;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+/**/
+.Centre {
+    padding: 0px;
+}
+
+.thumbPreview {
+    overflow: hidden;
+    display: inline-block !important;
+}
+
+/*.GradientBackground{
+    background: -moz-linear-gradient(top,#0591bc 0%,#045f88 100%);
+    background: -webkit-linear-gradient(top,#0591bc 0%,#045f88 100%);
+    background: linear-gradient(to bottom,#0591bc 0%,#045f88 100%);
+}*/
+

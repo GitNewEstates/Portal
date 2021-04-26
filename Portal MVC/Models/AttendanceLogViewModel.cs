@@ -14,6 +14,8 @@ namespace Portal_MVC.Models
             AttendanceObj = new AttendanceVisits.AttendanceVisits();
             MaxDate = DateTime.Now;
             VisitDate = DateTime.Now;
+            SendCustomerNotification = true;
+            PortalViewable = true;
             
         }
         public List<SelectListItem> EstateList { get; set; }
@@ -31,6 +33,12 @@ namespace Portal_MVC.Models
         public DateTime VisitDate { get; set; }
 
         public DateTime MaxDate { get; set; }
+
+        public bool FireAlarm { get; set; }
+
+        public bool SendCustomerNotification { get; set; }
+
+        public bool PortalViewable { get; set; }
 
         public bool CaretakingVisit { get; set; }
         public bool InspectionVisit { get; set; }
@@ -82,19 +90,29 @@ namespace Portal_MVC.Models
         {
             AttendanceObj.AttendanceTypeID = SelectedAttendanceTypeID;
             AttendanceObj.EstateID = SelectedPropertyid;
-            AttendanceObj.urlString = ImageUrls.Trim();
+            if (!string.IsNullOrWhiteSpace(ImageUrls))
+            {
+                AttendanceObj.urlString = ImageUrls.Trim();
+            }
             AttendanceObj.VisitDate = VisitDate;
             AttendanceObj.VisitDescription = AttendanceDescription;
+            AttendanceObj.FireAlarmTest = FireAlarm;
+            AttendanceObj.NotifyCustomer = SendCustomerNotification;
+            AttendanceObj.PortalViewable = PortalViewable;
 
             AttendanceObj.Insert(GlobalVariables.CS);
 
-            AttendanceVisits.AttendanceNotifications notification = 
-                new AttendanceVisits.AttendanceNotifications(AttendanceObj.EstateID,
-                 AttendanceObj.id, GlobalVariables.CS, AttendanceObj.AttendingUser, GlobalVariables.DbConfig);
-           // notification.SendColleagueNotifications();
+            if (AttendanceObj.id > 0)
+            {
+                AttendanceVisits.AttendanceNotifications notification =
+                    new AttendanceVisits.AttendanceNotifications(AttendanceObj.EstateID,
+                     AttendanceObj.id, GlobalVariables.CS, AttendanceObj.AttendingUser, GlobalVariables.DbConfig);
+                notification.SendColleagueNotifications();
 
-            System.Threading.Thread t = new System.Threading.Thread(new System.Threading.ThreadStart(notification.SendColleagueNotifications));
-            t.Start();
+                System.Threading.Thread t =
+                    new System.Threading.Thread(new System.Threading.ThreadStart(notification.SendColleagueNotifications));
+               // t.Start();
+            }
 
 
         }
@@ -105,6 +123,8 @@ namespace Portal_MVC.Models
         public ServiceChargeBudgetViewModel PropListViewModel { get; set; }
         public IEnumerable<Models.Properties> PropertyList { get; set; }
         public string EstateName { get; set; }
+
+        public bool FromApp { get; set; }
 
         public List<SelectListItem> EstateList { get; set; }
         public int SelectedPropertyid { get; set; }
@@ -117,8 +137,8 @@ namespace Portal_MVC.Models
         public void GetVisit(int id)
         {
             Visit = new AttendanceVisits.AttendanceVisits();
-            Visit = AttendanceVisits.AttendanceVisitsMethods.GetAttendanceObj(id, GlobalVariables.CS, 
-                new AttendanceVisits.ImageParams { width = 300, height = 300 });
+            Visit = AttendanceVisits.AttendanceVisitsMethods.GetAttendanceObj(id, GlobalVariables.CS);
+               // new AttendanceVisits.ImageParams { width = 300, height = 300 });
 
             EstateName = EstatesDLL.EstateMethods.GetEstateNameByID(Visit.EstateID, GlobalVariables.CS);
         }
@@ -150,9 +170,19 @@ namespace Portal_MVC.Models
 
         public void SetAttendanceList()
         {
+            string q = $"select estateid from core.units where id ={SelectedPropertyid}";
+
+            dbConn.dbConnection db = new dbConn.dbConnection();
+            System.Data.DataTable dt = db.GetDataTable(GlobalVariables.CS, q);
+            int estateid = 0;
+            if(dt.Rows.Count > 0 && dt.Rows[0][0].ToString() != "Error")
+            {
+                int.TryParse(dt.Rows[0][0].ToString(), out estateid);
+            }
+
             AttendanceList = new List<AttendanceVisits.AttendanceVisits>();
             AttendanceList = 
-                AttendanceVisits.AttendanceVisitsMethods.AttendanceHistoryList(SelectedPropertyid, 
+                AttendanceVisits.AttendanceVisitsMethods.AttendanceHistoryList(estateid, 
                 GlobalVariables.CS, new AttendanceVisits.ImageParams { width = 200, height = 100 });
 
             AccordionList = new List<Syncfusion.EJ2.Navigations.AccordionAccordionItem>();

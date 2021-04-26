@@ -1,0 +1,17 @@
+﻿@using Portal_MVC.Models
+@using System.Data
+@{
+    if (GlobalVariables.PieChartDataTable != null)
+    {
+        DataView dv = new DataView(GlobalVariables.PieChartDataTable);
+        var myChart = new Chart(width: 600, height: 400)
+            .AddTitle("Chart Title")
+            .AddSeries(
+                name: "Employee",
+                chartType: "Pie",
+                 xValue: dv, xField: "Heading",
+                 yValues: dv, yFields: "Cost")
+            .Write();
+    }
+}
+

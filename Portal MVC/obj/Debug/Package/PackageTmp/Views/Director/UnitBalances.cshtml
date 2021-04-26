@@ -1,0 +1,48 @@
+﻿@using Portal_MVC.Models
+@model Portal_MVC.Models.UnitBalancesViewModel
+
+
+@{
+    ViewBag.Title = "Unit Balances - New Estates";
+}
+
+@if (Model.BalancesList != null)
+{
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="col-lg-5">
+                <h5>Total Balances:</h5>
+            </div>
+            <div class="col-lg-7">
+                <h5>@Model.TotalBalancesStr</h5>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="panel GradientBackground col-lg-6">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Unit</th>
+                    <th>Balance</th>
+                </tr>
+            </thead>
+            @*@if (Model.MyServiceCharges != null && Model.MyServiceCharges.AllTrans != null)
+                {*@
+
+            @foreach (ServiceCharges s in Model.BalancesList)
+            {
+
+                <tr>
+                    <td>@s.TransDescription</td>
+
+                    <td>@s.BalanceStr</td>
+
+                </tr>
+            }
+            @*}*@
+        </table>
+    </div>
+}

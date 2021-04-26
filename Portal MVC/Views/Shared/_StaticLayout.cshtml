@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/material.css" />
+    <script type="text/javascript"
+            src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
+    <!-- Syncfusion Essential JS 2 Scripts -->
+    <script src="https://cdn.syncfusion.com/ej2/dist/ej2.min.js"></script>
+    <link href="~/Content/dashboard.css" rel="stylesheet">
+    <link href="~/Content/SideBarNav.css" rel="stylesheet">
+    <link href="~/Content/NEM-menu.css" rel="stylesheet" />
+    <link href="~/Content/navbar-fixed-top.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/PortalPageTemplate.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/Custom.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/FontAwesome.css" rel="stylesheet" type="text/css">
+    <link rel="icon" href="~/Content/Box.png" />
+</head>
+<body>
+ 
+
+    <div class="container body-content">
+        @RenderBody()
+      
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <!-- Syncfusion Essential JS 2 ScriptManager -->
+    @Html.EJS().ScriptManager()
+</body>
+</html>

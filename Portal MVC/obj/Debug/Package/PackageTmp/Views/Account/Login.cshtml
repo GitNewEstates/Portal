@@ -1,0 +1,101 @@
+﻿
+@using Portal_MVC.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+}
+
+<div class="LogoBackground">
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-4 col-md-6 col-md-offset-4 col-lg-8 col-lg-offset-5" id="LoginControls">
+            <section id="loginForm">
+                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                @Html.LabelFor(m => m.Email, new { @class = "col-md-0 control-label", id = "formText" })
+                                @Html.HiddenFor(m => m.forwardurl);
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", id = "CustomTextBox" })
+                                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                            
+                        
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                @Html.LabelFor(m => m.Password, new { @class = "col-md-0 control-label", id = "formText" })
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-12">
+                                @Html.PasswordFor(m => m.Password, new { @class = "form-control", id = "CustomTextBox" })
+                                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    @*<div class="form-group">
+                            <div class="col-md-offset-0 col-md-10">
+                                <div class="checkbox">
+                                    @Html.CheckBoxFor(m => m.RememberMe)
+                                    @Html.LabelFor(m => m.RememberMe)
+                                </div>
+                            </div>
+                        </div>*@
+                    //Submit Button
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <input type="submit" value="Log in" class="btn btn-default" id="customButton" />
+                            </div>
+                        </div>
+                    </div>
+                    @*<p>
+                            @Html.ActionLink("Register as a new user", "Register")
+                        </p>*@
+                    @* Enable this once you have account confirmation enabled for password reset functionality
+                        <p>
+                            @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                        </p>*@
+                }
+            </section>
+
+           
+        </div>
+
+       
+
+        @*<div class="col-md-4">
+                <section id="socialLoginForm">
+                    @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+                </section>
+            </div>*@
+    </div>
+    <div class="container">
+        <div class="col-lg-8 col-lg-offset-3 col-md-10 col-md-offset-1">
+            <h3 @*style="margin-left: auto; margin-right: auto; width:490px;"*@>Not a customer of New Estate Management?</h3>
+            @Html.ActionLink("Register", "Register", "Account")
+        </div>
+        <div class="col-lg-7 col-lg-offset-3 col-md-10 col-md-offset-1" style="margin-bottom:5%">
+            <h4 @*style="margin-left: auto; margin-right: auto; width:600px;"*@>Find out more about our Customer Portal or request a temporary login <a href="https://www.newestates.co.uk/customer-portal/">here</a></h4>
+        </div>
+    </div>
+</div>
+
+
+
+   
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
