@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
+using System.Threading.Tasks;
 
 namespace Portal_MVC.Models
 {
@@ -65,7 +66,7 @@ namespace Portal_MVC.Models
             }
 
             List<AttendanceVisits.AttendanceType> types = 
-                AttendanceVisits.AttendanceTypeMethods.AllAttendanceTypesList(GlobalVariables.CS);
+                AttendanceVisits.AttendanceTypeMethods.AllAttendanceTypesList(GlobalVariables.GetConnection());
             AttendanceTypes = new List<SelectListItem>();
 
             foreach(AttendanceVisits.AttendanceType t in types)
@@ -100,18 +101,30 @@ namespace Portal_MVC.Models
             AttendanceObj.NotifyCustomer = SendCustomerNotification;
             AttendanceObj.PortalViewable = PortalViewable;
 
-            AttendanceObj.Insert(GlobalVariables.CS);
+            AttendanceObj.Insert(GlobalVariables.GetConnection());
 
             if (AttendanceObj.id > 0)
             {
-                AttendanceVisits.AttendanceNotifications notification =
-                    new AttendanceVisits.AttendanceNotifications(AttendanceObj.EstateID,
-                     AttendanceObj.id, GlobalVariables.CS, AttendanceObj.AttendingUser, GlobalVariables.DbConfig);
-                notification.SendColleagueNotifications();
+                try
+                {
+                    AttendanceVisits.AttendanceNotifications notification =
+                    new AttendanceVisits.AttendanceNotifications(GlobalVariables.GetConnection(),
+                    AttendanceObj.EstateID,
+                     AttendanceObj.id, AttendanceObj.AttendingUser, 2);
+                    //notification.SendColleagueNotifications();
+                    System.Threading.Thread t =
+                        new System.Threading.Thread(new System.Threading.ThreadStart(notification.SendColleagueNotifications));
+                    t.Start();
+                }
+                catch (Exception ex)
+                {
+                    string h = ex.Message;
+                }
 
-                System.Threading.Thread t =
-                    new System.Threading.Thread(new System.Threading.ThreadStart(notification.SendColleagueNotifications));
-               // t.Start();
+                
+            } else
+            {
+                //error
             }
 
 
@@ -137,10 +150,10 @@ namespace Portal_MVC.Models
         public void GetVisit(int id)
         {
             Visit = new AttendanceVisits.AttendanceVisits();
-            Visit = AttendanceVisits.AttendanceVisitsMethods.GetAttendanceObj(id, GlobalVariables.CS);
+            Visit = AttendanceVisits.AttendanceVisitsMethods.GetAttendanceObj(id, GlobalVariables.GetConnection());
                // new AttendanceVisits.ImageParams { width = 300, height = 300 });
 
-            EstateName = EstatesDLL.EstateMethods.GetEstateNameByID(Visit.EstateID, GlobalVariables.CS);
+            EstateName = EstatesDLL.EstateMethods.GetEstateNameByID(Visit.EstateID, GlobalVariables.GetConnection());
         }
 
         public List<AttendanceVisits.AttendanceVisits> AttendanceList { get; set; }
@@ -168,22 +181,29 @@ namespace Portal_MVC.Models
             }
         }
 
-        public void SetAttendanceList()
+        public void SetAttendanceList(int estateID = 0)
         {
-            string q = $"select estateid from core.units where id ={SelectedPropertyid}";
-
-            dbConn.dbConnection db = new dbConn.dbConnection();
-            System.Data.DataTable dt = db.GetDataTable(GlobalVariables.CS, q);
             int estateid = 0;
-            if(dt.Rows.Count > 0 && dt.Rows[0][0].ToString() != "Error")
+            if (estateID == 0)
             {
-                int.TryParse(dt.Rows[0][0].ToString(), out estateid);
+                string q = $"select estateid from core.units where id ={SelectedPropertyid}";
+
+                dbConn.DBConnectionObject db = GlobalVariables.GetConnection();
+                System.Data.DataTable dt = db.Connection.GetDataTable(q);
+              
+                if (dt.Rows.Count > 0 && dt.Rows[0][0].ToString() != "Error")
+                {
+                    int.TryParse(dt.Rows[0][0].ToString(), out estateid);
+                }
+            } else
+            {
+                estateid = estateID;
             }
 
             AttendanceList = new List<AttendanceVisits.AttendanceVisits>();
             AttendanceList = 
-                AttendanceVisits.AttendanceVisitsMethods.AttendanceHistoryList(estateid, 
-                GlobalVariables.CS, new AttendanceVisits.ImageParams { width = 200, height = 100 });
+                AttendanceVisits.AttendanceVisitsMethods.AttendanceHistoryList(estateid, GlobalVariables.GetConnection(),
+                new AttendanceVisits.ImageParams { width = 200, height = 100 });
 
             AccordionList = new List<Syncfusion.EJ2.Navigations.AccordionAccordionItem>();
             foreach(AttendanceVisits.AttendanceVisits item in AttendanceList)

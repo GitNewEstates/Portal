@@ -51,8 +51,8 @@ namespace Portal_MVC.Models
                         o.Add(MiscData);
                     }
 
-                    dbConn.dbConnection db = new dbConn.dbConnection();
-                    db.InsertCommandCurrent(GlobalVariables.CS, "Core.PortalUsageData", c, p, o);
+                    dbConn.DBConnectionObject db = GlobalVariables.GetConnection();
+                    db.Connection.InsertCommandCurrent( "Core.PortalUsageData", c, p, o);
                 }
             } catch { }
         }

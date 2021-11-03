@@ -21,63 +21,47 @@ namespace Portal_MVC.Controllers
     {
        
 
-        public ActionResult Index(int logdata = 0)
+        public ActionResult Index(int PropID = 0, string PropName = "", int logdata = 0)
         {
-           
-            string viewName ="";
-            object anonObj = null;
+            HomeViewModel homeViewModel = new HomeViewModel();
+            
+            //string viewName = "";
+            //object anonObj = null;
 
             //string i = Session["CustomerName"].ToString();
 
             //if own multiple properties then display list of all available properties
             if (Session["CustomerID"] != null && (int)Session["CustomerID"] != 0)
             {
-                if (Session["UserType"].ToString() == "1")
+                if (Session["UserType"].ToString() == "1" )
                 {
-                    StaticVariables.PropList = Models.PropertyMethods.GetAllOwnedProperties((int)Session["CustomerID"]);
-                    if (StaticVariables.PropList.Count > 1)
+                    
+
+                    if (PropID == 0)
                     {
-                        //Sends to list of properties (viewname = index)
-                        viewName = "Index";
-                        Session["SelectedPropertyID"] = 0;
-                        Session["SelectedProperty"] = null;
-                        Session["IsDirector"] = null;
-                        //Models.GlobalVariables.SelectedPropertyID = 0;
-                        //Models.GlobalVariables.SelectedProperty = null;
-                        anonObj = StaticVariables.PropList;
-
-                    }
-                    else 
-                    {
-                        //Sends to summary of the property
-                        viewName = "PropertySummary";
-
-
-                        // Models.GlobalVariables.SelectedProperty = StaticVariables.PropList[0].Address1;
-                        Session["SelectedPropertyID"] = StaticVariables.PropList[0].ID;
-                        Session["SelectedProperty"] = StaticVariables.PropList[0].Address1;
-                        Session["IsDirector"] = EstateDirectors.EstateDirectorMethods.IsCustomerDirector(GlobalVariables.CS, StaticVariables.PropList[0].ID).ToString();
-                        Models.MyAccountViewModel vm = GetViewModel();
-
-                        Estates es = new Estates();
-                        try
+                        homeViewModel.PropListViewModel.PropertyList
+                        = Models.PropertyMethods.GetAllOwnedProperties((int)Session["CustomerID"]);
+                        if (homeViewModel.PropListViewModel.PropertyList.Count() > 1)
                         {
-                            es = EstateMethods.GetEstatedByUnitID((int)Session["SelectedPropertyID"]);
+                            //Sends to list of properties (viewname = index)
+                            homeViewModel.viewName = "Index";
+                            Session["SelectedPropertyID"] = 0;
+                            Session["SelectedProperty"] = null;
+                            Session["IsDirector"] = null;
+                            //Models.GlobalVariables.SelectedPropertyID = 0;
+                            //Models.GlobalVariables.SelectedProperty = null;
+                            homeViewModel.anonObj = homeViewModel.PropListViewModel.PropertyList;
+
                         }
-                        catch { }
-
-                        Session["EstateName"] = es.EstateName;
-
-                        //Gets outstanding repairs
-                        vm.RepairVM = new RepairsMaintenanceViewModel();
-                        vm.RepairVM.Repair = RepairMethods.GetOutstandingRepairs(es.EstatedID);
-                        // try
-                        // {
-
-                        vm = GetAccountDetails(vm, (int)Session["SelectedPropertyID"]);
-                        // } catch { }
-                        vm.PageTitle = "Property Level Contact Preferences";
-                        anonObj = vm;
+                        else
+                        {
+                            GetPropertySummary(homeViewModel, PropID, PropName);
+                            return View(homeViewModel.viewName, homeViewModel.anonObj);
+                        }
+                    } else
+                    {
+                        GetPropertySummary(homeViewModel, PropID, PropName);
+                        return View(homeViewModel.viewName, homeViewModel.anonObj);
                     }
                 } else if (Session["UserType"].ToString() == "2")
                 {
@@ -85,16 +69,16 @@ namespace Portal_MVC.Controllers
                     StaticVariables.PropList = Models.PropertyMethods.GetAllEstates();
 
                     //Sends to list of properties (viewname = index)
-                    viewName = "Index";
+                    homeViewModel.viewName = "Index";
                     Session["SelectedPropertyID"] = 0;
                     Session["SelectedProperty"] = null;
                     Session["IsDirector"] = null;
                     //Models.GlobalVariables.SelectedPropertyID = 0;
                     //Models.GlobalVariables.SelectedProperty = null;
-                    anonObj = StaticVariables.PropList;
+                    homeViewModel.anonObj = homeViewModel.PropListViewModel.PropertyList; ;
                 } else if (Session["UserType"].ToString() == "3")
                 {
-                    viewName = @"../Caretaking/CaretakingDashboard";
+                    homeViewModel.viewName = @"../Caretaking/CaretakingDashboard";
                     Session["SelectedPropertyID"] = 0;
                     Session["SelectedProperty"] = null;
                     Session["IsDirector"] = null;
@@ -103,10 +87,42 @@ namespace Portal_MVC.Controllers
                 }
 
             }
-            return View(viewName, anonObj);
+            return View(homeViewModel.viewName, homeViewModel);
         }
 
-       
+        private HomeViewModel GetPropertySummary(HomeViewModel homeViewModel, int PropID, string PropName)
+        {
+            //Sends to summary of the property
+            homeViewModel.viewName = "PropertySummary";
+
+
+            // Models.GlobalVariables.SelectedProperty = StaticVariables.PropList[0].Address1;
+            Session["SelectedPropertyID"] = PropID;
+            Session["SelectedProperty"] = PropName;
+            // Session["IsDirector"] = EstateDirectors.EstateDirectorMethods.IsCustomerDirector(GlobalVariables.CS, StaticVariables.PropList[0].ID).ToString();
+            Models.MyAccountViewModel vm = GetViewModel();
+
+            Estates es = new Estates();
+            try
+            {
+                es = EstateMethods.GetEstatedByUnitID((int)Session["SelectedPropertyID"]);
+            }
+            catch { }
+
+            Session["EstateName"] = es.EstateName;
+
+            //Gets outstanding repairs
+            vm.RepairVM = new RepairsMaintenanceViewModel();
+            vm.RepairVM.Repair = RepairMethods.GetOutstandingRepairs(es.EstatedID);
+            // try
+            // {
+
+            vm = GetAccountDetails(vm, (int)Session["SelectedPropertyID"]);
+            // } catch { }
+            vm.PageTitle = "Property Level Contact Preferences";
+            homeViewModel.anonObj = vm;
+            return homeViewModel;
+        }
 
         private Models.MyAccountViewModel GetViewModel()
         {
@@ -135,7 +151,7 @@ namespace Portal_MVC.Controllers
                         {
                             Session["SelectedProperty"] = p.Address1;
                             Session["SelectedPropertyID"] = p.ID;
-                            Session["IsDirector"] = EstateDirectors.EstateDirectorMethods.IsCustomerDirector(GlobalVariables.CS, p.ID);
+                           // Session["IsDirector"] = EstateDirectors.EstateDirectorMethods.IsCustomerDirector(GlobalVariables.CS, p.ID);
                             break;
                         }
                     }
@@ -195,8 +211,8 @@ namespace Portal_MVC.Controllers
                 }
                 else if (PropType == PropertyTypes.Owner)
                 {
-                    Session["IsDirector"] = EstateDirectors.EstateDirectorMethods.IsCustomerDirector(GlobalVariables.CS, PropID);
-                    Session["CustomerID"] = PropID;
+                    //Session["IsDirector"] = EstateDirectors.EstateDirectorMethods.IsCustomerDirector(GlobalVariables.CS, PropID);
+                    //Session["CustomerID"] = PropID;
 
                     //get View Model with summary notes
                     Models.MyAccountViewModel vm = GetViewModel();
@@ -334,7 +350,7 @@ namespace Portal_MVC.Controllers
                     //get the settings
                     Nmv.NotificationSettingObj.UnitID = (int)Session["SelectedPropertyID"];
                     Nmv.NotificationSettingObj.CustomerID = (int)Session["CustomerID"];
-                    Nmv.NotificationSettingObj.GetNotificationSettings(GlobalVariables.CS);
+                    Nmv.NotificationSettingObj.GetNotificationSettings(GlobalVariables.GetConnection());
 
                 }
                 if (Session["SelectedPropertyID"] != null && (int)Session["SelectedPropertyID"] != 0)

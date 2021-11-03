@@ -18,6 +18,7 @@ namespace Portal_MVC.Models
         public string TransDatestr { get; set; }
         public string TransDescription { get; set; }
         public string TransType { get; set; }
+        public int TransTypeID { get; set; }
         public string CrDr { get; set; }
         public List<ServiceCharges> AllTrans { get; set; }
         public double Balance { get; set; }
@@ -52,13 +53,22 @@ namespace Portal_MVC.Models
     {
         public static List<ServiceCharges> AllTransactions(int unitID)
         {
-            string q = "select * from core.Transactions inner join core.TransactionTypes " +
-                        "on core.Transactions.TransactionTypeID = core.TransactionTypes.id " +
-                        "where core.Transactions.unitID = " + unitID.ToString() + " and core.Transactions.inError is null " +
-                        "order by core.Transactions.TransDate asc";
+            //string q = "select * from core.Transactions inner join core.TransactionTypes " +
+            //            "on core.Transactions.TransactionTypeID = core.TransactionTypes.id " +
+            //            "where core.Transactions.unitID = " + unitID.ToString() + " and core.Transactions.inError is null " +
+            //            "order by core.Transactions.TransDate asc";
 
-            dbConnection db = new dbConnection();
-            DataTable dt = db.GetDataTable(GlobalVariables.CS, q);
+           DBConnectionObject db = GlobalVariables.GetConnection();
+          //  DataTable dt = db.Connection.GetDataTable( q);
+            List<string> P = new List<string>();
+            P.Add("@unitId");
+
+            List<object> o = new List<object>();
+            o.Add(unitID);
+
+
+            DataTable dt =
+                db.Connection.GetDataTable("spGetUnitServiceChargeData", P, o);
             List<ServiceCharges> rlist = new List<ServiceCharges>();
 
             if(dt.Rows.Count > 0)
@@ -71,35 +81,47 @@ namespace Portal_MVC.Models
                     {
                         //date
                         DateTime date = new DateTime();
-                        if (d[1] != DBNull.Value)
+                        if (d[2] != DBNull.Value)
                         {
-                            date = Convert.ToDateTime(d[1]);
+                            date = Convert.ToDateTime(d[2]);
                         }
 
                         //trans amount
                         double am = 0;
-                        if (d[7] != DBNull.Value)
+                        if (d[8] != DBNull.Value)
                         {
-                            am = Convert.ToDouble(d[7]);
+                            am = Convert.ToDouble(d[8]);
                         }
 
-                        int id = Convert.ToInt32(d[0]);
-                        
+                        int id = Convert.ToInt32(d[1]);
+                        int TransactionTypeId = Convert.ToInt32(d[7]);
+                        string transtype = "";
+                        if(TransactionTypeId == 1)
+                        {
+                            transtype = "Payment";
+                            bal -= am;
+
+                        } else if(TransactionTypeId == 2)
+                        {
+                            transtype = "Charge";
+                            bal += am;
+                        }
 
                         rlist.Add(new ServiceCharges
                         {
                             ID = id,
                             TransDate = date,
                             TransDatestr = Controls.DateString(date),
-                            TransDescription = d[5].ToString(),
+                            TransDescription = d[6].ToString(),
                             TransAmount = am,
                             TransAmountstr = Controls.CurrencyString(am),
-                            TransType = d[13].ToString(),
-                            CrDr = d[14].ToString(),
-                            //Balance = bal,
-                            //BalanceStr = Controls.CurrencyString(bal)
+                            TransType = transtype, 
+                            TransTypeID = TransactionTypeId,
+                            //CrDr = d[14].ToString(),
+                            Balance = bal,
+                            BalanceStr = Controls.CurrencyString(bal)
 
-                        });
+                        }) ;
 
                     }
                 }
@@ -134,37 +156,37 @@ namespace Portal_MVC.Models
                 //}
 
 
-                bal = 0;
-                double startBal = 0;
+                //bal = 0;
+                //double startBal = 0;
 
 
-                for (int i = 0; i <= rlist.Count - 1; i++)
-                {
-                    if (rlist.Count == 1)
-                    {
-                        rlist[i].Balance = startBal;
-                        rlist[i].BalanceStr = Controls.CurrencyString(startBal);
+                //for (int i = 0; i <= rlist.Count - 1; i++)
+                //{
+                //    if (rlist.Count == 1)
+                //    {
+                //        rlist[i].Balance = startBal;
+                //        rlist[i].BalanceStr = Controls.CurrencyString(startBal);
 
-                    }
-                    else
-                    {
+                //    }
+                //    else
+                //    {
                         
-                        if (rlist[i].CrDr == "Cr")
-                        {
-                            bal -= rlist[i].TransAmount;
-                            rlist[i].Balance = bal;
-                            rlist[i].BalanceStr = Controls.CurrencyString(bal);
-                        }
-                        else
-                        {
-                            bal += rlist[i].TransAmount;
-                            rlist[i].Balance = bal;
-                            rlist[i].BalanceStr = Controls.CurrencyString(bal);
-                        }
+                //        if (rlist[i].CrDr == "Cr")
+                //        {
+                //            bal -= rlist[i].TransAmount;
+                //            rlist[i].Balance = bal;
+                //            rlist[i].BalanceStr = Controls.CurrencyString(bal);
+                //        }
+                //        else
+                //        {
+                //            bal += rlist[i].TransAmount;
+                //            rlist[i].Balance = bal;
+                //            rlist[i].BalanceStr = Controls.CurrencyString(bal);
+                //        }
 
 
-                    }
-                }
+                //    }
+                //}
 
 
 
@@ -198,8 +220,8 @@ namespace Portal_MVC.Models
                 }
             }
 
-            dbConnection db = new dbConnection();
-            DataTable dataTable = db.GetDataTable(GlobalVariables.CS, PaidDateStr);
+            DBConnectionObject db = GlobalVariables.GetConnection();
+            DataTable dataTable = db.Connection.GetDataTable( PaidDateStr);
 
             if (dataTable.Rows.Count > 0 && dataTable.Rows[0][0].ToString() != "Error")
             {
@@ -237,8 +259,8 @@ namespace Portal_MVC.Models
                         "inner join core.ServiceChargeBudgets on core.Transactions.budgetID = core.ServiceChargeBudgets.ID " +
                         "where core.ServiceChargeBudgets.EstateID = " + EstateID.ToString() + " and core.SupplierPayments.paidDate is null";
 
-            dbConn.dbConnection db = new dbConnection();
-            DataTable dt = db.GetDataTable(GlobalVariables.CS, q);
+            dbConn.DBConnectionObject db = GlobalVariables.GetConnection();
+            DataTable dt = db.Connection.GetDataTable( q);
 
             List<ServiceCharges> r = new List<ServiceCharges>();
 
@@ -273,8 +295,8 @@ namespace Portal_MVC.Models
                 "where EstateID = " + EstateID.ToString() + 
                 " and _status = 'Completed' and not fundtypeid = 4 ";
 
-            dbConnection db = new dbConnection();
-            DataTable dt = db.GetDataTable(GlobalVariables.CS, q);
+           DBConnectionObject db = GlobalVariables.GetConnection();
+            DataTable dt = db.Connection.GetDataTable( q);
 
             List<ServiceCharges> r = new List<ServiceCharges>();
 
@@ -296,7 +318,7 @@ namespace Portal_MVC.Models
 
         public static ServiceCharges GetBudgetSummary(int BudgetID)
         {
-            dbConnection db = new dbConnection();
+           DBConnectionObject db = GlobalVariables.GetConnection();
             List<string> p = new List<string>();
             p.Add("@budgetID");
 
@@ -304,7 +326,7 @@ namespace Portal_MVC.Models
             o.Add(BudgetID);
 
             ServiceCharges r = new ServiceCharges();
-            DataTable dt = db.GetDataTable(GlobalVariables.CS, "dbo.spGetBudgetSummary", p, o);
+            DataTable dt = db.Connection.GetDataTable( "dbo.spGetBudgetSummary", p, o);
 
             if(dt.Rows.Count > 0 && dt.Rows[0][0].ToString() != "Error")
             {
@@ -367,8 +389,8 @@ namespace Portal_MVC.Models
             List<object> o = new List<object>();
             o.Add(EstateID);
 
-            dbConnection db = new dbConnection();
-            DataTable dt = db.GetDataTable(GlobalVariables.CS, "dbo.spGetUnitBalances", p, o);
+           DBConnectionObject db = GlobalVariables.GetConnection();
+            DataTable dt = db.Connection.GetDataTable( "dbo.spGetUnitBalances", p, o);
 
             List<ServiceCharges> r = new List<ServiceCharges>();
 

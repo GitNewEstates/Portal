@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -65,8 +66,9 @@ namespace Portal_MVC.Controllers
 
 
         }
-        public ActionResult AttendanceHistory(int PropID = 0, string PropName = "")
+        public ActionResult AttendanceHistory(int PropID = 0, string PropName = "", bool IsEstate = false )
         {
+            
             Models.AttendanceHistoryViewModel vm = new Models.AttendanceHistoryViewModel();
            
             if (Session["CustomerID"] != null && (int)Session["CustomerID"] > 0)
@@ -81,24 +83,40 @@ namespace Portal_MVC.Controllers
                     Session["SelectedProperty"] = PropName;
                 }
 
-                if ((int)Session["UserType"] > 1) //get list of properties when not customer type
+                if ((int)Session["UserType"] > 1 && !IsEstate) //get list of properties when not customer type
                 {
-                    vm.PropListViewModel = new Models.ServiceChargeBudgetViewModel();
-                    vm.PropListViewModel.PropertyList = Models.PropertyMethods.GetAllEstates();
-                    vm.PropListViewModel.ControllerName = "Caretaking";
-                    vm.PropListViewModel.ViewName = "AttendanceHistory";
-                } else if(PropID == 0 && (int)Session["UserType"] ==1)
+                    
+                        vm.PropListViewModel = new Models.ServiceChargeBudgetViewModel();
+                        vm.PropListViewModel.PropertyList = Models.PropertyMethods.GetAllEstates();
+                        vm.PropListViewModel.ControllerName = "Caretaking";
+                        vm.PropListViewModel.ViewName = "AttendanceHistory";
+                        Session["SelectedPropertyID"] = 0;
+
+                } 
+                else if (PropID == 0 && (int)Session["UserType"] == 1) //display unit list where is customer type and property not selected
                 {
                     vm.PropListViewModel = new Models.ServiceChargeBudgetViewModel();
                     vm.PropListViewModel.PropertyList = Models.PropertyMethods.GetAllOwnedProperties((int)Session["CustomerID"]);
                     vm.PropListViewModel.ControllerName = "Caretaking";
-                    vm.PropListViewModel.ViewName = "AttendanceHistory";
+                    vm.PropListViewModel.ViewName = "ViewAttendanceHistory";
+                }
+                else if(PropID > 0 && (int)Session["UserType"] == 1)
+                {
+                    //this point propid will be unit id. need estateid
+                    Models.Estates es =
+                         Models.EstateMethods.GetEstatedByUnitID(PropID);
+
+                    vm.SetAttendanceList(es.EstatedID);
+                }
+                else if ((int)Session["UserType"] > 1 && PropID > 0 && IsEstate) //colleague and estate selected{
+                {
+                    vm.SetAttendanceList(PropID);
                 }
                 else
                 {
                     vm.SelectedPropertyid = PropID;
                     vm.SetAttendanceList();
-                    
+
                 }
 
                 return View("ViewAttendanceHistory", vm);

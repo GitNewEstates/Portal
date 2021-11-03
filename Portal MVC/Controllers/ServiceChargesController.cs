@@ -60,9 +60,6 @@ namespace Portal_MVC.Controllers
             
         }
 
-
-
-
         public ActionResult ServiceChargeExpenditure(int PropID = 0, string PropName = "")
         {
             if (Session["CustomerID"] != null || (int)Session["CustomerID"] != 0)

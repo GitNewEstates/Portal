@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using System.Configuration;
+using Portal_MVC.Models;
 
 namespace Portal_MVC
 {
@@ -35,8 +36,8 @@ namespace Portal_MVC
                 va.Add(DateTime.Now);
 
 
-                dbConn.dbConnection db = new dbConn.dbConnection();
-                System.Data.DataTable dt = db.InsertCommand(Models.GlobalVariables.CS, tbl, col, pa, va);
+                dbConn.DBConnectionObject db = GlobalVariables.GetConnection();
+                System.Data.DataTable dt = db.Connection.InsertCommand(tbl, col, pa, va);
             } catch { }
         }
     }

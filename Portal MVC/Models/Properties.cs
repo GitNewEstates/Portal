@@ -95,8 +95,8 @@ namespace Portal_MVC.Models
                 "core.Units.ID where core.PropertyOwnership.OwnerID = " + CustomerID.ToString();
 
             List<Properties> rList = new List<Properties>();
-            dbConnection db = new dbConnection();
-            DataTable dt = db.GetDataTable(GlobalVariables.CS, q);
+           DBConnectionObject db = GlobalVariables.GetConnection();
+            DataTable dt = db.Connection.GetDataTable( q);
             
             foreach (DataRow dr in dt.Rows)
             {
@@ -106,7 +106,14 @@ namespace Portal_MVC.Models
                     id = Convert.ToInt32(dr[7]);
                 }
                 string Add1 = SetAddress1(dr[0].ToString(), dr[1].ToString(), dr[2].ToString());
-                rList.Add(new Properties(PropertyTypes.Unit) { ID = id, Address1 = Add1, Address2 = dr[3].ToString(), Address3 = dr[4].ToString(), Address4 = dr[5].ToString(), Address5 = dr[6].ToString(), FullAddress = SetAddressString(Add1, dr[3].ToString(), dr[4].ToString(), dr[5].ToString(), dr[6].ToString()) });
+                rList.Add(new Properties(PropertyTypes.Unit) 
+                { ID = id, Address1 = Add1, 
+                    Address2 = dr[3].ToString(), 
+                    Address3 = dr[4].ToString(), 
+                    Address4 = dr[5].ToString(), 
+                    Address5 = dr[6].ToString(), 
+                    FullAddress = 
+                    SetAddressString(Add1, dr[3].ToString(), dr[4].ToString(), dr[5].ToString(), dr[6].ToString()) });
             }
             return rList;
 
@@ -118,8 +125,8 @@ namespace Portal_MVC.Models
                 "Core.Units.Address4, Core.Units.Address5, Core.Units.ID FROM CORE.Units where estateid = " + estateid.ToString();
 
             List<Properties> rList = new List<Properties>();
-            dbConnection db = new dbConnection();
-            DataTable dt = db.GetDataTable(GlobalVariables.CS, q);
+           DBConnectionObject db = GlobalVariables.GetConnection();
+            DataTable dt = db.Connection.GetDataTable( q);
 
             foreach (DataRow dr in dt.Rows)
             {
@@ -146,8 +153,8 @@ namespace Portal_MVC.Models
                 "where core.PropertyOwnership.UnitID = " + UnitID.ToString() + " and core.propertyownership.currentowner = 1";
 
             List <Properties> rList = new List<Properties>();
-            dbConnection db = new dbConnection();
-            DataTable dt = db.GetDataTable(GlobalVariables.CS, q);
+           DBConnectionObject db = GlobalVariables.GetConnection();
+            DataTable dt = db.Connection.GetDataTable( q);
 
             if (dt.Rows.Count > 0 && dt.Rows[0][0].ToString() != "Error")
             {
@@ -173,8 +180,8 @@ namespace Portal_MVC.Models
             string q = "select * FROM CORE.Estates where _statusID = 1";
 
             List<Properties> rList = new List<Properties>();
-            dbConnection db = new dbConnection();
-            DataTable dt = db.GetDataTable(GlobalVariables.CS, q);
+           DBConnectionObject db = GlobalVariables.GetConnection();
+            DataTable dt = db.Connection.GetDataTable( q);
 
             foreach (DataRow dr in dt.Rows)
             {
@@ -341,8 +348,8 @@ namespace Portal_MVC.Models
             string q = "select concat(flatorapt, ' ', UnitNumber, ' ', Address1) from core.Units where id = " +
                 unitid.ToString();
 
-            dbConnection db = new dbConnection();
-            DataTable dt = db.GetDataTable(GlobalVariables.CS, q);
+           DBConnectionObject db = GlobalVariables.GetConnection();
+            DataTable dt = db.Connection.GetDataTable( q);
             string r = "";
             if(dt.Rows.Count > 0 && dt.Rows[0][0].ToString() != "Error")
             {
@@ -358,8 +365,8 @@ namespace Portal_MVC.Models
                        " core.units where ID = " + UnitID.ToString();
 
             string r = "";
-            dbConnection db = new dbConnection();
-            DataTable dt = db.GetDataTable(GlobalVariables.CS, q);
+           DBConnectionObject db = GlobalVariables.GetConnection();
+            DataTable dt = db.Connection.GetDataTable( q);
             foreach (DataRow dr in dt.Rows)
             {
                 r = SetAddress1(dr[0].ToString(), dr[1].ToString(), dr[2].ToString());
@@ -444,8 +451,8 @@ namespace Portal_MVC.Models
                 "where core.ServiceChargeBudgets.EstateID = " + EstateID.ToString() + " and core.servicechargebudgets.fundtypeID = 2" +
                 " and core.ServiceChargeBudgets._status <> 'Progress'";
 
-            dbConnection db = new dbConnection();
-            DataTable dt = db.GetDataTable(GlobalVariables.CS, q);
+           DBConnectionObject db = GlobalVariables.GetConnection();
+            DataTable dt = db.Connection.GetDataTable( q);
             if (dt.Rows.Count > 0 && dt.Rows[0][0].ToString() != "Error")
             {
                 foreach (DataRow dr in dt.Rows)
@@ -504,8 +511,8 @@ namespace Portal_MVC.Models
                 "and core.ServiceChargeBudgets._status = 'Completed' " +
                 "order by displayorder asc";
 
-            dbConnection db = new dbConnection();
-            DataTable dt = db.GetDataTable(GlobalVariables.CS, q);
+           DBConnectionObject db = GlobalVariables.GetConnection();
+            DataTable dt = db.Connection.GetDataTable( q);
             Estate.BudgetList = new List<Estates>();
             if (dt.Rows.Count > 0 && dt.Rows[0][0].ToString() != "Error")
             {
@@ -600,8 +607,8 @@ namespace Portal_MVC.Models
                         "inner join core.Units on core.Estates.ID = core.Units.EstateID " +
                         "where core.Units.ID = " + UnitID.ToString();
 
-            dbConnection db = new dbConnection();
-            DataTable dt = db.GetDataTable(GlobalVariables.CS, q);
+           DBConnectionObject db = GlobalVariables.GetConnection();
+            DataTable dt = db.Connection.GetDataTable( q);
 
             Estates r = new Estates();
             foreach (DataRow dr in dt.Rows)
@@ -619,8 +626,8 @@ namespace Portal_MVC.Models
                 "budgetID = " + budgetID.ToString() + " and ScheduleName = '" + scheduleName + "' and " +
                 " unitID = " + PropertyID.ToString();
 
-            dbConnection db = new dbConnection();
-            DataTable dt = db.GetDataTable(Models.GlobalVariables.CS, q);
+           DBConnectionObject db = GlobalVariables.GetConnection();
+            DataTable dt = db.Connection.GetDataTable(q);
 
             double r = 0;
             foreach (DataRow dr in dt.Rows)
@@ -649,8 +656,8 @@ namespace Portal_MVC.Models
                 + Estate.EstatedID + " and not fundtypeid = 4 and not fundtypeid = 5";
             //exclude opening balance funds and admin funds
 
-            dbConnection db = new dbConnection();
-            DataTable dt1 = db.GetDataTable(GlobalVariables.CS, q);
+           DBConnectionObject db = GlobalVariables.GetConnection();
+            DataTable dt1 = db.Connection.GetDataTable( q);
 
             if (dt1.Rows.Count > 0 && dt1.Rows[0][0].ToString() != "Error")
             {
@@ -681,7 +688,7 @@ namespace Portal_MVC.Models
 
                 q +=  "order by core.authorisedinvoices.invoicedate desc"; 
 
-                DataTable dt = db.GetDataTable(GlobalVariables.CS, q);
+                DataTable dt = db.Connection.GetDataTable( q);
 
                 Estate.TransactionList = new List<Estates>();
 
@@ -740,8 +747,8 @@ namespace Portal_MVC.Models
                         "where core.ServiceChargeBudgets.ID = " + Estate.BudgetId.ToString() + " and core.ServiceChargeBudgets._status = 'Completed'" +
                         " and not core.ServiceChargeBudgetDetail.Heading = 'Roundings' and not core.servicechargebudgets.FundTypeID = 4";
 
-            dbConnection db = new dbConnection();
-            DataTable BudgetDT = db.GetDataTable(GlobalVariables.CS, q);
+           DBConnectionObject db = GlobalVariables.GetConnection();
+            DataTable BudgetDT = db.Connection.GetDataTable( q);
             DateTime scStart = new DateTime();
             DateTime scEnd = new DateTime();
 
@@ -799,7 +806,7 @@ namespace Portal_MVC.Models
             //    "from core.Transactions where core.transactions.budgetID = " + Estate.BudgetId.ToString() +
             //    " and Core.Transactions.inError is null or core.Transactions.inError = 0";
 
-            DataTable ExpDT = db.GetDataTable(GlobalVariables.CS, q);
+            DataTable ExpDT = db.Connection.GetDataTable( q);
 
             if (ExpDT.Rows.Count > 0)
             {
@@ -902,8 +909,8 @@ namespace Portal_MVC.Models
                        "core.PurchaseOrders.Heading, core.purchaseorders.headingID from core.PurchaseOrders " +
                         "where core.PurchaseOrders.id = " + ponumber.ToString();
 
-            dbConnection db = new dbConnection();
-            DataTable dt = db.GetDataTable(GlobalVariables.CS, q);
+           DBConnectionObject db = GlobalVariables.GetConnection();
+            DataTable dt = db.Connection.GetDataTable( q);
            
             Estates ReturnEst = new Estates();
             if (dt.Rows.Count > 0)
@@ -922,7 +929,7 @@ namespace Portal_MVC.Models
                         "budgetID = " + ReturnEst.BudgetId + " and budgetSchedule = '" +
                         ReturnEst.SCScheduleName + "' and HeadingID = " + ReturnEst.HeadingID;
 
-                    DataTable dt1 = db.GetDataTable(GlobalVariables.CS, q);
+                    DataTable dt1 = db.Connection.GetDataTable( q);
                     if (dt1.Rows.Count > 0)
                     {
                         DataRow d1 = dt1.Rows[0];
@@ -951,7 +958,7 @@ namespace Portal_MVC.Models
                             "where BudgetID = " + ReturnEst.BudgetId + " and ScheduleName = '" + ReturnEst.SCScheduleName +
                             "' and Heading = '" + ReturnEst.SCHeading + "'";
 
-                        DataTable dt2 = db.GetDataTable(GlobalVariables.CS, q);
+                        DataTable dt2 = db.Connection.GetDataTable( q);
 
                         if (dt2.Rows.Count > 0)
                         {

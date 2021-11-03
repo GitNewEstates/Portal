@@ -44,8 +44,8 @@ namespace Portal_MVC.Models
         //wrapper so can be done on thread
         public void UpdateSettings()
         {
-            NotificationSettingObj.Delete(GlobalVariables.CS);
-            NotificationSettingObj.Insert(GlobalVariables.CS);
+            NotificationSettingObj.Delete(GlobalVariables.GetConnection());
+            NotificationSettingObj.Insert(GlobalVariables.GetConnection());
         }
 
         public void CompareNotificationSettings()
@@ -54,7 +54,7 @@ namespace Portal_MVC.Models
             NotificationSettings.NotificationSettings NewObj = new NotificationSettings.NotificationSettings();
             NewObj.UnitID = NotificationSettingObj.UnitID;
             NewObj.CustomerID = NotificationSettingObj.CustomerID;
-            NewObj.GetNotificationSettings(GlobalVariables.CS);
+            NewObj.GetNotificationSettings(GlobalVariables.GetConnection());
 
             if (!NewObj.NewRepairNotification || !NotificationSettingObj.NewRepairNotification)
             {

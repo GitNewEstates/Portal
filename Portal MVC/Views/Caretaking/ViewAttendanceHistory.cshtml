@@ -6,7 +6,7 @@
 }
 
 
-@if (Session["SelectedPropertyID"] == null || (int)Session["SelectedPropertyID"] == 0)
+@if (Model.PropListViewModel != null)
 {
     <div class="container">
         @Html.Partial("_SelectEstate", Model.PropListViewModel)

@@ -23,8 +23,8 @@ namespace Portal_MVC.Models
             string q = "Select id, name from core.documents where InstanceID = " + instanceID.ToString();
 
 
-            dbConnection db = new dbConnection();
-            DataTable dt = db.GetDataTable(GlobalVariables.CS, q);
+           DBConnectionObject db = GlobalVariables.GetConnection();
+            DataTable dt = db.Connection.GetDataTable( q);
 
             List<Documents> r = new List<Documents>();
 
@@ -52,8 +52,8 @@ namespace Portal_MVC.Models
         {
             string q = "Select document from core.documents where id = " + DocID.ToString();
 
-            dbConnection db = new dbConnection();
-            DataTable dt = db.GetDataTable(GlobalVariables.CS, q);
+           DBConnectionObject db = GlobalVariables.GetConnection();
+            DataTable dt = db.Connection.GetDataTable( q);
 
             Documents r = new Documents();
 

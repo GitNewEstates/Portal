@@ -32,8 +32,8 @@ namespace Portal_MVC.Models
         {
             string q = "Select * from core.PurchaseOrders where ID = " + ID.ToString();
 
-            dbConnection db = new dbConnection();
-            DataTable dt = db.GetDataTable(GlobalVariables.CS, q);
+           DBConnectionObject db = GlobalVariables.GetConnection();
+            DataTable dt = db.Connection.GetDataTable( q);
 
             PurchaseOrders po = new PurchaseOrders();
             if (dt.Rows.Count > 0)

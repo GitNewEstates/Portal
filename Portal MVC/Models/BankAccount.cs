@@ -32,8 +32,8 @@ namespace Portal_MVC.Models
                         "inner join core.ServiceChargeBudgets on core.EstateBudgetBankAccounts.BudgetId = core.ServiceChargeBudgets.ID " +
                         "where core.ServiceChargeBudgets.EstateID = " + EstateID.ToString();
 
-            dbConn.dbConnection db = new dbConn.dbConnection();
-            DataTable dt = db.GetDataTable(GlobalVariables.CS, q);
+            dbConn.DBConnectionObject db = GlobalVariables.GetConnection();
+            DataTable dt = db.Connection.GetDataTable( q);
 
             if (dt.Rows.Count > 0 && dt.Rows[0][0].ToString() != "Error")
             {
@@ -60,8 +60,8 @@ namespace Portal_MVC.Models
         {
             string q = "select id, AccountName, AccountNumber, SortCode from core.EstateBankAccounts where id = " + ID.ToString();
 
-            dbConn.dbConnection db = new dbConn.dbConnection();
-            DataTable dt = db.GetDataTable(GlobalVariables.CS, q);
+            dbConn.DBConnectionObject db = GlobalVariables.GetConnection();
+            DataTable dt = db.Connection.GetDataTable( q);
 
             BankAccount r = new BankAccount();
             if (dt.Rows.Count > 0 && dt.Rows[0][0].ToString() != "Error")
@@ -86,8 +86,8 @@ namespace Portal_MVC.Models
             List<object> o = new List<object>();
             o.Add(BankAccountID);
 
-            dbConn.dbConnection db = new dbConn.dbConnection();
-            DataTable dt = db.GetDataTable(GlobalVariables.CS, "dbo.GetBankAccountTransactions", p, o);
+            dbConn.DBConnectionObject db = GlobalVariables.GetConnection();
+            DataTable dt = db.Connection.GetDataTable( "dbo.GetBankAccountTransactions", p, o);
 
             List<ServiceCharges> r = new List<ServiceCharges>();
 
@@ -156,8 +156,8 @@ namespace Portal_MVC.Models
             List<object> o = new List<object>();
             o.Add(estateID);
 
-            dbConn.dbConnection db = new dbConn.dbConnection();
-            DataTable dt = db.GetDataTable(GlobalVariables.CS, "dbo.spEstateBankAccountsAndBalances", p, o);
+            dbConn.DBConnectionObject db = GlobalVariables.GetConnection();
+            DataTable dt = db.Connection.GetDataTable( "dbo.spEstateBankAccountsAndBalances", p, o);
 
             List<BankAccount> r = new List<BankAccount>();
             if(dt.Rows.Count > 0 && dt.Rows[0][0].ToString() != "Error")

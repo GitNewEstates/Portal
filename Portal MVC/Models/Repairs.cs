@@ -69,8 +69,8 @@ namespace Portal_MVC.Models
                 repairID.ToString() + ")";
 
 
-            dbConnection db = new dbConnection();
-            db.ExecuteCommand(GlobalVariables.CS, q);
+           DBConnectionObject db = GlobalVariables.GetConnection();
+            db.Connection.ExecuteCommand( q);
 
 
         }
@@ -80,8 +80,8 @@ namespace Portal_MVC.Models
             string q = "delete from core.repairupdates where customerID = " + customerID.ToString() +
                 " and repairID = " + RepairID.ToString();
 
-            dbConnection db = new dbConnection();
-            db.ExecuteCommand(GlobalVariables.CS, q);
+           DBConnectionObject db = GlobalVariables.GetConnection();
+            db.Connection.ExecuteCommand( q);
         }
 
         public static void InsertReportUpdateFailure(int RepairID, int CustomerID)
@@ -108,8 +108,8 @@ namespace Portal_MVC.Models
                 DateTime.Now
             };
 
-            dbConnection db = new dbConnection();
-            db.InsertCommandCurrent(GlobalVariables.CS, "core.RepairUpdateFailures", c, p, o);
+           DBConnectionObject db = GlobalVariables.GetConnection();
+            db.Connection.InsertCommandCurrent( "core.RepairUpdateFailures", c, p, o);
         }
 
         public static bool IsCustomerRegisteredForUpdates(int RepairID, int customerID)
@@ -119,8 +119,8 @@ namespace Portal_MVC.Models
 
             bool r = false;
 
-            dbConnection db = new dbConnection();
-            DataTable dt = db.GetDataTable(GlobalVariables.CS, q);
+           DBConnectionObject db = GlobalVariables.GetConnection();
+            DataTable dt = db.Connection.GetDataTable( q);
 
 
             if (dt.Rows.Count > 0 && dt.Rows[0][0].ToString() != "Error")
@@ -148,9 +148,9 @@ namespace Portal_MVC.Models
                         "= core.RepairStatus.id where core.repairs.EstateID = " + EstateID.ToString() +
                         " order by core.repairs.raisedDate Desc";
 
-            dbConnection db = new dbConnection();
+           DBConnectionObject db = GlobalVariables.GetConnection();
 
-            DataTable dt = db.GetDataTable(GlobalVariables.CS, q);
+            DataTable dt = db.Connection.GetDataTable(q);
             Repairs repairs = new Repairs();
             repairs.AllRepairs = new List<Repairs>();
 
@@ -188,8 +188,8 @@ namespace Portal_MVC.Models
             string q = "select updateDate, updatenote from core.RepairUpdateNote " +
                 " where repairID = " + repairID.ToString() + " order by UpdateDate desc";
 
-            dbConnection db = new dbConnection();
-            DataTable dt = db.GetDataTable(GlobalVariables.CS, q);
+           DBConnectionObject db = GlobalVariables.GetConnection();
+            DataTable dt = db.Connection.GetDataTable( q);
             List<Repairs> r = new List<Repairs>();
             if (dt.Rows.Count > 0)
             {
@@ -233,8 +233,8 @@ namespace Portal_MVC.Models
             //            "inner join core.ReporterType on core.ReporterType.id = core.CallReports.reportTypeID " +
             //            "where core.Repairs.id = " + repairID.ToString();
 
-            dbConnection db = new dbConnection();
-            DataTable dt = db.GetDataTable(GlobalVariables.CS, q);
+           DBConnectionObject db = GlobalVariables.GetConnection();
+            DataTable dt = db.Connection.GetDataTable( q);
             CallReports c = new CallReports();
             if (dt.Rows.Count > 0)
             {
@@ -314,8 +314,8 @@ namespace Portal_MVC.Models
                         "core.Repairs.PONumber = core.PurchaseOrders.id where core.Repairs.ID = " + repairID.ToString();
 
 
-            dbConnection db = new dbConnection();
-            DataTable dt = db.GetDataTable(GlobalVariables.CS, q);
+           DBConnectionObject db = GlobalVariables.GetConnection();
+            DataTable dt = db.Connection.GetDataTable( q);
             Repairs c = new Repairs();
             if (dt.Rows.Count > 0)
             {
@@ -376,7 +376,7 @@ namespace Portal_MVC.Models
                     {
                         q = "Select AssetName, AssetLocation from core.headassets where id = " + c.HeadAssetID.ToString();
 
-                        DataTable dt1 = db.GetDataTable(GlobalVariables.CS, q);
+                        DataTable dt1 = db.Connection.GetDataTable( q);
                         if(dt1.Rows.Count > 0)
                         {
                             if(dt1.Rows[0][0] != DBNull.Value || dt1.Rows[0][0].ToString() != "Error")
@@ -392,7 +392,7 @@ namespace Portal_MVC.Models
                     {
                         q = "Select AssetName, AssetLocation from core.subassets where id = " + c.SubAssetID.ToString();
 
-                        DataTable dt1 = db.GetDataTable(GlobalVariables.CS, q);
+                        DataTable dt1 = db.Connection.GetDataTable( q);
                         if (dt1.Rows.Count > 0)
                         {
                             if (dt1.Rows[0][0] != DBNull.Value || dt1.Rows[0][0].ToString() != "Error")
@@ -423,8 +423,8 @@ namespace Portal_MVC.Models
             string q = "select sum(core.Transactions.TransAmount) from core.Transactions " +
                         "where PONumber = " + PONumber.ToString();
 
-            dbConnection db = new dbConnection();
-            DataTable dt = db.GetDataTable(GlobalVariables.CS, q);
+           DBConnectionObject db = GlobalVariables.GetConnection();
+            DataTable dt = db.Connection.GetDataTable( q);
             double d = 0;
 
             if(dt.Rows.Count > 0)
@@ -448,9 +448,9 @@ namespace Portal_MVC.Models
                         " and  core.Repairs.RepairStatusId = 1 " +
                         " order by core.repairs.raisedDate Asc";
 
-            dbConnection db = new dbConnection();
+           DBConnectionObject db = GlobalVariables.GetConnection();
 
-            DataTable dt = db.GetDataTable(GlobalVariables.CS, q);
+            DataTable dt = db.Connection.GetDataTable(q);
             Repairs repairs = new Repairs();
             repairs.AllRepairs = new List<Repairs>();
 

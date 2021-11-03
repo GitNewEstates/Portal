@@ -36,8 +36,8 @@ namespace Portal_MVC.Models
                 //check email and password
                 string q = "select PWord, salt, customerid, UserType from core.customerportal where username = '" +
                         username.ToString() + "'";
-                dbConnection db = new dbConnection();
-                DataTable dt = db.GetDataTable(GlobalVariables.CS, q);
+               DBConnectionObject db = GlobalVariables.GetConnection();
+                DataTable dt = db.Connection.GetDataTable( q);
 
                 if(dt.Rows.Count > 0 && dt.Rows[0][0].ToString() != "Error")
                 {
@@ -66,7 +66,7 @@ namespace Portal_MVC.Models
                         nameQ = "select concat(firstname, ' ', surname) from users.users where id = " + r.CustomerID.ToString();
                     }
 
-                    DataTable namedb = db.GetDataTable(GlobalVariables.CS, nameQ);
+                    DataTable namedb = db.Connection.GetDataTable( nameQ);
                     if(namedb.Rows.Count > 0 && namedb.Rows[0][0].ToString() != "Error")
                     {
                         r.customerName = namedb.Rows[0][0].ToString();
@@ -88,8 +88,8 @@ namespace Portal_MVC.Models
                 string q = "Select pword, salt from core.customerportal where customerID = " 
                     + CustomerID.ToString() + " and usertype = " + usertype.ToString();
 
-                dbConnection db = new dbConnection();
-                DataTable dt = db.GetDataTable(GlobalVariables.CS, q);
+               DBConnectionObject db = GlobalVariables.GetConnection();
+                DataTable dt = db.Connection.GetDataTable( q);
 
                 string pword = "";
                 string salt = "";
@@ -114,8 +114,8 @@ namespace Portal_MVC.Models
             string q = "select PWord, Salt from core.customerportal where customerID = " + customerID.ToString();
 
 
-            dbConnection db = new dbConnection();
-            DataTable dt = db.GetDataTable(GlobalVariables.CS, q);
+           DBConnectionObject db = GlobalVariables.GetConnection();
+            DataTable dt = db.Connection.GetDataTable( q);
 
             List<string> r = new List<string>();
             if (dt.Rows.Count > 0 && dt.Rows[0][0].ToString() != "Error")
@@ -150,8 +150,8 @@ namespace Portal_MVC.Models
             v.Add(password);
             v.Add(salt);
 
-            dbConnection db = new dbConnection();
-            DataTable dt = db.UpdateCommand(GlobalVariables.CS, "Core.CustomerPortal", c, p, v, 
+           DBConnectionObject db = GlobalVariables.GetConnection();
+            DataTable dt = db.Connection.UpdateCommand( "Core.CustomerPortal", c, p, v, 
                 "where customerID = " + UserID.ToString() + " and UserType  = " + usertype.ToString());
 
             if (dt.Rows[0][0].ToString() == "Error")

@@ -80,6 +80,11 @@
     @Html.Partial("_DirectorMenu")
 }
 
+@if (Session["UserType"] != null && (int)Session["UserType"] == 2)
+{
+    @Html.Partial("_DirectorMenu")
+}
+
 @*keep this here so always shows at bottom of menu*@
 <ul class="CustomSideBarNav CustomMenuUL">
     <li>@Html.ActionLink("Log Out", "LogOut", "Home")</li>

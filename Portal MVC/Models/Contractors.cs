@@ -21,8 +21,8 @@ namespace Portal_MVC.Models
                         "inner join core.PurchaseOrders on core.Contractors.id = core.PurchaseOrders.SupplierID " +
                         "where core.PurchaseOrders.ID = " + PONumber.ToString();
 
-            dbConnection db = new dbConnection();
-            DataTable dt = db.GetDataTable(GlobalVariables.CS, q);
+           DBConnectionObject db = GlobalVariables.GetConnection();
+            DataTable dt = db.Connection.GetDataTable( q);
             Contractors returnC = new Contractors();
             returnC.Name = "";
 

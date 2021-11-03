@@ -8,7 +8,7 @@
 @if (Session["SelectedPropertyID"] == null || (int)Session["SelectedPropertyID"] == 0)
 {
     <div class="container">
-        @Html.Partial("_SelectProperty", Model)
+        @Html.Partial("_SelectEstate", Model)
     </div>
 }
 else
@@ -37,7 +37,7 @@ else
 
                         <td class="MobileCollapse">@s.TransDescription</td>
 
-                        @if (s.CrDr == "Cr")
+                        @if (s.TransTypeID == 1)
                                 {
                             <td class="MobileCollapse">@s.TransAmountstr</td>
                         }
@@ -46,7 +46,7 @@ else
                             <td class="MobileCollapse"></td>
                         }
 
-                        @if (s.CrDr == "Dr")
+                        @if (s.TransTypeID == 2)
                                 {
                             <td class="MobileCollapse">@s.TransAmountstr</td>
                         }

@@ -28,7 +28,6 @@
     </NuGetPackageImportStamp>
     <Use64BitIISExpress />
     <TypeScriptToolsVersion>3.1</TypeScriptToolsVersion>
-    
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -56,7 +55,7 @@
   <ItemGroup>
     <Reference Include="AttendanceVisits, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Desktop\DesktopMod\AttendanceVisits\bin\Debug\AttendanceVisits.dll</HintPath>
+      <HintPath>..\..\..\Desktop1\Desktop App\AttendanceVisits\bin\Debug\AttendanceVisits.dll</HintPath>
     </Reference>
     <Reference Include="BCrypt.Net, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\BCrypt.Net-PCL.1.0.1\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\BCrypt.Net.dll</HintPath>
@@ -67,11 +66,11 @@
     </Reference>
     <Reference Include="dbConn, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\PM Dev Current\DesktopMod\DocumentsDLL\bin\Debug\dbConn.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Development - Shared\Shared DLLs\dbConn\dbConn\bin\Debug\dbConn.dll</HintPath>
     </Reference>
     <Reference Include="DocumentsDLL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Desktop App\DesktopMod\DocumentsDLL\bin\Debug\DocumentsDLL.dll</HintPath>
+      <HintPath>..\..\..\Desktop1\Desktop App\DocumentsDLL\bin\Debug\DocumentsDLL.dll</HintPath>
     </Reference>
     <Reference Include="EstateDirectors, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -79,11 +78,11 @@
     </Reference>
     <Reference Include="EstatesDLL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\PM Dev Current\DesktopMod\EstatesDLL\bin\Debug\EstatesDLL.dll</HintPath>
+      <HintPath>..\..\..\Desktop1\DesktopMod\EstatesDLL\bin\Debug\EstatesDLL.dll</HintPath>
     </Reference>
     <Reference Include="MailServiceDLL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\PM Dev Current\DesktopMod\DocumentsDLL\bin\Debug\MailServiceDLL.dll</HintPath>
+      <HintPath>..\..\..\Desktop1\Desktop App\MailServiceDLL\bin\Debug\MailServiceDLL.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
@@ -107,11 +106,11 @@
     </Reference>
     <Reference Include="NotificationSettings, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\DesktopMod\NotificationSettings\bin\Debug\NotificationSettings.dll</HintPath>
+      <HintPath>..\..\..\Desktop1\Desktop App\NotificationSettings\bin\Debug\NotificationSettings.dll</HintPath>
     </Reference>
     <Reference Include="SettingsDLL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\PM Dev Current\DesktopMod\DocumentsDLL\bin\Debug\SettingsDLL.dll</HintPath>
+      <HintPath>..\..\..\Desktop1\Desktop App\SettingsDLL\bin\Debug\SettingsDLL.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.EJ2, Version=18.4500.0.32, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <HintPath>..\packages\Syncfusion.EJ2.MVC5.18.4.0.32\lib\net45\Syncfusion.EJ2.dll</HintPath>
@@ -233,6 +232,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AttendanceLogViewModel.cs" />
     <Compile Include="Models\BankAccount.cs" />
+    <Compile Include="Models\CaseListViewModel.cs" />
     <Compile Include="Models\ChangePasswordViewModel.cs" />
     <Compile Include="Models\Cookies.cs" />
     <Compile Include="Models\CommonMethods.cs" />
@@ -241,7 +241,7 @@
     <Compile Include="Models\DirectorSummaryViewModel.cs" />
     <Compile Include="Models\Documents.cs" />
     <Compile Include="Models\GlobalVariables.cs" />
-    <Compile Include="Models\HomeViewModels.cs" />
+    <Compile Include="Models\HomeViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Insurance.cs" />
     <Compile Include="Models\InsurancesViewModel.cs" />
@@ -259,6 +259,9 @@
     <Compile Include="Models\ServiceChargeBudgetViewModel.cs" />
     <Compile Include="Models\ServiceCharges.cs" />
     <Compile Include="Models\UsageData.cs" />
+    <Compile Include="Models\ViewModel.cs" />
+    <Compile Include="Portal_MVC\Models\HomeViewModels.cs" />
+    <Compile Include="Portal_MVC\Models\HomeViewModels1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\ApplicationSignInManager.cs" />
     <Compile Include="Security\ApplicationUserManager.cs" />
@@ -421,6 +424,7 @@
     <Content Include="webfonts\fa-solid-900.ttf" />
     <Content Include="webfonts\fa-solid-900.woff" />
     <Content Include="webfonts\fa-solid-900.woff2" />
+    <Content Include="Views\Cases\_CasesList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

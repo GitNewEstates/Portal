@@ -79,8 +79,8 @@ namespace Portal_MVC.Models
         {
             string q = "Select Postonly, emailonly, PostAndEmail from core.LeaseholderContactPreferences where CustomerID = " + CustomerID.ToString();
 
-            dbConnection db = new dbConnection();
-            DataTable dt = db.GetDataTable(GlobalVariables.CS, q);
+           DBConnectionObject db = GlobalVariables.GetConnection();
+            DataTable dt = db.Connection.GetDataTable( q);
             
             //set first to compare
             if(dt.Rows.Count> 0)
@@ -159,8 +159,8 @@ namespace Portal_MVC.Models
         {
             string q = "Select Postonly, emailonly, PostAndEmail from core.LeaseholderContactPreferences where CustomerID = " + CustomerID.ToString() + " and PropertyID = " + PropertyID.ToString();
 
-            dbConnection db = new dbConnection();
-            DataTable dt = db.GetDataTable(GlobalVariables.CS, q);
+           DBConnectionObject db = GlobalVariables.GetConnection();
+            DataTable dt = db.Connection.GetDataTable( q);
             AccountDetails.ContactPreferences ad = new AccountDetails.ContactPreferences();
             ad = AccountDetails.ContactPreferences.postandemail; //sets default
             //set first to compare
@@ -192,8 +192,8 @@ namespace Portal_MVC.Models
 
             AccountDetails r = new AccountDetails();
             List<AccountDetails> rList = new List<AccountDetails>();
-            dbConnection db = new dbConnection();
-            DataTable dt = db.GetDataTable(GlobalVariables.CS, q);
+           DBConnectionObject db = GlobalVariables.GetConnection();
+            DataTable dt = db.Connection.GetDataTable( q);
 
             foreach (DataRow dr in dt.Rows)
             {
@@ -251,8 +251,8 @@ namespace Portal_MVC.Models
 
             AccountDetails r = new AccountDetails();
             List<AccountDetails> rList = new List<AccountDetails>();
-            dbConnection db = new dbConnection();
-            DataTable dt = db.GetDataTable(GlobalVariables.CS, q);
+           DBConnectionObject db = GlobalVariables.GetConnection();
+            DataTable dt = db.Connection.GetDataTable( q);
 
             foreach (DataRow dr in dt.Rows)
             {
@@ -384,8 +384,8 @@ namespace Portal_MVC.Models
 
 
 
-            dbConnection db = new dbConnection();
-            DataTable dt = db.UpdateCommand(GlobalVariables.CS, "core.Leaseholders", colnames, PList, values, " where ID = " + customerID.ToString());
+           DBConnectionObject db = GlobalVariables.GetConnection();
+            DataTable dt = db.Connection.UpdateCommand( "core.Leaseholders", colnames, PList, values, " where ID = " + customerID.ToString());
         }
 
         public static void UpdateContactPreferences(Models.AccountDetails Account, int customerID)
@@ -423,8 +423,8 @@ namespace Portal_MVC.Models
             values.Add(postandemail);
            
 
-            dbConnection db = new dbConnection();
-            DataTable dt = db.UpdateCommand(GlobalVariables.CS, "core.LeaseholderContactPreferences", colnames, PList, values, " where customerID = " + customerID.ToString());
+           DBConnectionObject db = GlobalVariables.GetConnection();
+            DataTable dt = db.Connection.UpdateCommand( "core.LeaseholderContactPreferences", colnames, PList, values, " where customerID = " + customerID.ToString());
         }
         
         public static bool CompareAccountDetails(Models.MyAccountViewModel mv)
@@ -521,8 +521,8 @@ namespace Portal_MVC.Models
             List<object> values = new List<object>();
             values.Add(Email);
 
-            dbConnection db = new dbConnection();
-            DataTable dt = db.UpdateCommand(GlobalVariables.CS, "core.CustomerPortal", colnames, PList, values, " where customerID = " + CustomerID.ToString());
+           DBConnectionObject db = GlobalVariables.GetConnection();
+            DataTable dt = db.Connection.UpdateCommand( "core.CustomerPortal", colnames, PList, values, " where customerID = " + CustomerID.ToString());
 
         }
 
@@ -530,9 +530,13 @@ namespace Portal_MVC.Models
         {
             string q = "select count(unitID) from core.PropertyOwnership where OwnerID = " + CustomerID.ToString();
 
-            dbConnection db = new dbConnection();
-            int i = db.GetInteger(Models.GlobalVariables.CS, q);
-
+           DBConnectionObject db = GlobalVariables.GetConnection();
+            DataTable dt = db.Connection.GetDataTable( q);
+            int i = 0;
+            if(dt.Rows.Count > 0 && dt.Rows[0][0].ToString() != "Error")
+            {
+                int.TryParse(dt.Rows[0][0].ToString(), out i);
+            }
             return i;
         }
 
@@ -636,13 +640,13 @@ namespace Portal_MVC.Models
             }
 
 
-            dbConnection db = new dbConnection();
+           DBConnectionObject db = GlobalVariables.GetConnection();
             if(propertyID > 0)
             {
-                DataTable dt = db.UpdateCommand(GlobalVariables.CS, "core.LeaseholderContactPreferences", colnames, PList, values, " where customerID = " + customerID.ToString() + " and unitId = " + propertyID.ToString());
+                DataTable dt = db.Connection.UpdateCommand( "core.LeaseholderContactPreferences", colnames, PList, values, " where customerID = " + customerID.ToString() + " and unitId = " + propertyID.ToString());
             } else
             {
-                DataTable dt = db.UpdateCommand(GlobalVariables.CS, "core.LeaseholderContactPreferences", colnames, PList, values, " where customerID = " + customerID.ToString());
+                DataTable dt = db.Connection.UpdateCommand( "core.LeaseholderContactPreferences", colnames, PList, values, " where customerID = " + customerID.ToString());
             }
             
 
@@ -747,8 +751,8 @@ namespace Portal_MVC.Models
         //    }
 
 
-        //    dbConnection db = new dbConnection();
-        //    DataTable dt = db.UpdateCommand(GlobalVariables.CS, "core.LeaseholderContactPreferences", colnames, PList, values, " where customerID = " + customerID.ToString());
+        //   DBConnectionObject db = GlobalVariables.GetConnection();
+        //    DataTable dt = db.UpdateCommand( "core.LeaseholderContactPreferences", colnames, PList, values, " where customerID = " + customerID.ToString());
 
         //}
 

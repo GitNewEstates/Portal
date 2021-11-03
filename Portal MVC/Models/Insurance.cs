@@ -53,8 +53,8 @@ namespace Portal_MVC.Models
                 "inner join core.Units on core.units.EstateID = core.Insurances.EstateID where core.Units.id = " + unitID.ToString();
 
 
-            dbConn.dbConnection db = new dbConn.dbConnection();
-            DataTable dt = db.GetDataTable(GlobalVariables.CS, q);
+            dbConn.DBConnectionObject db = GlobalVariables.GetConnection();
+            DataTable dt = db.Connection.GetDataTable( q);
 
             List<Insurance> r = new List<Insurance>();
 
@@ -104,8 +104,8 @@ namespace Portal_MVC.Models
 
             Insurance r = new Insurance();
 
-            dbConn.dbConnection db = new dbConn.dbConnection();
-            DataTable dt = db.GetDataTable(GlobalVariables.CS, q);
+            dbConn.DBConnectionObject db = GlobalVariables.GetConnection();
+            DataTable dt = db.Connection.GetDataTable( q);
 
             if(dt.Rows.Count > 0 && dt.Rows[0][0].ToString() != "Error")
             {

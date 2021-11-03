@@ -25,9 +25,9 @@ namespace Portal_MVC.Models
                 "and OwnerID = " + customerID.ToString() +
                 "and PortalViewable = 1 order by AddedDate desc";
 
-            dbConnection db = new dbConnection();
+           DBConnectionObject db = GlobalVariables.GetConnection();
 
-            DataTable dt = db.GetDataTable(GlobalVariables.CS, q);
+            DataTable dt = db.Connection.GetDataTable( q);
 
             foreach(DataRow dr in dt.Rows)
             {
