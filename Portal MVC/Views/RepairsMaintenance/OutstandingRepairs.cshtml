@@ -4,13 +4,16 @@
 @if (Session["SelectedPropertyID"] == null || (int)Session["SelectedPropertyID"] == 0)
 {
     <div class="container">
-        @Html.Partial("_SelectProperty", Model.PropListViewModel)
+        @if (Model.PropListViewModel != null)
+        {
+            Html.Partial("_SelectProperty", Model.PropListViewModel);
+        }
     </div>
 }
-else
-{
-    if (Model.Repair.AllRepairs.Count > 0)
-    {
+        else
+        {
+            if (Model.Repair.AllRepairs.Count > 0)
+            {
     <h4>@Session["EstateName"] - Outstanding Repairs</h4>
     <div class="panel GradientBackground">
         <table class="table">

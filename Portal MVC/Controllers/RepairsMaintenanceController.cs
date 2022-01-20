@@ -30,7 +30,7 @@ namespace Portal_MVC.Controllers
                  
                     Session["SelectedPropertyID"] = PropID;
                     Session["SelectedProperty"] = Models.PropertyMethods.PropertyAddress(PropID);
-                    Session["IsDirector"] = EstateDirectors.EstateDirectorMethods.IsCustomerDirector(GlobalVariables.CS, PropID).ToString();
+                    Session["IsDirector"] = EstateDirectors.EstateDirectorMethods.IsCustomerDirector(GlobalVariables.GetConnection(), PropID).ToString();
                     Estates e = EstateMethods.GetEstatedByUnitID((int)Session["SelectedPropertyID"]);
 
                     Session["EstateName"] = e.EstateName;
@@ -117,7 +117,7 @@ namespace Portal_MVC.Controllers
                     {
                         Session["SelectedPropertyID"] = PropID;
                         Session["SelectedProperty"] = Models.PropertyMethods.PropertyAddress(PropID);
-                        Session["IsDirector"] = EstateDirectors.EstateDirectorMethods.IsCustomerDirector(GlobalVariables.CS, PropID).ToString();
+                        Session["IsDirector"] = EstateDirectors.EstateDirectorMethods.IsCustomerDirector(GlobalVariables.GetConnection(), PropID).ToString();
                         //Models.GlobalVariables.SelectedProperty = Models.PropertyMethods.PropertyAddress(PropID);
                         Estates e = EstateMethods.GetEstatedByUnitID((int)Session["SelectedPropertyID"]);
                         Session["EstateName"] = e.EstateName;

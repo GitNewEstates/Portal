@@ -1,0 +1,79 @@
+﻿@using Portal_MVC.Models
+@model Portal_MVC.Models.CaseDetailViewModel
+
+<div id="CaseID" style="display: block;">
+    @Model.EstateCase.id
+</div>
+
+<div class="">
+    <label class="col-sm-6 control-label">
+        Case Title
+    </label>
+    @Html.EJS().InPlaceEditor("TitleEditor").Mode(Syncfusion.EJ2.InPlaceEditor.RenderMode.Inline).Type(Syncfusion.EJ2.InPlaceEditor.InputType.Text).Value(Model.EstateCase.CaseTitle).Name("skill").Url("http://nemapi.azurewebsites.net/api/cases/api/cases/").PrimaryKey(Model.EstateCase.id).Adaptor(Syncfusion.EJ2.InPlaceEditor.AdaptorType.UrlAdaptor).Model(Model).ActionSuccess("actionSuccess").ActionFailure("actionFailure").Created("Titlecreated").Render()
+
+
+
+</div>
+
+<div class="">
+        <label class="col-sm-6 control-label">
+            Case Detail
+        </label>
+        @Html.EJS().InPlaceEditor("DescriptionEditor").Mode(Syncfusion.EJ2.InPlaceEditor.RenderMode.Popup).Type(Syncfusion.EJ2.InPlaceEditor.InputType.RTE).Value(Model.EstateCase.CaseDetails).Name("rte").Url("http://nemcustomerportal.azurewebsites.net/api/cases/api/cases/UpdateTitle").PrimaryKey(Model.EstateCase.id).Adaptor(Syncfusion.EJ2.InPlaceEditor.AdaptorType.UrlAdaptor).Model(Model).ActionSuccess("actionSuccess").ActionFailure("actionFailure").Created("created").Render()
+
+</div>
+
+<style>
+    .e-inplaceeditor .e-editable-value-wrapper .e-editable-value {
+        border-bottom: none;
+        color: inherit;
+        font-size: 24px;
+        font-family: inherit;
+    }
+
+    .control-label{
+        text-align: left;
+        font-size: 24px;
+        font-family: inherit;
+        width: 100%;
+        padding-left: 5px;
+    }
+
+
+    @@media (min-width: 992px) {
+        #DescriptionEditor {
+            width: 50%;
+        }
+    }
+
+    @@media (max-width: 768px) {
+    }
+</style>
+
+<script>
+    function actionSuccess(e) {
+        alert('Success')
+    }
+    function actionFailure(e) {
+        //get id
+        var id = document.getElementById("CaseID").innerText;
+        if (id != null) {
+            alert(id);
+        } else {
+            alert('id = null')
+        }
+
+        //$.post("cases/updateTitle",
+        //    {
+        //        id: 
+        //    })
+    }
+    var Title
+    function Titlecreated() {
+        Title = this;
+        alert(Title);
+    }
+</script>
+
+
+

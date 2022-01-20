@@ -111,10 +111,10 @@ namespace Portal_MVC.Models
                     new AttendanceVisits.AttendanceNotifications(GlobalVariables.GetConnection(),
                     AttendanceObj.EstateID,
                      AttendanceObj.id, AttendanceObj.AttendingUser, 2);
-                    //notification.SendColleagueNotifications();
-                    System.Threading.Thread t =
-                        new System.Threading.Thread(new System.Threading.ThreadStart(notification.SendColleagueNotifications));
-                    t.Start();
+                    notification.SendColleagueNotifications();
+                    //System.Threading.Thread t =
+                    //    new System.Threading.Thread(new System.Threading.ThreadStart(notification.SendColleagueNotifications));
+                    //t.Start();
                 }
                 catch (Exception ex)
                 {

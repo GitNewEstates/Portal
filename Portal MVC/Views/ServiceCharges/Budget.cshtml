@@ -18,56 +18,60 @@ else
     
     if (Model.Estate.BudgetList.Count > 0)
     {
+<div>
+    <h3>Service Charge Budget</h3>
+    <h4>@Model.Estate.EstateName</h4>
+
+    <h5>@Model.Estate.BudgetList[0].SCStartDate - @Model.Estate.BudgetList[0].SCEndDate</h5>
 
 
-    <div>
-        <h3>Service Charge Budget</h3>
-        <h4>@Model.Estate.EstateName</h4>
-        
-        <h5>@Model.Estate.BudgetList[0].SCStartDate - @Model.Estate.BudgetList[0].SCEndDate</h5>
-    
-           
-            @foreach (var schedule in Model.Estate.Schedules)
-            {
-                Model.Estate.TotalBudget = 0;
-                Model.Estate.TotalExp = 0;
-                if (Model.Estate.PieChartData != null)
+
+    @foreach (var schedule in Model.Estate.Schedules)
+    {
+        Model.Estate.TotalBudget = 0;
+        Model.Estate.TotalExp = 0;
+
+        @*@Html.EJS().Grid("Grid").DataSource(Model.Estate.BudgetList).Columns(col =>
                 {
-                    Model.Estate.PieChartData.Clear();
-                }
+                col.Field("SCHeading").HeaderText("Heading").Width("100").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).Add();
+                col.Field("SCCoststr").HeaderText("Amount").Width("50").Add();
+                col.Field("strApportionment").HeaderText("Apportionment").Width("50").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+                col.Field("strContribution").HeaderText("Contribution").Width("50").Add();
+                col.Field("BudgetNotes").HeaderText("Notes").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).HideAtMedia("(min-width: 700px)").Add();
+                }).AllowPaging(true).PageSettings(page => page.PageSize(5)).Render()*@
 
 
-                <div class="panel GradientBackground col-md-12 col-lg-10 col-lg-offset-1">
-                    <h4>Schedule: @schedule</h4>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Cost Heading</th>
-                                <th>Cost</th>
-                                <th>Apportionment</th>
-                                <th>Contribution</th>
-                                <th>Comments</th>
-                            </tr>
-                        </thead>
+        <div class="panel GradientBackground col-md-12 col-lg-10 col-lg-offset-1">
+            <h4>Schedule: @schedule</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Cost Heading</th>
+                        <th>Cost</th>
+                        <th>Apportionment</th>
+                        <th>Contribution</th>
+                        <th>Comments</th>
+                    </tr>
+                </thead>
 
-                        <tbody>
-                        @foreach (Estates item in Model.Estate.BudgetList)
+                <tbody>
+                    @foreach (Estates item in Model.Estate.BudgetList)
+                    {
+                        if (item.SCScheduleName == schedule && item.SCHeading != "Income" && item.SCHeading != "Roundings")
                         {
-                            if (item.SCScheduleName == schedule && item.SCHeading != "Income" && item.SCHeading != "Roundings")
-                            {
-                                Model.Estate.TotalBudget = Model.Estate.TotalBudget + item.SCCost;
-                                Model.Estate.TotalExp = Model.Estate.TotalExp + item.contribution;
-                                //implement when do pie charts
-                                //Model.Estate.PieChartData.Rows.Add();
-                                //int rowIndex = Model.Estate.PieChartData.Rows.Count - 1;
-                                //Model.Estate.PieChartData.Rows[rowIndex][0] = item.SCHeading;
-                                //Model.Estate.PieChartData.Rows[rowIndex][1] = item.SCCost;
+                            Model.Estate.TotalBudget = Model.Estate.TotalBudget + item.SCCost;
+                            Model.Estate.TotalExp = Model.Estate.TotalExp + item.contribution;
+                            //implement when do pie charts
+                            //Model.Estate.PieChartData.Rows.Add();
+                            //int rowIndex = Model.Estate.PieChartData.Rows.Count - 1;
+                            //Model.Estate.PieChartData.Rows[rowIndex][0] = item.SCHeading;
+                            //Model.Estate.PieChartData.Rows[rowIndex][1] = item.SCCost;
 
                             <tr>
                                 <td>
                                     <p>@item.SCHeading</p>
                                 </td>
-                                
+
                                 <td>
                                     <p>@item.SCCoststr</p>
                                 </td>
@@ -82,7 +86,7 @@ else
                                             <p>@item.strApportionment</p>
                                         </div>
                                     }
-                 
+
                                 </td>
                                 <td>
                                     @if (@item.strContribution == "£0.00")
@@ -93,9 +97,9 @@ else
                                     {
                                         <p>@item.strContribution</p>
                                     }
-                    
+
                                 </td>
-                                 <td class="MobileCollapse">
+                                <td class="MobileCollapse">
                                     @if (string.IsNullOrWhiteSpace(@item.BudgetNotes))
                                     {
                                         <p></p>
@@ -104,45 +108,34 @@ else
                                     {
                                         <p>@item.BudgetNotes</p>
                                     }
-                    
+
                                 </td>
                             </tr>
-                            }
                         }
-                            </tbody>
-                        <tfoot>
+                    }
+                </tbody>
+                <tfoot>
 
-                            <tr class="TotalsRow">
-                                <td><p>Totals</p></td>
-                                <td><p>@Controls.CurrencyString(Model.Estate.TotalBudget)</p></td>
-                                <td style="visibility: hidden">Placeholder</td>
-                                <td><p>@Controls.CurrencyString(Model.Estate.TotalExp)</p></td>
-                                <td style="visibility: hidden">Placeholder</td>
+                    <tr class="TotalsRow">
+                        <td><p>Totals</p></td>
+                        <td><p>@Controls.CurrencyString(Model.Estate.TotalBudget)</p></td>
+                        <td style="visibility: hidden">Placeholder</td>
+                        <td><p>@Controls.CurrencyString(Model.Estate.TotalExp)</p></td>
+                        <td style="visibility: hidden">Placeholder</td>
 
-                            </tr>
-                        </tfoot>
-                    </table>
-                 </div>
-                 <div class="col-md-6 col-lg-6">
-                     @*@GlobalVariables.PieChartDataTable = Model.Estate.PieChartData;*@
-                    @*<p><img src="BudgetPie.cshtml" /></p>*@
-                     @*@{
-                         System.Data.DataView dv = new System.Data.DataView(Model.Estate.PieChartData);
-                         var myChart = new Chart(width: 600, height: 400)
-                             .AddTitle("Chart Title")
-                             .AddSeries(
-                                 name: "Employee",
-                                 chartType: "Pie",
-                                  xValue: dv, xField: "Heading",
-                                  yValues: dv, yFields: "Cost")
-                             .Write();
-                     }*@
-                 
-                 </div>
-        
-            }
-        
-    </div>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+
+
+
+
+
+
+    }
+
+</div>
     } else
     {
         <div class="container">

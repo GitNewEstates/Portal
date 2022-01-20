@@ -145,6 +145,42 @@
     <script src="~/Scripts/Custom.js"></script>
     <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
 
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var loadimg2 = document.getElementById('ViewCaseIcon');
+            if (loadimg2 != null) {
+                alert(loadimg2)
+                loadimg2.addEventListener('click', LoadImage3);
+            } else {
+                //alert('null')
+            }
+
+
+            //UploadButton.preventDefault();
+            //UploadButton.addEventListener('click', test);
+
+            function LoadImage3(e) {
+                e.preventDefault();
+                alert('clicked')
+                //SetUploadedImages(files);
+            }
+        });
+
+
+
+    </script>
+
+    <script>
+        function rowSelected(args) {
+            var grid = document.getElementById("SelectionAPI").ej2_instances[0];
+            var selectedrowindex = grid.getSelectedRowIndexes();  // get the selected row indexes.
+            alert(selectedrowindex); // to alert the selected row indexes.
+            var selectedrecords = grid.getSelectedRecords();  // get the selected records.
+        }
+    </script>
+
+
 </body>
 
 

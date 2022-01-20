@@ -1,5 +1,9 @@
 ﻿@using Portal_MVC.Models
 @model Portal_MVC.Models.CaseListViewModel
 
-@Html.EJS().Grid("Grid").Render()
+
+
+@Html.EJS().Grid("Grid").DataSource(Model.CaseList).Columns(col =>{
+    col.Field("CaseTitle").HeaderText("Title").Width("100").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).Add();
+}).Render()
 

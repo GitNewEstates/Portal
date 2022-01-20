@@ -55,6 +55,14 @@ namespace Portal_MVC.Controllers
                         }
                         else
                         {
+                            
+
+                            foreach(Models.Properties p in homeViewModel.PropListViewModel.PropertyList)
+                            {
+                                PropID = p.ID;
+                                PropName = p.Address1;
+                            }
+
                             GetPropertySummary(homeViewModel, PropID, PropName);
                             return View(homeViewModel.viewName, homeViewModel.anonObj);
                         }

@@ -1,0 +1,120 @@
+﻿@using Portal_MVC.Models
+@model Portal_MVC.Models.CaseListViewModel
+
+@{
+
+    List<object> commands = new List<object>();
+    commands.Add(new { type = "customButton1", buttonOption = new { iconCss = "e-icons e-eye", cssClass = "ViewCaseDetails" } });
+}
+    <h3>Cases</h3>
+    
+    <div>
+       
+        @Html.EJS().Grid("Grid").DataSource(Model.CaseList).RowSelected("rowSelected").Columns(col =>
+   {
+       col.HeaderText("").MinWidth("20").Width("20").MaxWidth("20").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).Commands(commands).Add();
+       col.Field("id").HeaderText("ID").MinWidth("20").Width("20").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).Add();
+       col.Field("CaseTitle").HeaderText("Title").Width("150").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).Add();
+       col.Field("TargetCompletionString").HeaderText("Target Date").Width("75").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).Add();
+       col.Field("StatusStr").HeaderText("Status").HideAtMedia("(min-width: 700px)").Width("50").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).Add();
+       col.Field("CaseOwner.UserFullName").HeaderText("Case Owner").Width("100").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).Add();
+
+
+   }).AllowPaging(true).PageSettings(page => page.PageSize(5)).Render()
+    </div>
+
+
+
+
+    <style>
+        .GridActionBtn {
+            border: none;
+        }
+
+        .ViewCaseIcon {
+            cursor: pointer
+        }
+    </style>
+
+
+    <script>
+        
+        document.addEventListener("click", function (args) {
+
+
+            if (args.target.parentElement.classList.contains('ViewCaseDetails')) {
+               
+
+                var grid = document.getElementById("Grid").ej2_instances[0];
+                if (grid != null) {
+                    var selectedrowindex = grid.getSelectedRowIndexes();  // get the selected row indexes.
+                   
+                    var selectedrecords = grid.getSelectedRecords();  // get the selected records.
+                    console.log(selectedrecords)
+
+                    var selectedCase = selectedrecords[0];
+                   
+                    var id = selectedCase["id"];
+                    var url = '/Cases/CaseDetail/' + id;
+                    
+                   
+                    window.location.href = url;
+
+
+                } else {
+                    alert('grid is null')
+                }
+
+            @*console.log("click event triggered")
+            var url = '@Url.Action("About", "Home", new { OrderID = 100})';
+            window.location.rel='nofollow' href = url;*@
+
+        }
+    });
+
+
+
+        function rowSelected(args) {
+            //alert("row index: " + args.row.getAttribute('aria-rowindex'));
+            var grid = document.getElementById("Grid").ej2_instances[0];
+            if (grid != null) {
+                var selectedrowindex = grid.getSelectedRowIndexes();  // get the selected row indexes.
+                //alert(selectedrowindex); // to alert the selected row indexes.
+                var selectedrecords = grid.getSelectedRecords();  // get the selected records.
+                var jsonobj = JSON.stringify(selectedrecords);
+                var selectedCase = selectedrecords[0];
+                // alert(jsonobj);
+                var id = selectedCase["id"];
+                var url = '/Cases/CaseDetail/' + id;
+                console.log(selectedCase["id"]);
+                //var count = 0;
+                //for (item in selectedrecords) {
+
+
+                //    for (item1 in item) {
+                //    count += 1;
+                //        console.log('Count: ' + count);
+                //    }
+                //}
+
+                // selectedrecords.forEach(LogItem)
+
+                //console.log(selectedCase);
+                window.location.href = url;
+
+                //$.getJSON(url, function (data) {
+                //    alert(data);
+                //});
+
+            } else {
+                alert('grid is null')
+            }
+
+
+        }
+
+        function LogItem(item) {
+            console.log(item);
+        }
+
+    </script>

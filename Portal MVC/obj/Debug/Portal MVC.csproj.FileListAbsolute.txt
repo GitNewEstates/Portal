@@ -1208,7 +1208,6 @@ C:\Users\User\OneDrive - New Estate Management\Apps\Documents\Development - Loca
 C:\Users\User\OneDrive - New Estate Management\Apps\Documents\Development - Local\Portal MVC\Portal\Portal MVC\bin\HtmlAgilityPack.xml
 C:\Users\User\OneDrive - New Estate Management\Apps\Documents\Development - Local\Portal MVC\Portal\Portal MVC\bin\BouncyCastle.Crypto.xml
 C:\Users\User\OneDrive - New Estate Management\Apps\Documents\Development - Local\Portal MVC\Portal\Portal MVC\bin\System.Buffers.xml
-C:\Users\User\OneDrive - New Estate Management\Apps\Documents\Development - Local\Portal MVC\Portal\Portal MVC\obj\Debug\Portal MVC.csprojAssemblyReference.cache
 C:\Users\User\OneDrive - New Estate Management\Apps\Documents\Development - Local\Portal MVC\Portal\Portal MVC\obj\Debug\Portal MVC.csproj.CoreCompileInputs.cache
 C:\Users\User\OneDrive - New Estate Management\Apps\Documents\Development - Local\Portal MVC\Portal\Portal MVC\obj\Debug\Portal MVC.csproj.CopyComplete
 C:\Users\User\OneDrive - New Estate Management\Apps\Documents\Development - Local\Portal MVC\Portal\Portal MVC\obj\Debug\Portal MVC.dll
@@ -1309,3 +1308,7 @@ C:\Users\User\OneDrive - New Estate Management\Apps\Documents\Development - Loca
 C:\Users\User\OneDrive - New Estate Management\Apps\Documents\Development - Local\Portal MVC\Portal\Portal MVC\bin\AttendanceVisits.dll.config
 C:\Users\User\OneDrive - New Estate Management\Apps\Documents\Development - Local\Portal MVC\Portal\Portal MVC\bin\NotificationSettings.dll
 C:\Users\User\OneDrive - New Estate Management\Apps\Documents\Development - Local\Portal MVC\Portal\Portal MVC\bin\NotificationSettings.pdb
+C:\Users\User\OneDrive - New Estate Management\Apps\Documents\Development - Local\Portal MVC\Portal\Portal MVC\bin\EstateDirectors.dll
+C:\Users\User\OneDrive - New Estate Management\Apps\Documents\Development - Local\Portal MVC\Portal\Portal MVC\bin\Syncfusion.SfRichTextRibbon.WPF.dll
+C:\Users\User\OneDrive - New Estate Management\Apps\Documents\Development - Local\Portal MVC\Portal\Portal MVC\bin\Syncfusion.SfRichTextRibbon.WPF.xml
+C:\Users\User\OneDrive - New Estate Management\Apps\Documents\Development - Local\Portal MVC\Portal\Portal MVC\obj\Debug\Portal MVC.csproj.AssemblyReference.cache

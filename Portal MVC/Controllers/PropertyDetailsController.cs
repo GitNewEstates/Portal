@@ -24,7 +24,7 @@ namespace Portal_MVC.Controllers
                         {
                             Session["SelectedPropertyID"] = PropID;
                             Session["SelectedProperty"] = PropName;
-                            Session["IsDirector"] = EstateDirectors.EstateDirectorMethods.IsCustomerDirector(GlobalVariables.CS, PropID).ToString();
+                            Session["IsDirector"] = EstateDirectors.EstateDirectorMethods.IsCustomerDirector(GlobalVariables.GetConnection(), PropID).ToString();
                         }
 
                         Models.InsurancesViewModel vm = new Models.InsurancesViewModel();

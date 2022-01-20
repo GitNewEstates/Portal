@@ -40,8 +40,15 @@ $(document).ready(function () {
     });
 
 
-    document.getElementById('SelectImg1').addEventListener('click', LoadImage);
-    document.getElementById('SelectImg2').addEventListener('click', LoadImage2);
+    var loadimg = document.getElementById('SelectImg1');
+    if (loadimg != null){
+        loadimg.addEventListener('click', LoadImage);
+      }
+
+    var loadimg1 = document.getElementById('SelectImg1');
+    if (loadimg1 != null) {
+        loadimg1.addEventListener('click', LoadImage2);
+    }
 
    
     //UploadButton.preventDefault();
@@ -53,11 +60,12 @@ $(document).ready(function () {
         //SetUploadedImages(files);
     }
 
-    function LoadImage2(e) {
-        e.preventDefault();
-        LaunchPicker(AddUploadedImage);
-        //SetUploadedImages(files);
-    }
+    //function LoadImage2(e) {
+    //    e.preventDefault();
+    //    alert('Load Image 2');
+    //    LaunchPicker(AddUploadedImage);
+    //    //SetUploadedImages(files);
+    //}
 
     function AddUploadedImage(e) {
         alert(e.filesUploaded.length);

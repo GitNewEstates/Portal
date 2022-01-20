@@ -24,7 +24,8 @@ namespace Portal_MVC.Models
 
         public static dbConn.DBConnectionObject GetConnection()
         {
-            return new dbConn.DBConnectionObject(dbConn.ConnectionType.SQLDB, GlobalVariables.CS, dbConn.DBType.SQL);
+            return new dbConn.DBConnectionObject(dbConn.ConnectionType.SQLDB, 
+                GlobalVariables.CS, dbConn.DBType.SQL);
            
         }
 
