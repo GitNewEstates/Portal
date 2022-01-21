@@ -509,6 +509,8 @@ namespace Portal_MVC.Models
                 "core.ServiceChargeBudgetDetail on core.ServiceChargeBudgetDetail.BudgetID = " +
                 "core.ServiceChargeBudgets.ID where core.ServiceChargeBudgets.ID = " + Estate.BudgetId.ToString() +
                 "and core.ServiceChargeBudgets._status = 'Completed' " +
+                "and core.servicechargebudgetdetail.headingid <> 1 " +
+                "and core.servicechargebudgetdetail.headingid <> 2 " +
                 "order by displayorder asc";
 
            DBConnectionObject db = GlobalVariables.GetConnection();

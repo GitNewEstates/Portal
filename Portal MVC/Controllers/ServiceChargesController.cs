@@ -98,6 +98,8 @@ namespace Portal_MVC.Controllers
         {
             if (Session["CustomerID"] != null)
             {
+
+
                 Models.ServiceChargeBudgetViewModel mv = new Models.ServiceChargeBudgetViewModel();
                 mv.Estate = new Estates();
                 mv.Estate.BudgetId = BudgetID;

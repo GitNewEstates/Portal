@@ -31,17 +31,17 @@ else
         Model.Estate.TotalBudget = 0;
         Model.Estate.TotalExp = 0;
 
-        @*@Html.EJS().Grid("Grid").DataSource(Model.Estate.BudgetList).Columns(col =>
+        @Html.EJS().Grid("Grid").DataSource(Model.Estate.BudgetList).Columns(col =>
                 {
                 col.Field("SCHeading").HeaderText("Heading").Width("100").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).Add();
                 col.Field("SCCoststr").HeaderText("Amount").Width("50").Add();
                 col.Field("strApportionment").HeaderText("Apportionment").Width("50").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
                 col.Field("strContribution").HeaderText("Contribution").Width("50").Add();
                 col.Field("BudgetNotes").HeaderText("Notes").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).HideAtMedia("(min-width: 700px)").Add();
-                }).AllowPaging(true).PageSettings(page => page.PageSize(5)).Render()*@
+                }).AllowPaging(true).Render()
 
 
-        <div class="panel GradientBackground col-md-12 col-lg-10 col-lg-offset-1">
+        @*<div class="panel GradientBackground col-md-12 col-lg-10 col-lg-offset-1">
             <h4>Schedule: @schedule</h4>
             <table class="table">
                 <thead>
@@ -126,7 +126,7 @@ else
                     </tr>
                 </tfoot>
             </table>
-        </div>
+        </div>*@
 
 
 
@@ -143,6 +143,16 @@ else
         </div>
     }
 }
+
+<script>
+
+        // get the grid element instances 
+      // document.getElementById('Grid').style.height = "1000px";
+       
+  
+  
+    
+</script>
 
 
 
