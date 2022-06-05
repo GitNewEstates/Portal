@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "iI4dRuoxI7pnISg7CalMnC0mkhOuAvbv1y84n4KA8tRO/584LhTum6/ITXdRElc0v+Gz431M1FeNl30KCODJug==",
+  "dgSpecHash": "Y/tU0wJQNIstVDg6IlRdpqXk+vj9fcjFBTos4nq1GZayM1NwhauHJ0pkC+92Gu1eJX9eRsPJSBdiyewWaqzqIA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\adamn\\OneDrive\\Documents\\Development Local\\Portal\\Portal\\API\\API.csproj",
+  "projectFilePath": "C:\\Users\\adamn\\OneDrive\\Documents\\Development Local\\Folder\\Portal\\API\\API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\adamn\\.nuget\\packages\\microsoft.aspnetcore.cors\\2.2.0\\microsoft.aspnetcore.cors.2.2.0.nupkg.sha512",
     "C:\\Users\\adamn\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
@@ -35,7 +35,7 @@
     "C:\\Users\\adamn\\.nuget\\packages\\system.security.accesscontrol\\4.7.0\\system.security.accesscontrol.4.7.0.nupkg.sha512",
     "C:\\Users\\adamn\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512",
     "C:\\Users\\adamn\\.nuget\\packages\\system.text.encodings.web\\4.5.0\\system.text.encodings.web.4.5.0.nupkg.sha512",
-    "C:\\Users\\adamn\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.13\\microsoft.netcore.app.host.win-x64.5.0.13.nupkg.sha512",
+    "C:\\Users\\adamn\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.17\\microsoft.netcore.app.host.win-x64.5.0.17.nupkg.sha512",
     "C:\\Users\\adamn\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\5.0.0\\microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512",
     "C:\\Users\\adamn\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\5.0.0\\microsoft.windowsdesktop.app.ref.5.0.0.nupkg.sha512",
     "C:\\Users\\adamn\\.nuget\\packages\\microsoft.netcore.app.ref\\5.0.0\\microsoft.netcore.app.ref.5.0.0.nupkg.sha512"

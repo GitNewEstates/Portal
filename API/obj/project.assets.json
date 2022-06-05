@@ -1156,11 +1156,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\adamn\\OneDrive\\Documents\\Development Local\\Portal\\Portal\\API\\API.csproj",
+      "projectUniqueName": "C:\\Users\\adamn\\OneDrive\\Documents\\Development Local\\Folder\\Portal\\API\\API.csproj",
       "projectName": "API",
-      "projectPath": "C:\\Users\\adamn\\OneDrive\\Documents\\Development Local\\Portal\\Portal\\API\\API.csproj",
+      "projectPath": "C:\\Users\\adamn\\OneDrive\\Documents\\Development Local\\Folder\\Portal\\API\\API.csproj",
       "packagesPath": "C:\\Users\\adamn\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\adamn\\OneDrive\\Documents\\Development Local\\Portal\\Portal\\API\\obj\\",
+      "outputPath": "C:\\Users\\adamn\\OneDrive\\Documents\\Development Local\\Folder\\Portal\\API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -1223,7 +1223,7 @@
           },
           {
             "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[5.0.13, 5.0.13]"
+            "version": "[5.0.17, 5.0.17]"
           },
           {
             "name": "Microsoft.NETCore.App.Ref",
@@ -1242,7 +1242,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
       }
     }
   }

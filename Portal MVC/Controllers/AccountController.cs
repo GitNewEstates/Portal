@@ -107,7 +107,8 @@ namespace Portal_MVC.Controllers
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
-            return View();
+            LoginViewModel model = new LoginViewModel();
+            return View(model);
         }
 
         //
