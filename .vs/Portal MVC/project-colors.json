@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "07e2e913-6050-4281-88d9-09cb55dcf708": {
+      "ProjectGuid": "07e2e913-6050-4281-88d9-09cb55dcf708",
+      "DisplayName": "Portal MVC",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}

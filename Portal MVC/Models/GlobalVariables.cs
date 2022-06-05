@@ -20,7 +20,7 @@ namespace Portal_MVC.Models
 
         public static int LogUsage { get; set; } //0 = true 1 = false
 
-      
+        public static APIConnectionObject APIConnection { get; set; }
 
         public static dbConn.DBConnectionObject GetConnection()
         {

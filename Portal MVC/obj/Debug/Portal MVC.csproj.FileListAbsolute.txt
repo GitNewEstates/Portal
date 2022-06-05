@@ -1702,3 +1702,13 @@ C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\obj
 C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\obj\Debug\Portal MVC.csproj.CopyComplete
 C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\obj\Debug\Portal MVC.dll
 C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\obj\Debug\Portal MVC.pdb
+C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\Microsoft.Extensions.Configuration.dll
+C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\Microsoft.Extensions.Primitives.dll
+C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\Microsoft.Identity.Client.dll
+C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\Microsoft.Extensions.Configuration.xml
+C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\Microsoft.Extensions.Configuration.Abstractions.xml
+C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\Microsoft.Extensions.Primitives.xml
+C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\Microsoft.Identity.Client.xml
+C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\NEMModels.dll
+C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\NEMModels.pdb
