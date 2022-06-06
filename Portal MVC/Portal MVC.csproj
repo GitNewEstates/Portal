@@ -67,7 +67,7 @@
     </Reference>
     <Reference Include="dbConn, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Development - Shared\Shared DLLs\dbConn\dbConn\bin\Debug\dbConn.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\OneDrive - New Estate Management\Development - Shared\Shared DLLs\dbConn\dbConn\bin\Debug\dbConn.dll</HintPath>
     </Reference>
     <Reference Include="DocumentsDLL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -141,6 +141,9 @@
     <Reference Include="System.IdentityModel" />
     <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.9\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
     <Reference Include="System.Numerics" />
     <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -297,6 +300,7 @@
     <Compile Include="Models\ServiceChargeBudgetViewModel.cs" />
     <Compile Include="Models\ServiceCharges.cs" />
     <Compile Include="Models\UsageData.cs" />
+    <Compile Include="Models\Utils.cs" />
     <Compile Include="Models\ViewModel.cs" />
     <Compile Include="Portal_MVC\Models\HomeViewModels.cs" />
     <Compile Include="Portal_MVC\Models\HomeViewModels1.cs" />
@@ -483,12 +487,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\NEMModels\NEMModels.csproj">
-      <Project>{7a813f1e-e5e8-4ba9-84af-0d3fea1b609d}</Project>
-      <Name>NEMModels</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

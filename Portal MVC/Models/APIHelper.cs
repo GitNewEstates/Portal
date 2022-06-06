@@ -50,6 +50,12 @@ namespace Portal_MVC.Models
         {
             try
             {
+                if (GlobalVariables.APIConnection == null)
+                {
+                    await APIAuthExtensions.SetAPIConfigAsync();
+                
+                }
+
                 //return json string
                 var HttpClient = new HttpClient();
 
@@ -83,6 +89,11 @@ namespace Portal_MVC.Models
 
             try
             {
+                if (GlobalVariables.APIConnection == null)
+                {
+                    await APIAuthExtensions.SetAPIConfigAsync();
+
+                }
                 HttpClient client = new HttpClient();
 
                 DoAuth(client);
@@ -119,6 +130,7 @@ namespace Portal_MVC.Models
 
             try
             {
+              
                 HttpClient client = new HttpClient();
 
                 DoAuth(client);
@@ -168,8 +180,8 @@ namespace Portal_MVC.Models
 
     public class APIAuthConfig
     {
-        public string Instance { get; set; }
-        public string TenantId { get; set; }
+        public string Instance { get { return "https://login.microsoftonline.com/3579906a-9c37-4856-8cfa-ac07feeb3867"; } }
+        public string TenantId { get { return "3579906a-9c37-4856-8cfa-ac07feeb3867"; } }
 
         public string Authority
         {
@@ -179,10 +191,10 @@ namespace Portal_MVC.Models
             }
         }
 
-        public string ClientId { get; set; }
-        public string ClientSecret { get; set; }
-        public string BaseAddress { get; set; }
-        public string ResourceId { get; set; }
+        public string ClientId { get { return "34b94f15-90d1-4eba-96ac-eccd394e8938"; } }
+        public string ClientSecret { get { return "ig18Q~Eb6UCCOgTEgJYE54_6T1tRuKXCqRMI5cbl"; } }
+        public string BaseAddress { get { return "https://localhost:7104/api/"; } }
+        public string ResourceId { get { return "api://3cf69ecd-aa7f-4048-ad19-26dc8823255c/.default"; } }
 
 
 
@@ -193,24 +205,25 @@ namespace Portal_MVC.Models
     {
         //public static APIAuthConfig ReadFromFile(string path)
         //{
-        //    //IConfiguration configuration;
+        //    IConfiguration configuration;
 
-        //    //var builder = new ConfigurationBuilder()
-        //    //    .SetBasePath(Directory.GetCurrentDirectory())
-        //    //    .AddJsonFile(path);
+        //    var builder = new ConfigurationBuilder()
+        //        .SetBasePath(Directory.GetCurrentDirectory())
+        //        .AddJsonFile(path);
 
-        //    //configuration = builder.Build();
+        //    configuration = builder.Build();
 
 
 
-        //    //return configuration.Get<APIAuthConfig>();
+        //    return configuration.Get<APIAuthConfig>();
         //}
 
 
         public async static Task SetAPIConfigAsync()
         {
-            //Models.APIAuthConfig authconfig = new APIAuthConfig();//Models.APIAuthExtensions.ReadFromFile("appsettings.json");
-
+            Models.APIAuthConfig authconfig = new APIAuthConfig();//Models.APIAuthExtensions.ReadFromFile("appsettings.json");
+            GlobalVariables.APIConnection = new APIConnectionObject();
+            GlobalVariables.APIConnection.AuthConfigObject = authconfig; 
             //IConfidentialClientApplication app;
 
             //app = (IConfidentialClientApplication)ConfidentialClientApplicationBuilder.Create(authconfig.ClientId)
@@ -224,13 +237,14 @@ namespace Portal_MVC.Models
 
             //try
             //{
-            //    result =  AuthenticationResult("", true, "", new DateTimeOffset()); // await app.AcquireTokenForClient(resouceIds).ExecuteAsync();
+                
+            //    //result = await app.AcquireTokenForClient(resouceIds).ExecuteAsync();
 
             //    GlobalVariables.APIConnection.JWTBearerToken = result.AccessToken;
 
             //    //set the auth properties in the static apiauth object
             //    //****REmove Secret***** not needed once have jwt token
-            //    authconfig.ClientSecret = "";
+            //    //authconfig.ClientSecret = "";
             //    GlobalVariables.APIConnection.AuthConfigObject = authconfig;
 
             //}

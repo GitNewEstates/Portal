@@ -1,6 +1,0 @@
-C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\NEMModels\bin\Debug\NEMModels.dll
-C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\NEMModels\bin\Debug\NEMModels.pdb
-C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\NEMModels\obj\Debug\NEMModels.csproj.AssemblyReference.cache
-C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\NEMModels\obj\Debug\NEMModels.csproj.CoreCompileInputs.cache
-C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\NEMModels\obj\Debug\NEMModels.dll
-C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\NEMModels\obj\Debug\NEMModels.pdb

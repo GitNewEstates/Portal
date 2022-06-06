@@ -1557,9 +1557,7 @@ C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin
 C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\HTMLEmail.dll
 C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\Property Management Module.exe
 C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\CustomErrorHandling.dll
-C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\MimeKit.dll
 C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\MailKit.dll
-C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\SendGrid.dll
 C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\HtmlAgilityPack.dll
 C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\NotesDLL.dll
 C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\Syncfusion.Shared.Wpf.dll
@@ -1586,7 +1584,6 @@ C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin
 C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\Syncfusion.SfGridCommon.WPF.dll
 C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\BouncyCastle.Crypto.dll
 C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\System.Buffers.dll
-C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\StarkbankEcdsa.dll
 C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\Syncfusion.SfShared.Wpf.dll
 C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\SharpCompress.dll
 C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\DeltaCompressionDotNet.MsDelta.dll
@@ -1649,12 +1646,8 @@ C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin
 C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\Property Management Module.pdb
 C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\Property Management Module.exe.config
 C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\CustomErrorHandling.pdb
-C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\MimeKit.pdb
-C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\MimeKit.xml
 C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\MailKit.pdb
 C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\MailKit.xml
-C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\SendGrid.pdb
-C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\SendGrid.xml
 C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\HtmlAgilityPack.pdb
 C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\HtmlAgilityPack.xml
 C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\NotesDLL.pdb
@@ -1710,5 +1703,6 @@ C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin
 C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\Microsoft.Extensions.Configuration.Abstractions.xml
 C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\Microsoft.Extensions.Primitives.xml
 C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\Microsoft.Identity.Client.xml
-C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\NEMModels.dll
-C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\NEMModels.pdb
+C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\dbConn.dll
+C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\System.Net.Http.Formatting.dll
+C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\System.Net.Http.Formatting.xml

@@ -116,9 +116,9 @@ namespace Portal_MVC.Controllers
         [HttpPost]
         [AllowAnonymous]
         //[ValidateAntiForgeryToken]
-        public ActionResult Login(LoginViewModel model, string returnUrl,string forwardurl = "")
+        public async Task< ActionResult> Login(LoginViewModel model, string returnUrl,string forwardurl = "")
         {
-            
+            APIRepairs repairs = await RepairExtensions.GetRepair(585);
 
             if (!ModelState.IsValid)
             {

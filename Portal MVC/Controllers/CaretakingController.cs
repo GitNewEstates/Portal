@@ -38,94 +38,94 @@ namespace Portal_MVC.Controllers
             
         }
         [HttpPost]
-        public ActionResult SubmitAttendance(Models.AttendanceLogViewModel ViewModel)
-        {
+        //public ActionResult SubmitAttendance(Models.AttendanceLogViewModel ViewModel)
+        //{
 
-            if (Session["CustomerID"] != null && (int)Session["CustomerID"] > 0)
-            {
-                if (ModelState.IsValid)
-                {
-                    ViewModel.AttendanceObj.AttendingUser = (int)Session["CustomerID"];
-                    ViewModel.Insert();
-                    //System.Threading.Thread t = new System.Threading.Thread(new System.Threading.ThreadStart(ViewModel.Insert));
-                    //t.Start();
-                    return View("CaretakingDashboard");
-                }
-                else
-                {
+        //    if (Session["CustomerID"] != null && (int)Session["CustomerID"] > 0)
+        //    {
+        //        if (ModelState.IsValid)
+        //        {
+        //            //ViewModel.AttendanceObj.AttendingUser = (int)Session["CustomerID"];
+        //            //ViewModel.Insert();
+        //            //System.Threading.Thread t = new System.Threading.Thread(new System.Threading.ThreadStart(ViewModel.Insert));
+        //            //t.Start();
+        //            return View("CaretakingDashboard");
+        //        }
+        //        else
+        //        {
 
-                    ViewModel.SetLists();
-                }
-                return View("AttendanceLog", ViewModel);
-            }
-            else
-            {
-                return View("../Home/NotLoggedIn");
-            }
+        //            ViewModel.SetLists();
+        //        }
+        //        return View("AttendanceLog", ViewModel);
+        //    }
+        //    else
+        //    {
+        //        return View("../Home/NotLoggedIn");
+        //    }
 
 
 
-        }
-        public ActionResult AttendanceHistory(int PropID = 0, string PropName = "", bool IsEstate = false )
-        {
+        //}
+        //public ActionResult AttendanceHistory(int PropID = 0, string PropName = "", bool IsEstate = false )
+        //{
             
-            Models.AttendanceHistoryViewModel vm = new Models.AttendanceHistoryViewModel();
+        //    Models.AttendanceHistoryViewModel vm = new Models.AttendanceHistoryViewModel();
            
-            if (Session["CustomerID"] != null && (int)Session["CustomerID"] > 0)
-            {
-                if (PropID == 0)
-                {
+        //    if (Session["CustomerID"] != null && (int)Session["CustomerID"] > 0)
+        //    {
+        //        if (PropID == 0)
+        //        {
 
-                    PropID = (int)Session["SelectedPropertyID"];
-                } else
-                {
-                    Session["SelectedPropertyID"] = PropID;
-                    Session["SelectedProperty"] = PropName;
-                }
+        //            PropID = (int)Session["SelectedPropertyID"];
+        //        } else
+        //        {
+        //            Session["SelectedPropertyID"] = PropID;
+        //            Session["SelectedProperty"] = PropName;
+        //        }
 
-                if ((int)Session["UserType"] > 1 && !IsEstate) //get list of properties when not customer type
-                {
+        //        if ((int)Session["UserType"] > 1 && !IsEstate) //get list of properties when not customer type
+        //        {
                     
-                        vm.PropListViewModel = new Models.ServiceChargeBudgetViewModel();
-                        vm.PropListViewModel.PropertyList = Models.PropertyMethods.GetAllEstates();
-                        vm.PropListViewModel.ControllerName = "Caretaking";
-                        vm.PropListViewModel.ViewName = "AttendanceHistory";
-                        Session["SelectedPropertyID"] = 0;
+        //                vm.PropListViewModel = new Models.ServiceChargeBudgetViewModel();
+        //                vm.PropListViewModel.PropertyList = Models.PropertyMethods.GetAllEstates();
+        //                vm.PropListViewModel.ControllerName = "Caretaking";
+        //                vm.PropListViewModel.ViewName = "AttendanceHistory";
+        //                Session["SelectedPropertyID"] = 0;
 
-                } 
-                else if (PropID == 0 && (int)Session["UserType"] == 1) //display unit list where is customer type and property not selected
-                {
-                    vm.PropListViewModel = new Models.ServiceChargeBudgetViewModel();
-                    vm.PropListViewModel.PropertyList = Models.PropertyMethods.GetAllOwnedProperties((int)Session["CustomerID"]);
-                    vm.PropListViewModel.ControllerName = "Caretaking";
-                    vm.PropListViewModel.ViewName = "ViewAttendanceHistory";
-                }
-                else if(PropID > 0 && (int)Session["UserType"] == 1)
-                {
-                    //this point propid will be unit id. need estateid
-                    Models.Estates es =
-                         Models.EstateMethods.GetEstatedByUnitID(PropID);
+        //        } 
+        //        else if (PropID == 0 && (int)Session["UserType"] == 1) //display unit list where is customer type and property not selected
+        //        {
+        //            vm.PropListViewModel = new Models.ServiceChargeBudgetViewModel();
+        //            vm.PropListViewModel.PropertyList = Models.PropertyMethods.GetAllOwnedProperties((int)Session["CustomerID"]);
+        //            vm.PropListViewModel.ControllerName = "Caretaking";
+        //            vm.PropListViewModel.ViewName = "ViewAttendanceHistory";
+        //        }
+        //        else if(PropID > 0 && (int)Session["UserType"] == 1)
+        //        {
+        //            //this point propid will be unit id. need estateid
+        //            Models.Estates es =
+        //                 Models.EstateMethods.GetEstatedByUnitID(PropID);
 
-                    vm.SetAttendanceList(es.EstatedID);
-                }
-                else if ((int)Session["UserType"] > 1 && PropID > 0 && IsEstate) //colleague and estate selected{
-                {
-                    vm.SetAttendanceList(PropID);
-                }
-                else
-                {
-                    vm.SelectedPropertyid = PropID;
-                    vm.SetAttendanceList();
+        //            vm.SetAttendanceList(es.EstatedID);
+        //        }
+        //        else if ((int)Session["UserType"] > 1 && PropID > 0 && IsEstate) //colleague and estate selected{
+        //        {
+        //            vm.SetAttendanceList(PropID);
+        //        }
+        //        else
+        //        {
+        //            vm.SelectedPropertyid = PropID;
+        //            vm.SetAttendanceList();
 
-                }
+        //        }
 
-                return View("ViewAttendanceHistory", vm);
-            }
-            else
-            {
-                return View("../Home/NotLoggedIn");
-            }
-        }
+        //        return View("ViewAttendanceHistory", vm);
+        //    }
+        //    else
+        //    {
+        //        return View("../Home/NotLoggedIn");
+        //    }
+        //}
         
         public ViewResult AttendanceDetail(int VisitID = 0, bool isStatic = false, string guid = "")
         {

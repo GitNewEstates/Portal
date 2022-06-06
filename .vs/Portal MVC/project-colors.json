@@ -5,7 +5,17 @@
       "ProjectGuid": "07e2e913-6050-4281-88d9-09cb55dcf708",
       "DisplayName": "Portal MVC",
       "ColorIndex": 0
+    },
+    "7a813f1e-e5e8-4ba9-84af-0d3fea1b609d": {
+      "ProjectGuid": "7a813f1e-e5e8-4ba9-84af-0d3fea1b609d",
+      "DisplayName": "NEMModels",
+      "ColorIndex": 1
+    },
+    "7da7f867-2cd9-4699-9492-f09e40c8c4cb": {
+      "ProjectGuid": "7da7f867-2cd9-4699-9492-f09e40c8c4cb",
+      "DisplayName": "API",
+      "ColorIndex": 2
     }
   },
-  "NextColorIndex": 1
+  "NextColorIndex": 3
 }

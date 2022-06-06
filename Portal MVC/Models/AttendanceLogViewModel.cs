@@ -12,7 +12,7 @@ namespace Portal_MVC.Models
     {
         public AttendanceLogViewModel()
         {
-            AttendanceObj = new AttendanceVisits.AttendanceVisits();
+            //AttendanceObj = new AttendanceVisits.AttendanceVisits();
             MaxDate = DateTime.Now;
             VisitDate = DateTime.Now;
             SendCustomerNotification = true;
@@ -23,7 +23,7 @@ namespace Portal_MVC.Models
         public int SelectedPropertyid { get; set; }
         public List<SelectListItem> AttendanceTypes { get; set; }
         public int SelectedAttendanceTypeID { get; set; }
-        public AttendanceVisits.AttendanceVisits AttendanceObj { get; set; }
+       // public AttendanceVisits.AttendanceVisits AttendanceObj { get; set; }
 
         public string ImageUrls { get; set; }
 
@@ -65,70 +65,70 @@ namespace Portal_MVC.Models
                 });
             }
 
-            List<AttendanceVisits.AttendanceType> types = 
-                AttendanceVisits.AttendanceTypeMethods.AllAttendanceTypesList(GlobalVariables.GetConnection());
-            AttendanceTypes = new List<SelectListItem>();
+            //List<AttendanceVisits.AttendanceType> types = 
+            //    AttendanceVisits.AttendanceTypeMethods.AllAttendanceTypesList(GlobalVariables.GetConnection());
+            //AttendanceTypes = new List<SelectListItem>();
 
-            foreach(AttendanceVisits.AttendanceType t in types)
-            {
-                bool IsSelected = false;
-                if (t.id == SelectedAttendanceTypeID && SelectedAttendanceTypeID > 0)
-                {
-                    IsSelected = true;
-                }
+            //foreach(AttendanceVisits.AttendanceType t in types)
+            //{
+            //    bool IsSelected = false;
+            //    if (t.id == SelectedAttendanceTypeID && SelectedAttendanceTypeID > 0)
+            //    {
+            //        IsSelected = true;
+            //    }
 
-                AttendanceTypes.Add(new SelectListItem
-                {
-                    Text = t.Name,
-                    Value = t.id.ToString(),
-                    Selected = IsSelected
-                });
-            }
+            //    AttendanceTypes.Add(new SelectListItem
+            //    {
+            //        Text = t.Name,
+            //        Value = t.id.ToString(),
+            //        Selected = IsSelected
+            //    });
+            //}
 
         }
         
-        public void Insert()
-        {
-            AttendanceObj.AttendanceTypeID = SelectedAttendanceTypeID;
-            AttendanceObj.EstateID = SelectedPropertyid;
-            if (!string.IsNullOrWhiteSpace(ImageUrls))
-            {
-                AttendanceObj.urlString = ImageUrls.Trim();
-            }
-            AttendanceObj.VisitDate = VisitDate;
-            AttendanceObj.VisitDescription = AttendanceDescription;
-            AttendanceObj.FireAlarmTest = FireAlarm;
-            AttendanceObj.NotifyCustomer = SendCustomerNotification;
-            AttendanceObj.PortalViewable = PortalViewable;
+        //public void Insert()
+        //{
+        //    AttendanceObj.AttendanceTypeID = SelectedAttendanceTypeID;
+        //    AttendanceObj.EstateID = SelectedPropertyid;
+        //    if (!string.IsNullOrWhiteSpace(ImageUrls))
+        //    {
+        //        AttendanceObj.urlString = ImageUrls.Trim();
+        //    }
+        //    AttendanceObj.VisitDate = VisitDate;
+        //    AttendanceObj.VisitDescription = AttendanceDescription;
+        //    AttendanceObj.FireAlarmTest = FireAlarm;
+        //    AttendanceObj.NotifyCustomer = SendCustomerNotification;
+        //    AttendanceObj.PortalViewable = PortalViewable;
 
-            AttendanceObj.Insert(GlobalVariables.GetConnection());
+        //    AttendanceObj.Insert(GlobalVariables.GetConnection());
 
-            if (AttendanceObj.id > 0)
-            {
-                try
-                {
-                    AttendanceVisits.AttendanceNotifications notification =
-                    new AttendanceVisits.AttendanceNotifications(GlobalVariables.GetConnection(),
-                    AttendanceObj.EstateID,
-                     AttendanceObj.id, AttendanceObj.AttendingUser, 2);
-                    notification.SendColleagueNotifications();
-                    //System.Threading.Thread t =
-                    //    new System.Threading.Thread(new System.Threading.ThreadStart(notification.SendColleagueNotifications));
-                    //t.Start();
-                }
-                catch (Exception ex)
-                {
-                    string h = ex.Message;
-                }
+        //    //if (AttendanceObj.id > 0)
+        //    //{
+        //    //    try
+        //    //    {
+        //    //        AttendanceVisits.AttendanceNotifications notification =
+        //    //        new AttendanceVisits.AttendanceNotifications(GlobalVariables.GetConnection(),
+        //    //        AttendanceObj.EstateID,
+        //    //         AttendanceObj.id, AttendanceObj.AttendingUser, 2);
+        //    //        notification.SendColleagueNotifications();
+        //    //        //System.Threading.Thread t =
+        //    //        //    new System.Threading.Thread(new System.Threading.ThreadStart(notification.SendColleagueNotifications));
+        //    //        //t.Start();
+        //    //    }
+        //    //    catch (Exception ex)
+        //    //    {
+        //    //        string h = ex.Message;
+        //    //    }
 
                 
-            } else
-            {
-                //error
-            }
+        //    //} else
+        //    //{
+        //    //    //error
+        //    //}
 
 
-        }
+        //}
     }
 
     public class AttendanceHistoryViewModel
@@ -146,17 +146,17 @@ namespace Portal_MVC.Models
         public string ViewName { get; set; }
         public string ControllerName { get; set; }
 
-        public AttendanceVisits.AttendanceVisits Visit { get; set; }
+        //public AttendanceVisits.AttendanceVisits Visit { get; set; }
         public void GetVisit(int id)
         {
-            Visit = new AttendanceVisits.AttendanceVisits();
-            Visit = AttendanceVisits.AttendanceVisitsMethods.GetAttendanceObj(id, GlobalVariables.GetConnection());
-               // new AttendanceVisits.ImageParams { width = 300, height = 300 });
+            //Visit = new AttendanceVisits.AttendanceVisits();
+            //Visit = AttendanceVisits.AttendanceVisitsMethods.GetAttendanceObj(id, GlobalVariables.GetConnection());
+            //   // new AttendanceVisits.ImageParams { width = 300, height = 300 });
 
-            EstateName = EstatesDLL.EstateMethods.GetEstateNameByID(Visit.EstateID, GlobalVariables.GetConnection());
+            //EstateName = EstatesDLL.EstateMethods.GetEstateNameByID(Visit.EstateID, GlobalVariables.GetConnection());
         }
 
-        public List<AttendanceVisits.AttendanceVisits> AttendanceList { get; set; }
+       // public List<AttendanceVisits.AttendanceVisits> AttendanceList { get; set; }
         public List<Syncfusion.EJ2.Navigations.AccordionAccordionItem> AccordionList { get; set; }
         public string TestString { get; set; }
         
@@ -181,75 +181,75 @@ namespace Portal_MVC.Models
             }
         }
 
-        public void SetAttendanceList(int estateID = 0)
-        {
-            int estateid = 0;
-            if (estateID == 0)
-            {
-                string q = $"select estateid from core.units where id ={SelectedPropertyid}";
+        //public void SetAttendanceList(int estateID = 0)
+        //{
+        //    int estateid = 0;
+        //    if (estateID == 0)
+        //    {
+        //        string q = $"select estateid from core.units where id ={SelectedPropertyid}";
 
-                dbConn.DBConnectionObject db = GlobalVariables.GetConnection();
-                System.Data.DataTable dt = db.Connection.GetDataTable(q);
+        //        dbConn.DBConnectionObject db = GlobalVariables.GetConnection();
+        //        System.Data.DataTable dt = db.Connection.GetDataTable(q);
               
-                if (dt.Rows.Count > 0 && dt.Rows[0][0].ToString() != "Error")
-                {
-                    int.TryParse(dt.Rows[0][0].ToString(), out estateid);
-                }
-            } else
-            {
-                estateid = estateID;
-            }
+        //        if (dt.Rows.Count > 0 && dt.Rows[0][0].ToString() != "Error")
+        //        {
+        //            int.TryParse(dt.Rows[0][0].ToString(), out estateid);
+        //        }
+        //    } else
+        //    {
+        //        estateid = estateID;
+        //    }
 
-            AttendanceList = new List<AttendanceVisits.AttendanceVisits>();
-            AttendanceList = 
-                AttendanceVisits.AttendanceVisitsMethods.AttendanceHistoryList(estateid, GlobalVariables.GetConnection(),
-                new AttendanceVisits.ImageParams { width = 200, height = 100 });
+        //    AttendanceList = new List<AttendanceVisits.AttendanceVisits>();
+        //    AttendanceList = 
+        //        AttendanceVisits.AttendanceVisitsMethods.AttendanceHistoryList(estateid, GlobalVariables.GetConnection(),
+        //        new AttendanceVisits.ImageParams { width = 200, height = 100 });
 
-            AccordionList = new List<Syncfusion.EJ2.Navigations.AccordionAccordionItem>();
-            foreach(AttendanceVisits.AttendanceVisits item in AttendanceList)
-            {
-                AccordionList.Add(new Syncfusion.EJ2.Navigations.AccordionAccordionItem
-                { Header = item.VisitDate.ToLongDateString(),
-                Content = ContentHTML(item)});
-            }
-        }
+        //    AccordionList = new List<Syncfusion.EJ2.Navigations.AccordionAccordionItem>();
+        //    foreach(AttendanceVisits.AttendanceVisits item in AttendanceList)
+        //    {
+        //        AccordionList.Add(new Syncfusion.EJ2.Navigations.AccordionAccordionItem
+        //        { Header = item.VisitDate.ToLongDateString(),
+        //        Content = ContentHTML(item)});
+        //    }
+        //}
 
-        private string ContentHTML(AttendanceVisits.AttendanceVisits item)
-        {
-            string r  =
-                "<div class=\"row\"><div class=\"container\"> " +
-                       "<div>" +
-                            "<h4>" + item.AttendanceStr + "</H4>" +
-                        "</div>" +
-                        "<div class=\"col-lg-5 col-md-6 col-sm-12 col-xs-12\" style=\"padding-left: 0px !Important\">" +
-                            "<p>" + item.VisitDescription + "</p>" +
+        //private string ContentHTML(AttendanceVisits.AttendanceVisits item)
+        //{
+        //    string r  =
+        //        "<div class=\"row\"><div class=\"container\"> " +
+        //               "<div>" +
+        //                    "<h4>" + item.AttendanceStr + "</H4>" +
+        //                "</div>" +
+        //                "<div class=\"col-lg-5 col-md-6 col-sm-12 col-xs-12\" style=\"padding-left: 0px !Important\">" +
+        //                    "<p>" + item.VisitDescription + "</p>" +
                             
-                        "</div>" +
-                        "<div class=\"col-lg-7 col-md-6 col-sm-12 col-xs-12\">";
+        //                "</div>" +
+        //                "<div class=\"col-lg-7 col-md-6 col-sm-12 col-xs-12\">";
 
           
-            foreach(string url in item.UrlList)
-            {
+        //    foreach(string url in item.UrlList)
+        //    {
                
-                r += "<img class=\"img-responsive thumbPreview\" style=\"display: inline-block; padding-right: 5px; margin-bottom: 5px !Important; vertical-align: top;\" src = \"" + url + "\" />";
+        //        r += "<img class=\"img-responsive thumbPreview\" style=\"display: inline-block; padding-right: 5px; margin-bottom: 5px !Important; vertical-align: top;\" src = \"" + url + "\" />";
                 
-            }
+        //    }
 
-            r += "</div></div>";
+        //    r += "</div></div>";
    
 
-            r += "<div class=\"container\">" +
-                      "<div class=\"\">" +
-                          "<div>" +
-                             "<a style=\"width:150px !Important;\" class=\"CentreSmallButton\" href=\"/Caretaking/AttendanceDetail?VisitID=" + item.id.ToString() + "\">view more</a>" +
-                          "</div>" +
-                  "</div>" +
-              "</div>";
+        //    r += "<div class=\"container\">" +
+        //              "<div class=\"\">" +
+        //                  "<div>" +
+        //                     "<a style=\"width:150px !Important;\" class=\"CentreSmallButton\" href=\"/Caretaking/AttendanceDetail?VisitID=" + item.id.ToString() + "\">view more</a>" +
+        //                  "</div>" +
+        //          "</div>" +
+        //      "</div>";
 
          
 
-            return r;
-        }
+        //    return r;
+        //}
 
         
     }

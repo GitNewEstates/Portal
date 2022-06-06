@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data;
-using dbConn;
 using System.Globalization;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
+using System.Collections.ObjectModel;
 
 namespace Portal_MVC.Models
 {
@@ -69,8 +71,8 @@ namespace Portal_MVC.Models
                 repairID.ToString() + ")";
 
 
-           DBConnectionObject db = GlobalVariables.GetConnection();
-            db.Connection.ExecuteCommand( q);
+            //DBConnectionObject db = GlobalVariables.GetConnection();
+            GlobalVariables.GetConnection().Connection.ExecuteCommand( q);
 
 
         }
@@ -80,8 +82,8 @@ namespace Portal_MVC.Models
             string q = "delete from core.repairupdates where customerID = " + customerID.ToString() +
                 " and repairID = " + RepairID.ToString();
 
-           DBConnectionObject db = GlobalVariables.GetConnection();
-            db.Connection.ExecuteCommand( q);
+            //DBConnectionObject db = GlobalVariables.GetConnection();
+            GlobalVariables.GetConnection().Connection.ExecuteCommand( q);
         }
 
         public static void InsertReportUpdateFailure(int RepairID, int CustomerID)
@@ -108,8 +110,8 @@ namespace Portal_MVC.Models
                 DateTime.Now
             };
 
-           DBConnectionObject db = GlobalVariables.GetConnection();
-            db.Connection.InsertCommandCurrent( "core.RepairUpdateFailures", c, p, o);
+            //DBConnectionObject db = GlobalVariables.GetConnection();
+            GlobalVariables.GetConnection().Connection.InsertCommandCurrent( "core.RepairUpdateFailures", c, p, o);
         }
 
         public static bool IsCustomerRegisteredForUpdates(int RepairID, int customerID)
@@ -119,8 +121,8 @@ namespace Portal_MVC.Models
 
             bool r = false;
 
-           DBConnectionObject db = GlobalVariables.GetConnection();
-            DataTable dt = db.Connection.GetDataTable( q);
+           //DBConnectionObject db = GlobalVariables.GetConnection();
+            DataTable dt = GlobalVariables.GetConnection().Connection.GetDataTable( q);
 
 
             if (dt.Rows.Count > 0 && dt.Rows[0][0].ToString() != "Error")
@@ -148,9 +150,9 @@ namespace Portal_MVC.Models
                         "= core.RepairStatus.id where core.repairs.EstateID = " + EstateID.ToString() +
                         " order by core.repairs.raisedDate Desc";
 
-           DBConnectionObject db = GlobalVariables.GetConnection();
+           //DBConnectionObject db = GlobalVariables.GetConnection();
 
-            DataTable dt = db.Connection.GetDataTable(q);
+            DataTable dt = GlobalVariables.GetConnection().Connection.GetDataTable(q);
             Repairs repairs = new Repairs();
             repairs.AllRepairs = new List<Repairs>();
 
@@ -188,8 +190,8 @@ namespace Portal_MVC.Models
             string q = "select updateDate, updatenote from core.RepairUpdateNote " +
                 " where repairID = " + repairID.ToString() + " order by UpdateDate desc";
 
-           DBConnectionObject db = GlobalVariables.GetConnection();
-            DataTable dt = db.Connection.GetDataTable( q);
+           //DBConnectionObject db = GlobalVariables.GetConnection();
+            DataTable dt = GlobalVariables.GetConnection().Connection.GetDataTable( q);
             List<Repairs> r = new List<Repairs>();
             if (dt.Rows.Count > 0)
             {
@@ -233,8 +235,8 @@ namespace Portal_MVC.Models
             //            "inner join core.ReporterType on core.ReporterType.id = core.CallReports.reportTypeID " +
             //            "where core.Repairs.id = " + repairID.ToString();
 
-           DBConnectionObject db = GlobalVariables.GetConnection();
-            DataTable dt = db.Connection.GetDataTable( q);
+           //DBConnectionObject db = GlobalVariables.GetConnection();
+            DataTable dt = GlobalVariables.GetConnection().Connection.GetDataTable( q);
             CallReports c = new CallReports();
             if (dt.Rows.Count > 0)
             {
@@ -314,8 +316,8 @@ namespace Portal_MVC.Models
                         "core.Repairs.PONumber = core.PurchaseOrders.id where core.Repairs.ID = " + repairID.ToString();
 
 
-           DBConnectionObject db = GlobalVariables.GetConnection();
-            DataTable dt = db.Connection.GetDataTable( q);
+           
+            DataTable dt = GlobalVariables.GetConnection().Connection.GetDataTable( q);
             Repairs c = new Repairs();
             if (dt.Rows.Count > 0)
             {
@@ -376,7 +378,7 @@ namespace Portal_MVC.Models
                     {
                         q = "Select AssetName, AssetLocation from core.headassets where id = " + c.HeadAssetID.ToString();
 
-                        DataTable dt1 = db.Connection.GetDataTable( q);
+                        DataTable dt1 = GlobalVariables.GetConnection().Connection.GetDataTable( q);
                         if(dt1.Rows.Count > 0)
                         {
                             if(dt1.Rows[0][0] != DBNull.Value || dt1.Rows[0][0].ToString() != "Error")
@@ -392,7 +394,7 @@ namespace Portal_MVC.Models
                     {
                         q = "Select AssetName, AssetLocation from core.subassets where id = " + c.SubAssetID.ToString();
 
-                        DataTable dt1 = db.Connection.GetDataTable( q);
+                        DataTable dt1 = GlobalVariables.GetConnection().Connection.GetDataTable( q);
                         if (dt1.Rows.Count > 0)
                         {
                             if (dt1.Rows[0][0] != DBNull.Value || dt1.Rows[0][0].ToString() != "Error")
@@ -423,8 +425,8 @@ namespace Portal_MVC.Models
             string q = "select sum(core.Transactions.TransAmount) from core.Transactions " +
                         "where PONumber = " + PONumber.ToString();
 
-           DBConnectionObject db = GlobalVariables.GetConnection();
-            DataTable dt = db.Connection.GetDataTable( q);
+           //DBConnectionObject db = GlobalVariables.GetConnection();
+            DataTable dt = GlobalVariables.GetConnection().Connection.GetDataTable( q);
             double d = 0;
 
             if(dt.Rows.Count > 0)
@@ -448,9 +450,9 @@ namespace Portal_MVC.Models
                         " and  core.Repairs.RepairStatusId = 1 " +
                         " order by core.repairs.raisedDate Asc";
 
-           DBConnectionObject db = GlobalVariables.GetConnection();
+           //DBConnectionObject db = GlobalVariables.GetConnection();
 
-            DataTable dt = db.Connection.GetDataTable(q);
+            DataTable dt = GlobalVariables.GetConnection().Connection.GetDataTable(q);
             Repairs repairs = new Repairs();
             repairs.AllRepairs = new List<Repairs>();
 
@@ -494,4 +496,332 @@ namespace Portal_MVC.Models
 
 
     }
+
+    public class APIRepairs
+    {
+        public string JSONSerialize()
+        {
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
+        }
+
+        public APIRepairs()
+        {
+
+
+            APIError = new APIError(ErrorType.None);
+            //UpdateUsers = new ObservableCollection<RepairUpdateUser>();
+        }
+
+        public APIError APIError { get; set; }
+
+        public int ID { get; set; }
+        public int ReportID { get; set; }
+        public int HeadAssetID { get; set; }
+        public int SubAssetID { get; set; }
+        public int RepairStatusID { get; set; }
+
+        private string _RepairStatus;
+        public string RepairStatus
+        {
+            get
+            {
+                return _RepairStatus;
+            }
+            set
+            {
+                _RepairStatus = value;
+            }
+        }
+
+        private string _RepairTitle;
+        public string RepairTitle
+        {
+            get
+            {
+                return _RepairTitle;
+            }
+            set
+            {
+                _RepairTitle = value;
+
+            }
+        }
+
+
+        private string _RepairDetails;
+        public string RepairDetails
+        {
+            get
+            {
+                return _RepairDetails;
+            }
+            set
+            {
+                _RepairDetails = value;
+            }
+        }
+
+        public DateTime RaisedDate { get; set; }
+
+        public DateTime TargetDate { get; set; }
+        public DateTime CompletionDate { get; set; }
+        public string CompletionDateStr { get; set; }
+
+        public int QuoteID { get; set; }
+        public long DocInstanceID { get; set; }
+
+
+        public int EstateID { get; set; }
+
+        private int ValueChanged { get; set; }
+        private double _EstimatedAmount;
+        public double EstimatedAmount
+        {
+            get
+            {
+                return _EstimatedAmount;
+            }
+            set
+            {
+                _EstimatedAmount = value;
+            }
+        }
+
+        public int SupplierID { get; set; }
+
+        public double CostStr { get; set; }
+        public double FinalCost { get; set; }
+
+        //public ObservableCollection<RepairUpdateUser> UpdateUsers { get; set; }
+
+        //public void InsertPOtoRepair()
+        //{
+        //    string q = "Update core.repairs set PONumber = " + this.PONumber.ToString() +
+        //        " where id = " + this.ID.ToString();
+
+
+        //    GlobalVariables.ConnectionObject.Connection.ExecuteCommand( q);
+        //}
+
+        //used when update note done on separate string. Also a static method available
+
+
+
+    }
+
+    public static class RepairExtensions
+    {
+        public static APIRepairs DeserializedJSONToRepair(string json = "")
+        {
+            APIRepairs obj = new APIRepairs();
+            if (!string.IsNullOrEmpty(json))
+            {
+                try
+                {
+                    obj =  JsonConvert.DeserializeObject<APIRepairs>(json);
+                }
+                catch (Exception ex)
+                {
+                    obj.APIError = new APIError(ErrorType.APIValidationError)
+                    {
+                        HasError = true,
+                        Message = $"Error Deserializing JSON to Repair. Error: {ex.Message}"
+                    };
+                }
+            }
+
+            return obj;
+        }
+
+        public static string SerializeRepairToJson(Repairs repair)
+        {
+            return Newtonsoft.Json.JsonConvert.SerializeObject(repair);
+        }
+
+        public static APIError IsRepairValid(APIRepairs repair)
+        {
+            //tests for validation
+            //Mandator Fields are :
+            //RepairDetails
+            //RepairTitle
+            //EstateID
+            //CallReportID
+            //target completion Date
+
+            if (string.IsNullOrEmpty(repair.RepairDetails))
+            {
+                return new APIError(ErrorType.APIValidationError)
+                {
+                    HasError = true,
+                    Message = "No Repair Details Provided"
+                };
+
+            }
+            if (string.IsNullOrEmpty(repair.RepairTitle))
+            {
+                return new APIError(ErrorType.APIValidationError)
+                {
+                    HasError = true,
+                    Message = "No Repair Title Provided"
+                };
+
+            }
+            if (repair.EstateID == 0)
+            {
+                return new APIError(ErrorType.APIValidationError)
+                {
+                    HasError = true,
+                    Message = "No Estate ID Provided"
+                };
+
+            }
+
+            if (repair.ReportID == 0)
+            {
+                return new APIError(ErrorType.APIValidationError)
+                {
+                    HasError = true,
+                    Message = "No Call Report ID Provided"
+                };
+
+            }
+
+            DateTime test = new DateTime();
+            if (repair.TargetDate == test)
+            {
+                return new APIError(ErrorType.APIValidationError)
+                {
+                    HasError = true,
+                    Message = "No Target Date Provided"
+                };
+            }
+
+            return new APIError(ErrorType.None);
+        }
+
+        public async static Task<APIRepairs> GetRepair(int RepairID)
+        {
+            
+            await APIAuthExtensions.SetAPIConfigAsync();
+
+            
+            string ReturnJson = await
+                GlobalVariables.APIConnection.CallAPIGetEndPointAsync($"Repairs/{RepairID}");
+            return ReturnRepairFromAPICall(ReturnJson);
+
+
+        }
+        private static APIRepairs ReturnRepairFromAPICall(string json)
+        {
+            //will return a repair deserialized from the json returned from API
+            //if error occurs with API call will set the APIError on the repair
+            //and reset the apierror object on the global api connection object
+            APIRepairs repair = new APIRepairs();
+            if (!GlobalVariables.APIConnection.APIError.HasError)
+            {
+                //serialize
+                repair = DeserializedJSONToRepair(json);
+            }
+            else
+            {
+                string errormessage = GlobalVariables.APIConnection.APIError.Message;
+                ErrorType ty = GlobalVariables.APIConnection.APIError.errorType;
+
+                repair.APIError.HasError = true;
+                repair.APIError.errorType = ty;
+                repair.APIError.Message = errormessage;
+
+                GlobalVariables.APIConnection.ResetAPIError();
+            }
+
+            return repair;
+        }
+
+
+
+
+
+    }
+    public class RepairUpdateUser
+    {
+        public RepairUpdateUser()
+        {
+            APIError = new APIError(ErrorType.None);
+        }
+        public APIError APIError { get; set; }
+        public int RepairID { get; set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
+
+        public bool SendNotificationEmail { get; set; }
+        public int UserID { get; set; }
+
+        List<string> ColNames = new List<string> { "RepairID", "Name", "Email" };
+        List<string> ParamNames = new List<string> { "@RepairID", "@Name", "@Email" };
+        private List<object> Objects()
+        {
+            return new List<object> { RepairID, Name, Email };
+        }
+
+
+       
+
+    }
+
+    public static class RepairUpdateUserMethods
+    {
+        public static string JsonSerialize(RepairUpdateUser repair)
+        {
+
+            return Newtonsoft.Json.JsonConvert.SerializeObject(repair);
+        }
+        public static RepairUpdateUser DeserializedJSONToRepairUpdateUser(string json = "")
+        {
+            RepairUpdateUser obj = new RepairUpdateUser();
+            if (!string.IsNullOrEmpty(json))
+            {
+                try
+                {
+                    obj = JsonConvert.DeserializeObject<RepairUpdateUser>(json);
+                }
+                catch (Exception ex)
+                {
+                    obj.APIError = new APIError(ErrorType.APIValidationError)
+                    {
+                        HasError = true,
+                        Message = $"Error Deserializing JSON to Repair Update. Error: {ex.Message}"
+                    };
+                }
+            }
+
+            return obj;
+        }
+        public async static Task<ObservableCollection<RepairUpdateUser>> GetRepairUpdateUsersAsync(int _repairId)
+        {
+            string q = $"select * from core.RepairUpdateNotifications where repairid = {_repairId}";
+
+            DataTable dt = await
+                GlobalVariables.GetConnection().Connection.GetDataTableAsync(q);
+            ObservableCollection<RepairUpdateUser> r = new ObservableCollection<RepairUpdateUser>();
+            APIError error = DBInsertErrorMethods.DBErrorCheck(dt);
+
+            if (!error.HasError)
+            {
+                foreach (DataRow dr in dt.Rows)
+                {
+                    r.Add(new RepairUpdateUser()
+                    {
+                        Name = dr[2].ToString(),
+                        Email = dr[3].ToString()
+                    });
+                }
+            }
+
+            return r;
+        }
+
+       
+    }
+
+
 }
