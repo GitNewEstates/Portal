@@ -118,7 +118,7 @@ namespace Portal_MVC.Controllers
         //[ValidateAntiForgeryToken]
         public async Task< ActionResult> Login(LoginViewModel model, string returnUrl,string forwardurl = "")
         {
-            APIRepairs repairs = await RepairExtensions.GetRepair(585);
+            
 
             if (!ModelState.IsValid)
             {

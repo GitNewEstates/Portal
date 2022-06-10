@@ -6,6 +6,7 @@ using dbConn;
 using System.Data;
 using System.ComponentModel.DataAnnotations;
 using System.Globalization;
+using System.Threading.Tasks;
 
 namespace Portal_MVC.Models
 {
@@ -199,6 +200,38 @@ namespace Portal_MVC.Models
                     Address5 = dr[5].ToString(),
                     FullAddress = SetAddressString(dr[1].ToString(), dr[2].ToString(),
                     dr[3].ToString(), dr[4].ToString(), dr[5].ToString()) });
+            }
+            return rList;
+
+        }
+
+        public async static Task<List<Properties>> GetAllEstatesAsync()
+        {
+            string q = "select * FROM CORE.Estates where _statusID = 1";
+
+            List<Properties> rList = new List<Properties>();
+            DBConnectionObject db = GlobalVariables.GetConnection();
+            DataTable dt = await db.Connection.GetDataTableAsync(q);
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                int id = 0;
+                if (dr[0] != DBNull.Value)
+                {
+                    id = Convert.ToInt32(dr[0]);
+                }
+                string Add1 = SetAddress1(dr[0].ToString(), dr[1].ToString(), dr[2].ToString());
+                rList.Add(new Properties(PropertyTypes.Estate)
+                {
+                    ID = id,
+                    Address1 = dr[1].ToString(),
+                    Address2 = dr[2].ToString(),
+                    Address3 = dr[3].ToString(),
+                    Address4 = dr[4].ToString(),
+                    Address5 = dr[5].ToString(),
+                    FullAddress = SetAddressString(dr[1].ToString(), dr[2].ToString(),
+                    dr[3].ToString(), dr[4].ToString(), dr[5].ToString())
+                });
             }
             return rList;
 

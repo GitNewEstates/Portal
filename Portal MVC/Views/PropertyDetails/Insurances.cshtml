@@ -159,7 +159,7 @@ else
                     @foreach (Documents d in Model.SelectedInsurance.Documents)
             {
                 <tr>
-                    <td>@Html.ActionLink(d.Name, "DownloadFile", new { policyID = Model.SelectedInsurance.PolicyID, DocID = d.docID, filename = d.Name })</td>
+                    <td>@Html.ActionLink(d.Name, "DownloadFile", new { policyID = Model.SelectedInsurance.PolicyID, DocID = d.id, filename = d.DocName })</td>
                 </tr>
     }
                 </tbody>

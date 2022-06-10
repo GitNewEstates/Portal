@@ -9,11 +9,91 @@ namespace Portal_MVC.Models
 {
     public class Documents
     {
-        public long docID { get; set; }
-        public long DocInstanceID { get; set; }
-        public string Name { get; set; }
+
+        private string _DocName;
+        public string DocName
+        {
+            get
+            {
+                return _DocName;
+            }
+            set
+            {
+                _DocName = value;
+            }
+        }
+        public int UserID { get; set; }
+        public DateTime addedDate { get; set; }
+        private string _AddedDateStr;
+        public string AddedDateStr
+        {
+            get
+            {
+                return _AddedDateStr;
+            }
+            set
+            {
+                _AddedDateStr = value;
+            }
+        }
+        public int id { get; set; }
         public byte[] Document { get; set; }
-        public string FileExt { get; set; }
+        private string _FilePath;
+        public string FilePath
+        {
+            get { return _FilePath; }
+            set
+            {
+                _FilePath = value;
+            }
+
+        }
+        public string FileExtention { get; set; }
+        public int DocTypeID { get; set; }
+        public string AddedBy { get; set; }
+        public string DocTypeName { get; set; }
+
+        public long DocInstanceID { get; set; }
+
+        private string _DocDescription;
+        public string DocDescription
+        {
+            get
+            {
+                return _DocDescription;
+            }
+            set
+            {
+                _DocDescription = value;
+            }
+        }
+
+        private bool _Rename;
+        public bool Rename
+        {
+            get
+            {
+                return _Rename;
+            }
+            set
+            {
+                _Rename = value;
+            }
+        }
+
+        private bool _SendWithWO;
+        public bool SendWithWO
+        {
+            get
+            {
+                return _SendWithWO;
+            }
+            set
+            {
+                _SendWithWO = value;
+            }
+        }
+
     }
 
     public static class DocumentMethods
@@ -35,8 +115,8 @@ namespace Portal_MVC.Models
 
                     r.Add(new Documents
                     {
-                        docID = Convert.ToInt32(dr[0]),
-                        Name = dr[1].ToString(),
+                        id = Convert.ToInt32(dr[0]),
+                        DocName = dr[1].ToString(),
                         
                     });
 

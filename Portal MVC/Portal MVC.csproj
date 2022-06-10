@@ -256,6 +256,7 @@
     <Compile Include="Controllers\CaretakingController.cs" />
     <Compile Include="Controllers\CasesController.cs" />
     <Compile Include="Controllers\DirectorController.cs" />
+    <Compile Include="Controllers\ExpenseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ManagementController.cs" />
@@ -292,6 +293,7 @@
     <Compile Include="Models\NotificationSettingsViewModels.cs" />
     <Compile Include="Models\OwnerNotes.cs" />
     <Compile Include="Models\PortalLogins.cs" />
+    <Compile Include="Models\PostExpenseViewModel.cs" />
     <Compile Include="Models\Properties.cs" />
     <Compile Include="Models\PropertySummaryViewModel.cs" />
     <Compile Include="Models\PurchaseOrders.cs" />
@@ -469,10 +471,12 @@
     <Content Include="Views\Cases\_CasesList.cshtml" />
     <Content Include="Views\Cases\Index.cshtml" />
     <Content Include="Views\Cases\CaseDetail.cshtml" />
+    <Content Include="Views\Caretaking\PostExpenseView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Director\Shared\" />
+    <Folder Include="Views\Expense\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

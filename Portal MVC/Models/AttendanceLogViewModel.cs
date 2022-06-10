@@ -65,25 +65,25 @@ namespace Portal_MVC.Models
                 });
             }
 
-            //List<AttendanceVisits.AttendanceType> types = 
-            //    AttendanceVisits.AttendanceTypeMethods.AllAttendanceTypesList(GlobalVariables.GetConnection());
-            //AttendanceTypes = new List<SelectListItem>();
+            List<AttendanceVisits.AttendanceType> types =
+                AttendanceVisits.AttendanceTypeMethods.AllAttendanceTypesList(GlobalVariables.GetConnection());
+            AttendanceTypes = new List<SelectListItem>();
 
-            //foreach(AttendanceVisits.AttendanceType t in types)
-            //{
-            //    bool IsSelected = false;
-            //    if (t.id == SelectedAttendanceTypeID && SelectedAttendanceTypeID > 0)
-            //    {
-            //        IsSelected = true;
-            //    }
+            foreach (AttendanceVisits.AttendanceType t in types)
+            {
+                bool IsSelected = false;
+                if (t.id == SelectedAttendanceTypeID && SelectedAttendanceTypeID > 0)
+                {
+                    IsSelected = true;
+                }
 
-            //    AttendanceTypes.Add(new SelectListItem
-            //    {
-            //        Text = t.Name,
-            //        Value = t.id.ToString(),
-            //        Selected = IsSelected
-            //    });
-            //}
+                AttendanceTypes.Add(new SelectListItem
+                {
+                    Text = t.Name,
+                    Value = t.id.ToString(),
+                    Selected = IsSelected
+                });
+            }
 
         }
         
