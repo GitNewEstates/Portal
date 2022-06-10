@@ -1,8 +1,39 @@
 ﻿@using Portal_MVC.Models
-@model Portal_MVC.Models.AttendanceLogViewModel
+@model Portal_MVC.Models.PostExpenseViewModel
 @{
     ViewBag.Title = "Post Expense";
     Layout = "~/Views/Shared/_HomeLayout.cshtml";
 }
 
+@using (Html.BeginForm("Create", "Expense", FormMethod.Post))
+{
+    Html.AntiForgeryToken();
+    <div class="">
+        <div class="row">
+            <div class="form-group col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                @Html.DropDownListFor(m => m.SelectedPropertyid, Model.EstateList, new { @class = "form-control" })
+            </div>
+
+        </div>
+
+       
+
+        <div class="row">
+            <div class="form-group col-lg-3 col-md-6 col-sm-8 col-xs-10">
+                @Html.EJS().DateTimePicker("datetimepicker").Max(Model.MaxDate).Value(Model.ExpenseDate).Format("dd-MM-yyyy HH:mm").Render()
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+}
+<script>
+        $(document).ready(function () {
+
+
+        }
+</script>
 

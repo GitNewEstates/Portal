@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -9,9 +10,14 @@ namespace Portal_MVC.Controllers
     public class ExpenseController : Controller
     {
         // GET: Expense
-        public ActionResult Index()
+        public async Task< ActionResult> Index()
         {
-            return View("../Caretaking/PostExpenseView");
+            Models.PostExpenseViewModel vm = new Models.PostExpenseViewModel();
+            await vm.SetLists();
+            vm.ExpenseDate = DateTime.Today;
+            vm.MaxDate = DateTime.Today;
+
+            return View("../Caretaking/PostExpenseView", vm);
         }
 
         // GET: Expense/Details/5

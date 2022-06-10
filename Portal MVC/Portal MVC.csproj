@@ -301,6 +301,7 @@
     <Compile Include="Models\RepairsMaintenanceViewModel.cs" />
     <Compile Include="Models\ServiceChargeBudgetViewModel.cs" />
     <Compile Include="Models\ServiceCharges.cs" />
+    <Compile Include="Models\Supplier.cs" />
     <Compile Include="Models\UsageData.cs" />
     <Compile Include="Models\Utils.cs" />
     <Compile Include="Models\ViewModel.cs" />

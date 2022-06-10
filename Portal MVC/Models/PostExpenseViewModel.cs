@@ -5,6 +5,7 @@ using System.Web;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
+using System.Threading.Tasks;
 
 namespace Portal_MVC.Models
 {
@@ -17,9 +18,13 @@ namespace Portal_MVC.Models
         public List<SelectListItem> EstateList { get; set; }
         public int SelectedPropertyid { get; set; }
 
-        public void SetLists()
+        public DateTime ExpenseDate { get; set; }
+
+        public DateTime MaxDate { get; set; }
+
+        public async Task SetLists()
         {
-            List<Properties> estates = Models.PropertyMethods.GetAllEstates();
+            List<Properties> estates = await Models.PropertyMethods.GetAllEstatesAsync();
             EstateList = new List<SelectListItem>();
             foreach (Properties p in estates)
             {
