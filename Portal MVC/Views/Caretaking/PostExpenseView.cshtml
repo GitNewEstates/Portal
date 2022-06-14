@@ -3,37 +3,161 @@
 @{
     ViewBag.Title = "Post Expense";
     Layout = "~/Views/Shared/_HomeLayout.cshtml";
+    IDictionary<string, object> htmlAttr = new Dictionary<string, object>();
+    htmlAttr.Add("id", "ExpenseCostTextBox");
+
+    IDictionary<string, object> DescriptionhtmlAttr = new Dictionary<string, object>();
+    DescriptionhtmlAttr.Add("id", "ExpenseDescriptionTextbox");
+
+    IDictionary<string, object> DatehtmlAttr = new Dictionary<string, object>();
+    DatehtmlAttr.Add("id", "ExpensePaidDate");
 }
 
-@using (Html.BeginForm("Create", "Expense", FormMethod.Post))
-{
-    Html.AntiForgeryToken();
-    <div class="">
-        <div class="row">
-            <div class="form-group col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                @Html.DropDownListFor(m => m.SelectedPropertyid, Model.EstateList, new { @class = "form-control" })
+
+
+@*<div class="row">
+        <div class="form-group col-lg-3 col-md-6 col-sm-12 col-xs-12">
+            @Html.DropDownListFor(m => m.SelectedPropertyid, Model.EstateList, new { @class = "form-control" })
+        </div>
+
+    </div>*@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+
+
+            <div class="row">
+                <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    @Html.EJS().DateTimePicker("datetimepicker").Max(Model.MaxDate).Value(Model.ExpenseDate).Format("dd-MM-yyyy HH:mm").HtmlAttributes(DatehtmlAttr).Render()
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="form-group col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                    <h5>Supplier</h5>
+                    @Html.DropDownListFor(m => m.SelectedSupplierID, Model.SupplierList, new { @class = "form-control", @id="ExpenseSupplierList" })
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <h5>Cost</h5>
+                    @Html.EJS().NumericTextBox("numeric").Value(0).HtmlAttributes(htmlAttr).Render()
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="form-group col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                    <h5>Supplier</h5>
+                    @Html.DropDownListFor(m => m.PaymentMethod, Model.PaymentTypeList, new { @class = "form-control", @id = "ExpensePaymentTypeList" })
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <h4>Description</h4>
+                    @Html.EJS().TextBox("default").Multiline(true).HtmlAttributes(DescriptionhtmlAttr).Render()
+
+                </div>
+
             </div>
 
         </div>
 
-       
 
-        <div class="row">
-            <div class="form-group col-lg-3 col-md-6 col-sm-8 col-xs-10">
-                @Html.EJS().DateTimePicker("datetimepicker").Max(Model.MaxDate).Value(Model.ExpenseDate).Format("dd-MM-yyyy HH:mm").Render()
+
+
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+
+            <div class="row">
+                <div class="form-group col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                    <h5>Funds</h5>
+                    @Html.DropDownListFor(m => m.SelectedFundID, Model.FundList, new { @class = "form-control", @id = "FundSelected" })
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="form-group col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                    <h5>Budgets</h5>
+                    <select class="form-control" id="BudgetList"></select>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="form-group col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                    <h5>Schedules</h5>
+                    <select class="form-control" id="ScheduleList"></select>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="form-group col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                    <h5>Heading</h5>
+                    <select class="form-control" id="HeadingList"></select>
+                </div>
+
             </div>
 
         </div>
-
-
     </div>
 
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="row">
 
-}
-<script>
-        $(document).ready(function () {
+                <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <button class="btn btn-primary mb-2" style="display: inline;
+                            margin-top: 5px" id="SelectImg1">
+                            <img src="/Assets/upload (1).svg" style="height:
+                            25px; width:25px;" id="SelectImg1" />
+                        </button>
+                        <button class="btn btn-primary mb-2" style="display: inline;
+                            margin-top: 5px" id="btnExpenseComplete">
+                            Complete
+
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin: 10px;">
+                    <div id="ImgageContainer" style="display:block;">
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
 
 
+
+    <style>
+        #multiline {
+            height: 100px;
         }
-</script>
+    </style>
+
+
+
+
+
+
+
 

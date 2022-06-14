@@ -33,9 +33,35 @@ namespace Portal_MVC.Models
 
     public static class SupplierMethods
     {
-        //public async static Task<List<Supplier>> GetSupplierListAsync()
-        //{
-        //    //GlobalVariables.APIConnection.
-        //}
+        public async static Task<List<Supplier>> GetSupplierListAsync()
+        {
+             string json = 
+                await GlobalVariables.APIConnection.CallAPIGetEndPointAsync("SupplierCollection");
+
+            return DeserializedJSONToSupplierList(json);
+
+        }
+
+        public static List<Supplier> DeserializedJSONToSupplierList(string json = "")
+        {
+            List<Supplier> obj = new List<Supplier>();
+            if (!string.IsNullOrEmpty(json))
+            {
+                try
+                {
+                    obj = JsonConvert.DeserializeObject<List<Supplier>>(json);
+                }
+                catch (Exception ex)
+                {
+                    Supplier supplier = new Supplier();
+                    supplier.APIError.errorType = ErrorType.APIValidationError;
+                    supplier.APIError.HasError = true;
+                    supplier.APIError.Message = $"Error Deserializing JSON to Supplier List. Error: {ex.Message}";
+                    obj.Add(supplier);
+                }
+            }
+
+            return obj;
+        }
     }
 }

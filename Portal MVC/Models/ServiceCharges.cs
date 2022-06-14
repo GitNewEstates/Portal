@@ -6,9 +6,67 @@ using System.Data;
 using dbConn;
 using Portal_MVC.Models;
 using System.Globalization;
+using Newtonsoft.Json;
+using System.Threading.Tasks;
 
 namespace Portal_MVC.Models
 {
+
+    public class Fund : BaseClass
+    {
+
+        public string FundName { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+
+        public int EstateID { get; set; }
+
+        public FundStatus FundStatus { get; set; }
+        public long DocInstanceID { get; set; }
+    }
+    public enum FundStatus
+    {
+        None,
+        Progress, //Budget being caluclated
+        Completed, //Budget Completed and expenditure being recored
+        YearEnded, //Year Ended and Accounts being prepared
+        Reconciled, //Year Ended and Accounts Done
+    }
+
+    public static class FundMethods
+    {
+        public async static Task<List<Fund>> GetFundList(int EstateID)
+        {
+           string json = await 
+                GlobalVariables.APIConnection.CallAPIGetEndPointAsync($"FundList/{EstateID}");
+
+            return DeserializedJSONToSupplierList(json);
+        }
+
+        public static List<Fund> DeserializedJSONToSupplierList(string json = "")
+        {
+            List<Fund> obj = new List<Fund>();
+            if (!string.IsNullOrEmpty(json))
+            {
+                try
+                {
+                    obj = JsonConvert.DeserializeObject<List<Fund>>(json);
+                }
+                catch (Exception ex)
+                {
+                    Fund fund = new Fund();
+                    fund.APIError.errorType = ErrorType.APIValidationError;
+                    fund.APIError.HasError = true;
+                    fund.APIError.Message = $"Error Deserializing JSON to Fund List. Error: {ex.Message}";
+                    obj.Add(fund);
+                }
+            }
+
+            return obj;
+        }
+    }
+
+
     public class ServiceCharges
     {
         public int ID { get; set; }
@@ -415,6 +473,116 @@ namespace Portal_MVC.Models
             }
 
             return r;
+        }
+    }
+    public class ServiceChargeBudget : BaseClass
+    {
+        public string BudgetName { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+        public string ChargePeriod { get; set; }
+
+        public int FundID { get; set; }
+
+        public FundStatus FundStatus { get; set; }
+
+        public string BudgetStatus { get; set; }
+        public int FundTypeID { get; set; }
+        public int PostingTypeID { get; set; }
+    }
+
+    public static class ServiceChargeBudgetMethods
+    {
+        public async static Task<List<ServiceChargeBudget>> GetBudgetList(int FundID)
+        {
+            string json =
+                await GlobalVariables.APIConnection.CallAPIGetEndPointAsync($"BudgetList/{FundID}");
+
+
+             return DeserializedJSONToBudgetList(json);
+
+
+
+
+        }
+
+        public static string JsonSerialize(List<ServiceChargeBudget> BudgetList)
+        {
+
+            return Newtonsoft.Json.JsonConvert.SerializeObject(BudgetList);
+        }
+        public static List<ServiceChargeBudget> DeserializedJSONToBudgetList(string json = "")
+        {
+            List<ServiceChargeBudget> obj = new List<ServiceChargeBudget>();
+            if (!string.IsNullOrEmpty(json))
+            {
+                try
+                {
+                    obj = JsonConvert.DeserializeObject<List<ServiceChargeBudget>>(json);
+                }
+                catch (Exception ex)
+                {
+                    ServiceChargeBudget budget = new ServiceChargeBudget();
+                    budget.APIError.errorType = ErrorType.APIValidationError;
+                    budget.APIError.HasError = true;
+                    budget.APIError.Message = $"Error Deserializing JSON to Budget List. Error: {ex.Message}";
+                    obj.Add(budget);
+                }
+            }
+
+            return obj;
+        }
+    }
+
+    public class BudgetSchedule : BaseClass
+    {
+        
+
+        private string _Schedule;
+        public string Schedule
+        {
+            get { return _Schedule; }
+            set
+            {
+                _Schedule = value;
+                
+            }
+        }
+    }
+
+    public static class BudgetScheduleMethods
+    {
+        public async static Task<string> GetScheduleListAPIJSON(int budgetid)
+        {
+            return await GlobalVariables.APIConnection.CallAPIGetEndPointAsync($"BudgetScheduleList/{budgetid}");
+        }
+        public async static Task<List<BudgetSchedule>> GetScheduleListAPI(int budgetid)
+        {
+            string json = await GlobalVariables.APIConnection.CallAPIGetEndPointAsync($"BudgetScheduleList/{budgetid}");
+
+            return DeserializedJSONToScheduleList(json);
+        }
+
+        public static List<BudgetSchedule> DeserializedJSONToScheduleList(string json = "")
+        {
+            List<BudgetSchedule> obj = new List<BudgetSchedule>();
+            if (!string.IsNullOrEmpty(json))
+            {
+                try
+                {
+                    obj = JsonConvert.DeserializeObject<List<BudgetSchedule>>(json);
+                }
+                catch (Exception ex)
+                {
+                    BudgetSchedule schedule = new BudgetSchedule();
+                    schedule.APIError.errorType = ErrorType.APIValidationError;
+                    schedule.APIError.HasError = true;
+                    schedule.APIError.Message = $"Error Deserializing JSON to Schedule List. Error: {ex.Message}";
+                    obj.Add(schedule);
+                }
+            }
+
+            return obj;
         }
     }
 }

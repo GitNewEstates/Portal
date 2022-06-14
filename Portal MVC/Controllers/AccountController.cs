@@ -144,6 +144,9 @@ namespace Portal_MVC.Controllers
                     GlobalVariables.LogUsage = 0;
                 }
 
+                //set api connection
+                GlobalVariables.APIConnection = new APIConnectionObject();
+
                 //log activity in db
                 Models.UsageData.InsertNewUsage(1, (int)Session["CustomerID"]); //1 = log in
 

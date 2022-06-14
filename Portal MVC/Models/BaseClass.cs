@@ -2,6 +2,12 @@
 {
     public class BaseClass
     {
+        public BaseClass()
+        {
+            APIError = new APIError(ErrorType.None);
+        }
+        public APIError APIError { get; set; }
+
         private int _id;
         public int id
         {

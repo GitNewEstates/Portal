@@ -314,17 +314,17 @@ i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\devel
 ++Portal MVC.dll
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\bin\portal mvc.dll
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\portal mvc.dll
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\bin\portal mvc.dll
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\x64\debug\portal mvc.dll
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\x64\release\portal mvc.dll
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\bin\portal mvc.dll
 ++Portal MVC.dll.config
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\bin\portal mvc.dll.config
 ++Portal MVC.pdb
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\bin\portal mvc.pdb
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\portal mvc.pdb
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\bin\portal mvc.pdb
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\x64\debug\portal mvc.pdb
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\x64\release\portal mvc.pdb
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\bin\portal mvc.pdb
 ++ProcessLogDLL.dll
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\bin\processlogdll.dll
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\bin\processlogdll.dll
@@ -519,30 +519,6 @@ i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\devel
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\content\
 ++Controllers
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\controllers\
-++AccountController.cs
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\controllers\accountcontroller.cs
-++CaretakingController.cs
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\controllers\caretakingcontroller.cs
-++CasesController.cs
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\controllers\casescontroller.cs
-++DirectorController.cs
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\controllers\directorcontroller.cs
-++ExpenseController.cs
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\controllers\expensecontroller.cs
-++HomeController.cs
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\controllers\homecontroller.cs
-++ManageController.cs
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\controllers\managecontroller.cs
-++ManagementController.cs
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\controllers\managementcontroller.cs
-++PropertyDetailsController.cs
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\controllers\propertydetailscontroller.cs
-++PropertySummaryController.cs
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\controllers\propertysummarycontroller.cs
-++RepairsMaintenanceController.cs
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\controllers\repairsmaintenancecontroller.cs
-++ServiceChargesController.cs
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\controllers\servicechargescontroller.cs
 ++fonts
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\fonts\
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\fonts\
@@ -604,6 +580,8 @@ i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\devel
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\models\ownernotes.cs
 ++PortalLogins.cs
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\models\portallogins.cs
+++PostExpenseViewModel.cs
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\models\postexpenseviewmodel.cs
 ++Properties.cs
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\models\properties.cs
 ++PropertySummaryViewModel.cs
@@ -618,6 +596,8 @@ i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\devel
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\models\servicechargebudgetviewmodel.cs
 ++ServiceCharges.cs
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\models\servicecharges.cs
+++Supplier.cs
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\models\supplier.cs
 ++UsageData.cs
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\models\usagedata.cs
 ++Utils.cs
@@ -626,194 +606,249 @@ i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\devel
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\models\viewmodel.cs
 ++obj
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\
-++Portal_MVC
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\portal_mvc\
+++Debug
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\debug\
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\x64\debug\
+++Release
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\x64\release\
+++CSAutoParameterize
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\csautoparameterize\
+++InsertAdditionalCS
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\insertadditionalcs\
+++Package
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\
+++PackageTmp
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\
 ++Scripts
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\scripts\
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\scripts\
-++Security
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\security\
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\scripts\
 ++Views
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\csautoparameterize\original\views\
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\csautoparameterize\transformed\views\
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\
 ++Account
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\account\
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\account\
-++Caretaking
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\caretaking\
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\caretaking\
-++AttendanceDetail.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\caretaking\attendancedetail.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\caretaking\attendancedetail.cshtml
-++AttendanceLog.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\caretaking\attendancelog.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\caretaking\attendancelog.cshtml
-++BuildingArea.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\caretaking\buildingarea.cshtml
-++Caretaking.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\caretaking\caretaking.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\caretaking\caretaking.cshtml
-++CaretakingDashboard.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\caretaking\caretakingdashboard.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\caretaking\caretakingdashboard.cshtml
-++Lighting.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\caretaking\lighting.cshtml
-++PostExpenseView.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\caretaking\postexpenseview.cshtml
-++ViewAttendanceHistory.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\caretaking\viewattendancehistory.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\caretaking\viewattendancehistory.cshtml
-++Cases
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\cases\
-++Director
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\director\
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\director\
-++Expense
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\expense\
-++Home
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\home\
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\home\
-++_AccountDetails.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\home\_accountdetails.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\home\_accountdetails.cshtml
-++_ChangePassword.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\home\_changepassword.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\home\_changepassword.cshtml
-++_PropertyLevelRadio.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\home\_propertylevelradio.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\home\_propertylevelradio.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\account\
+++_ExternalLoginsListPartial.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\account\_externalloginslistpartial.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\account\_externalloginslistpartial.cshtml
 ++_ViewStart.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\home\_viewstart.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\_viewstart.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\account\_viewstart.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\repairsmaintenance\_viewstart.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\servicecharges\_viewstart.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\_viewstart.cshtml
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\account\_viewstart.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\_viewstart.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\account\_viewstart.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\_viewstart.cshtml
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\home\_viewstart.cshtml
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\repairsmaintenance\_viewstart.cshtml
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\servicecharges\_viewstart.cshtml
-++About.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\home\about.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\home\about.cshtml
-++ChangePassword.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\home\changepassword.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\manage\changepassword.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\home\changepassword.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\manage\changepassword.cshtml
-++Contact.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\home\contact.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\home\contact.cshtml
-++Index.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\home\index.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\cases\index.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\manage\index.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\home\index.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\manage\index.cshtml
-++MyAccount.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\home\myaccount.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\home\myaccount.cshtml
-++NotificationSettings.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\home\notificationsettings.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\home\notificationsettings.cshtml
-++NotLoggedIn.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\home\notloggedin.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\home\notloggedin.cshtml
-++PropertySummary.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\home\propertysummary.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\home\propertysummary.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\home\_viewstart.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\repairsmaintenance\_viewstart.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\servicecharges\_viewstart.cshtml
+++ConfirmEmail.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\account\confirmemail.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\account\confirmemail.cshtml
+++ExternalLoginConfirmation.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\account\externalloginconfirmation.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\account\externalloginconfirmation.cshtml
+++ExternalLoginFailure.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\account\externalloginfailure.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\account\externalloginfailure.cshtml
+++ForgotPassword.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\account\forgotpassword.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\account\forgotpassword.cshtml
+++ForgotPasswordConfirmation.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\account\forgotpasswordconfirmation.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\account\forgotpasswordconfirmation.cshtml
+++Login.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\account\login.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\account\login.cshtml
+++Register.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\account\register.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\account\register.cshtml
+++ResetPassword.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\account\resetpassword.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\account\resetpassword.cshtml
+++ResetPasswordConfirmation.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\account\resetpasswordconfirmation.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\account\resetpasswordconfirmation.cshtml
+++SendCode.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\account\sendcode.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\account\sendcode.cshtml
+++VerifyCode.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\account\verifycode.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\account\verifycode.cshtml
+++Caretaking
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\caretaking\
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\caretaking\
+++Director
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\director\
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\director\
+++Home
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\home\
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\home\
 ++Manage
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\manage\
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\manage\
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\manage\
 ++Management
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\management\
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\management\
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\management\
 ++PropertyDetails
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\propertydetails\
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\propertydetails\
-++Insurances.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\propertydetails\insurances.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\propertydetails\insurances.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\propertydetails\
 ++RepairsMaintenance
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\repairsmaintenance\
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\repairsmaintenance\
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\repairsmaintenance\
 ++ServiceCharges
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\servicecharges\
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\servicecharges\
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\servicecharges\
 ++Shared
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\shared\
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\shared\
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\director\shared\
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\shared\
 ++_AccountLayout.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\shared\_accountlayout.cshtml
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\shared\_accountlayout.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\shared\_accountlayout.cshtml
 ++_BudgetSummary.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\shared\_budgetsummary.cshtml
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\shared\_budgetsummary.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\shared\_budgetsummary.cshtml
 ++_DirectorMediumMenu.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\shared\_directormediummenu.cshtml
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\shared\_directormediummenu.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\shared\_directormediummenu.cshtml
 ++_DirectorMenu.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\shared\_directormenu.cshtml
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\shared\_directormenu.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\shared\_directormenu.cshtml
 ++_HomeLayout.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\shared\_homelayout.cshtml
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\shared\_homelayout.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\shared\_homelayout.cshtml
 ++_Layout.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\shared\_layout.cshtml
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\shared\_layout.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\shared\_layout.cshtml
 ++_LoginPartial.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\shared\_loginpartial.cshtml
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\shared\_loginpartial.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\shared\_loginpartial.cshtml
 ++_MainMenu.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\shared\_mainmenu.cshtml
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\shared\_mainmenu.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\shared\_mainmenu.cshtml
 ++_SelectEstate.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\shared\_selectestate.cshtml
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\shared\_selectestate.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\shared\_selectestate.cshtml
 ++_SelectProperty.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\shared\_selectproperty.cshtml
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\shared\_selectproperty.cshtml
-++_StaticLayout.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\shared\_staticlayout.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\shared\_selectproperty.cshtml
 ++Error.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\shared\error.cshtml
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\shared\error.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\shared\error.cshtml
 ++Lockout.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\shared\lockout.cshtml
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\shared\lockout.cshtml
-++NotFound.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\shared\notfound.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\shared\lockout.cshtml
 ++TestView.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\shared\testview.cshtml
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\shared\testview.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\shared\testview.cshtml
 ++Web.config
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\web.config
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\web.config
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\web.config
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\web.config
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\csautoparameterize\original\web.config
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\csautoparameterize\transformed\web.config
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\insertadditionalcs\original\web.config
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\insertadditionalcs\transformed\web.config
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\web.config
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\transformwebconfig\assist\web.config
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\transformwebconfig\original\web.config
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\transformwebconfig\transformed\web.config
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\csautoparameterize\original\views\web.config
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\csautoparameterize\transformed\views\web.config
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\web.config
+++favicon.ico
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\favicon.ico
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\favicon.ico
+++Global.asax
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\global.asax
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\global.asax
+++packages.config
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\packages.config
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\packages.config
+++FilePreviewParameter.xml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\filepreviewparameter.xml
+++Portal MVC.SourceManifest.xml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\portal mvc.sourcemanifest.xml
+++TransformWebConfig
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\transformwebconfig\
+++.NETFramework,Version=v4.6.1.AssemblyAttributes.cs
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\.netframework,version=v4.6.1.assemblyattributes.cs
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\x64\debug\.netframework,version=v4.6.1.assemblyattributes.cs
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\x64\release\.netframework,version=v4.6.1.assemblyattributes.cs
+++_WPPLastBuildInfo.txt
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\_wpplastbuildinfo.txt
+++CoreCompileInputs.cache
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\corecompileinputs.cache
+++CSAutoParameterize.parameters.xml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\csautoparameterize.parameters.xml
+++DesignTimeResolveAssemblyReferences.cache
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\designtimeresolveassemblyreferences.cache
+++DesignTimeResolveAssemblyReferencesInput.cache
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\designtimeresolveassemblyreferencesinput.cache
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\x64\debug\designtimeresolveassemblyreferencesinput.cache
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\x64\release\designtimeresolveassemblyreferencesinput.cache
+++Portal MVC.csproj.CopyComplete
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\portal mvc.csproj.copycomplete
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\x64\debug\portal mvc.csproj.copycomplete
+++Portal MVC.csproj.CoreCompileInputs.cache
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\portal mvc.csproj.corecompileinputs.cache
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\x64\debug\portal mvc.csproj.corecompileinputs.cache
+++Portal MVC.csproj.FileListAbsolute.txt
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\portal mvc.csproj.filelistabsolute.txt
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\x64\debug\portal mvc.csproj.filelistabsolute.txt
+++Portal MVC.csprojAssemblyReference.cache
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\portal mvc.csprojassemblyreference.cache
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\x64\debug\portal mvc.csprojassemblyreference.cache
+++Portal MVC.csprojResolveAssemblyReference.cache
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\portal mvc.csprojresolveassemblyreference.cache
+++TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\temporarygeneratedfile_036c0b5b-1481-4323-8d20-8f5adcb23d92.cs
+++TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\temporarygeneratedfile_5937a670-0e60-4077-877b-f7221da3dda1.cs
+++TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\temporarygeneratedfile_e7a71f73-0f8d-4b9b-b56e-8e70b10bc5d3.cs
+++x64
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\x64\
+++Portal_MVC
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\portal_mvc\
+++Security
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\security\
+++Cases
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\cases\
+++Expense
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\expense\
+++AddPhoneNumber.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\manage\addphonenumber.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\manage\addphonenumber.cshtml
+++ChangePassword.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\manage\changepassword.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\home\changepassword.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\manage\changepassword.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\home\changepassword.cshtml
+++Index.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\manage\index.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\home\index.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\manage\index.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\cases\index.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\home\index.cshtml
+++ManageLogins.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\manage\managelogins.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\manage\managelogins.cshtml
+++SetPassword.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\manage\setpassword.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\manage\setpassword.cshtml
+++VerifyPhoneNumber.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\manage\verifyphonenumber.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\manage\verifyphonenumber.cshtml
+++_StaticLayout.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\shared\_staticlayout.cshtml
+++NotFound.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\shared\notfound.cshtml
 ++webfonts
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\webfonts\
-++favicon.ico
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\favicon.ico
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\favicon.ico
-++Global.asax
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\global.asax
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\global.asax
-++packages.config
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\packages.config
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\packages.config
 ++Project_Readme.html
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\project_readme.html
 ++Startup.cs
@@ -985,9 +1020,9 @@ i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\devel
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\assets\upload (1).svg
 ++ej2
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\content\ej2\
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\scripts\ej2\
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\content\ej2\
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\scripts\ej2\
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\scripts\ej2\
 ++331-x-59 (1).png
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\content\331-x-59 (1).png
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\content\331-x-59 (1).png
@@ -996,10 +1031,10 @@ i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\devel
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\content\400-x-71.png
 ++bootstrap.css
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\content\bootstrap.css
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\content\ej2\bootstrap.css
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\content\ej2\compatibility\bootstrap.css
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\content\bootstrap.css
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\content\ej2\bootstrap.css
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\content\ej2\bootstrap.css
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\content\ej2\compatibility\bootstrap.css
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\content\ej2\compatibility\bootstrap.css
 ++bootstrap.min.css
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\content\bootstrap.min.css
@@ -1033,6 +1068,30 @@ i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\devel
 ++Site.css
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\content\site.css
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\content\site.css
+++AccountController.cs
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\controllers\accountcontroller.cs
+++CaretakingController.cs
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\controllers\caretakingcontroller.cs
+++CasesController.cs
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\controllers\casescontroller.cs
+++DirectorController.cs
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\controllers\directorcontroller.cs
+++ExpenseController.cs
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\controllers\expensecontroller.cs
+++HomeController.cs
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\controllers\homecontroller.cs
+++ManageController.cs
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\controllers\managecontroller.cs
+++ManagementController.cs
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\controllers\managementcontroller.cs
+++PropertyDetailsController.cs
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\controllers\propertydetailscontroller.cs
+++PropertySummaryController.cs
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\controllers\propertysummarycontroller.cs
+++RepairsMaintenanceController.cs
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\controllers\repairsmaintenancecontroller.cs
+++ServiceChargesController.cs
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\controllers\servicechargescontroller.cs
 ++glyphicons-halflings-regular.eot
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\fonts\glyphicons-halflings-regular.eot
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\fonts\glyphicons-halflings-regular.eot
@@ -1048,167 +1107,178 @@ i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\devel
 ++glyphicons-halflings-regular.woff2
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\fonts\glyphicons-halflings-regular.woff2
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\fonts\glyphicons-halflings-regular.woff2
-++Debug
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\debug\
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\x64\debug\
-++Release
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\x64\release\
-++x64
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\x64\
+++.NETFramework,Version=v4.8.AssemblyAttributes.cs
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\debug\.netframework,version=v4.8.assemblyattributes.cs
+++original
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\csautoparameterize\original\
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\insertadditionalcs\original\
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\transformwebconfig\original\
+++transformed
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\csautoparameterize\transformed\
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\insertadditionalcs\transformed\
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\transformwebconfig\transformed\
+++MimeKit.dll
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\bin\mimekit.dll
+++MimeKit.pdb
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\bin\mimekit.pdb
 ++_references.js
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\scripts\_references.js
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\scripts\_references.js
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\scripts\_references.js
 ++bootstrap.js
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\scripts\bootstrap.js
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\scripts\bootstrap.js
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\scripts\bootstrap.js
 ++bootstrap.min.js
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\scripts\bootstrap.min.js
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\scripts\bootstrap.min.js
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\scripts\bootstrap.min.js
 ++Custom.js
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\scripts\custom.js
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\scripts\custom.js
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\scripts\custom.js
+++jquery-1.10.2.js
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\scripts\jquery-1.10.2.js
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\scripts\jquery-1.10.2.js
+++jquery-1.10.2.min.js
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\scripts\jquery-1.10.2.min.js
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\scripts\jquery-1.10.2.min.js
+++jquery-1.10.2.min.map
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\scripts\jquery-1.10.2.min.map
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\scripts\jquery-1.10.2.min.map
+++jquery.unobtrusive-ajax.js
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\scripts\jquery.unobtrusive-ajax.js
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\scripts\jquery.unobtrusive-ajax.js
+++jquery.unobtrusive-ajax.min.js
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\scripts\jquery.unobtrusive-ajax.min.js
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\scripts\jquery.unobtrusive-ajax.min.js
+++jquery.validate.js
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\scripts\jquery.validate.js
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\scripts\jquery.validate.js
+++jquery.validate.min.js
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\scripts\jquery.validate.min.js
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\scripts\jquery.validate.min.js
+++jquery.validate.unobtrusive.js
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\scripts\jquery.validate.unobtrusive.js
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\scripts\jquery.validate.unobtrusive.js
+++jquery.validate.unobtrusive.min.js
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\scripts\jquery.validate.unobtrusive.min.js
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\scripts\jquery.validate.unobtrusive.min.js
+++modernizr-2.6.2.js
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\scripts\modernizr-2.6.2.js
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\scripts\modernizr-2.6.2.js
+++respond.js
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\scripts\respond.js
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\scripts\respond.js
+++respond.min.js
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\scripts\respond.min.js
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\scripts\respond.min.js
+++AttendanceDetail.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\caretaking\attendancedetail.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\caretaking\attendancedetail.cshtml
+++AttendanceLog.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\caretaking\attendancelog.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\caretaking\attendancelog.cshtml
+++Caretaking.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\caretaking\caretaking.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\caretaking\caretaking.cshtml
+++CaretakingDashboard.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\caretaking\caretakingdashboard.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\caretaking\caretakingdashboard.cshtml
+++ViewAttendanceHistory.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\caretaking\viewattendancehistory.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\caretaking\viewattendancehistory.cshtml
+++BankAccount.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\director\bankaccount.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\director\bankaccount.cshtml
+++DirectorSummary.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\director\directorsummary.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\director\directorsummary.cshtml
+++UnitBalances.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\director\unitbalances.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\director\unitbalances.cshtml
+++_AccountDetails.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\home\_accountdetails.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\home\_accountdetails.cshtml
+++_ChangePassword.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\home\_changepassword.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\home\_changepassword.cshtml
+++_PropertyLevelRadio.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\home\_propertylevelradio.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\home\_propertylevelradio.cshtml
+++About.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\home\about.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\home\about.cshtml
+++Contact.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\home\contact.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\home\contact.cshtml
+++MyAccount.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\home\myaccount.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\home\myaccount.cshtml
+++NotificationSettings.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\home\notificationsettings.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\home\notificationsettings.cshtml
+++NotLoggedIn.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\home\notloggedin.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\home\notloggedin.cshtml
+++PropertySummary.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\home\propertysummary.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\home\propertysummary.cshtml
+++MeterReadings.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\management\meterreadings.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\management\meterreadings.cshtml
+++Insurances.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\propertydetails\insurances.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\propertydetails\insurances.cshtml
+++OutstandingRepairs.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\repairsmaintenance\outstandingrepairs.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\repairsmaintenance\outstandingrepairs.cshtml
+++RepairDetail.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\repairsmaintenance\repairdetail.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\repairsmaintenance\repairdetail.cshtml
+++RepairsSummary.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\repairsmaintenance\repairssummary.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\repairsmaintenance\repairssummary.cshtml
+++_SelectBudget.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\servicecharges\_selectbudget.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\servicecharges\_selectbudget.cshtml
+++Budget.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\servicecharges\budget.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\servicecharges\budget.cshtml
+++BudgetPie.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\servicecharges\budgetpie.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\servicecharges\budgetpie.cshtml
+++BudgetVActual.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\servicecharges\budgetvactual.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\servicecharges\budgetvactual.cshtml
+++SelectBudget.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\servicecharges\selectbudget.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\servicecharges\selectbudget.cshtml
+++ServiceChargeAccount.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\servicecharges\servicechargeaccount.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\servicecharges\servicechargeaccount.cshtml
+++ServiceChargeExpenditure.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\servicecharges\servicechargeexpenditure.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\servicecharges\servicechargeexpenditure.cshtml
+++View.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\servicecharges\view.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\servicecharges\view.cshtml
+++assist
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\transformwebconfig\assist\
 ++jquery-1.10.2.intellisense.js
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\scripts\jquery-1.10.2.intellisense.js
-++jquery-1.10.2.js
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\scripts\jquery-1.10.2.js
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\scripts\jquery-1.10.2.js
-++jquery-1.10.2.min.js
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\scripts\jquery-1.10.2.min.js
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\scripts\jquery-1.10.2.min.js
-++jquery-1.10.2.min.map
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\scripts\jquery-1.10.2.min.map
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\scripts\jquery-1.10.2.min.map
-++jquery.unobtrusive-ajax.js
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\scripts\jquery.unobtrusive-ajax.js
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\scripts\jquery.unobtrusive-ajax.js
-++jquery.unobtrusive-ajax.min.js
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\scripts\jquery.unobtrusive-ajax.min.js
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\scripts\jquery.unobtrusive-ajax.min.js
 ++jquery.validate-vsdoc.js
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\scripts\jquery.validate-vsdoc.js
-++jquery.validate.js
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\scripts\jquery.validate.js
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\scripts\jquery.validate.js
-++jquery.validate.min.js
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\scripts\jquery.validate.min.js
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\scripts\jquery.validate.min.js
-++jquery.validate.unobtrusive.js
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\scripts\jquery.validate.unobtrusive.js
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\scripts\jquery.validate.unobtrusive.js
-++jquery.validate.unobtrusive.min.js
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\scripts\jquery.validate.unobtrusive.min.js
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\scripts\jquery.validate.unobtrusive.min.js
-++modernizr-2.6.2.js
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\scripts\modernizr-2.6.2.js
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\scripts\modernizr-2.6.2.js
-++respond.js
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\scripts\respond.js
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\scripts\respond.js
-++respond.min.js
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\scripts\respond.min.js
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\scripts\respond.min.js
 ++ApplicationSignInManager.cs
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\security\applicationsigninmanager.cs
 ++ApplicationUserManager.cs
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\security\applicationusermanager.cs
-++_ExternalLoginsListPartial.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\account\_externalloginslistpartial.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\account\_externalloginslistpartial.cshtml
-++ConfirmEmail.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\account\confirmemail.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\account\confirmemail.cshtml
-++ExternalLoginConfirmation.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\account\externalloginconfirmation.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\account\externalloginconfirmation.cshtml
-++ExternalLoginFailure.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\account\externalloginfailure.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\account\externalloginfailure.cshtml
-++ForgotPassword.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\account\forgotpassword.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\account\forgotpassword.cshtml
-++ForgotPasswordConfirmation.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\account\forgotpasswordconfirmation.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\account\forgotpasswordconfirmation.cshtml
-++Login.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\account\login.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\account\login.cshtml
-++Register.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\account\register.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\account\register.cshtml
-++ResetPassword.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\account\resetpassword.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\account\resetpassword.cshtml
-++ResetPasswordConfirmation.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\account\resetpasswordconfirmation.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\account\resetpasswordconfirmation.cshtml
-++SendCode.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\account\sendcode.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\account\sendcode.cshtml
-++VerifyCode.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\account\verifycode.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\account\verifycode.cshtml
+++BuildingArea.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\caretaking\buildingarea.cshtml
+++Lighting.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\caretaking\lighting.cshtml
+++PostExpenseView.cshtml
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\caretaking\postexpenseview.cshtml
 ++_CasesList.cshtml
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\cases\_caseslist.cshtml
 ++CaseDetail.cshtml
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\cases\casedetail.cshtml
-++BankAccount.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\director\bankaccount.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\director\bankaccount.cshtml
-++DirectorSummary.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\director\directorsummary.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\director\directorsummary.cshtml
-++UnitBalances.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\director\unitbalances.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\director\unitbalances.cshtml
-++AddPhoneNumber.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\manage\addphonenumber.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\manage\addphonenumber.cshtml
-++ManageLogins.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\manage\managelogins.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\manage\managelogins.cshtml
-++SetPassword.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\manage\setpassword.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\manage\setpassword.cshtml
-++VerifyPhoneNumber.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\manage\verifyphonenumber.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\manage\verifyphonenumber.cshtml
-++MeterReadings.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\management\meterreadings.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\management\meterreadings.cshtml
-++OutstandingRepairs.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\repairsmaintenance\outstandingrepairs.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\repairsmaintenance\outstandingrepairs.cshtml
-++RepairDetail.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\repairsmaintenance\repairdetail.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\repairsmaintenance\repairdetail.cshtml
-++RepairsSummary.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\repairsmaintenance\repairssummary.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\repairsmaintenance\repairssummary.cshtml
-++_SelectBudget.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\servicecharges\_selectbudget.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\servicecharges\_selectbudget.cshtml
-++Budget.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\servicecharges\budget.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\servicecharges\budget.cshtml
-++BudgetPie.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\servicecharges\budgetpie.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\servicecharges\budgetpie.cshtml
-++BudgetVActual.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\servicecharges\budgetvactual.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\servicecharges\budgetvactual.cshtml
-++SelectBudget.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\servicecharges\selectbudget.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\servicecharges\selectbudget.cshtml
-++ServiceChargeAccount.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\servicecharges\servicechargeaccount.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\servicecharges\servicechargeaccount.cshtml
-++ServiceChargeExpenditure.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\servicecharges\servicechargeexpenditure.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\servicecharges\servicechargeexpenditure.cshtml
-++View.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\views\servicecharges\view.cshtml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\views\servicecharges\view.cshtml
 ++fa-brands-400.eot
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\webfonts\fa-brands-400.eot
 ++fa-brands-400.svg
@@ -1267,105 +1337,37 @@ i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\devel
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\content\ej2\bootstrap-dark.css
 ++bootstrap4.css
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\content\ej2\bootstrap4.css
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\content\ej2\compatibility\bootstrap4.css
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\content\ej2\bootstrap4.css
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\content\ej2\compatibility\bootstrap4.css
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\content\ej2\compatibility\bootstrap4.css
 ++fabric-dark.css
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\content\ej2\fabric-dark.css
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\content\ej2\fabric-dark.css
 ++fabric.css
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\content\ej2\fabric.css
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\content\ej2\compatibility\fabric.css
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\content\ej2\fabric.css
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\content\ej2\compatibility\fabric.css
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\content\ej2\compatibility\fabric.css
 ++highcontrast.css
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\content\ej2\highcontrast.css
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\content\ej2\compatibility\highcontrast.css
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\content\ej2\highcontrast.css
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\content\ej2\compatibility\highcontrast.css
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\content\ej2\compatibility\highcontrast.css
 ++material-dark.css
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\content\ej2\material-dark.css
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\content\ej2\material-dark.css
 ++material.css
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\content\ej2\material.css
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\content\ej2\compatibility\material.css
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\content\ej2\material.css
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\content\ej2\compatibility\material.css
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\content\ej2\compatibility\material.css
-++.NETFramework,Version=v4.8.AssemblyAttributes.cs
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\debug\.netframework,version=v4.8.assemblyattributes.cs
-++CSAutoParameterize
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\csautoparameterize\
-++InsertAdditionalCS
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\insertadditionalcs\
-++Package
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\
-++TransformWebConfig
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\transformwebconfig\
-++.NETFramework,Version=v4.6.1.AssemblyAttributes.cs
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\.netframework,version=v4.6.1.assemblyattributes.cs
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\x64\debug\.netframework,version=v4.6.1.assemblyattributes.cs
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\x64\release\.netframework,version=v4.6.1.assemblyattributes.cs
-++_WPPLastBuildInfo.txt
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\_wpplastbuildinfo.txt
-++CoreCompileInputs.cache
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\corecompileinputs.cache
-++CSAutoParameterize.parameters.xml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\csautoparameterize.parameters.xml
-++DesignTimeResolveAssemblyReferences.cache
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\designtimeresolveassemblyreferences.cache
-++DesignTimeResolveAssemblyReferencesInput.cache
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\designtimeresolveassemblyreferencesinput.cache
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\x64\debug\designtimeresolveassemblyreferencesinput.cache
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\x64\release\designtimeresolveassemblyreferencesinput.cache
-++Portal MVC.csproj.CopyComplete
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\portal mvc.csproj.copycomplete
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\x64\debug\portal mvc.csproj.copycomplete
-++Portal MVC.csproj.CoreCompileInputs.cache
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\portal mvc.csproj.corecompileinputs.cache
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\x64\debug\portal mvc.csproj.corecompileinputs.cache
-++Portal MVC.csproj.FileListAbsolute.txt
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\portal mvc.csproj.filelistabsolute.txt
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\x64\debug\portal mvc.csproj.filelistabsolute.txt
-++Portal MVC.csprojAssemblyReference.cache
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\portal mvc.csprojassemblyreference.cache
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\x64\debug\portal mvc.csprojassemblyreference.cache
-++Portal MVC.csprojResolveAssemblyReference.cache
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\portal mvc.csprojresolveassemblyreference.cache
-++TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\temporarygeneratedfile_036c0b5b-1481-4323-8d20-8f5adcb23d92.cs
-++TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\temporarygeneratedfile_5937a670-0e60-4077-877b-f7221da3dda1.cs
-++TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\temporarygeneratedfile_e7a71f73-0f8d-4b9b-b56e-8e70b10bc5d3.cs
+++ej2.min.js
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\scripts\ej2\ej2.min.js
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\scripts\ej2\ej2.min.js
+++ej2.min.js.map
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\scripts\ej2\ej2.min.js.map
+i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\scripts\ej2\ej2.min.js.map
 ++HomeViewModels1.cs
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\portal_mvc\models\homeviewmodels1.cs
 ++ej2.d.ts
 i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\scripts\ej2\ej2.d.ts
-++ej2.min.js
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\scripts\ej2\ej2.min.js
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\scripts\ej2\ej2.min.js
-++ej2.min.js.map
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\scripts\ej2\ej2.min.js.map
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\scripts\ej2\ej2.min.js.map
-++original
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\csautoparameterize\original\
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\insertadditionalcs\original\
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\transformwebconfig\original\
-++transformed
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\csautoparameterize\transformed\
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\insertadditionalcs\transformed\
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\transformwebconfig\transformed\
-++PackageTmp
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\
-++FilePreviewParameter.xml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\filepreviewparameter.xml
-++Portal MVC.SourceManifest.xml
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\portal mvc.sourcemanifest.xml
-++assist
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\transformwebconfig\assist\
-++MimeKit.dll
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\bin\mimekit.dll
-++MimeKit.pdb
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\obj\release\package\packagetmp\bin\mimekit.pdb
-++PostExpenseViewModel.cs
-i:{07e2e913-6050-4281-88d9-09cb55dcf708}:c:\users\adamn\onedrive\documents\development local\folder\portal\portal mvc\models\postexpenseviewmodel.cs

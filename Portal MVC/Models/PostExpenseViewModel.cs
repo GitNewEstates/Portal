@@ -13,36 +13,75 @@ namespace Portal_MVC.Models
     {
         public PostExpenseViewModel()
         {
-            EstateList = new List<SelectListItem>();
+            SupplierList = new List<SelectListItem>();
+            FundList = new List<SelectListItem>();
+            PaymentTypeList = new List<SelectListItem>();
         }
-        public List<SelectListItem> EstateList { get; set; }
-        public int SelectedPropertyid { get; set; }
+        public List<SelectListItem> SupplierList { get; set; }
+        public List<SelectListItem> PaymentTypeList { get; set; }
+        public List<SelectListItem> FundList { get; set; }
+        public int SelectedSupplierID { get; set; }
+
+        public int SelectedFundID { get; set;   }
+
+        public string PaymentMethod { get; set; }
 
         public DateTime ExpenseDate { get; set; }
 
         public DateTime MaxDate { get; set; }
 
+        public double Cost { get; set; }
+
         public async Task SetLists()
         {
-            List<Properties> estates = await Models.PropertyMethods.GetAllEstatesAsync();
-            EstateList = new List<SelectListItem>();
-            foreach (Properties p in estates)
+            
+
+            List<Supplier> suppliers = await SupplierMethods.GetSupplierListAsync();
+
+            SupplierList = new List<SelectListItem>();
+
+            foreach (Supplier s in suppliers)
             {
                 bool IsSelected = false;
-                if (p.ID == SelectedPropertyid && SelectedPropertyid > 0)
+                if (s.id == SelectedSupplierID && SelectedSupplierID > 0)
                 {
                     IsSelected = true;
                 }
 
-                EstateList.Add(new SelectListItem
+                SupplierList.Add(new SelectListItem
                 {
-                    Text = p.Address1,
-                    Value = p.ID.ToString(),
+                    Text = s.Name,
+                    Value = s.id.ToString(),
                     Selected = IsSelected
                 });
             }
 
+            //id always needs to be NEM EstateID
+            List<Fund> _FundList = await FundMethods.GetFundList(24);
+            foreach (Fund s in _FundList)
+            {
 
-        }
+
+
+                FundList.Add(new SelectListItem
+                {
+                    Text = s.FundName,
+                    Value = s.id.ToString(),
+                    Selected = false
+                }) ;
+            }
+
+            PaymentTypeList.Add(new SelectListItem
+            {
+                Text = "Debit Card",
+                Selected = false
+            });
+            PaymentTypeList.Add(new SelectListItem
+            {
+                Text = "Cash",
+                Selected = false
+            });
+
+}
     }
 }
