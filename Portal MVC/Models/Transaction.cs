@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -24,7 +25,49 @@ namespace Portal_MVC.Models
 
         public bool Validated { get; set; }
 
+        
+
        
+    }
+
+    public class PortalTransaction : Transaction
+    {
+        //Portal Properties Only
+        public int SupplierID { get; set; }
+        public string TransactionDate { get; set; }
+        public string PayMethod { get; set; }
+
+        public string[] ImageUrls { get; set; }
+    }
+
+    public static class PortalTransactionMethods
+    {
+        public static string JsonSerialize(PortalTransaction transaction)
+        {
+
+            return Newtonsoft.Json.JsonConvert.SerializeObject(transaction);
+        }
+        public static PortalTransaction DeserializedJSONToPortalTransaction(string json = "")
+        {
+            PortalTransaction obj = new PortalTransaction();
+            if (!string.IsNullOrEmpty(json))
+            {
+                try
+                {
+                    obj = JsonConvert.DeserializeObject<PortalTransaction>(json);
+                }
+                catch (Exception ex)
+                {
+                    obj.APIError = new APIError(ErrorType.APIValidationError)
+                    {
+                        HasError = true,
+                        Message = $"Error Deserializing JSON to Transaction. Error: {ex.Message}"
+                    };
+                }
+            }
+
+            return obj;
+        }
     }
 
     public static class TransactionMethods 
@@ -51,6 +94,13 @@ namespace Portal_MVC.Models
                         Message = $"Error Deserializing JSON to Transaction. Error: {ex.Message}"
                     };
                 }
+            } else
+            {
+                obj.APIError = new APIError(ErrorType.APIValidationError)
+                {
+                    HasError = true,
+                    Message = $"Error Deserializing JSON to Transaction."
+                };
             }
 
             return obj;
@@ -58,9 +108,12 @@ namespace Portal_MVC.Models
 
         public async static Task<Transaction> InsertAsync(Transaction transaction)
         {
+            string TransJson = JsonSerialize(transaction);
+
+
              string json = await
-                GlobalVariables.APIConnection.CallAPIPostEndPointAsync("Transactions",
-                JsonSerialize(transaction));
+                GlobalVariables.APIConnection.CallAPIPostEndPointAsync($"Transactions", TransJson);
+
 
             return DeserializedJSONToTransaction(json);
         }

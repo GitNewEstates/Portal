@@ -1706,3 +1706,13 @@ C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin
 C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\dbConn.dll
 C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\System.Net.Http.Formatting.dll
 C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\System.Net.Http.Formatting.xml
+C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\Scripts\Custom.js
+C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\MimeKit.dll
+C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\System.Text.Encoding.CodePages.dll
+C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\MimeKit.pdb
+C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\MimeKit.xml
+C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\MailServiceDLL.dll
+C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\SendGrid.dll
+C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\StarkbankEcdsa.dll
+C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\SendGrid.pdb
+C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\SendGrid.xml

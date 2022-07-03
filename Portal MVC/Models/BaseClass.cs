@@ -22,7 +22,7 @@
             }
         }
 
-        public long DocinstanceID { get; set; }
+        public string DocinstanceID { get; set; }
 
         private bool _HasError;
         public bool HasError

@@ -17,8 +17,12 @@ namespace Portal_MVC.Models
             VisitDate = DateTime.Now;
             SendCustomerNotification = true;
             PortalViewable = true;
-            
+            AttendanceObj = new AttendanceVisits.AttendanceVisits();
+
+
         }
+
+        public AttendanceVisits.AttendanceVisits AttendanceObj { get; set; }
         public List<SelectListItem> EstateList { get; set; }
         public int SelectedPropertyid { get; set; }
         public List<SelectListItem> AttendanceTypes { get; set; }

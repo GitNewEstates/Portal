@@ -22,7 +22,7 @@ namespace Portal_MVC.Models
         public int EstateID { get; set; }
 
         public FundStatus FundStatus { get; set; }
-        public long DocInstanceID { get; set; }
+        public string DocInstanceID { get; set; }
     }
     public enum FundStatus
     {

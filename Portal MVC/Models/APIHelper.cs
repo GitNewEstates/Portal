@@ -98,11 +98,11 @@ namespace Portal_MVC.Models
 
                 DoAuth(client);
 
-                StringContent content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
+                //StringContent content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
 
                 using (HttpResponseMessage response =
-                    await client.PostAsync(AuthConfigObject.BaseAddress + EndPoint,
-                    content))
+                    await client.PostAsJsonAsync(AuthConfigObject.BaseAddress + EndPoint,
+                    json))
                 {
                     if (response.IsSuccessStatusCode)
                     {
@@ -124,6 +124,8 @@ namespace Portal_MVC.Models
 
 
         }
+
+        
 
         public async Task<string> CallAPIPutEndPointAsync(string EndPoint, string json)
         {
@@ -193,11 +195,13 @@ namespace Portal_MVC.Models
 
         public string ClientId { get { return "34b94f15-90d1-4eba-96ac-eccd394e8938"; } }
         public string ClientSecret { get { return "ig18Q~Eb6UCCOgTEgJYE54_6T1tRuKXCqRMI5cbl"; } }
-        public string BaseAddress { get { return "https://localhost:7104/api/"; } }
+        public string BaseAddress { get { return $"https://{BaseURL}/api/"; } }
+        private string BaseURL { get { return "localhost:7104"; } }
         public string ResourceId { get { return "api://3cf69ecd-aa7f-4048-ad19-26dc8823255c/.default"; } }
 
 
-
+        //nemapiv5.azurewebsites.net
+        //localhost:7104
 
     }
 

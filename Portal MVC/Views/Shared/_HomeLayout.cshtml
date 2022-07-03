@@ -150,13 +150,26 @@
             
 
             $("#btnExpenseComplete").click(function () {
+
+                HideExpenseFailMessage();
+                HideExpenseSuccessMessage();
+
+                var ImageContainer = document.getElementById('ImgageContainer');
+                var images = ImageContainer.getElementsByTagName('img');
+                var ImgURLS = [];
+                for (i = 0; i <= images.length - 1; i++) {
+                    ImgURLS.push(images[i].src);
+                }
+
+
                  //get values of each control
                 var Date = document.getElementById("ExpensePaidDate").value;
                 var SupplierID = document.getElementById("ExpenseSupplierList").value;
                 var Paymethod = document.getElementById("ExpensePaymentTypeList").value;
                 var Cost = document.getElementById("ExpenseCostTextBox").value;
                 var Description = document.getElementsByTagName("textarea")[0].value;
-                
+                var budgetid = document.getElementById("BudgetList").value;
+                var schedule = document.getElementById("ScheduleList").value;
                 var headingID = document.getElementById("HeadingList").value;
 
                 
@@ -192,14 +205,72 @@
                     return;
                 }
 
-                alert("Validation Complete");
+                
 
                 //create object literal
 
+                var PortalTrans = {
+                    SupplierID: SupplierID,
+                    HeadingID: headingID,
+                    Amount: Cost,
+                    TransactionDate: Date,
+                    Paymethod: Paymethod,
+                    Description: Description,
+                    ImageUrls: ImgURLS,
+                    BudgetID: budgetid,
+                    ScheduleName: schedule
+                }
+
+                console.log(PortalTrans.TransactionDate);
+
+                
+                var url = "/Expense/Create/";
+                $.post(url, PortalTrans, function (data) {
+
+                    console.log(data);
+                    if (data.APIError.HasError == true) {
+                        
+                        ShowExpenseFailMessage();
+                        
+                    } else {
+                        
+
+                        //reset values 
+                       
+                        
+                        document.getElementById("ExpenseCostTextBox").value = 0.00;
+                       
+                        document.getElementsByTagName("textarea")[0].value = "";
+
+                        ShowExpenseSuccessMessage();
+
+                        
+
+                    }
+                    
+                });
 
 
 
             })
+
+            function HideExpenseSuccessMessage() {
+                document.getElementById('ExpenseSuccessMessage').style.display = "none";
+            }
+
+            function ShowExpenseSuccessMessage() {
+                document.getElementById('ExpenseSuccessMessage').style.display = "block";
+            }
+            function HideExpenseFailMessage() {
+                document.getElementById('ExpenseFailMessage').style.display = "none";
+            }
+
+            function ShowExpenseFailMessage() {
+                var Element = document.getElementById('ExpenseFailMessage');
+               // var elementtext = Element.innerText;
+               // Element.innerText = elementtext + " Error Message: " + ErrorMessage;
+                Element.style.display = "block";
+            }
 
 
             //get the current budget

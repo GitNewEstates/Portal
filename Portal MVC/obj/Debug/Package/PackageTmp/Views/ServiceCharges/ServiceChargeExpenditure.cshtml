@@ -6,9 +6,9 @@
 
 @if (Session["SelectedPropertyID"] == null || (int)Session["SelectedPropertyID"] == 0)
 {
-    
-        ViewBag.Title = "Select Property - New Estates";
-    
+
+    ViewBag.Title = "Select Property - New Estates";
+
 
     <div class="container">
         @Html.Partial("_SelectProperty", Model)
@@ -24,51 +24,62 @@ else
 
         <h3>Service Charge Expenditure</h3>
         <h4>@Model.Estate.EstateName</h4>
-        
+
         if (Model.Estate.TransactionList.Count > 0)
         {
-        <div class="panel GradientBackground col-md-10 col-md-offset-1 col-lg-10">
-            @*<h4>Schedule: @sched</h4>*@
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Description</th>
-                        <th>Cost</th>
-                    </tr>
-                </thead>
-                <tbody>
-                @foreach (Estates es in Model.Estate.TransactionList)
-                {
-                    
-                        
-                        Model.Estate.TotalExp = Model.Estate.TotalExp + es.SCCost;
-                        
-                        <tr>
-                            <td>
-                                <p>@es.TransDate</p>
-                            </td>
-                        
-                            <td>
-                                <p>@es.TransDescription</p>
-                            </td>
-                            <td>
-                                <p>@es.SCCoststr</p>
-                            </td>
-                        </tr>
-                    
-                }
-                    </tbody>
-                <tfoot>
+            @Html.EJS().Grid("Grid").DataSource(Model.Estate.TransactionList).Columns(col =>
+             {
+             col.Field("TransDate").HeaderText("Date").Width("50").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).Add();
+             col.Field("TransDescription").HeaderText("Amount").Width("120").Add();
+             col.Field("SCCoststr").HeaderText("Cost").Width("100").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+            
+             }).AllowPaging(true).AllowFiltering(true).Render()
 
-                    <tr class="TotalsRow">
-                        <td><p>Totals</p></td>
-                        <td style="visibility: hidden">Placeholder</td>
-                        <td><p>@Controls.CurrencyString(Model.Estate.TotalExp)</p></td>
-                    </tr>
-                </tfoot>
-            </table>
-        </div>
+
+
+
+            <!--<div class="panel GradientBackground col-md-10 col-md-offset-1 col-lg-10">-->
+                @*<h4>Schedule: @sched</h4>*@
+                <!--<table class="table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Description</th>
+                            <th>Cost</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (Estates es in Model.Estate.TransactionList)
+                        {
+
+
+                            Model.Estate.TotalExp = Model.Estate.TotalExp + es.SCCost;
+
+                            <tr>
+                                <td>
+                                    <p>@es.TransDate</p>
+                                </td>
+
+                                <td>
+                                    <p>@es.TransDescription</p>
+                                </td>
+                                <td>
+                                    <p>@es.SCCoststr</p>
+                                </td>
+                            </tr>
+
+                        }
+                    </tbody>
+                    <tfoot>
+
+                        <tr class="TotalsRow">
+                            <td><p>Totals</p></td>
+                            <td style="visibility: hidden">Placeholder</td>
+                            <td><p>@Controls.CurrencyString(Model.Estate.TotalExp)</p></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>-->
         }
     }
 }

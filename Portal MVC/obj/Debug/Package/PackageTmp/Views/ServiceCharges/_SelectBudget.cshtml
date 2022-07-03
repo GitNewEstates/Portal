@@ -3,28 +3,29 @@
 
 
 
-    <div class="container">
-        <h5>Select the budget that you wish view.</h5>
-        <div class="panel GradientBackground panelContainer">
-            <table class="LinkedTable tableHover">
-                <tbody>
-                    @if (Model != null && Model.Estate.BudgetList != null)
+<div class="container">
+    <h5>Select the budget that you wish view.</h5>
+    <div class="panel GradientBackground panelContainer">
+        <table class="LinkedTable tableHover">
+            <tbody>
+                @if (Model != null && Model.Estate.BudgetList != null)
+                {
+
+                    foreach (Estates item in Model.Estate.BudgetList)
                     {
+                        <tr>
 
-                        foreach (Estates item in Model.Estate.BudgetList)
-                        {
-                            <tr>
+                            @if (!string.IsNullOrWhiteSpace(item.FundName))
+                            {
+                                <td>@Html.ActionLink(item.FundName, Model.ViewName, Model.ControllerName, new { BudgetID = item.BudgetId }, null)</td>
+                            }
 
-                                @if (!string.IsNullOrWhiteSpace(item.FundName))
-                                {
-                                    <td>@Html.ActionLink(item.FundName, Model.ViewName, Model.ControllerName, new { BudgetID = item.BudgetId }, null)</td>
-                                }
-
-                            </tr>
-                        }
+                        </tr>
                     }
-                </tbody>
-            </table>
-        </div>
+                }
+            </tbody>
+        </table>
     </div>
+
+</div>
 

@@ -147,6 +147,277 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
+            
+
+            $("#btnExpenseComplete").click(function () {
+
+                HideExpenseFailMessage();
+                HideExpenseSuccessMessage();
+
+                var ImageContainer = document.getElementById('ImgageContainer');
+                var images = ImageContainer.getElementsByTagName('img');
+                var ImgURLS = [];
+                for (i = 0; i <= images.length - 1; i++) {
+                    ImgURLS.push(images[i].src);
+                }
+
+
+                 //get values of each control
+                var Date = document.getElementById("ExpensePaidDate").value;
+                var SupplierID = document.getElementById("ExpenseSupplierList").value;
+                var Paymethod = document.getElementById("ExpensePaymentTypeList").value;
+                var Cost = document.getElementById("ExpenseCostTextBox").value;
+                var Description = document.getElementsByTagName("textarea")[0].value;
+                var budgetid = document.getElementById("BudgetList").value;
+                var schedule = document.getElementById("ScheduleList").value;
+                var headingID = document.getElementById("HeadingList").value;
+
+                
+                //validation
+                if (Date == null || Date == 'undefined') {
+                    alert("Date Invalid");
+                    return;
+                }
+
+                if (Description == null || Description == 'undefined' || Description == "") {
+                    alert("Description Invalid");
+                    return;
+                }
+
+                if (SupplierID == null || SupplierID == 'undefined' || SupplierID == 0) {
+                    alert("Supplier Invalid");
+                    return;
+                }
+
+                if (Paymethod == null || Paymethod == 'undefined' || Paymethod == "") {
+                    alert("Paymethod Invalid");
+                    return;
+                }
+
+
+                if (headingID == null || headingID == 'undefined' || headingID == 0) {
+                    alert("Heading ID Invalid");
+                    return;
+                }
+
+                if (Cost == null || Cost == 0 || Cost == 'undefined') {
+                    alert("Cost is invalid");
+                    return;
+                }
+
+                
+
+                //create object literal
+
+                var PortalTrans = {
+                    SupplierID: SupplierID,
+                    HeadingID: headingID,
+                    Amount: Cost,
+                    TransactionDate: Date,
+                    Paymethod: Paymethod,
+                    Description: Description,
+                    ImageUrls: ImgURLS,
+                    BudgetID: budgetid,
+                    ScheduleName: schedule
+                }
+
+                console.log(PortalTrans.TransactionDate);
+
+                
+                var url = "/Expense/Create/";
+                $.post(url, PortalTrans, function (data) {
+
+                    console.log(data);
+                    if (data.APIError.HasError == true) {
+                        
+                        ShowExpenseFailMessage();
+                        
+                    } else {
+                        
+
+                        //reset values 
+                       
+                        
+                        document.getElementById("ExpenseCostTextBox").value = 0.00;
+                       
+                        document.getElementsByTagName("textarea")[0].value = "";
+
+                        ShowExpenseSuccessMessage();
+
+                        
+
+                    }
+                    
+                });
+
+
+
+            })
+
+            function HideExpenseSuccessMessage() {
+                document.getElementById('ExpenseSuccessMessage').style.display = "none";
+            }
+
+            function ShowExpenseSuccessMessage() {
+                document.getElementById('ExpenseSuccessMessage').style.display = "block";
+            }
+            function HideExpenseFailMessage() {
+                document.getElementById('ExpenseFailMessage').style.display = "none";
+            }
+
+            function ShowExpenseFailMessage() {
+                var Element = document.getElementById('ExpenseFailMessage');
+               // var elementtext = Element.innerText;
+               // Element.innerText = elementtext + " Error Message: " + ErrorMessage;
+                Element.style.display = "block";
+            }
+
+
+            //get the current budget
+            var FundDropDown = document.getElementById("FundSelected");
+            
+
+            if (FundDropDown.length > 0) {
+                FundDropDown.selectedIndex = 0;
+
+                GetBudgets(FundDropDown[0].value);
+            }
+
+
+            //****************** Expenses**********************
+            $("#FundSelected").change(function () {
+                
+                var strSelected = "";
+                $("#FundSelected option:selected").each(function () {
+                    strSelected += $(this)[0].value;
+                });
+
+                GetBudgets(strSelected);
+
+            });
+
+            function GetBudgets(FundID) {
+               
+
+                var url = "/Expense/GetBudgetDetails/" + FundID;
+                var BudgetDropDown = document.getElementById("BudgetList");
+
+                removeOptions(BudgetDropDown);
+
+                $.get(url, function (data) {
+                    
+                    //const obj = JSON.parse(data);
+
+                    // do something if necessary
+                    for (let i = 0; i < data.length; i++) {
+                        var el = document.createElement("option");
+                        el.textContent = data[i].BudgetName;
+                        el.value = data[i].id;
+                        BudgetDropDown.appendChild(el);
+                       
+                    }
+
+                    if (BudgetDropDown.length > 0) {
+                        BudgetDropDown.selectedIndex = 0;
+
+                        GetSchedules(BudgetDropDown[0].value);
+                    };
+                });
+
+            }
+
+            $("#BudgetList").change(function () {
+                var strSelected = "";
+                $("#FundSelected option:selected").each(function () {
+                    strSelected += $(this)[0].value;
+                });
+
+                GetSchedules(strSelected);
+            });
+
+            function GetSchedules(BudgetID) {
+
+                var ScheduleDropDown = document.getElementById("ScheduleList");
+                var url = "/Expense/GetBudgetScheduleDetails/" + BudgetID;
+                removeOptions(ScheduleDropDown);
+
+               
+                $.get(url, function (data) {
+                    
+                    const obj = JSON.parse(data);
+                    
+                    // do something if necessary
+                    for (let i = 0; i < obj.length; i++) {
+                        var el = document.createElement("option");
+                        el.textContent = obj[i].Schedule;
+                        el.value = obj[i].Schedule;
+                        ScheduleDropDown.appendChild(el);
+                      
+                    }
+
+                    if (ScheduleDropDown.length > 0) {
+                        ScheduleDropDown.selectedIndex = 0;
+                        var schedule = ScheduleDropDown[0].value;
+
+
+                        GetBudgetHeadings(BudgetID, schedule)
+                    };
+                });
+            }
+
+            $("#ScheduleList").change(function () {
+
+                var strSelected = "";
+                var SelectedSchedule = ""
+                $("#ScheduleList option:selected").each(function () {
+                    strSelected += $(this)[0].value;
+                    SelectedSchedule += $(this)[0].textContent;
+                });
+
+
+
+                var BudgetDropDown = document.getElementById("BudgetList");
+                GetBudgetHeadings(BudgetDropDown.value, SelectedSchedule);
+
+            });
+
+            function GetBudgetHeadings(BudgetID, ScheduleName) {
+                var HeadingDropDown = document.getElementById("HeadingList");
+                var url = "/Expense/GetBudgetHeadings/" + BudgetID + "?schedule=" + ScheduleName;
+                
+                removeOptions(HeadingDropDown);
+
+                $.get(url, function (data) {
+                    
+
+                    const obj = JSON.parse(data);
+
+                    // do something if necessary
+                    for (let i = 0; i < obj.length; i++) {
+                        var el = document.createElement("option");
+                        el.textContent = obj[i].Name;
+                        el.value = obj[i].id;
+                        HeadingDropDown.appendChild(el);
+
+                    }
+
+                    if (HeadingDropDown.length > 0) {
+                        HeadingDropDown.selectedIndex = 0;
+                    };
+                });
+            }
+
+      
+
+
+
+            function removeOptions(selectElement) {
+                var i, L = selectElement.options.length - 1;
+                for (i = L; i >= 0; i--) {
+                    selectElement.remove(i);
+                }
+            }
+            //******************Images
 
             var loadimg2 = document.getElementById('ViewCaseIcon');
             if (loadimg2 != null) {

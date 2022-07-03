@@ -76,45 +76,156 @@ namespace Portal_MVC.Controllers
 
         // POST: Expense/Create
         [HttpPost]
-        public async Task<ContentResult> Create(string value)
+        public async Task<ContentResult> Create(PortalTransaction portaltransaction)
         {
+            List<string> ProcessLogs = new List<string>();
+
+            //return api error
             try
             {
-                //desrialise
-                Models.Transaction transaction = new Models.Transaction();
-                if (transaction.APIError.HasError)
-                {
-                    return Content(TransactionMethods.JsonSerialize(transaction),  "application/json");
-                }
+                int UserID = (int)Session["CustomerID"];
 
-                //insert transaction
+                //insert the docs
+                string DocinstanceID = "";
+             
+                if (portaltransaction.ImageUrls != null)
+                {
+                    ProcessLogs.Add($"{portaltransaction.ImageUrls.Count()} images to add");
+                    int docCount = 0;
+                    foreach (string url in portaltransaction.ImageUrls)
+                    {
+                        docCount += 1;
+                        Documents doc = new Documents();
+                        doc.DocName = $"Uploaded Document {docCount}";
+                        doc.FileExtention = ".html";
+                        doc.DocInstanceID = DocinstanceID;
+                        doc.UserID = UserID;
+                        doc.url = url;
+
+                        doc = await DocumentMethods.InsertDocumentAsync(doc);
+                        DocinstanceID = doc.DocInstanceID;
+                    }
+                   
+                }
+                ProcessLogs.Add($"Doc Instance Id = {DocinstanceID}");
+
+                //contruct the transaction from a Portal Transaction
+                Transaction transaction = new Transaction();
+                transaction.Amount = portaltransaction.Amount;
+                transaction.BudgetID = portaltransaction.BudgetID;
+                transaction.ScheduleName = portaltransaction.ScheduleName;
+                transaction.HeadingID = portaltransaction.HeadingID;
+                transaction.Description = portaltransaction.Description;
+                transaction.TransactionTypeID = 4; //Expenditure
+                transaction.DocinstanceID = DocinstanceID;
+
+                ProcessLogs.Add($"Inserting Portal Transaction");
+
+                //insert transaction - do sync as needs the trans id to continue
                 transaction = await TransactionMethods.InsertAsync(transaction);
 
+
                 if (transaction.APIError.HasError)
                 {
+                    ProcessLogs.Add($"Transaction Returned error. ");
+
+                    await GlobalVariables.SendProcessEmail("Add Expense", ProcessLogs);
+
                     return Content(TransactionMethods.JsonSerialize(transaction), "application/json");
                 }
 
+                //DateTime TestDate = new DateTime();
+
+                DateTime invDate = new DateTime();
+                try
+                {
+                    ProcessLogs.Add($"Result of converting model date of {portaltransaction.TransactionDate} to converible string is {GlobalVariables.ConvertStringToDate(portaltransaction.TransactionDate)}");
+                    DateTime.TryParse(GlobalVariables.ConvertStringToDate(portaltransaction.TransactionDate), out invDate);
+                    ProcessLogs.Add($"Parsed Invoice Date is {invDate}");
+                } catch
+                {
+                    ProcessLogs.Add($"Error converting {portaltransaction.TransactionDate} to date");
+                    invDate = DateTime.Now;
+                    
+                }
+                
+             
                 //insert authorised invoice data
                 AuthorisedInvoices authinvoice = new AuthorisedInvoices();
                 authinvoice.TransactionId = transaction.id;
                 authinvoice.AuthDate = DateTime.Now;
-                authinvoice.AuthUser = 3; //replace with method to get userid
-                authinvoice.AuthRequestUser = 3;
+                ProcessLogs.Add($"auth date = {authinvoice.AuthDate}");
+                authinvoice.AuthUser = UserID; 
+                authinvoice.AuthRequestUser = UserID;
                 authinvoice.InvoiceRef = ""; //replace with invoice ref from model 
                 authinvoice.ProcessedDate = DateTime.Now;
-                authinvoice.InvoiceDate = transaction.Date;
+                ProcessLogs.Add($"Process date = {authinvoice.ProcessedDate}");
+                authinvoice.ProcessedUser = UserID;
+                authinvoice.InvoiceDate = invDate;
+                ProcessLogs.Add($"invoice date date = {authinvoice.InvoiceDate}");
 
+                ProcessLogs.Add($"Inserting Auth Data");
+                authinvoice = await
+                    AuthorisedInvoicesMethods.InsertAsync(authinvoice);
+                if (authinvoice.APIError.HasError)
+                {
+                    //roll back transaction - mark in error?
+                    ProcessLogs.Add($"auth data return error");
+                    transaction.APIError = authinvoice.APIError;
+                    
+                    await GlobalVariables.SendProcessEmail("Add Expense", ProcessLogs);
+
+                    return Content(TransactionMethods.JsonSerialize(transaction), "application/json");
+                }
+
+                DateTime paidDate = new DateTime();
+                try
+                {
+
+                    DateTime.TryParse(GlobalVariables.ConvertStringToDate(portaltransaction.TransactionDate), out paidDate);
+                }
+                catch
+                {
+                    ProcessLogs.Add($"Error converting {portaltransaction.TransactionDate} to date");
+                    paidDate = DateTime.Now;
+                }
+
+
+
+               // DateTime paidDate = GlobalVariables.ConvertStringToDate(portaltransaction.TransactionDate);
 
                 //insert supplier payment data
+                Models.SupplierPayment payment = new SupplierPayment();
+                payment.TransactionID = transaction.id;
+                payment.SupplierID = portaltransaction.SupplierID;
+                payment.StatusID = 1; //always marked as paid. 
+                payment.paidDate = paidDate;
+                payment.UserID = UserID;
+                payment.BankAccountID = 16; // always nem bank accounr
 
+                ProcessLogs.Add($"Inserting supplier payment data");
+                payment = await SupplierPaymentMethods.InsertAsync(payment);
 
+                if (payment.APIError.HasError)
+                {
+                    //roll back transaction - mark in error?
+                    ProcessLogs.Add($"Supplier Payment data returned error");
+                    transaction.APIError = authinvoice.APIError;
 
-                return RedirectToAction("Index");
+                    await GlobalVariables.SendProcessEmail("Add Expense", ProcessLogs);
+
+                    return Content(TransactionMethods.JsonSerialize(transaction), "application/json");
+                }
+
+                //await GlobalVariables.SendProcessEmail("Add Expense", ProcessLogs);
+                return Content(TransactionMethods.JsonSerialize(transaction), "application/json");
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                Transaction t = new Transaction();
+                t.APIError.HasError = true;
+                t.APIError.Message = ex.Message;
+                return Content(TransactionMethods.JsonSerialize(t), "application/json");
             }
         }
 

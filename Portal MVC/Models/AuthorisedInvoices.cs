@@ -15,7 +15,7 @@ namespace Portal_MVC.Models
         public int AuthRequestUser { get; set; }
         public string InvoiceRef { get; set; }
         public DateTime ProcessedDate { get; set; }
-
+        public int ProcessedUser { get; set; }
         public DateTime InvoiceDate { get; set; }
 
     }
@@ -41,7 +41,7 @@ namespace Portal_MVC.Models
                     obj.APIError = new APIError(ErrorType.APIValidationError)
                     {
                         HasError = true,
-                        Message = $"Error Deserializing JSON to Transaction. Error: {ex.Message}"
+                        Message = $"Error Deserializing JSON to Authorised Invoice. Error: {ex.Message}"
                     };
                 }
             }

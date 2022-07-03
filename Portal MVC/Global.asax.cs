@@ -14,7 +14,7 @@ namespace Portal_MVC
     {
         protected void Application_Start()
         {
-            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Mzc2OTE2QDMxMzgyZTM0MmUzMFB6dGU4MGNZdTNWQXpnRFhrcjIvQlVQSXZqcllhSE5jeWpDRzdNVm42Q1U9");
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Mgo+DSMBPh8sVXJ0S0d+XE9Cd1RDX3xKf0x/TGpQb19xflBPallYVBYiSV9jS3xTcEdlWH1edXZSRmhaUQ==");
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

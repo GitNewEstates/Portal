@@ -64,4 +64,50 @@ namespace Portal_MVC.Models
             return obj;
         }
     }
+
+    public class SupplierPayment : BaseClass
+    {
+        public int TransactionID { get; set; }
+        public int SupplierID { get; set; }
+        public int StatusID { get; set; }
+        public DateTime paidDate { get; set; }
+        public int UserID { get; set; }
+        public int BankAccountID { get; set; }
+    }
+
+    public static class SupplierPaymentMethods
+    {
+        public static string JsonSerialize(SupplierPayment payment)
+        {
+
+            return Newtonsoft.Json.JsonConvert.SerializeObject(payment);
+        }
+        public static SupplierPayment DeserializedJSONToSupplierPayment(string json = "")
+        {
+            SupplierPayment obj = new SupplierPayment();
+            if (!string.IsNullOrEmpty(json))
+            {
+                try
+                {
+                    obj = JsonConvert.DeserializeObject<SupplierPayment>(json);
+                }
+                catch (Exception ex)
+                {
+                    obj.APIError = new APIError(ErrorType.APIValidationError)
+                    {
+                        HasError = true,
+                        Message = $"Error Deserializing JSON to Supplier Payment. Error: {ex.Message}"
+                    };
+                }
+            }
+
+            return obj;
+        }
+        public async static Task<SupplierPayment> InsertAsync(SupplierPayment payment)
+        {
+            string json = JsonSerialize(payment);
+
+            return DeserializedJSONToSupplierPayment(await GlobalVariables.APIConnection.CallAPIPostEndPointAsync("SupplierPayment", json));
+        }
+    }
 }

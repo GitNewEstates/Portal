@@ -4,10 +4,12 @@ using System.Linq;
 using System.Web;
 using dbConn;
 using System.Data;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace Portal_MVC.Models
 {
-    public class Documents
+    public class Documents : BaseClass
     {
 
         private string _DocName;
@@ -53,7 +55,7 @@ namespace Portal_MVC.Models
         public string AddedBy { get; set; }
         public string DocTypeName { get; set; }
 
-        public long DocInstanceID { get; set; }
+        public string DocInstanceID { get; set; }
 
         private string _DocDescription;
         public string DocDescription
@@ -93,6 +95,8 @@ namespace Portal_MVC.Models
                 _SendWithWO = value;
             }
         }
+
+        public string url { get; set; }
 
     }
 
@@ -157,7 +161,41 @@ namespace Portal_MVC.Models
             return docbtytes;
         }
 
-     
+        public static string JsonSerialize(Documents documents)
+        {
+
+            return Newtonsoft.Json.JsonConvert.SerializeObject(documents);
+        }
+        public static Documents DeserializedJSONToDcoument(string json = "")
+        {
+            Documents obj = new Documents();
+            if (!string.IsNullOrEmpty(json))
+            {
+                try
+                {
+                    obj = JsonConvert.DeserializeObject<Documents>(json);
+                }
+                catch (Exception ex)
+                {
+                    obj.APIError = new APIError(ErrorType.APIValidationError)
+                    {
+                        HasError = true,
+                        Message = $"Error Deserializing JSON to Transaction. Error: {ex.Message}"
+                    };
+                }
+            }
+
+            return obj;
+        }
+        public async static Task<Documents> InsertDocumentAsync(Documents Document)
+        {
+            string DocJson = JsonSerialize(Document);
+
+            string rjson =
+                await GlobalVariables.APIConnection.CallAPIPostEndPointAsync("Documents", DocJson);
+
+            return DeserializedJSONToDcoument(rjson);
+        }
 
     }
 }

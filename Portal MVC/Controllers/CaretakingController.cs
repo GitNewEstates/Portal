@@ -38,39 +38,39 @@ namespace Portal_MVC.Controllers
             
         }
         [HttpPost]
-        //public ActionResult SubmitAttendance(Models.AttendanceLogViewModel ViewModel)
-        //{
+        public async Task< ActionResult> SubmitAttendance(Models.AttendanceLogViewModel ViewModel)
+        {
 
-        //    if (Session["CustomerID"] != null && (int)Session["CustomerID"] > 0)
-        //    {
-        //        if (ModelState.IsValid)
-        //        {
-        //            //ViewModel.AttendanceObj.AttendingUser = (int)Session["CustomerID"];
-        //            //ViewModel.Insert();
-        //            //System.Threading.Thread t = new System.Threading.Thread(new System.Threading.ThreadStart(ViewModel.Insert));
-        //            //t.Start();
-        //            return View("CaretakingDashboard");
-        //        }
-        //        else
-        //        {
+            if (Session["CustomerID"] != null && (int)Session["CustomerID"] > 0)
+            {
+                if (ModelState.IsValid)
+                {
+                    ViewModel.AttendanceObj.AttendingUser = (int)Session["CustomerID"];
+                    await ViewModel.AttendanceObj.Insert(Models.GlobalVariables.GetConnection());
+                    //System.Threading.Thread t = new System.Threading.Thread(new System.Threading.ThreadStart(ViewModel.Insert));
+                    //t.Start();
+                    return View("CaretakingDashboard");
+                }
+                else
+                {
 
-        //            ViewModel.SetLists();
-        //        }
-        //        return View("AttendanceLog", ViewModel);
-        //    }
-        //    else
-        //    {
-        //        return View("../Home/NotLoggedIn");
-        //    }
+                    ViewModel.SetLists();
+                }
+                return View("AttendanceLog", ViewModel);
+            }
+            else
+            {
+                return View("../Home/NotLoggedIn");
+            }
 
 
 
-        //}
+        }
         //public ActionResult AttendanceHistory(int PropID = 0, string PropName = "", bool IsEstate = false )
         //{
-            
+
         //    Models.AttendanceHistoryViewModel vm = new Models.AttendanceHistoryViewModel();
-           
+
         //    if (Session["CustomerID"] != null && (int)Session["CustomerID"] > 0)
         //    {
         //        if (PropID == 0)
@@ -85,7 +85,7 @@ namespace Portal_MVC.Controllers
 
         //        if ((int)Session["UserType"] > 1 && !IsEstate) //get list of properties when not customer type
         //        {
-                    
+
         //                vm.PropListViewModel = new Models.ServiceChargeBudgetViewModel();
         //                vm.PropListViewModel.PropertyList = Models.PropertyMethods.GetAllEstates();
         //                vm.PropListViewModel.ControllerName = "Caretaking";
@@ -126,7 +126,7 @@ namespace Portal_MVC.Controllers
         //        return View("../Home/NotLoggedIn");
         //    }
         //}
-        
+
         public ViewResult AttendanceDetail(int VisitID = 0, bool isStatic = false, string guid = "")
         {
             

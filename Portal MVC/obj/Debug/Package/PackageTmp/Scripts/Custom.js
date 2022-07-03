@@ -40,14 +40,14 @@ $(document).ready(function () {
     });
 
 
-    var loadimg = document.getElementById('SelectImg1');
-    if (loadimg != null){
-        loadimg.addEventListener('click', LoadImage);
-      }
+    //var loadimg = document.getElementById('SelectImg1');
+    //if (loadimg != null){
+    //    loadimg.addEventListener('click', LoadImage);
+    //  }
 
     var loadimg1 = document.getElementById('SelectImg1');
     if (loadimg1 != null) {
-        loadimg1.addEventListener('click', LoadImage2);
+        loadimg1.addEventListener('click', LoadImage);
     }
 
    
@@ -88,8 +88,10 @@ $(document).ready(function () {
             ImageContainer.appendChild(Image);
 
             var imageUrlBox = document.getElementById('ImageUrlsbox');
-            var imageurlText2 = imageUrlBox.value;
-            imageUrlBox.value = imageurlText2 + ' ' + e.filesUploaded[i].handle;
+            if (imageUrlBox != null) {
+                var imageurlText2 = imageUrlBox.value;
+                imageUrlBox.value = imageurlText2 + ' ' + e.filesUploaded[i].handle;
+            }
         }
     }
 
