@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Configuration;
@@ -19,50 +22,11 @@ namespace Portal_MVC.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private ApplicationDbContext _context;
 
         public AccountController()
         {
-           // bool CookiesEnabled = false;
-            
-          //  try
-           // {
-                //write cookie
-//                HttpCookie cookie = new HttpCookie("TestCookie");
-//                cookie["IsEnabled"] = "true";
-
-//                Response.Cookies.Add(cookie);
-
-
-//                //read cookie
-//                HttpCookie NewCookie = Request.Cookies["TestCookie"];
-
-               
-
-//                if (NewCookie != null)
-//                {
-//                    CookiesEnabled = true;
-//                }
-//          //  }
-//          //  catch (Exception ex)
-////{
-//           //     string r = ex.Message;
-//          //  }
-
-//            if (CookiesEnabled == false)
-//            {
-//                Configuration objConfig = System.Web.Configuration.WebConfigurationManager.OpenWebConfiguration("~");
-//                SessionStateSection SessionState = objConfig.GetSection("system.web/sessionState") as SessionStateSection;
-//                if (SessionState != null)
-//                {
-//                    SessionState.Mode = System.Web.SessionState.SessionStateMode.InProc;
-//                    SessionState.Cookieless = HttpCookieMode.UseUri;
-//                    objConfig.Save();
-//                }
-
-//                RedirectToHome();
-
-
-//            }
+           
 
         }
 
@@ -71,10 +35,11 @@ namespace Portal_MVC.Controllers
             return View("Login", this);
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, ApplicationDbContext dbContext )
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            _context = dbContext;
         }
 
         public ApplicationSignInManager SignInManager
@@ -125,59 +90,149 @@ namespace Portal_MVC.Controllers
                 return View(model);
             }
 
-            //Login Logic
-
-            PortalLogins p = Models.PortalLogins.Login(model.Email, model.Password);
-
-            if (p.LoginVerified == true)
+            //This doesn't count login failures towards account lockout
+            // To enable password failures to trigger account lockout, change to shouldLockout: true
+            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            switch (result)
             {
-                //session variables
-                Session["CustomerID"] = p.CustomerID;
-                Session["CustomerName"] = p.customerName;
-                Session["UserType"] = p.UserType;
-                if (Session["UserType"].ToString() != "1")
-                {
-                    GlobalVariables.LogUsage = 1;
-                }
-                else
-                {
-                    GlobalVariables.LogUsage = 0;
-                }
+                
+                case SignInStatus.Success:
+                    //get the user
+                    var user = await UserManager.FindByEmailAsync(model.Email);
+                    //test if email confirmed
+                    var IsEmailConfirmed = 
+                        await UserManager.IsEmailConfirmedAsync(user.Id);
+                    if (!IsEmailConfirmed)
+                    {
+                        Models.ConfirmEmailViewModel vm = new ConfirmEmailViewModel();
+                        vm.Email = user.Email;
+                        return View("ConfirmationEmailSent", vm);
+                    } else
+                    {
+                        //get roles
+                        IList<string> role = await 
+                            UserManager.GetRolesAsync(user.Id);
 
-                //set api connection
-                GlobalVariables.APIConnection = new APIConnectionObject();
+                        bool MatchedToRole = 
+                            await MatchRoleToUser(role, user.Email);
 
-                //log activity in db
-                Models.UsageData.InsertNewUsage(1, (int)Session["CustomerID"]); //1 = log in
+                        //if not matched to a role then redirect
+                        if (!MatchedToRole)
+                        {
+                            //email adminstrators
+                            await EmailAdminstratorsWithUnmatchedUsers(user.Email);
+                            
+                            return View("ConfirmationEmailSent");
+                        }
+                    
+                    }
 
-                return RedirectToAction("../Home/Index");
-            } else
+                    return RedirectToLocal(returnUrl);
+                case SignInStatus.LockedOut:
+                    return View("Lockout");
+                case SignInStatus.RequiresVerification:
+                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+                case SignInStatus.Failure:
+                default:
+                    ModelState.AddModelError("", "Invalid login attempt.");
+                    return View(model);
+            }
+        }
+
+        private async Task<bool> MatchRoleToUser(IList<string> Roles, string UserEmail)
+        {
+            //this will set the session viarables of the user. Where that data is drawn from 
+            //will depend on the role of the logged in user. 
+            if(Roles.Count > 0)
             {
-                Models.UsageData.InsertNewUsage(3, 0, model.Email);
-                ModelState.AddModelError("", "Invalid login attempt.");
-                return View(model);
+                string role = Roles[0];
+
+                if(role == "Customer")
+                {
+                    //get the customer ID and Name
+                    Owner owner =
+                        await OwnerMethods.GetOwnerByEmail(UserEmail);
+
+                    Session["CustomerID"] = owner.id;
+                    Session["CustomerName"] = owner.FullName;
+                    Session["UserType"] = 1;
+
+                    return true;
+                } else
+                {
+                    APIUser user = await UserMethods.GetUserByEmail(UserEmail);
+                    if (user.id > 0)
+                    {
+                        Session["CustomerID"] = user.id;
+                        Session["CustomerName"] = user.FullName;
+                        Session["UserType"] = 2;
+                        return true;
+                    } else
+                    {
+                        return false;
+                    }
+                }
+
+              
             }
 
+            return false;
+        }
+
+        private async Task<List<string>> GetAdminEmails()
+        {
+            GlobalVariables.CS = 
+                WebConfigurationManager.ConnectionStrings["AccessConnection"].ConnectionString;
+
+            string q = "select Email from AspNetUsers " +
+                       "inner join AspNetUserRoles on AspNetUsers.Id = AspNetUserRoles.UserId " +
+                        "inner join AspNetRoles on AspNetUserRoles.RoleId = AspNetRoles.id " +
+                        "where AspNetRoles.Name = 'Administrator'";
+
+          
+
+            DataTable dt =
+                await GlobalVariables.GetConnection().Connection.GetDataTableAsync(q);
+
+
+            GlobalVariables.CS =
+                WebConfigurationManager.ConnectionStrings["DeployConnection"].ConnectionString;
+
+
+            List<string> emails = new List<string>();
+            if(dt.Rows.Count > 0 && dt.Rows[0][0].ToString() != "Error")
+            {
+                foreach(DataRow dr in dt.Rows)
+                {
+                    emails.Add(dr[0].ToString());
+                }
+            }
+
+            return emails;
+        }
+
+        private async Task EmailAdminstratorsWithUnmatchedUsers(string email)
+        {
+            //email the admins if someone has registered but their email address cannot be found
+
+            string content = $"A user with email {email} has tried to register for the Portal. Their email address is not matched " +
+                "within our Database. Please investigate and take the appropriate action";
 
 
 
+            List<string> To = await GetAdminEmails();
+            //send email
+            Models.MailService mail = new MailService("Unvalidated Portal Registration",
+                content, content, GlobalVariables.GetConnection(), 0, To);
+            mail = await Models.MailServiceMethods.SendMailAPI(mail);
+            if (mail.APIError != null)
+            {
+                if (mail.APIError.HasError)
+                {
+                    //error occurred
+                }
+            }
 
-            // This doesn't count login failures towards account lockout
-            // To enable password failures to trigger account lockout, change to shouldLockout: true
-            //var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
-            //switch (result)
-            //{
-            //    case SignInStatus.Success:
-            //        return RedirectToLocal(returnUrl);
-            //    case SignInStatus.LockedOut:
-            //        return View("Lockout");
-            //    case SignInStatus.RequiresVerification:
-            //        return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
-            //    case SignInStatus.Failure:
-            //    default:
-            //        ModelState.AddModelError("", "Invalid login attempt.");
-            //        return View(model);
-            //}
         }
 
         //
@@ -228,7 +283,8 @@ namespace Portal_MVC.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            return View();
+            RegisterViewModel model = new RegisterViewModel();
+            return View(model);
         }
 
         //
@@ -242,17 +298,25 @@ namespace Portal_MVC.Controllers
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
+                 
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+                    await SendConfirmationEmail(user.Email);
+
+                    //await mail.SendGridSend();
+                    //string sent= mail.sentStatus.ToString();
+
+                    //await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "Home");
+                    Models.ConfirmEmailViewModel vm = new ConfirmEmailViewModel();
+                    vm.Email = user.Email;
+                    return View("ConfirmationEmailSent", vm);
                 }
                 AddErrors(result);
             }
@@ -261,6 +325,46 @@ namespace Portal_MVC.Controllers
             return View(model);
         }
 
+        private async Task SendConfirmationEmail(string email)
+        {
+            //get the new user ID
+            var NewUser = await UserManager.FindByEmailAsync(email);
+
+            string ConfirmationToken =
+                await UserManager.GenerateEmailConfirmationTokenAsync(NewUser.Id);
+
+
+            string url = HttpContext.Request.Url.Scheme + "://" + HttpContext.Request.Url.Authority +
+                Url.Action("ConfirmEmail", "Account", new { userid = NewUser.Id, code = ConfirmationToken });
+            List<string> To = new List<string> { NewUser.Email };
+            //send email
+            Models.MailService mail = new MailService("Email Confirmation",
+                url, url, GlobalVariables.GetConnection(), 0, To);
+            mail = await Models.MailServiceMethods.SendMailAPI(mail);
+            if (mail.APIError != null)
+            {
+                if (mail.APIError.HasError)
+                {
+                    //error occurred
+                }
+            }
+        }
+
+        [HttpPost]
+        public async Task<ContentResult>ReSendConfirmationEmail()
+        {
+
+            string email = User.Identity.GetUserName();
+
+            if (!UserManager.IsEmailConfirmed(email)){
+
+                await SendConfirmationEmail(email);
+                return Content("Success");
+            } else
+            {
+                return Content("ConfirmedAlready");
+            }
+        }
         //
         // GET: /Account/ConfirmEmail
         [AllowAnonymous]
@@ -271,7 +375,74 @@ namespace Portal_MVC.Controllers
                 return View("Error");
             }
             var result = await UserManager.ConfirmEmailAsync(userId, code);
+
+            if (result.Succeeded)
+            {
+                //set roles
+                var user = await UserManager.FindByIdAsync(userId);
+                bool isRoleSet = 
+                    await SetUserRoles(user.Email, userId);
+
+                if (!isRoleSet)
+                {
+                    //email admins
+                    await EmailAdminstratorsWithUnmatchedUsers(user.Email);
+
+                    //send to error view
+                    return View("Unsuccessfulverification");
+                }
+
+            }
             return View(result.Succeeded ? "ConfirmEmail" : "Error");
+        }
+
+        private async Task<bool> SetUserRoles(string email, string id)
+        {
+            //returns true if role set and false if role cannot be set
+
+            //test if email present in customer account
+            Owner owner = await OwnerMethods.GetOwnerByEmail(email);
+            
+            if (owner.id > 0)
+            {
+                //assign to Customer Role
+                await UserManager.AddToRoleAsync(id, "Customer");
+                return true;
+            } else 
+            {
+                //Test if NEM Employee
+                Models.APIUser nemuser 
+                    = await UserMethods.GetUserByEmail(email);
+                if (nemuser != null)
+                {
+                    if (!string.IsNullOrWhiteSpace(nemuser.Role.Name))
+                    {
+                        switch (nemuser.Role.Name)
+                        {
+                            case "Director":
+
+                                await UserManager.AddToRoleAsync(id, "Administrator");
+
+                                break;
+                            case "Property Manager":
+                                await UserManager.AddToRoleAsync(id, "Property Manager");
+                                break;
+                            case "Manager":
+                                await UserManager.AddToRoleAsync(id, "Manager");
+                                break;
+                            case "Maintenance Operative":
+                                await UserManager.AddToRoleAsync(id, "Maintenance Operative");
+                                break;
+
+                        }
+
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+
         }
 
         //

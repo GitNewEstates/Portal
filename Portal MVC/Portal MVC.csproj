@@ -94,6 +94,9 @@
     <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.2\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNetCore.WebUtilities, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.WebUtilities.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.WebUtilities.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -110,6 +113,9 @@
     </Reference>
     <Reference Include="Microsoft.Identity.Client, Version=4.44.0.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Identity.Client.4.44.0\lib\net461\Microsoft.Identity.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Net.Http.Headers, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.Headers.2.2.0\lib\netstandard2.0\Microsoft.Net.Http.Headers.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Owin, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.4.0.0\lib\net451\Microsoft.Owin.dll</HintPath>
@@ -168,6 +174,9 @@
     <Reference Include="System.Security" />
     <Reference Include="System.Text.Encoding.CodePages, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Text.Encoding.CodePages.4.5.1\lib\net461\System.Text.Encoding.CodePages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.4.5.0\lib\netstandard2.0\System.Text.Encodings.Web.dll</HintPath>
     </Reference>
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
@@ -281,6 +290,7 @@
     <Compile Include="Controllers\PropertySummaryController.cs" />
     <Compile Include="Controllers\RepairsMaintenanceController.cs" />
     <Compile Include="Controllers\ServiceChargesController.cs" />
+    <Compile Include="Controllers\UserRolesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -305,10 +315,12 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Insurance.cs" />
     <Compile Include="Models\InsurancesViewModel.cs" />
+    <Compile Include="Models\MailService.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MeterReadingsViewModel.cs" />
     <Compile Include="Models\MyAccountViewModel.cs" />
     <Compile Include="Models\NotificationSettingsViewModels.cs" />
+    <Compile Include="Models\Owner.cs" />
     <Compile Include="Models\OwnerNotes.cs" />
     <Compile Include="Models\PortalLogins.cs" />
     <Compile Include="Models\PostExpenseViewModel.cs" />
@@ -322,6 +334,7 @@
     <Compile Include="Models\Supplier.cs" />
     <Compile Include="Models\Transaction.cs" />
     <Compile Include="Models\UsageData.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Models\Utils.cs" />
     <Compile Include="Models\ViewModel.cs" />
     <Compile Include="Portal_MVC\Models\HomeViewModels.cs" />
@@ -359,7 +372,6 @@
     <Content Include="Content\ej2\material.css" />
     <Content Include="Content\ej2\tailwind-dark.css" />
     <Content Include="Content\ej2\tailwind.css" />
-    <Content Include="Content\FontAwesome.css" />
     <Content Include="Content\navbar-fixed-top.css" />
     <Content Include="Content\NEM-menu.css" />
     <Content Include="Content\PortalPageTemplate.css" />
@@ -506,6 +518,10 @@
     <Content Include="Views\Cases\Index.cshtml" />
     <Content Include="Views\Cases\CaseDetail.cshtml" />
     <Content Include="Views\Caretaking\PostExpenseView.cshtml" />
+    <Content Include="Views\Account\ConfirmationEmailSent.cshtml" />
+    <Content Include="Views\Home\AdminDash.cshtml" />
+    <Content Include="Views\Account\Unsuccessfulverification.cshtml" />
+    <Content Include="Views\Admin\UserRoles.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

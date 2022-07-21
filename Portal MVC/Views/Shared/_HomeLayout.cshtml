@@ -8,11 +8,26 @@
 
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <script src="https://kit.fontawesome.com/f73e41610a.js" crossorigin="anonymous"></script>
+
     <link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/material.css" />
+
+
     <script type="text/javascript"
             src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
+
+
     <!-- Syncfusion Essential JS 2 Scripts -->
     <script src="https://cdn.syncfusion.com/ej2/dist/ej2.min.js"></script>
+
+    <!--Toast & Chart References-->
+    <script src="https://cdn.syncfusion.com/ej2/20.2.36/dist/ej2.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/20.2.36/fluent.css" />
+    
+
+
+
     <link href="~/Content/dashboard.css" rel="stylesheet">
     <link href="~/Content/SideBarNav.css" rel="stylesheet">
     <link href="~/Content/NEM-menu.css" rel="stylesheet" />
@@ -20,10 +35,13 @@
     <link href="~/Content/PortalPageTemplate.css" rel="stylesheet" type="text/css">
     <link href="~/Content/Custom.css" rel="stylesheet" type="text/css">
 
-    <link href="~/Content/FontAwesome.css" rel="stylesheet" type="text/css">
     <link rel="icon" href="~/Content/Box.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexboxgrid/6.3.1/flexboxgrid.min.css" integrity="sha512-YHuwZabI2zi0k7c9vtg8dK/63QB0hLvD4thw44dFo/TfBFVVQOqEG9WpviaEpbyvgOIYLXF1n7xDUfU3GDs0sw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     @using Portal_MVC.Models
+    @using Syncfusion.EJ2
+    @using Syncfusion.EJ2.Notifications;
+    @using Syncfusion.EJ2.Navigations;
 
 </head>
 <body>
@@ -62,16 +80,36 @@
 
             </div>
         </div>
+
+
+
         <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 LoggedInHeader GradientBackground">
-            @if (Session["SelectedProperty"] != null && Session["CustomerName"] != null)
+            @if (Model.SelectedProperty != null)
             {
                 <div class="SelectedProperty">
-                    <h6>@Session["SelectedProperty"]</h6>
+                    <h6>
+                        @Model.SelectedProperty.Address1
+                        @if (Model.NotificationCount > 0)
+                        {
+                            <div style="position:relative;display:inline-block;" id="NotificationIcon">
+                                <i class="fa-solid fa-bell"></i>
+                                <span class="e-badge e-badge-primary e-badge-overlap e-badge-notification NotificationNumberBadge">@Model.NotificationCount</span>
+                            </div>
+
+                            @*<i class="fa-solid fa-bell"></i>*@
+                        }
+                    </h6>
+
                 </div>
 
 
+            }
+            @if (Model.NameofUser != null)
+            {
+
+
                 <div class="CustomerName">
-                    <h6>@Session["CustomerName"]</h6>
+                    <h6>@Model.NameofUser</h6>
                 </div>
             }
         </div>
@@ -90,11 +128,12 @@
             </div>
 
             <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 LoggedInHeader GradientBackground">
-                @if (Session["SelectedProperty"] != null)
+                @if (Model.SelectedProperty != null)
                 {
                     <div class="SelectedProperty">
-                        <h6>@Session["SelectedProperty"]</h6>
+                        <h6>@Model.SelectedProperty.Address1</h6>
                     </div>
+
                 }
             </div>
 
@@ -107,14 +146,30 @@
 
     <div class="container-fluid" id="sideNavContainer">
         <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 LoggedInHeader GradientBackground">
-            @if (Session["SelectedProperty"] != null && Session["CustomerName"] != null)
+            @if (Model.SelectedProperty != null)
+            {
+                <div class="SelectedProperty">
+                    <h6>
+                        @Model.SelectedProperty.Address1
+                        @if (Model.NotificationCount > 0)
+                        {
+                            <div style="position:relative;display:inline-block;">
+                                <i class="fa-solid fa-bell"></i>
+                                <span class="e-badge e-badge-primary e-badge-overlap e-badge-notification NotificationNumberBadge">@Model.NotificationCount</span>
+                            </div>
+
+                            @*<i class="fa-solid fa-bell"></i>*@
+                        }
+                    </h6>
+
+                </div>
+            }
+            @if (Model.NameofUser != null)
             {
 
-                <div class="SelectedProperty">
-                    <h6>@Session["SelectedProperty"]</h6>
-                </div>
+
                 <div class="CustomerName">
-                    <h6>@Session["CustomerName"]</h6>
+                    <h6>@Model.NameofUser</h6>
                 </div>
             }
         </div>
@@ -132,9 +187,14 @@
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 RenderBodyContainer">
         <div style="" id="body">
 
+          
+
             @RenderBody()
         </div>
     </div>
+
+
+
 
 
     @Scripts.Render("~/bundles/jquery")
@@ -146,8 +206,45 @@
     <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
 
     <script type="text/javascript">
+
+        function onCreate() {
+            alert('Created');
+        }
+
+        function onclose(e) {
+            SetToastVisibility("false");
+            alert('Close');
+        }
+
         $(document).ready(function () {
-            
+
+            SetToastVisibility("false");
+
+            var toastObj = document.getElementById('element').ej2_instances;
+
+            document.getElementById("NotificationIcon").addEventListener('mouseover', function () {
+
+                if (toastObj != null && document.getElementById("ToastDisplayed").innerText == "false") {
+                    for (var i = 0; i <= toastObj.length -1; i++){
+                        toastObj[i].show();
+
+                    }
+                    SetToastVisibility("true");
+
+                }
+               
+            });
+
+            function SetToastVisibility(val) {
+
+                document.getElementById("ToastDisplayed").innerText = val;
+                
+            }
+
+          
+           
+
+
 
             $("#btnExpenseComplete").click(function () {
 
@@ -162,7 +259,7 @@
                 }
 
 
-                 //get values of each control
+                //get values of each control
                 var Date = document.getElementById("ExpensePaidDate").value;
                 var SupplierID = document.getElementById("ExpenseSupplierList").value;
                 var Paymethod = document.getElementById("ExpensePaymentTypeList").value;
@@ -172,7 +269,7 @@
                 var schedule = document.getElementById("ScheduleList").value;
                 var headingID = document.getElementById("HeadingList").value;
 
-                
+
                 //validation
                 if (Date == null || Date == 'undefined') {
                     alert("Date Invalid");
@@ -205,7 +302,7 @@
                     return;
                 }
 
-                
+
 
                 //create object literal
 
@@ -223,31 +320,31 @@
 
                 console.log(PortalTrans.TransactionDate);
 
-                
+
                 var url = "/Expense/Create/";
                 $.post(url, PortalTrans, function (data) {
 
                     console.log(data);
                     if (data.APIError.HasError == true) {
-                        
-                        ShowExpenseFailMessage();
-                        
-                    } else {
-                        
 
-                        //reset values 
-                       
-                        
+                        ShowExpenseFailMessage();
+
+                    } else {
+
+
+                        //reset values
+
+
                         document.getElementById("ExpenseCostTextBox").value = 0.00;
-                       
+
                         document.getElementsByTagName("textarea")[0].value = "";
 
                         ShowExpenseSuccessMessage();
 
-                        
+
 
                     }
-                    
+
                 });
 
 
@@ -267,26 +364,27 @@
 
             function ShowExpenseFailMessage() {
                 var Element = document.getElementById('ExpenseFailMessage');
-               // var elementtext = Element.innerText;
-               // Element.innerText = elementtext + " Error Message: " + ErrorMessage;
+                // var elementtext = Element.innerText;
+                // Element.innerText = elementtext + " Error Message: " + ErrorMessage;
                 Element.style.display = "block";
             }
 
 
             //get the current budget
             var FundDropDown = document.getElementById("FundSelected");
-            
 
-            if (FundDropDown.length > 0) {
-                FundDropDown.selectedIndex = 0;
+            if (FundDropDown != null) {
+                if (FundDropDown.length > 0) {
+                    FundDropDown.selectedIndex = 0;
 
-                GetBudgets(FundDropDown[0].value);
+                    GetBudgets(FundDropDown[0].value);
+                }
             }
 
 
             //****************** Expenses**********************
             $("#FundSelected").change(function () {
-                
+
                 var strSelected = "";
                 $("#FundSelected option:selected").each(function () {
                     strSelected += $(this)[0].value;
@@ -297,7 +395,7 @@
             });
 
             function GetBudgets(FundID) {
-               
+
 
                 var url = "/Expense/GetBudgetDetails/" + FundID;
                 var BudgetDropDown = document.getElementById("BudgetList");
@@ -305,7 +403,7 @@
                 removeOptions(BudgetDropDown);
 
                 $.get(url, function (data) {
-                    
+
                     //const obj = JSON.parse(data);
 
                     // do something if necessary
@@ -314,7 +412,7 @@
                         el.textContent = data[i].BudgetName;
                         el.value = data[i].id;
                         BudgetDropDown.appendChild(el);
-                       
+
                     }
 
                     if (BudgetDropDown.length > 0) {
@@ -341,18 +439,18 @@
                 var url = "/Expense/GetBudgetScheduleDetails/" + BudgetID;
                 removeOptions(ScheduleDropDown);
 
-               
+
                 $.get(url, function (data) {
-                    
+
                     const obj = JSON.parse(data);
-                    
+
                     // do something if necessary
                     for (let i = 0; i < obj.length; i++) {
                         var el = document.createElement("option");
                         el.textContent = obj[i].Schedule;
                         el.value = obj[i].Schedule;
                         ScheduleDropDown.appendChild(el);
-                      
+
                     }
 
                     if (ScheduleDropDown.length > 0) {
@@ -384,11 +482,11 @@
             function GetBudgetHeadings(BudgetID, ScheduleName) {
                 var HeadingDropDown = document.getElementById("HeadingList");
                 var url = "/Expense/GetBudgetHeadings/" + BudgetID + "?schedule=" + ScheduleName;
-                
+
                 removeOptions(HeadingDropDown);
 
                 $.get(url, function (data) {
-                    
+
 
                     const obj = JSON.parse(data);
 
@@ -407,7 +505,7 @@
                 });
             }
 
-      
+
 
 
 
@@ -450,6 +548,8 @@
             var selectedrecords = grid.getSelectedRecords();  // get the selected records.
         }
     </script>
+
+  
 
 
 </body>

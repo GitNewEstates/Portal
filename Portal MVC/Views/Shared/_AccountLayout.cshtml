@@ -7,7 +7,15 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
+    <link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/material.css" />
+    <!-- Syncfusion Essential JS 2 Scripts -->
+    <script src="https://cdn.syncfusion.com/ej2/dist/ej2.min.js"></script>
+
+    <!-- Syncfusion ASP.NET MVC controls scripts -->
+    <script src="https://cdn.syncfusion.com/ej2/20.2.36/dist/ej2.min.js"></script>
+
     <link href="~/Content/dashboard.css" rel="stylesheet">
+    
     <link href="~/Content/NEM-menu.css" rel="stylesheet">
     <link href="~/Content/Custom.css" rel="stylesheet">
     <link href="~/Content/navbar-fixed-top.css" rel="stylesheet" type="text/css">
@@ -15,124 +23,103 @@
 
 
 </head>
-    <body id="body">
-        <nav class="navbar navbar-default navbar-static-top" id="TopNav">
-            <div>
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed CustomBurger" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="http://www.newestates.co.uk">
-
-
-                        <img src="~/Content/400-x-71.png" />
-                    </a>
-                </div>
-                <div id="navbar" class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav navbar-right" id="UL">
-
-                        <li id="MenuTextColour"><a href="https://www.newestates.co.uk/about-us/">About Us</a></li>
-
-                        <li id="MenuTextColour" class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Services <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="https://www.newestates.co.uk/property-owners/">Property Owners</a></li>
-                                <li><a href="https://www.newestates.co.uk/developers/">Developers</a></li>
-                                <li><a href="https://www.newestates.co.uk/freeholders/">Freeholders</a></li>
-                                <li><a href="https://www.newestates.co.uk/residents-management-companies/">Resident's Management Companies</a></li>
-                                <li><a href="https://www.newestates.co.uk/social-housing/">Social Housing</a></li>
-                            </ul>
-                        </li>
-                        <li id="MenuTextColour"><a href="https://www.newestates.co.uk/Latest-news/">Latest News</a></li>
-                        <li id="MenuTextColour"><a href="https://www.newestates.co.uk/contact/">Contact</a></li>
-                    </ul>
-
-                </div><!--/.nav-collapse -->
-            </div>
-        </nav>
+<body id="body">
+    <nav class="navbar navbar-default navbar-static-top" id="TopNav">
         <div>
-            @*<div class="GradientBackground">*@
-                <div class="GradientBackground">
-                    <div class="">
-                        @RenderBody()
-                    </div>
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed CustomBurger" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://www.newestates.co.uk">
 
-                    @*<div class="footer-wrapper">
-                        <div class="site-foot">
-                            <div class="site-footContainer">
-                                <div class="bigFooter">
-                                    <div class="logo">
-                                        <a href="/" class="logo">
 
-                                            <img src="~/Content/331-x-59 (1).png" />
-                                        </a>
-                                    </div>
-                                    <div class="irpm">
-                                        <img id="irpm" src="https://static1.squarespace.com/static/ta/585124c637c5816bf24f2fcc/55/assets/irpm.png" alt="IRPM">
-                                        <img id="omb" src="https://static1.squarespace.com/static/ta/585124c637c5816bf24f2fcc/55/assets/ombudsman.png" alt="The Property Ombudsman">
-                                    </div>
-                                    <nav class="foot-navigation">
-                                        <ul class="nav">
-                                            <li>
-                                                <!--COLLECTION-->
-                                                <!--EXTERNAL LINK-->
-                                                <a href="https://www.newestates.co.uk/about-us/">
-                                                    About Us
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <!--COLLECTION-->
-                                                <!--EXTERNAL LINK-->
-                                                <a href="https://www.newestates.co.uk/property-owners">
-                                                    Services
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <!--COLLECTION-->
-                                                <!--EXTERNAL LINK-->
-                                                <a href="https://www.newestates.co.uk/latest-news/">
-                                                    Latest News
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <!--COLLECTION-->
-                                                <!--EXTERNAL LINK-->
-                                                <a href="https://www.newestates.co.uk/contact/">
-                                                    Contact
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </nav>
-                                    <div class="address">
-                                        <p>Step Business Centre<br>14-16 Bridgford Road<br>West Bridgford<br>Nottingham<br>NG2 6AB</p>
-                                        <p>info@newestates.co.uk</p>
-                                        <p>0115 727 0214</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>*@
-                    <div class="theEnd">
-                        <span class="registered">
-                            Registered in England &amp; Wales: Company No; 09670513
-                        </span>
-
-                        <span class="copyright">
-                            <span>
-                                Copyright
-                                <script>document.write(new Date().getFullYear())</script>2017. All Rights Reserved.
-                            </span> <a href="http://www.skylightmedia.co.uk" class="skylight" target="_blank">Web Design</a>
-                        </span>
-                    </div>
-                </div>
+                    <img src="~/Content/400-x-71.png" />
+                </a>
             </div>
-        @*</div>*@
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right" id="UL">
 
-        @Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/bootstrap")
-        @RenderSection("scripts", required: false)
-    </body>
+                    <li id="MenuTextColour"><a href="https://www.newestates.co.uk/about-us/">About Us</a></li>
+
+                    <li id="MenuTextColour" class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Services <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="https://www.newestates.co.uk/property-owners/">Property Owners</a></li>
+                            <li><a href="https://www.newestates.co.uk/developers/">Developers</a></li>
+                            <li><a href="https://www.newestates.co.uk/freeholders/">Freeholders</a></li>
+                            <li><a href="https://www.newestates.co.uk/residents-management-companies/">Resident's Management Companies</a></li>
+                            <li><a href="https://www.newestates.co.uk/social-housing/">Social Housing</a></li>
+                        </ul>
+                    </li>
+                    <li id="MenuTextColour"><a href="https://www.newestates.co.uk/Latest-news/">Latest News</a></li>
+                    <li id="MenuTextColour"><a href="https://www.newestates.co.uk/contact/">Contact</a></li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+    <div class="MainBody">
+        @*<div class="GradientBackground">*@
+        <div>
+            <div class="">
+                @RenderBody()
+            </div>
+
+
+
+        </div>
+        <div class="theEnd">
+            <span class="registered">
+                Registered in England &amp; Wales: Company No; 09670513
+            </span>
+
+            <span class="copyright">
+                <span>
+                    Copyright
+                    <script>document.write(new Date().getFullYear())</script>2017. All Rights Reserved.
+                </span> <a href="http://www.skylightmedia.co.uk" class="skylight" target="_blank">Web Design</a>
+            </span>
+        </div>
+    </div>
+
+
+    @*</div>*@
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    @RenderSection("scripts", required: false)
+    @Html.EJS().ScriptManager()
+
+<script>
+        $(document).ready(function () {
+            $("#ResendButton").click(function () {
+                document.getElementById("ResentConfirmation").style.display = "none";
+                document.getElementById("AlreadyConfirmed").style.display = "none";
+
+
+                var url = "/Account/ReSendConfirmationEmail/";
+                $.post(url, "", function (data) {
+                    if (data == "Success") {
+                        document.getElementById("ResentConfirmation").style.display = "block";
+                    } else if (data == "ConfirmedAlready") {
+                        document.getElementById("AlreadyConfirmed").style.display = "block";
+                    }
+                })
+            })
+
+            $("#GoToLogInButton").click(function () {
+                window.location.href = "@Url.Action("Login", "Account")";
+                //var url = "/Account/Login/";
+                //$.get(url, "", function (data) {
+
+                //})
+            })
+        })
+</script>
+</body>
+
 </html>

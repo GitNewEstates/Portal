@@ -20,8 +20,10 @@ namespace Portal_MVC.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        //this is where the LoginDB is set
+        
         public ApplicationDbContext()
-            : base("DeployConnection", throwIfV1Schema: false)
+            : base("AccessConnection", throwIfV1Schema: false)
         {
         }
 
@@ -35,8 +37,8 @@ namespace Portal_MVC.Models
             //this is where the Identity is mapped to the relevant tables in the database
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<ApplicationUser>().ToTable("Leaseholders").Property(p => p.Id).HasColumnName("ID");
-            modelBuilder.Entity<IdentityUserLogin>().ToTable("PortalLogins");
+            //modelBuilder.Entity<ApplicationUser>().ToTable("Leaseholders").Property(p => p.Id).HasColumnName("ID");
+            //modelBuilder.Entity<IdentityUserLogin>().ToTable("PortalLogins");
 
         }
 

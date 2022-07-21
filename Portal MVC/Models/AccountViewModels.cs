@@ -61,7 +61,7 @@ namespace Portal_MVC.Models
         [Display(Name = "Remember me?")]
         public bool RememberMe { get; set; }
 
-        public string forwardurl { get; set; } = "Caretaking/AttendanceHistory";
+        public string forwardurl { get; set; } = "";
     }
 
     public class RegisterViewModel
@@ -83,6 +83,11 @@ namespace Portal_MVC.Models
         public string ConfirmPassword { get; set; }
     }
 
+    public class ConfirmEmailViewModel
+    {
+        public string Email { get; set; }   
+    }
+
     public class ResetPasswordViewModel
     {
         [Required]
@@ -100,7 +105,6 @@ namespace Portal_MVC.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
-
         public string Code { get; set; }
     }
 

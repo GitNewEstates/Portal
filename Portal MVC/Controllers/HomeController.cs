@@ -7,6 +7,8 @@ using System.Web.Configuration;
 using System.Web.Mvc;
 using Portal_MVC.Models;
 using NotificationSettings;
+using Microsoft.AspNet.Identity;
+using System.Threading.Tasks;
 
 namespace Portal_MVC.Controllers
 {
@@ -15,93 +17,119 @@ namespace Portal_MVC.Controllers
         public static List<Models.Properties> PropList { get; set; }
     }
 
+    [Authorize(Roles = "Customer,Administrator")]
 
     //Controller for sign in page
     public class HomeController : Controller
     {
        
 
-        public ActionResult Index(int PropID = 0, string PropName = "", int logdata = 0)
+        public async Task< ActionResult> Index(int PropID = 0, string PropName = "", int logdata = 0)
         {
-            HomeViewModel homeViewModel = new HomeViewModel();
+            var id = User.Identity.GetUserId();
+            var email = User.Identity.GetUserName();
+
             
+            //var auth = User.Identity.IsAuthenticated;
+
+            HomeViewModel homeViewModel = new HomeViewModel();
+            await homeViewModel.SetBaseDataAsync(id, email);
+            homeViewModel.ViewName = "Index";
+            homeViewModel.ControllerName = "Home";
+            switch (homeViewModel.RoleName)
+            {
+                case "Administrator":
+                    //Do speciofic work and send to Administrator Dashboard
+                    homeViewModel.ViewName = "AdminDash";
+                    break;
+                case "Customer":
+                    //Do specific work and send to Customer Dashboard
+                    if(PropID > 0)
+                    {
+                        homeViewModel.SelectedProperty.ID = PropID;
+                        homeViewModel.SelectedProperty.Address1 = PropName;
+                    }
+                    break;
+            }
+            return View(homeViewModel.ViewName, homeViewModel);
+
             //string viewName = "";
             //object anonObj = null;
 
             //string i = Session["CustomerName"].ToString();
 
-            //if own multiple properties then display list of all available properties
-            if (Session["CustomerID"] != null && (int)Session["CustomerID"] != 0)
-            {
-                if (Session["UserType"].ToString() == "1" )
-                {
+            ////if own multiple properties then display list of all available properties
+            //if (Session["CustomerID"] != null && (int)Session["CustomerID"] != 0)
+            //{
+            //    if (Session["UserType"].ToString() == "1" )
+            //    {
                     
 
-                    if (PropID == 0)
-                    {
-                        homeViewModel.PropListViewModel.PropertyList
-                        = Models.PropertyMethods.GetAllOwnedProperties((int)Session["CustomerID"]);
-                        if (homeViewModel.PropListViewModel.PropertyList.Count() > 1)
-                        {
-                            //Sends to list of properties (viewname = index)
-                            homeViewModel.viewName = "Index";
-                            Session["SelectedPropertyID"] = 0;
-                            Session["SelectedProperty"] = null;
-                            Session["IsDirector"] = null;
-                            //Models.GlobalVariables.SelectedPropertyID = 0;
-                            //Models.GlobalVariables.SelectedProperty = null;
-                            homeViewModel.anonObj = homeViewModel.PropListViewModel.PropertyList;
+            //        if (PropID == 0)
+            //        {
+            //            homeViewModel.PropListViewModel.PropertyList
+            //            = Models.PropertyMethods.GetAllOwnedProperties((int)Session["CustomerID"]);
+            //            if (homeViewModel.PropListViewModel.PropertyList.Count() > 1)
+            //            {
+            //                //Sends to list of properties (viewname = index)
+            //                homeViewModel.viewName = "Index";
+            //                Session["SelectedPropertyID"] = 0;
+            //                Session["SelectedProperty"] = null;
+            //                Session["IsDirector"] = null;
+            //                //Models.GlobalVariables.SelectedPropertyID = 0;
+            //                //Models.GlobalVariables.SelectedProperty = null;
+            //                homeViewModel.anonObj = homeViewModel.PropListViewModel.PropertyList;
 
-                        }
-                        else
-                        {
+            //            }
+            //            else
+            //            {
                             
 
-                            foreach(Models.Properties p in homeViewModel.PropListViewModel.PropertyList)
-                            {
-                                PropID = p.ID;
-                                PropName = p.Address1;
-                            }
+            //                foreach(Models.Properties p in homeViewModel.PropListViewModel.PropertyList)
+            //                {
+            //                    PropID = p.ID;
+            //                    PropName = p.Address1;
+            //                }
 
-                            GetPropertySummary(homeViewModel, PropID, PropName);
-                            return View(homeViewModel.viewName, homeViewModel.anonObj);
-                        }
-                    } else
-                    {
-                        GetPropertySummary(homeViewModel, PropID, PropName);
-                        return View(homeViewModel.viewName, homeViewModel.anonObj);
-                    }
-                } else if (Session["UserType"].ToString() == "2")
-                {
-                    //get estates
-                    StaticVariables.PropList = Models.PropertyMethods.GetAllEstates();
+            //                GetPropertySummary(homeViewModel, PropID, PropName);
+            //                return View(homeViewModel.viewName, homeViewModel.anonObj);
+            //            }
+            //        } else
+            //        {
+            //            GetPropertySummary(homeViewModel, PropID, PropName);
+            //            return View(homeViewModel.viewName, homeViewModel.anonObj);
+            //        }
+            //    } else if (Session["UserType"].ToString() == "2")
+            //    {
+            //        //get estates
+            //        StaticVariables.PropList = Models.PropertyMethods.GetAllEstates();
 
-                    //Sends to list of properties (viewname = index)
-                    homeViewModel.viewName = "Index";
-                    Session["SelectedPropertyID"] = 0;
-                    Session["SelectedProperty"] = null;
-                    Session["IsDirector"] = null;
-                    //Models.GlobalVariables.SelectedPropertyID = 0;
-                    //Models.GlobalVariables.SelectedProperty = null;
-                    homeViewModel.anonObj = homeViewModel.PropListViewModel.PropertyList; ;
-                } else if (Session["UserType"].ToString() == "3")
-                {
-                    homeViewModel.viewName = @"../Caretaking/CaretakingDashboard";
-                    Session["SelectedPropertyID"] = 0;
-                    Session["SelectedProperty"] = null;
-                    Session["IsDirector"] = null;
+            //        //Sends to list of properties (viewname = index)
+            //        homeViewModel.viewName = "Index";
+            //        Session["SelectedPropertyID"] = 0;
+            //        Session["SelectedProperty"] = null;
+            //        Session["IsDirector"] = null;
+            //        //Models.GlobalVariables.SelectedPropertyID = 0;
+            //        //Models.GlobalVariables.SelectedProperty = null;
+            //        homeViewModel.anonObj = homeViewModel.PropListViewModel.PropertyList; ;
+            //    } else if (Session["UserType"].ToString() == "3")
+            //    {
+            //        homeViewModel.viewName = @"../Caretaking/CaretakingDashboard";
+            //        Session["SelectedPropertyID"] = 0;
+            //        Session["SelectedProperty"] = null;
+            //        Session["IsDirector"] = null;
 
-                    return RedirectToAction("Index", "Caretaking");
-                }
+            //        return RedirectToAction("Index", "Caretaking");
+            //    }
 
-            }
-            return View(homeViewModel.viewName, homeViewModel);
+            //}
+            //return View(homeViewModel.viewName, homeViewModel);
         }
 
         private HomeViewModel GetPropertySummary(HomeViewModel homeViewModel, int PropID, string PropName)
         {
             //Sends to summary of the property
-            homeViewModel.viewName = "PropertySummary";
+            homeViewModel.ViewName = "PropertySummary";
 
 
             // Models.GlobalVariables.SelectedProperty = StaticVariables.PropList[0].Address1;
@@ -710,7 +738,10 @@ namespace Portal_MVC.Controllers
             Session["CustomerID"] = null;
             Session["CustomerName"] = null;
 
-            return View("../Account/Login");
+            Models.LoginViewModel loginViewModel = new Models.LoginViewModel();
+
+
+            return View("../Account/Login", loginViewModel);
         }
     }
 }

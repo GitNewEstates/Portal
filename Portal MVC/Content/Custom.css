@@ -101,7 +101,7 @@ label.Centre {
 }
 
 
-#customButton {
+.customButton {
     border-radius: 0;
     background: #0596c2;
     min-width: 240px;
@@ -233,6 +233,12 @@ label.Centre {
 .thumbPreview {
     overflow: hidden;
     display: inline-block !important;
+}
+
+.NotificationNumberBadge {
+    margin-left: 5px;
+    /*colour irrelevant as opacity set to 0*/
+    background-color: rgba(255, 0, 0, 0);
 }
 
 /*.GradientBackground{

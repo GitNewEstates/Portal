@@ -1,19 +1,19 @@
 ﻿
 @using Portal_MVC.Models
-@model Portal_MVC.Models.ServiceChargeBudgetViewModel
+@model Portal_MVC.Models.ViewModelBase
 
 
-@if (Session["SelectedPropertyID"] == null || (int)Session["SelectedPropertyID"] == 0)
+@if (Model != null )
 {
 
     <div class="container">
         <div class="panel GradientBackground panelContainer">
             <table class="LinkedTable tableHover">
                 <tbody>
-                    @if (Model != null && Model.PropertyList != null)
+                    @if (Model != null && Model.Properties != null)
                     {
 
-                        foreach (Properties item in Model.PropertyList)
+                        foreach (Properties item in Model.Properties)
                         {
                             <tr>
 

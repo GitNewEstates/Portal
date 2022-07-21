@@ -1716,3 +1716,7 @@ C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin
 C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\StarkbankEcdsa.dll
 C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\SendGrid.pdb
 C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\SendGrid.xml
+C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\Microsoft.AspNetCore.WebUtilities.dll
+C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\Microsoft.Net.Http.Headers.dll
+C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\Microsoft.AspNetCore.WebUtilities.xml
+C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\Microsoft.Net.Http.Headers.xml
