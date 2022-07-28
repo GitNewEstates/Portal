@@ -207,16 +207,16 @@
 
     <script type="text/javascript">
 
-        function onCreate() {
-            alert('Created');
-        }
-
-        function onclose(e) {
-            SetToastVisibility("false");
-            alert('Close');
-        }
+     
 
         $(document).ready(function () {
+
+
+
+
+
+
+            //TOAST
 
             SetToastVisibility("false");
 
@@ -237,7 +237,10 @@
 
             function SetToastVisibility(val) {
 
-                document.getElementById("ToastDisplayed").innerText = val;
+                var toastDisplayed = document.getElementById("ToastDisplayed");
+                if (toastDisplayed != null && toastDisplayed != 'undefined') {
+                    toastDisplayed.innerText = val;
+                }
                 
             }
 
@@ -318,13 +321,13 @@
                     ScheduleName: schedule
                 }
 
-                console.log(PortalTrans.TransactionDate);
+                
 
 
                 var url = "/Expense/Create/";
                 $.post(url, PortalTrans, function (data) {
 
-                    console.log(data);
+                   // console.log(data);
                     if (data.APIError.HasError == true) {
 
                         ShowExpenseFailMessage();

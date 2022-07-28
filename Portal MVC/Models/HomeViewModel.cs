@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 
 namespace Portal_MVC.Models
@@ -28,22 +29,10 @@ namespace Portal_MVC.Models
 
             XAxisMaxValue = 12000;
 
+        
+
             OwnedProperties = new List<OwnedPropertyListViewObject>();
-            OwnedProperties.Add(new OwnedPropertyListViewObject
-            {
-                id = 1,
-                text = "Property Add 1"
-            });
-            OwnedProperties.Add(new OwnedPropertyListViewObject
-            {
-                id = 2,
-                text = "Property Add 2"
-            });
-            OwnedProperties.Add(new OwnedPropertyListViewObject
-            {
-                id = 3,
-                text = "Property Add 3"
-            });
+           
 
             RepairAccordianObjects = new List<Syncfusion.EJ2.Navigations.AccordionAccordionItem>();
             RepairAccordianObjects.Add(new Syncfusion.EJ2.Navigations.AccordionAccordionItem
@@ -92,6 +81,32 @@ namespace Portal_MVC.Models
 
         }
        
+        public async Task LoadCustomerDashboardDataAsync()
+        {
+            if (owner != null)
+            {
+                List<Models.Units> units = new List<Models.Units>();
+                units = await
+                    Models.UnitMethods.GetCurrentOwnedUnits(owner.id, SelectedProperty.ID);
+                if (units != null)
+                {
+                    if (units.Count > 0)
+                    {
+                        if (!units[0].APIError.HasError)
+                        {
+                            foreach (var unit in units)
+                            {
+                                OwnedProperties.Add(new OwnedPropertyListViewObject
+                                {
+                                    id = unit.id,
+                                    text = unit.Name
+                                });
+                            }
+                        }
+                    }
+                }
+            }
+        }
         
         public object anonObj { get; set; }
         public string Name { get; set; }

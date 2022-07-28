@@ -162,8 +162,8 @@ namespace Portal_MVC.Models
                 "Core.Estates.Address4, Core.Estates.Address5, Core.Estates.ID FROM CORE.estates " +
                 "inner join core.units on core.estates.id = core.Units.estateid " +
                 "inner join core.PropertyOwnership on core.PropertyOwnership.UnitID = core.Units.ID " +
-                
-                "where core.PropertyOwnership.OwnerID = " + CustomerID.ToString();
+
+                $"where core.PropertyOwnership.OwnerID = {CustomerID} and core.PropertyOwnership.ownershipend is null ";
 
             List<Properties> rList = new List<Properties>();
             DBConnectionObject db = GlobalVariables.GetConnection();

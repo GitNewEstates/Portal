@@ -17,7 +17,7 @@ namespace Portal_MVC.Controllers
         public static List<Models.Properties> PropList { get; set; }
     }
 
-    [Authorize(Roles = "Customer,Administrator")]
+    [Authorize(Roles = "Customer,Administrator,Client")]
 
     //Controller for sign in page
     public class HomeController : Controller
@@ -34,6 +34,7 @@ namespace Portal_MVC.Controllers
 
             HomeViewModel homeViewModel = new HomeViewModel();
             await homeViewModel.SetBaseDataAsync(id, email);
+            
             homeViewModel.ViewName = "Index";
             homeViewModel.ControllerName = "Home";
             switch (homeViewModel.RoleName)
@@ -46,9 +47,20 @@ namespace Portal_MVC.Controllers
                     //Do specific work and send to Customer Dashboard
                     if(PropID > 0)
                     {
+                        //selected from Estate List
                         homeViewModel.SelectedProperty.ID = PropID;
                         homeViewModel.SelectedProperty.Address1 = PropName;
+                        
+                    } else
+                    {
+                        //Customer only has one unit
                     }
+
+                    await homeViewModel.LoadCustomerDashboardDataAsync();
+                    break;
+                case "Client":
+                    homeViewModel.ViewName = "ClientDashboard";
+                    
                     break;
             }
             return View(homeViewModel.ViewName, homeViewModel);

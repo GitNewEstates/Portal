@@ -31,11 +31,11 @@
 
 <div class="Full-Width-Container">
     <div class="row">
-        <div class="col-lg-4 col-md-4 col-sm-11 col-xs-11">
+        <div class="col-lg-4 col-md-4 col-sm-11 col-xs-11 e-card e-custom-card">
             @Html.EJS().ListView("listview").Enable(true).DataSource(Model.OwnedProperties).HeaderTitle("Your Properties").ShowHeader(true).ShowIcon(true).Fields(new Syncfusion.EJ2.Lists.ListViewFieldSettings { IconCss = "icon" }).Render()
         </div>
-        <div class="col-lg-5 col-md-5 col-sm-11 col-xs-11">
-            <div class="container">
+        <div class="col-lg-5 col-md-5 col-sm-11 col-xs-11  e-card e-custom-card">
+            
                 @(Html.EJS().Chart("container").Background("white").Height("200px").Series(series =>
                         {
 
@@ -77,7 +77,7 @@
                            TitleStyle(ts => ts.Color("blue")).
                            Render()
                         )
-            </div>
+            
         </div>
     </div>
 
@@ -110,6 +110,28 @@
 }
 
 <style>
+    .e-card {
+        justify-content: flex-start;
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        height: max-content;
+    }
+    .e-listview {
+        border: none;
+       
+    }
+
+    .e-custom-card {
+        position: relative;
+        overflow: visible;
+        border-radius: 15px;
+        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+        transition: 0.2s;
+        border-width: 1px;
+        padding: 1px;
+    }
+
     .Full-Width-Container {
         flex: 0 0 100%;
     }

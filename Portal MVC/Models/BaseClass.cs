@@ -114,6 +114,7 @@ namespace Portal_MVC.Models
         {
             Properties = new List<Properties>();
             SelectedProperty = new Properties(PropertyTypes.None);
+            owner = new Owner();
         }
         public string RoleName { get; set; }
         public Properties SelectedProperty { get; set; }
@@ -124,7 +125,10 @@ namespace Portal_MVC.Models
 
         public List<Properties> Properties { get; set; }
 
+
         public int NotificationCount { get; set; } = 0;
+
+       public Owner owner { get; set; }    
 
         public async Task SetBaseDataAsync(string userid, string email)
         {
@@ -139,13 +143,17 @@ namespace Portal_MVC.Models
             //set the NameofUser
             if(RoleName == "Customer" || RoleName == "Client")
             {
-                Owner owner = await OwnerMethods.GetOwnerByEmail(email);
+                owner = await OwnerMethods.GetOwnerByEmail(email);
                 NameofUser = owner.FullName;
                 Properties = await PropertyMethods.GetOwnedEstatesAsync(owner.id);
                 if(Properties.Count == 1)
                 {
                     SelectedProperty = Properties[0];
+                    SelectedProperty.ID = Properties[0].ID;
+                    SelectedProperty.Address1 = Properties[0].Address1;
                 }
+
+
 
             } else
             {

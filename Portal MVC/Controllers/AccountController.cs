@@ -147,7 +147,7 @@ namespace Portal_MVC.Controllers
             {
                 string role = Roles[0];
 
-                if(role == "Customer")
+                if(role == "Customer" || role == "Client")
                 {
                     //get the customer ID and Name
                     Owner owner =
@@ -158,7 +158,7 @@ namespace Portal_MVC.Controllers
                     Session["UserType"] = 1;
 
                     return true;
-                } else
+                } else if (role =="Administrator" || role == "Manager" || role == "Property Manager")
                 {
                     APIUser user = await UserMethods.GetUserByEmail(UserEmail);
                     if (user.id > 0)
@@ -217,8 +217,6 @@ namespace Portal_MVC.Controllers
 
             string content = $"A user with email {email} has tried to register for the Portal. Their email address is not matched " +
                 "within our Database. Please investigate and take the appropriate action";
-
-
 
             List<string> To = await GetAdminEmails();
             //send email
@@ -303,6 +301,17 @@ namespace Portal_MVC.Controllers
                 {
                     await SendConfirmationEmail(user.Email);
 
+                    
+                    var newuser = await UserManager.FindByEmailAsync(user.Email);
+
+                    if (newuser != null)
+                    {
+                        if (!string.IsNullOrWhiteSpace(newuser.Id))
+                        {
+                            await InsertName(model.Name, newuser.Id);
+                        }
+                    }
+
                     //await mail.SendGridSend();
                     //string sent= mail.sentStatus.ToString();
 
@@ -323,6 +332,34 @@ namespace Portal_MVC.Controllers
 
             // If we got this far, something failed, redisplay form
             return View(model);
+        }
+
+        private async Task InsertName(string name, string userid)
+        {
+            List<string> c = new List<string>();
+            List<string> p = new List<string>();
+            List<object> o = new List<object>();
+
+            c.Add("userid");
+            c.Add("name");
+
+            p.Add("@userid");
+            p.Add("@name");
+
+            o.Add(userid);
+            o.Add(name);
+
+            Models.GlobalVariables.CS = ConfigurationManager.ConnectionStrings["AccessConnection"].ConnectionString;
+            DataTable dt = 
+                await GlobalVariables.GetConnection().Connection.InsertCommandAsync("UsersNames", c, p, o);
+
+            if(dt.Rows.Count > 0 && dt.Rows[0][0].ToString() == "Error")
+            {
+                //Error
+            }
+
+            Models.GlobalVariables.CS = ConfigurationManager.ConnectionStrings["DeployConnection"].ConnectionString;
+
         }
 
         private async Task SendConfirmationEmail(string email)
