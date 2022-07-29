@@ -292,6 +292,7 @@
     <Compile Include="Controllers\RepairsMaintenanceController.cs" />
     <Compile Include="Controllers\ServiceChargesController.cs" />
     <Compile Include="Controllers\UserRolesController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -526,11 +527,13 @@
     <Content Include="Views\Admin\UserRoles.cshtml" />
     <Content Include="Views\Client\Index.cshtml" />
     <Content Include="Views\Home\ClientDashboard.cshtml" />
+    <Content Include="Views\Admin\Users.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Director\Shared\" />
     <Folder Include="Views\Expense\" />
+    <Folder Include="Views\Users\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

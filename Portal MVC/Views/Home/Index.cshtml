@@ -3,9 +3,13 @@
 
 @{
     ViewBag.Title = "Select Property - New Estates";
+
+    
 }
 
 @using Syncfusion.EJ2.Navigations;
+
+ 
 
 @if (Model != null)
 {
@@ -83,11 +87,16 @@
 
     <div class="Full-Width-Container">
         <div class="col-lg-6 col-md-6 col-sm-11 col-xs-11">
-            <h6>Repairs</h6>
-            @(Html.EJS().Accordion("RepairAccordian").Items(Model.RepairAccordianObjects).ExpandMode(Syncfusion.EJ2.Navigations.ExpandMode.Multiple).Render())
+            @if (string.IsNullOrWhiteSpace(Model.RepairErrorMessage))
+            {
+                <h6>Repairs</h6>
+                @(Html.EJS().Accordion("RepairAccordian").Items(Model.RepairAccordianObjects).ExpandMode(Syncfusion.EJ2.Navigations.ExpandMode.Multiple).Render())
+            } else {
+                <h6>@Model.RepairErrorMessage</h6>
+            }
         </div>
-        
-        
+
+
 
         <div class="col-lg-6 col-md-6 col-sm-11 col-xs-11">
             <h6>Attendances</h6>
@@ -103,7 +112,7 @@
             </div>
         </div>*@
 
-    </div>
+            </div>
 
     }
 
@@ -138,9 +147,22 @@
 
     .e-accordion {
         width: 100%;
+        
+    }
+
+    .e-accordion .e-acrdn-item.e-select {
+        border-color: #0591bc;
+    }
+
+    .e-accordion .e-acrdn-item .e-acrdn-header .e-acrdn-header-content {
+        color: white !important;
+    }
+
+    .e-accordion .e-acrdn-item .e-acrdn-header .e-toggle-icon {
+        color: white !important;
     }
     .e-acrdn-header {
-        background: linear-gradient(to bottom,#0591bc 0%,#045f88 100%) !important;
+        background: #0591bc !important;
         color: white !important;
         justify-content: center;
     }

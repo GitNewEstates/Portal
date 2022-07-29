@@ -35,31 +35,31 @@ namespace Portal_MVC.Models
            
 
             RepairAccordianObjects = new List<Syncfusion.EJ2.Navigations.AccordionAccordionItem>();
-            RepairAccordianObjects.Add(new Syncfusion.EJ2.Navigations.AccordionAccordionItem
-            {
-                Header = "Repair 1",
-                Content = "Microsoft ASP.NET is a set of technologies in the Microsoft .NET Framework for building Web applications and XML Web services. ASP.NET pages execute on the server and generate markup such as HTML, WML, or XML that is sent to a desktop or mobile browser. ASP.NET pages use a compiled,event-driven programming model that improves performance and enables the separation of application logic and user interface."
-            }) ;
-            RepairAccordianObjects.Add(new Syncfusion.EJ2.Navigations.AccordionAccordionItem
-            {
-                Header = "Repair 2",
-                Content = "The Model-View-Controller (MVC) architectural pattern separates an application into three main components: the model, the view, and the controller. The ASP.NET MVC framework provides an alternative to the ASP.NET Web Forms pattern for creating Web applications. The ASP.NET MVC framework is a lightweight, highly testable presentation framework that (as with Web Forms-based applications) is integrated with existing ASP.NET features, such as master pages and membership-based authentication."
-            });
-            RepairAccordianObjects.Add(new Syncfusion.EJ2.Navigations.AccordionAccordionItem
-            {
-                Header = "Repair 3",
-                Content = "Repair 3 Content"
-            });
-            RepairAccordianObjects.Add(new Syncfusion.EJ2.Navigations.AccordionAccordionItem
-            {
-                Header = "Repair 4",
-                Content = "Repair 4 Content"
-            });
-            RepairAccordianObjects.Add(new Syncfusion.EJ2.Navigations.AccordionAccordionItem
-            {
-                Header = "Repair 5",
-                Content = "Repair 5 Content"
-            });
+            //RepairAccordianObjects.Add(new Syncfusion.EJ2.Navigations.AccordionAccordionItem
+            //{
+            //    Header = "Repair 1",
+            //    Content = "Microsoft ASP.NET is a set of technologies in the Microsoft .NET Framework for building Web applications and XML Web services. ASP.NET pages execute on the server and generate markup such as HTML, WML, or XML that is sent to a desktop or mobile browser. ASP.NET pages use a compiled,event-driven programming model that improves performance and enables the separation of application logic and user interface."
+            //}) ;
+            //RepairAccordianObjects.Add(new Syncfusion.EJ2.Navigations.AccordionAccordionItem
+            //{
+            //    Header = "Repair 2",
+            //    Content = "The Model-View-Controller (MVC) architectural pattern separates an application into three main components: the model, the view, and the controller. The ASP.NET MVC framework provides an alternative to the ASP.NET Web Forms pattern for creating Web applications. The ASP.NET MVC framework is a lightweight, highly testable presentation framework that (as with Web Forms-based applications) is integrated with existing ASP.NET features, such as master pages and membership-based authentication."
+            //});
+            //RepairAccordianObjects.Add(new Syncfusion.EJ2.Navigations.AccordionAccordionItem
+            //{
+            //    Header = "Repair 3",
+            //    Content = "Repair 3 Content"
+            //});
+            //RepairAccordianObjects.Add(new Syncfusion.EJ2.Navigations.AccordionAccordionItem
+            //{
+            //    Header = "Repair 4",
+            //    Content = "Repair 4 Content"
+            //});
+            //RepairAccordianObjects.Add(new Syncfusion.EJ2.Navigations.AccordionAccordionItem
+            //{
+            //    Header = "Repair 5",
+            //    Content = "Repair 5 Content"
+            //});
 
             AttendanceVisitCollection = new List<Syncfusion.EJ2.Navigations.AccordionAccordionItem>();
             AttendanceVisitCollection.Add(new Syncfusion.EJ2.Navigations.AccordionAccordionItem
@@ -106,8 +106,50 @@ namespace Portal_MVC.Models
                     }
                 }
             }
+
+            List<APIRepairs> 
+                repairs = await RepairExtensions.GetRepairsList(SelectedProperty.ID, true) ;
+
+            //top 5 only
+            if(repairs != null)
+            {
+                //test for error
+                if (repairs.Count > 0)
+                {
+                    if (!repairs[0].APIError.HasError)
+                    {
+
+                        string domainName = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority);
+
+                        if (RepairAccordianObjects == null)
+                        {
+                            RepairAccordianObjects = new List<Syncfusion.EJ2.Navigations.AccordionAccordionItem>();
+                        }
+                        int repairMax = repairs.Count;
+                        if (repairMax > 5)
+                        {
+                            repairMax = 5;
+                        }
+
+                        for (int i = 0; i <= repairMax - 1; i++)
+                        {
+                            RepairAccordianObjects.Add(new Syncfusion.EJ2.Navigations.AccordionAccordionItem
+                            {
+                                Header = repairs[i].RepairTitle,
+                                Content = repairs[i].RepairDetails + $"</br></br><a href=\"{domainName}\">View More</a>"
+                            }); 
+                        }
+                    } else
+                    {
+                        //error occurred
+                        RepairErrorMessage = repairs[0].APIError.Message;
+                    }
+                }
+            }
+
         }
         
+        public string RepairErrorMessage { get; set; }
         public object anonObj { get; set; }
         public string Name { get; set; }
         public List<BudgetActualChartData> BudgetActualDataList { get; set; }

@@ -568,7 +568,7 @@ namespace Portal_MVC.Models
         public string CompletionDateStr { get; set; }
 
         public int QuoteID { get; set; }
-        public long DocInstanceID { get; set; }
+        public string DocInstanceID { get; set; }
 
 
         public int EstateID { get; set; }
@@ -627,6 +627,34 @@ namespace Portal_MVC.Models
                         HasError = true,
                         Message = $"Error Deserializing JSON to Repair. Error: {ex.Message}"
                     };
+                }
+            }
+
+            return obj;
+        }
+
+        public static List<APIRepairs> DeserializedJSONToRepairList(string json = "")
+        {
+            List<APIRepairs> obj = new List<APIRepairs>();
+            if (!string.IsNullOrEmpty(json))
+            {
+                try
+                {
+                    obj = JsonConvert.DeserializeObject<List<APIRepairs>>(json);
+                }
+                catch (Exception ex)
+                {
+
+                    APIError error = new APIError(ErrorType.JSONDeserializationError)
+                    {
+                        HasError = true,
+                        Message = $"Error Deserializing JSON to Repair List. Error: {ex.Message}"
+                    };
+
+                    obj.Add(new APIRepairs
+                    {
+                        APIError = error
+                    });
                 }
             }
 
@@ -737,7 +765,13 @@ namespace Portal_MVC.Models
             return repair;
         }
 
+        public async static Task<List<APIRepairs>> GetRepairsList(int EstateID, bool Openonly = false)
+        {
+            string ReturnJson = await
+           GlobalVariables.APIConnection.CallAPIGetEndPointAsync($"OpenRepairList/{EstateID}");
 
+            return DeserializedJSONToRepairList(ReturnJson);
+        }
 
 
 
