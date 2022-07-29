@@ -62,22 +62,22 @@ namespace Portal_MVC.Models
             //});
 
             AttendanceVisitCollection = new List<Syncfusion.EJ2.Navigations.AccordionAccordionItem>();
-            AttendanceVisitCollection.Add(new Syncfusion.EJ2.Navigations.AccordionAccordionItem
-            {
-                Header = "Attendance 1",
-                Content = "Attendance Detail 1"
-            }) ;
+            //AttendanceVisitCollection.Add(new Syncfusion.EJ2.Navigations.AccordionAccordionItem
+            //{
+            //    Header = "Attendance 1",
+            //    Content = "Attendance Detail 1"
+            //}) ;
 
-            AttendanceVisitCollection.Add(new Syncfusion.EJ2.Navigations.AccordionAccordionItem
-            {
-                Header = "Attendance 2",
-                Content = "Attendance Detail 2"
-            });
-            AttendanceVisitCollection.Add(new Syncfusion.EJ2.Navigations.AccordionAccordionItem
-            {
-                Header = "Attendance 3",
-                Content = "Attendance Detail 3"
-            });
+            //AttendanceVisitCollection.Add(new Syncfusion.EJ2.Navigations.AccordionAccordionItem
+            //{
+            //    Header = "Attendance 2",
+            //    Content = "Attendance Detail 2"
+            //});
+            //AttendanceVisitCollection.Add(new Syncfusion.EJ2.Navigations.AccordionAccordionItem
+            //{
+            //    Header = "Attendance 3",
+            //    Content = "Attendance Detail 3"
+            //});
 
         }
        
@@ -107,6 +107,7 @@ namespace Portal_MVC.Models
                 }
             }
 
+            string domainName = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority);
             List<APIRepairs> 
                 repairs = await RepairExtensions.GetRepairsList(SelectedProperty.ID, true) ;
 
@@ -119,7 +120,7 @@ namespace Portal_MVC.Models
                     if (!repairs[0].APIError.HasError)
                     {
 
-                        string domainName = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority);
+                       
 
                         if (RepairAccordianObjects == null)
                         {
@@ -136,7 +137,7 @@ namespace Portal_MVC.Models
                             RepairAccordianObjects.Add(new Syncfusion.EJ2.Navigations.AccordionAccordionItem
                             {
                                 Header = repairs[i].RepairTitle,
-                                Content = repairs[i].RepairDetails + $"</br></br><a href=\"{domainName}\">View More</a>"
+                                Content = repairs[i].RepairDetails + $"</br></br><a href=\"{domainName}/RepairsMaintenance/RepairDetail?RepairID={repairs[i].ID}\">View More</a>"
                             }); 
                         }
                     } else
@@ -147,9 +148,56 @@ namespace Portal_MVC.Models
                 }
             }
 
+            List<AttendanceVisits> Attendances =
+                await AttendanceVisitMethods.GetAttendanceVisitListAsync(SelectedProperty.ID);
+
+            if (Attendances != null)
+            {
+
+                if (Attendances.Count > 0)
+                {
+                    if (Attendances[0].APIError != null)
+                    {
+                        if (Attendances[0].APIError.HasError)
+                        {
+                            AttendanceErrorMessage = Attendances[0].APIError.Message;
+                        }
+                        else
+                        {
+                            int attendancecount = Attendances.Count;
+                            if (attendancecount > 5)
+                            {
+                                attendancecount = 5;
+                            }
+
+                            if (AttendanceVisitCollection == null)
+                            {
+                                AttendanceVisitCollection = new List<Syncfusion.EJ2.Navigations.AccordionAccordionItem>();
+                            }
+
+                            for (int i = 0; i <= attendancecount - 1; i++)
+                            {
+                                AttendanceVisitCollection.Add(new Syncfusion.EJ2.Navigations.AccordionAccordionItem
+                                {
+                                    Header = $"{Utils.DateFormatLong(Attendances[i].VisitDate)} {Attendances[i].AttendanceType.Name}",
+                                    Content = $"{Attendances[i].VisitDescription} </br></br> <a href=\"{domainName}/caretaking/AttendanceDetail?VisitID={Attendances[i].id}\">View More</a>"
+                                }) ;
+                            }
+
+                        }
+
+                    }
+                    else
+                    {
+                        AttendanceErrorMessage = "Error retrieving recent attendance visit logs";
+                    }
+                }
+            }
+
         }
         
         public string RepairErrorMessage { get; set; }
+        public string AttendanceErrorMessage { get; set; }
         public object anonObj { get; set; }
         public string Name { get; set; }
         public List<BudgetActualChartData> BudgetActualDataList { get; set; }

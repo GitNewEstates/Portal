@@ -300,6 +300,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\APIHelper.cs" />
     <Compile Include="Models\AttendanceLogViewModel.cs" />
+    <Compile Include="Models\AttendanceVisits.cs" />
     <Compile Include="Models\AuthorisedInvoices.cs" />
     <Compile Include="Models\BankAccount.cs" />
     <Compile Include="Models\BaseClass.cs" />

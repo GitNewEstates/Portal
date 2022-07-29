@@ -5,9 +5,12 @@ using System.Web;
 using System.Web.Mvc;
 using Portal_MVC.Models;
 using System.Globalization;
+using Microsoft.AspNet.Identity;
+using System.Threading.Tasks;
 
 namespace Portal_MVC.Controllers
-{
+{ 
+    [Authorize(Roles = "Customer,Client")]
     public class RepairsMaintenanceController : Controller
     {
         private int RepairID { get; set; }
@@ -60,13 +63,16 @@ namespace Portal_MVC.Controllers
             }
         }
 
-        public ActionResult RepairDetail(int repairID, string updateConfirmation = "")
+        public async Task<ActionResult> RepairDetail(int repairID, string updateConfirmation = "")
         {
-            if(Session["CustomerID"] != null)
-            {
+            vm = new RepairsMaintenanceViewModel();
+            var id = User.Identity.GetUserId();
+            var email = User.Identity.GetUserName();
+            await vm.SetBaseDataAsync(id, email);
+
                 RepairID = repairID;
 
-                vm = new RepairsMaintenanceViewModel();
+                
                 vm.Repair = new Repairs();
                 
                 vm.Repair = RepairMethods.GetAllRepairDetails(repairID);
@@ -95,11 +101,7 @@ namespace Portal_MVC.Controllers
                 vm.Repair.RepairHistory = RepairMethods.GetRepairHistory(repairID);
                 vm.Repair.ID = repairID;
                 return View(vm);
-            } else
-            {
-                //return not logged in view
-                return View("../Home/NotLoggedIn");
-            }
+           
 
             
         }

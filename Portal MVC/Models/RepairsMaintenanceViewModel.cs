@@ -6,7 +6,7 @@ using Portal_MVC.Models;
 
 namespace Portal_MVC.Models
 {
-    public class RepairsMaintenanceViewModel
+    public class RepairsMaintenanceViewModel : ViewModelBase
     {
         public ServiceChargeBudgetViewModel PropListViewModel { get; set; }
         public IEnumerable<Models.Properties> PropertyList { get; set; }

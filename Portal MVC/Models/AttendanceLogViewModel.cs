@@ -5,6 +5,8 @@ using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 using System.Threading.Tasks;
+using System.Data;
+using System.Collections.ObjectModel;
 
 namespace Portal_MVC.Models
 {
@@ -17,12 +19,12 @@ namespace Portal_MVC.Models
             VisitDate = DateTime.Now;
             SendCustomerNotification = true;
             PortalViewable = true;
-            AttendanceObj = new AttendanceVisits.AttendanceVisits();
+            AttendanceObj = new AttendanceVisits();
 
 
         }
 
-        public AttendanceVisits.AttendanceVisits AttendanceObj { get; set; }
+        public AttendanceVisits AttendanceObj { get; set; }
         public List<SelectListItem> EstateList { get; set; }
         public int SelectedPropertyid { get; set; }
         public List<SelectListItem> AttendanceTypes { get; set; }
@@ -51,43 +53,43 @@ namespace Portal_MVC.Models
         
         public void SetLists()
         {
-            List<Properties> estates = Models.PropertyMethods.GetAllEstates();
-            EstateList = new List<SelectListItem>();
-            foreach (Properties p in estates)
-            {
-                bool IsSelected = false;
-                if(p.ID == SelectedPropertyid && SelectedPropertyid > 0)
-                {
-                    IsSelected = true;
-                }
+            //List<Properties> estates = Models.PropertyMethods.GetAllEstates();
+            //EstateList = new List<SelectListItem>();
+            //foreach (Properties p in estates)
+            //{
+            //    bool IsSelected = false;
+            //    if(p.ID == SelectedPropertyid && SelectedPropertyid > 0)
+            //    {
+            //        IsSelected = true;
+            //    }
 
-                EstateList.Add(new SelectListItem
-                {
-                    Text = p.Address1,
-                    Value = p.ID.ToString(),
-                    Selected = IsSelected
-                });
-            }
+            //    EstateList.Add(new SelectListItem
+            //    {
+            //        Text = p.Address1,
+            //        Value = p.ID.ToString(),
+            //        Selected = IsSelected
+            //    });
+            //}
 
-            List<AttendanceVisits.AttendanceType> types =
-                AttendanceVisits.AttendanceTypeMethods.AllAttendanceTypesList(GlobalVariables.GetConnection());
-            AttendanceTypes = new List<SelectListItem>();
+            //List<AttendanceType> types =
+            //    AttendanceTypeMethods.AllAttendanceTypesList(GlobalVariables.GetConnection());
+            //AttendanceTypes = new List<SelectListItem>();
 
-            foreach (AttendanceVisits.AttendanceType t in types)
-            {
-                bool IsSelected = false;
-                if (t.id == SelectedAttendanceTypeID && SelectedAttendanceTypeID > 0)
-                {
-                    IsSelected = true;
-                }
+            //foreach (AttendanceType t in types)
+            //{
+            //    bool IsSelected = false;
+            //    if (t.id == SelectedAttendanceTypeID && SelectedAttendanceTypeID > 0)
+            //    {
+            //        IsSelected = true;
+            //    }
 
-                AttendanceTypes.Add(new SelectListItem
-                {
-                    Text = t.Name,
-                    Value = t.id.ToString(),
-                    Selected = IsSelected
-                });
-            }
+            //    AttendanceTypes.Add(new SelectListItem
+            //    {
+            //        Text = t.Name,
+            //        Value = t.id.ToString(),
+            //        Selected = IsSelected
+            //    });
+            //}
 
         }
         
@@ -135,7 +137,7 @@ namespace Portal_MVC.Models
         //}
     }
 
-    public class AttendanceHistoryViewModel
+    public class AttendanceHistoryViewModel : ViewModelBase
     {
         public ServiceChargeBudgetViewModel PropListViewModel { get; set; }
         public IEnumerable<Models.Properties> PropertyList { get; set; }
@@ -147,20 +149,19 @@ namespace Portal_MVC.Models
         public int SelectedPropertyid { get; set; }
         public int SelectedAttendanceTypeID { get; set; }
 
-        public string ViewName { get; set; }
-        public string ControllerName { get; set; }
+     
 
-        //public AttendanceVisits.AttendanceVisits Visit { get; set; }
-        public void GetVisit(int id)
+        public AttendanceVisits Visit { get; set; }
+        public async Task GetVisit(int id)
         {
-            //Visit = new AttendanceVisits.AttendanceVisits();
-            //Visit = AttendanceVisits.AttendanceVisitsMethods.GetAttendanceObj(id, GlobalVariables.GetConnection());
-            //   // new AttendanceVisits.ImageParams { width = 300, height = 300 });
+            Visit = new AttendanceVisits();
+            Visit = await AttendanceVisitMethods.GetAttendanceVisitsAsync(id);
+            // new AttendanceVisits.ImageParams { width = 300, height = 300 });
 
-            //EstateName = EstatesDLL.EstateMethods.GetEstateNameByID(Visit.EstateID, GlobalVariables.GetConnection());
+            EstateName = EstatesDLL.EstateMethods.GetEstateNameByID(Visit.EstateID, GlobalVariables.GetConnection());
         }
 
-       // public List<AttendanceVisits.AttendanceVisits> AttendanceList { get; set; }
+        // public List<AttendanceVisits.AttendanceVisits> AttendanceList { get; set; }
         public List<Syncfusion.EJ2.Navigations.AccordionAccordionItem> AccordionList { get; set; }
         public string TestString { get; set; }
         
@@ -279,5 +280,67 @@ namespace Portal_MVC.Models
         public string ImageUrls { get; set; }
 
         public string UpdateIDHeading { get; set; }
+    }
+
+    public static class AttendanceTypeMethods
+    {
+        //public static IEnumerable<AttendanceType> AllAttendanceTypesIEnumerable(dbConn.DBConnectionObject ConObject)
+        //{
+        //    DataTable dt = GetAttendanceTypeDataTable(conString);
+        //    IEnumerable<AttendanceType> r = new  IEnumerable<AttendanceType>
+        //}
+
+        //public static ObservableCollection<AttendanceType> AllAttendanceTypesCollection(dbConn.DBConnectionObject ConObject)
+        //{
+        //    DataTable dt = GetAttendanceTypeDataTable(ConObject);
+        //    ObservableCollection<AttendanceType> r = new ObservableCollection<AttendanceType>();
+
+        //    if (dt.Rows.Count > 0 && dt.Rows[0][0].ToString() != "Error")
+        //    {
+        //        foreach (DataRow dr in dt.Rows)
+        //        {
+        //            r.Add(SetFromDataRow(dr));
+        //        }
+        //    }
+
+        //    return r;
+        //}
+
+        //public static List<AttendanceType> AllAttendanceTypesList(dbConn.DBConnectionObject ConObject)
+        //{
+        //    DataTable dt = GetAttendanceTypeDataTable(ConObject);
+        //    List<AttendanceType> r = new List<AttendanceType>();
+        //    if (dt.Rows.Count > 0 && dt.Rows[0][0].ToString() != "Error")
+        //    {
+        //        foreach (DataRow dr in dt.Rows)
+        //        {
+        //            r.Add(SetFromDataRow(dr));
+        //        }
+        //    }
+
+        //    return r;
+
+        //}
+
+        //private static AttendanceType SetFromDataRow(DataRow dr)
+        //{
+        //    int.TryParse(dr[0].ToString(), out int id);
+        //    AttendanceType r = new AttendanceType
+        //    {
+        //        id = id,
+        //        Name = dr[1].ToString()
+        //    };
+
+        //    return r;
+        //}
+
+        //private static DataTable GetAttendanceTypeDataTable(dbConn.DBConnectionObject ConObject)
+        //{
+        //    string q = "select * from core.AttendanceTypes";
+
+
+        //    DataTable dt = ConObject.Connection.GetDataTable(q);
+        //    return dt;
+        //}
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -46,7 +47,7 @@ namespace Portal_MVC.Controllers
                 if (ModelState.IsValid)
                 {
                     ViewModel.AttendanceObj.AttendingUser = (int)Session["CustomerID"];
-                    await ViewModel.AttendanceObj.Insert(Models.GlobalVariables.GetConnection());
+                    //await ViewModel.AttendanceObj.Insert(Models.GlobalVariables.GetConnection());
                     //System.Threading.Thread t = new System.Threading.Thread(new System.Threading.ThreadStart(ViewModel.Insert));
                     //t.Start();
                     return View("CaretakingDashboard");
@@ -127,9 +128,9 @@ namespace Portal_MVC.Controllers
         //    }
         //}
 
-        public ViewResult AttendanceDetail(int VisitID = 0, bool isStatic = false, string guid = "")
+        public async Task<ViewResult> AttendanceDetail(int VisitID = 0, bool isStatic = false, string guid = "")
         {
-            
+
             if (isStatic)
             {
                 //not logged in - must have guid and id
@@ -141,34 +142,36 @@ namespace Portal_MVC.Controllers
                     vm1.FromApp = true;
                     // return View("ViewAttendanceHistory", vm);
                     return View(vm1);
-                } else
+                }
+                else
                 {
                     return View("NotFound");
                 }
 
-            } else
+            }
+            else
             {
+
+                var id = User.Identity.GetUserId();
+                var email = User.Identity.GetUserName();
+
                
-                
-                if (Session["CustomerID"] != null && (int)Session["CustomerID"] > 0)
+
+                if (VisitID > 0)
                 {
-                    if (VisitID > 0)
-                    {
-                        Models.AttendanceHistoryViewModel vm = new Models.AttendanceHistoryViewModel();
-                        vm.FromApp = isStatic;
-                        vm.GetVisit(VisitID);
-                        return View(vm);
-                    } else
-                    {
-                        return View("NotFound");
-                    }
+                    Models.AttendanceHistoryViewModel vm = new Models.AttendanceHistoryViewModel();
+                    await vm.SetBaseDataAsync(id, email);
+                    vm.FromApp = isStatic;
+                    vm.GetVisit(VisitID);
+                    return View(vm);
                 }
                 else
                 {
-                    return View("../Home/NotLoggedIn");
+                    return View("NotFound");
                 }
-              
             }
+              
+            
 
            
         }
