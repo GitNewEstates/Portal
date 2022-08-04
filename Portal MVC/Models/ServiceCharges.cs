@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace Portal_MVC.Models
 {
 
-    public class Fund : BaseClass
+    public class Fund : IDBase
     {
 
         public string FundName { get; set; }
@@ -22,7 +22,8 @@ namespace Portal_MVC.Models
         public int EstateID { get; set; }
 
         public FundStatus FundStatus { get; set; }
-        public string DocInstanceID { get; set; }
+        public double TotalBudget { get; set; }
+        public double TotalSpend { get; set; }
     }
     public enum FundStatus
     {

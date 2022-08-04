@@ -1,8 +1,175 @@
-﻿@model Portal_MVC.Models.HomeViewModel
+﻿@using Portal_MVC.Models
+@model Portal_MVC.Models.HomeViewModel
 @{
     ViewBag.Title = "Client Dashboard";
     Layout = "~/Views/Shared/_HomeLayout.cshtml";
+
+    var template = "<div class='e-list-wrapper' id='${Elementid}' >" +
+
+       "<span class='e-list-item e-list-icon' ><a class='${icon}' style='${IconCss}'></a></span>" +
+       
+       "<span class='e-list-item-header'>${text}</span>" +
+       "<span class='e-list-content' style='${ValueCss}'>${value}</span>" +
+       "</div>";
+
+
 }
 
-<h2>ClientDashboard</h2>
+@using Syncfusion.EJ2.Navigations;
 
+@if (Model != null)
+{
+    if (Model.SelectedProperty.ID == 0)
+    {
+        <div class="container">
+            @Html.Partial("_SelectEstate", Model)
+        </div>
+    }
+    else
+    {
+        <div id="EstateID" style="display: none;">@Model.SelectedProperty.ID</div>
+
+        <div class="Full-Width-Container">
+            <div class="row">
+                <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11  e-card e-custom-card" style="text-align: center">
+
+                    @if (string.IsNullOrWhiteSpace(Model.ClientBVAChartErrorMessage))
+                    {
+
+                        @(Html.EJS().Chart("container").Background("white").Height(Model.ClientBVAChartHeight).Series(series =>
+                    {
+
+                        series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Bar).
+                            XName("Name").
+                            YName("Amount").
+                            CornerRadius(cr => cr.BottomLeft(10).BottomRight(10).TopLeft(10).TopRight(10)).
+
+                            Marker(mr => mr.DataLabel(dl => dl.Visible(true).Name("LabelName").
+
+                            Position(Syncfusion.EJ2.Charts.LabelPosition.Bottom).
+                            Font(ff => ff.FontWeight("600").Color("#ffffff")))).
+                            DataSource(Model.ClientBVABudget).
+                            Name("Budget").
+                            Add();
+
+                        series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Bar).
+                            XName("Name").
+                            YName("Amount").
+                            CornerRadius(cr => cr.BottomLeft(10).BottomRight(10).TopLeft(10).TopRight(10)).
+
+                            Marker(mr => mr.DataLabel(dl => dl.Visible(true).Name("LabelName").
+
+                            Position(Syncfusion.EJ2.Charts.LabelPosition.Bottom).
+                            Font(ff => ff.FontWeight("600").Color("#ffffff")))).
+                            DataSource(Model.ClientBVAActual).
+                            Name("Spend").
+                            Add();
+
+                    }).
+                           PrimaryXAxis(px => px.Interval(1)
+                                .MajorGridLines(mg => mg.Width(0))
+                                .MajorTickLines(mg => mg.Width(0))
+                                .LineStyle(mg => mg.Width(0))
+                                .ValueType(Syncfusion.EJ2.Charts.ValueType.Category)
+
+                                ).
+
+                           PrimaryYAxis(py => py.Minimum(0).Maximum(Model.ClientXAxisMaxValue)
+                                .MajorGridLines(mg => mg.Width(0))
+                                .MajorTickLines(mg => mg.Width(0))
+                                .LineStyle(mg => mg.Width(0))
+                                .LabelStyle(ls => ls.Color("#ffffff"))
+
+                                ).
+
+                           ChartArea(area => area.Border(br => br.Color("transparent"))).
+                           LegendSettings(ls => ls.Visible(true)).
+                           Title("Open Fund Summary").
+                           TitleStyle(ts => ts.Color("blue")).
+                           Render()
+                        )
+
+                    }
+                    else
+                    {
+                        <h6>@Model.ClientBVAChartErrorMessage</h6>
+                    }
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-11 col-xs-11">
+                    @Html.EJS().ListView("FinancialSummaryListView").Enable(true).DataSource(Model.ClientFinancialListView).HeaderTitle("Cash Summary").ShowHeader(true).ShowIcon(true).Select("CashSummaryItemSelected").Template(template).Fields(new Syncfusion.EJ2.Lists.ListViewFieldSettings { IconCss = "icon" }).Render()
+                </div>
+            </div>
+
+        </div> 
+    }
+}
+
+<script>
+
+     @*document.getElementById('InvoicesAwaitingPayment').addEventListener('click', () => {
+            alert('Invoice');
+            var url = '@Url.Action("UnpaidInvoiceDetail", "Client")';
+           // window.location.href = url; //.replace('__id__', id);
+        })*@
+
+    function CashSummaryItemSelected(args) {
+
+        var EstateID = document.getElementById('EstateID').innerText;
+
+
+        var selecteditem = document.getElementById('FinancialSummaryListView').ej2_instances[0].getSelectedItems();
+        if (selecteditem != null)
+        {
+            var ActiveItems1 = selecteditem["item"].getElementsByClassName('e-list-item-header')[0];
+
+            if (ActiveItems1 != null)
+            {
+
+                if (ActiveItems1.innerText == "Invoices Awaiting Payment:")
+                {
+
+
+                        var url = '@Url.Action("UnpaidInvoiceDetail", "Client", new { Estateid = "__id__" })';
+                        window.location.href = url.replace('__id__', EstateID);
+
+                }
+
+                if (ActiveItems1.innerText == "Unauthorised Invoices:")
+                {
+
+
+
+                        var url = '@Url.Action("unauthorisedInvoiceDetail", "Client", new { Estateid = "__id__" })';
+                        window.location.href = url.replace('__id__', EstateID);
+
+                }
+
+                if (ActiveItems1.innerText == "Unbilled Purchase Orders:")
+                {
+
+
+
+                        var url = '@Url.Action("OutstandingPODetail", "Client", new { Estateid = "__id__" })';
+                        window.location.href = url.replace('__id__', EstateID);
+
+                }
+            }
+        }
+
+
+
+    }
+</script>
+
+@*<style>
+    .e-list-icon {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        ma
+    }
+</style>*@

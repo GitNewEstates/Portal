@@ -84,33 +84,37 @@
 
 
         <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 LoggedInHeader GradientBackground">
-            @if (Model.SelectedProperty != null)
+            @if(Model != null) 
             {
-                <div class="SelectedProperty">
-                    <h6>
-                        @Model.SelectedProperty.Address1
-                        @if (Model.NotificationCount > 0)
-                        {
-                            <div style="position:relative;display:inline-block;" id="NotificationIcon">
-                                <i class="fa-solid fa-bell"></i>
-                                <span class="e-badge e-badge-primary e-badge-overlap e-badge-notification NotificationNumberBadge">@Model.NotificationCount</span>
-                            </div>
+                if (Model.SelectedProperty != null)
+                {
+                    <div class="SelectedProperty">
+                        <h6>
+                            @Model.SelectedProperty.Address1
+                            @if (Model.NotificationCount > 0)
+                            {
+                                <div style="position:relative;display:inline-block;" id="NotificationIcon">
+                                    <i class="fa-solid fa-bell"></i>
+                                    <span class="e-badge e-badge-primary e-badge-overlap e-badge-notification NotificationNumberBadge">@Model.NotificationCount</span>
+                                </div>
 
-                            @*<i class="fa-solid fa-bell"></i>*@
-                        }
-                    </h6>
+                                @*<i class="fa-solid fa-bell"></i>*@
+                            }
+                        </h6>
 
-                </div>
+                    </div>
 
+                    }
+             }
 
-            }
-            @if (Model.NameofUser != null)
+            @if (Model != null)
             {
-
-
-                <div class="CustomerName">
-                    <h6>@Model.NameofUser</h6>
-                </div>
+                if (Model.NameofUser != null)
+                {
+                    <div class="CustomerName">
+                        <h6>@Model.NameofUser</h6>
+                    </div>
+                }
             }
         </div>
     </nav>
@@ -128,12 +132,15 @@
             </div>
 
             <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 LoggedInHeader GradientBackground">
-                @if (Model.SelectedProperty != null)
+                @if (Model != null)
                 {
-                    <div class="SelectedProperty">
-                        <h6>@Model.SelectedProperty.Address1</h6>
-                    </div>
+                    if (Model.SelectedProperty != null)
+                    {
+                        <div class="SelectedProperty">
+                            <h6>@Model.SelectedProperty.Address1</h6>
+                        </div>
 
+                    }
                 }
             </div>
 
@@ -146,31 +153,32 @@
 
     <div class="container-fluid" id="sideNavContainer">
         <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 LoggedInHeader GradientBackground">
-            @if (Model.SelectedProperty != null)
+            @if (Model != null)
             {
-                <div class="SelectedProperty">
-                    <h6>
-                        @Model.SelectedProperty.Address1
-                        @if (Model.NotificationCount > 0)
-                        {
-                            <div style="position:relative;display:inline-block;">
-                                <i class="fa-solid fa-bell"></i>
-                                <span class="e-badge e-badge-primary e-badge-overlap e-badge-notification NotificationNumberBadge">@Model.NotificationCount</span>
-                            </div>
+                if (Model.SelectedProperty != null)
+                {
+                    <div class="SelectedProperty">
+                        <h6>
+                            @Model.SelectedProperty.Address1
+                            @if (Model.NotificationCount > 0)
+                            {
+                                <div style="position:relative;display:inline-block;">
+                                    <i class="fa-solid fa-bell"></i>
+                                    <span class="e-badge e-badge-primary e-badge-overlap e-badge-notification NotificationNumberBadge">@Model.NotificationCount</span>
+                                </div>
 
-                            @*<i class="fa-solid fa-bell"></i>*@
-                        }
-                    </h6>
+                                @*<i class="fa-solid fa-bell"></i>*@
+                            }
+                        </h6>
 
-                </div>
-            }
-            @if (Model.NameofUser != null)
-            {
-
-
-                <div class="CustomerName">
-                    <h6>@Model.NameofUser</h6>
-                </div>
+                    </div>
+                }
+                if (Model.NameofUser != null)
+                {
+                    <div class="CustomerName">
+                        <h6>@Model.NameofUser</h6>
+                    </div>
+                }
             }
         </div>
 
@@ -207,12 +215,18 @@
 
     <script type="text/javascript">
 
-     
+    
 
         $(document).ready(function () {
 
 
+           
 
+            @*var ActualSeriesLable = document.getElementById('container_Series_0_Point_0_Text_0');
+            var BudgetLabel = @Html.Raw(Json.Encode(Model.BudgetLabelAmount));
+            console.log(BudgetLabel);
+
+            ActualSeriesLable.innerHTML = BudgetLabel;*@
 
 
 
@@ -232,7 +246,7 @@
                     SetToastVisibility("true");
 
                 }
-               
+
             });
 
             function SetToastVisibility(val) {
@@ -241,11 +255,11 @@
                 if (toastDisplayed != null && toastDisplayed != 'undefined') {
                     toastDisplayed.innerText = val;
                 }
-                
+
             }
 
-          
-           
+
+
 
 
 
@@ -321,7 +335,7 @@
                     ScheduleName: schedule
                 }
 
-                
+
 
 
                 var url = "/Expense/Create/";

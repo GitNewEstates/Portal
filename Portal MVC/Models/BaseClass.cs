@@ -110,12 +110,15 @@ namespace Portal_MVC.Models
 
     public class ViewModelBase
     {
-        public ViewModelBase()
+        public ViewModelBase(int SelectedEstateID = 0)
         {
             Properties = new List<Properties>();
             SelectedProperty = new Properties(PropertyTypes.None);
+            SelectedProperty.ID = SelectedEstateID;
             owner = new Owner();
         }
+
+        
         public string RoleName { get; set; }
         public Properties SelectedProperty { get; set; }
         public string NameofUser { get; set; }
@@ -145,12 +148,15 @@ namespace Portal_MVC.Models
             {
                 owner = await OwnerMethods.GetOwnerByEmail(email);
                 NameofUser = owner.FullName;
-                Properties = await PropertyMethods.GetOwnedEstatesAsync(owner.id);
-                if(Properties.Count == 1)
+                if (SelectedProperty.ID == 0)
                 {
-                    SelectedProperty = Properties[0];
-                    SelectedProperty.ID = Properties[0].ID;
-                    SelectedProperty.Address1 = Properties[0].Address1;
+                    Properties = await PropertyMethods.GetOwnedEstatesAsync(owner.id);
+                    if (Properties.Count == 1)
+                    {
+                        SelectedProperty = Properties[0];
+                        SelectedProperty.ID = Properties[0].ID;
+                        SelectedProperty.Address1 = Properties[0].Address1;
+                    }
                 }
 
 

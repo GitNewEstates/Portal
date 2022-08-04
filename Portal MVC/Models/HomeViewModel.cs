@@ -11,83 +11,82 @@ namespace Portal_MVC.Models
         public HomeViewModel()
         {
             BudgetActualDataList = new List<BudgetActualChartData>();
-            BudgetActualDataList.Add(new BudgetActualChartData
-            {
-                Name = "Actual",
-                Amount = 5000,
-                color = "blue"
-
-            });
-            BudgetActualDataList.Add(new BudgetActualChartData
-            {
-                Name = "Budget",
-                Amount = 10000, 
-                color = "grey"
-            });
-
-           
-
-            XAxisMaxValue = 12000;
-
-        
-
+            ClientFinancialListView = new List<ClientFinancialListView>();
             OwnedProperties = new List<OwnedPropertyListViewObject>();
-           
-
             RepairAccordianObjects = new List<Syncfusion.EJ2.Navigations.AccordionAccordionItem>();
-            //RepairAccordianObjects.Add(new Syncfusion.EJ2.Navigations.AccordionAccordionItem
-            //{
-            //    Header = "Repair 1",
-            //    Content = "Microsoft ASP.NET is a set of technologies in the Microsoft .NET Framework for building Web applications and XML Web services. ASP.NET pages execute on the server and generate markup such as HTML, WML, or XML that is sent to a desktop or mobile browser. ASP.NET pages use a compiled,event-driven programming model that improves performance and enables the separation of application logic and user interface."
-            //}) ;
-            //RepairAccordianObjects.Add(new Syncfusion.EJ2.Navigations.AccordionAccordionItem
-            //{
-            //    Header = "Repair 2",
-            //    Content = "The Model-View-Controller (MVC) architectural pattern separates an application into three main components: the model, the view, and the controller. The ASP.NET MVC framework provides an alternative to the ASP.NET Web Forms pattern for creating Web applications. The ASP.NET MVC framework is a lightweight, highly testable presentation framework that (as with Web Forms-based applications) is integrated with existing ASP.NET features, such as master pages and membership-based authentication."
-            //});
-            //RepairAccordianObjects.Add(new Syncfusion.EJ2.Navigations.AccordionAccordionItem
-            //{
-            //    Header = "Repair 3",
-            //    Content = "Repair 3 Content"
-            //});
-            //RepairAccordianObjects.Add(new Syncfusion.EJ2.Navigations.AccordionAccordionItem
-            //{
-            //    Header = "Repair 4",
-            //    Content = "Repair 4 Content"
-            //});
-            //RepairAccordianObjects.Add(new Syncfusion.EJ2.Navigations.AccordionAccordionItem
-            //{
-            //    Header = "Repair 5",
-            //    Content = "Repair 5 Content"
-            //});
-
             AttendanceVisitCollection = new List<Syncfusion.EJ2.Navigations.AccordionAccordionItem>();
-            //AttendanceVisitCollection.Add(new Syncfusion.EJ2.Navigations.AccordionAccordionItem
-            //{
-            //    Header = "Attendance 1",
-            //    Content = "Attendance Detail 1"
-            //}) ;
-
-            //AttendanceVisitCollection.Add(new Syncfusion.EJ2.Navigations.AccordionAccordionItem
-            //{
-            //    Header = "Attendance 2",
-            //    Content = "Attendance Detail 2"
-            //});
-            //AttendanceVisitCollection.Add(new Syncfusion.EJ2.Navigations.AccordionAccordionItem
-            //{
-            //    Header = "Attendance 3",
-            //    Content = "Attendance Detail 3"
-            //});
-
         }
        
         public async Task LoadCustomerDashboardDataAsync()
         {
+
+            APIEstates estate = new APIEstates { id = SelectedProperty.ID };
+            estate = await APIEstateMethods.GetOpenFundBudgetAndSpendTotals(estate.id);
+
+            //
+            string BudgetLabelName = $"£{estate.OpenFundTotalBudget}";
+            string ActualLabelName = $"£{estate.OpenFundTotalCost}";
+
+            double TwentyPercentofBudget = estate.OpenFundTotalBudget * 0.2;
+            double TwentyPercentofActual = estate.OpenFundTotalCost * 0.2;
+
+            //if the actual spend is less than 20% of the budget then 
+            //set the amount to 20% so that the data series renders properly
+            if(estate.OpenFundTotalBudget > estate.OpenFundTotalCost)
+            {
+                if(estate.OpenFundTotalCost < TwentyPercentofBudget)
+                {
+                    estate.OpenFundTotalCost = TwentyPercentofActual;
+                }
+            }
+
+
+
+
+            estate.OpenFundTotalCost = estate.OpenFundTotalBudget * 0.2;
+            BudgetLabelAmount = $"{ControlsDLL.ControlActions.DoubelToCurrencyString2DP(estate.OpenFundTotalCost)}";
+
+
+            if (BudgetActualDataList == null)
+            {
+                BudgetActualDataList = new List<BudgetActualChartData>();
+            }
+            BudgetActualDataList.Add(new BudgetActualChartData
+            {
+                Name = "Spend",
+                Amount = estate.OpenFundTotalCost,
+                color = "#0591bc",
+                LabelName = ActualLabelName
+
+            });
+
+            BudgetActualDataList.Add(new BudgetActualChartData
+            {
+                Name = "Budget",
+                Amount = estate.OpenFundTotalBudget,
+                color = "grey",
+                LabelName = BudgetLabelName
+            });
+
+            if (estate.OpenFundTotalBudget > estate.OpenFundTotalCost)
+            {
+                XAxisMaxValue = estate.OpenFundTotalBudget + 1000;
+
+            } else if (estate.OpenFundTotalCost > estate.OpenFundTotalBudget)
+            {
+                XAxisMaxValue = estate.OpenFundTotalCost + 1000;
+            } else
+            {
+                XAxisMaxValue = 12000;
+            }
+
+           
+
             if (owner != null)
             {
                 List<Models.Units> units = new List<Models.Units>();
                 units = await
-                    Models.UnitMethods.GetCurrentOwnedUnits(owner.id, SelectedProperty.ID);
+                    Models.UnitMethods.GetCurrentOwnedUnits(owner.id, SelectedProperty.ID, true);
                 if (units != null)
                 {
                     if (units.Count > 0)
@@ -99,7 +98,7 @@ namespace Portal_MVC.Models
                                 OwnedProperties.Add(new OwnedPropertyListViewObject
                                 {
                                     id = unit.id,
-                                    text = unit.Name
+                                    text = $"{unit.Name} - {ControlsDLL.ControlActions.DoubelToCurrencyString2DP(unit.Balance)}"
                                 });
                             }
                         }
@@ -195,19 +194,254 @@ namespace Portal_MVC.Models
             }
 
         }
-        
+        public async Task LoadClientDataAsync()
+        {
+            APIEstates estate = new APIEstates
+            {
+                //id = SelectedProperty.ID
+                id = 32
+            };
+
+            await estate.GetOpenFundBVAList();
+            double chartheight = 150;
+          
+            if (estate.OpenFundList != null)
+            {
+                if(estate.OpenFundList.Count > 0)
+                {
+                    if(estate.OpenFundList[0].APIError != null)
+                    {
+                        if (estate.OpenFundList[0].APIError.HasError)
+                        {
+                            ClientBVAChartErrorMessage = estate.OpenFundList[0].APIError.Message;
+
+                        } else
+                        {
+                            
+                            ClientBVABudget = new List<BudgetActualChartData>();
+                            ClientBVAActual = new List<BudgetActualChartData>();
+
+                            for (int i = 0; i <= estate.OpenFundList.Count - 1; i++)
+                            {
+
+                                chartheight += 50;
+                                string BudgetLabelName = ControlsDLL.ControlActions.DoubelToCurrencyString2DP(estate.OpenFundList[i].TotalBudget);
+                                string ActualLabelName = ControlsDLL.ControlActions.DoubelToCurrencyString2DP(estate.OpenFundList[i].TotalSpend);
+
+                                double TwentyPercentofBudget = estate.OpenFundList[i].TotalBudget * 0.1;
+                                double TwentyPercentofActual = estate.OpenFundList[i].TotalSpend * 0.1;
+
+                                //if the actual spend is less than 20% of the budget then 
+                                //set the amount to 20% so that the data series renders properly
+                                if (estate.OpenFundList[i].TotalBudget > estate.OpenFundList[i].TotalSpend)
+                                {
+                                    if (estate.OpenFundList[i].TotalSpend < TwentyPercentofBudget)
+                                    {
+                                        estate.OpenFundList[i].TotalSpend = TwentyPercentofBudget;
+                                    }
+                                }
+                                //else if ()
+                                //{
+                                //    //if budget is less than 20% of actual spend
+                                //}
+
+
+                                BudgetActualChartData BudgetData = new BudgetActualChartData
+                                {
+                                    Name = estate.OpenFundList[i].FundName,
+                                    Amount = estate.OpenFundList[i].TotalBudget,
+                                    LabelName = BudgetLabelName
+                                    
+                                };
+
+                                BudgetActualChartData ActualData = new BudgetActualChartData
+                                {
+                                    Name = estate.OpenFundList[i].FundName,
+                                    Amount = estate.OpenFundList[i].TotalSpend,
+                                    LabelName = ActualLabelName
+                                };
+
+                                ClientBVABudget.Add(BudgetData);
+                                ClientBVAActual.Add(ActualData);
+
+                                //sets the x axis value.
+                                double BudgetActualHighestVal = 0;
+                                if(estate.OpenFundList[i].TotalBudget > estate.OpenFundList[i].TotalSpend)
+                                {
+                                    BudgetActualHighestVal = estate.OpenFundList[i].TotalBudget;
+                                } else
+                                {
+                                    BudgetActualHighestVal = estate.OpenFundList[i].TotalSpend;
+                                }
+
+                                if(BudgetActualHighestVal > ClientXAxisMaxValue)
+                                {
+                                    ClientXAxisMaxValue = BudgetActualHighestVal;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+
+            ClientBVAChartHeight = $"{chartheight}px";
+
+            //Client financial Summary
+            await estate.GetCurrentCashPosition();
+            await estate.GetInvoiceAwaitingPaymentValue();
+            await estate.GetUnauthorisedInvoiceValue();
+            await estate.GetOutstandingdPOValue();
+
+            string DeductionRightMarginValue = "25px";
+
+            ClientFinancialListView.Add(new Models.ClientFinancialListView
+            {
+                text = $"Current Cash:",
+                Elementid = "CurrentCash",
+                icon = "fa-solid fa-sterling-sign",
+                value = ControlsDLL.ControlActions.DoubelToCurrencyString2DP(estate.CurrentCashPosition),
+                IconCss = "margin-right: 5px;",
+                ValueCss = "float: right;"
+            });
+
+           
+
+            ClientFinancialListView.Add(new Models.ClientFinancialListView
+            {
+                text = $"Invoices Awaiting Payment:",
+                Elementid = "InvoicesAwaitingPayment",
+                icon = "fa-solid fa-file-invoice",
+                value = ControlsDLL.ControlActions.DoubelToCurrencyString2DP(estate.InvoicesAwaitingPaymenteValue),
+                IconCss = "margin-right: 5px;",
+                ValueCss = $"float: right; margin-right: {DeductionRightMarginValue};"
+            });
+            ClientFinancialListView.Add(new Models.ClientFinancialListView
+            {
+                text = $"Unauthorised Invoices:",
+                Elementid = "UnauthedInvoices",
+                icon = "fa-solid fa-ban",
+                value = ControlsDLL.ControlActions.DoubelToCurrencyString2DP(estate.UnauthorisedInvoiceValue),
+                IconCss = "margin-right: 5px;",
+                ValueCss = $"float: right; margin-right: {DeductionRightMarginValue};"
+            });
+
+          
+            ClientFinancialListView.Add(new Models.ClientFinancialListView
+            {
+                text = $"Unbilled Purchase Orders:",
+                Elementid = "UnbilledPurchaseOrders",
+                icon = "fa-solid fa-money-check",
+                value = ControlsDLL.ControlActions.DoubelToCurrencyString2DP(estate.OutstandPOTotalValue),
+                IconCss = "margin-right: 5px;",
+                ValueCss = $"float: right; margin-right: {DeductionRightMarginValue};"
+            });
+            
+            ClientFinancialListView.Add(new Models.ClientFinancialListView
+            {
+                text = $"Net Cash Position:",
+                Elementid = "UnbilledPurchaseOrders",
+                icon = "fa-solid fa-sterling-sign",
+                value = ControlsDLL.ControlActions.DoubelToCurrencyString2DP(estate.NetCashPosition),
+                IconCss = "margin-right: 5px;",
+                ValueCss = $"float: right;"
+            });
+
+        }
+
         public string RepairErrorMessage { get; set; }
         public string AttendanceErrorMessage { get; set; }
+        public string ClientBVAChartErrorMessage { get; set; }  
         public object anonObj { get; set; }
         public string Name { get; set; }
         public List<BudgetActualChartData> BudgetActualDataList { get; set; }
+
+        
+        
+        public List<BudgetActualChartData> ClientBVABudget { get; set; }
+        public List<BudgetActualChartData> ClientBVAActual { get; set; }
+
+        public List<ClientFinancialListView> ClientFinancialListView { get; set; }
+
         public List<OwnedPropertyListViewObject> OwnedProperties { get; set; }
         public List<Syncfusion.EJ2.Navigations.AccordionAccordionItem> RepairAccordianObjects { get; set; }
 
         public List<Syncfusion.EJ2.Navigations.AccordionAccordionItem> AttendanceVisitCollection { get; set; }
 
         public double XAxisMaxValue { get; set; }
+        public double ClientXAxisMaxValue { get; set; }
+        public string ClientBVAChartHeight { get; set; }
+        public string BudgetLabelAmount { get; set; }
     }
+
+    public class UnpaidInvoiceDetailViewModel : ViewModelBase
+    {
+        public UnpaidInvoiceDetailViewModel()
+        {
+            UnpaidExpenditureList = new List<Expenditure>();
+        }
+        public List<Expenditure> UnpaidExpenditureList { get; set; }
+        public async Task GetUnpaidInvoices()
+        {
+            UnpaidExpenditureList = await ExpenditureMethods.GetUnpaidExpenditureAsync(SelectedProperty.ID);
+        }
+    }
+
+    public class UnauthorisedExpenditureViewModel : ViewModelBase
+    {
+        public UnauthorisedExpenditureViewModel()
+        {
+            UnAuthExpenditureList = new List<Expenditure>();
+        }
+        public List<Expenditure> UnAuthExpenditureList { get; set; }
+
+        public async Task GetUnauthExpenditureList()
+        {
+            UnAuthExpenditureList = await ExpenditureMethods.GetUnauthorisedExpenditureAsync(SelectedProperty.ID);
+        }
+    }
+
+    public class OutstandPOListViewModel : ViewModelBase
+    {
+        public OutstandPOListViewModel()
+        {
+            OutstaningPurchaseOrderList = new List<APIPurchaseOrders>();
+        }
+        public List<APIPurchaseOrders> OutstaningPurchaseOrderList { get; set; }
+
+        public async Task SetOutstandingPurchaseOrderList()
+        {
+            OutstaningPurchaseOrderList = await 
+                APIPurchaseOrderMethods.GetOpenPurchaseOrderList(SelectedProperty.ID);
+        }
+    }
+
+    public class ClientBudgetActualChartData
+    {
+        public ClientBudgetActualChartData()
+        {
+            BudgetData = new List<BudgetActualChartData>();
+            ActualData = new List<BudgetActualChartData>();
+
+        }
+
+        public string Name { get; set; }
+        public List<BudgetActualChartData> BudgetData { get; set; }
+        public List<BudgetActualChartData> ActualData { get; set; }
+    }
+
+    //public class ClientBudgetActualChartData
+    //{
+    //    public string Name { get; set; }
+    //    public double Budget { get; set; }
+    //    public double Actual { get; set; }
+
+    //    public string color { get; set; }
+
+    //    public string LabelName { get; set; }
+
+    //}
+
 
     public class BudgetActualChartData
     {
@@ -215,20 +449,37 @@ namespace Portal_MVC.Models
         public double Amount { get; set; }
 
         public string  color { get; set; }
+
+        public string LabelName { get; set; }   
         
     }
 
-    public class OwnedPropertyListViewObject
+    public class ListViewBase
     {
-        public OwnedPropertyListViewObject()
-        {
-            icon = "fa-solid fa-building-user";
-        }
         public int id { get; set; }
         public string text { get; set; }
 
         public string icon { get; set; }
     }
+
+    public class OwnedPropertyListViewObject : ListViewBase
+    {
+        public OwnedPropertyListViewObject()
+        {
+            icon = "fa-solid fa-building-user";
+        }
+        
+    }
+
+    public class ClientFinancialListView :ListViewBase
+    {
+        public string value { get; set; }
+        public string IconCss { get; set; }
+        public string ValueCss { get; set; }
+        public string Elementid { get; set;}
+    }
+
+   
 
   
 }

@@ -399,7 +399,8 @@ namespace Portal_MVC.Models
         JSONDeserializationError,
         JSONSerializationError,
         APIConnectionError,
-        ProcessingError
+        ProcessingError,
+        DatabaseError
 
     }
     public static class DBInsertErrorMethods

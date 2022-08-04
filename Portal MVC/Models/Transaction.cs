@@ -120,4 +120,103 @@ namespace Portal_MVC.Models
 
     }
 
+    //Api Transactions
+    public class APITransactionBase :BaseClass
+    {
+        public DateTime Date { get; set; }
+        public int BudgetID { get; set; }
+        public string ScheduleName { get; set; }
+        public int HeadingID { get; set; }
+        public string Description { get; set; }
+        public int TransactionTypeID { get; set; }
+
+        public int PONumber { get; set; }
+        public double Amount { get; set; }
+        public string AmountStr
+        {
+            get
+            {
+                return ControlsDLL.ControlActions.DoubelToCurrencyString2DP(Amount);
+            }
+        }
+        public bool InError { get; set; }
+        public int UnitID { get; set; }
+    }
+
+    public class Expenditure : APITransactionBase
+    {
+        public Expenditure()
+        {
+            supplier = new Supplier();
+        }
+        public DateTime InvoiceDate { get; set; }
+        public DateTime ProcessedDate { get; set; }
+        public DateTime AuthorisedDate { get; set; }
+
+        public string InvoiceRef { get; set; }
+
+        public Supplier supplier { get; set; }
+
+
+
+    }
+
+    public static class ExpenditureMethods
+    {
+        public static List<Expenditure> DeserializedJSONToExpenditureList(string json = "")
+        {
+            List<Expenditure> obj = new List<Expenditure>();
+            if (!string.IsNullOrEmpty(json))
+            {
+                try
+                {
+                    obj = JsonConvert.DeserializeObject<List<Expenditure>>(json);
+                }
+                catch (Exception ex)
+                {
+                    APIError er = new APIError(ErrorType.APIValidationError)
+                    {
+                        HasError = true,
+                        Message = $"Error Deserializing JSON to Expenditure List. Error: {ex.Message}"
+                    };
+
+                    obj.Add(new Expenditure
+                    {
+                        APIError = er
+                    });
+                }
+            }
+            else
+            {
+                APIError er = new APIError(ErrorType.APIValidationError)
+                {
+                    HasError = true,
+                    Message = $"Error Deserializing JSON to Expenditure List."
+                };
+
+                obj.Add(new Expenditure
+                {
+                    APIError = er
+                });
+            }
+
+            return obj;
+        }
+
+
+        public async static Task<List<Expenditure>> GetUnauthorisedExpenditureAsync(int EstateID)
+        {
+            string json = await APIMethods.CallAPIGetEndPointAsync($"UnauthorisedInvoiceList/{EstateID}");
+
+            return DeserializedJSONToExpenditureList(json);
+        }
+
+        public async static Task<List<Expenditure>> GetUnpaidExpenditureAsync(int EstateID)
+        {
+            string json = await APIMethods.CallAPIGetEndPointAsync($"UnpaidInvoicesList/{EstateID}");
+
+            return DeserializedJSONToExpenditureList(json);
+        }
+    }
+
 }

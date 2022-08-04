@@ -5,6 +5,8 @@ using System.Web;
 using dbConn;
 using System.Data;
 using Portal_MVC;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace Portal_MVC.Models
 {
@@ -50,5 +52,82 @@ namespace Portal_MVC.Models
 
             return po;
         }
+    }
+
+    public class APIPurchaseOrders : BaseClass
+    {
+        public APIPurchaseOrders()
+        {
+            LineItems = new List<PurchaseOrderLineItem>();
+        }
+        public DateTime RaiseDate { get; set; }
+        public List<PurchaseOrderLineItem> LineItems { get; set; }
+        public double EstCost { get; set; }
+
+        public string POHeader { get; set; }
+        public double TotalCost { get; set; }
+
+        public string TotalCostStr
+        {
+            get { return ControlsDLL.ControlActions.DoubelToCurrencyString2DP(TotalCost); }
+        }
+
+    }
+
+    public static class APIPurchaseOrderMethods
+    {
+        public async static Task<List<APIPurchaseOrders>> GetOpenPurchaseOrderList(int estateid)
+        {
+            string json =await APIMethods.CallAPIGetEndPointAsync($"OutstandingPOList/{estateid}");
+
+            return DeserializedJSONToPurchaseOrderList(json);
+        }
+
+        public static List<APIPurchaseOrders> DeserializedJSONToPurchaseOrderList(string json = "")
+        {
+            List<APIPurchaseOrders> obj = new List<APIPurchaseOrders>();
+            if (!string.IsNullOrEmpty(json))
+            {
+                try
+                {
+                    obj = JsonConvert.DeserializeObject<List<APIPurchaseOrders>>(json);
+                }
+                catch (Exception ex)
+                {
+                    APIError er = new APIError(ErrorType.APIValidationError)
+                    {
+                        HasError = true,
+                        Message = $"Error Deserializing JSON to Expenditure List. Error: {ex.Message}"
+                    };
+
+                    obj.Add(new APIPurchaseOrders
+                    {
+                        APIError = er
+                    });
+                }
+            }
+            else
+            {
+                APIError er = new APIError(ErrorType.APIValidationError)
+                {
+                    HasError = true,
+                    Message = $"Error Deserializing JSON to Expenditure List."
+                };
+
+                obj.Add(new APIPurchaseOrders
+                {
+                    APIError = er
+                });
+            }
+
+            return obj;
+        }
+    }
+
+    public class PurchaseOrderLineItem : BaseClass
+    {
+        public int PurchaseOrderID { get; set; }
+        public string ItemDescription { get; set; }
+        public double ItemCost { get; set; }
     }
 }

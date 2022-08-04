@@ -1,0 +1,33 @@
+﻿@using Portal_MVC.Models
+@model Portal_MVC.Models.UnpaidInvoiceDetailViewModel
+@{
+    ViewBag.Title = "UnpaidInvoiceDetail";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<div>
+    @Html.EJS().Grid("Grid").DataSource(Model.UnpaidExpenditureList).AllowPdfExport().ToolbarClick("toolbarClick").Columns(col =>
+{
+    col.Field("id").HeaderText("ID").Width("35").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).AllowEditing(false).IsPrimaryKey(true).Add();
+    col.Field("InvoiceDate").HeaderText("Invoice Date").Width("60").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).Format(new { type = "dateTime", format = "dd/MM/yyyy" }).Add();
+    col.Field("supplier.Name").HeaderText("Supplier").Width("150").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Add();
+    col.Field("Description").HeaderText("Description").Width("180").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).Add();
+    col.Field("AmountStr").HeaderText("Value").Width("75").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).Add();
+
+
+
+}).AllowPaging(true).PageSettings(page => page.PageSize(25)).AllowFiltering(true).AllowSorting(true).EditSettings(edit => { edit.AllowEditing(false).Mode(Syncfusion.EJ2.Grids.EditMode.Normal); }).Toolbar(new List<string>() { "PdfExport" }).TextWrapSettings(text => { text.WrapMode(Syncfusion.EJ2.Grids.WrapMode.Content);}).Render()
+</div>
+
+
+<script>
+
+  
+    function toolbarClick(args) {
+        var gridObj = document.getElementById("Grid").ej2_instances[0];
+        if (args.item.id === 'Grid_pdfexport') {
+            gridObj.pdfExport();
+        }
+    }
+</script>
+

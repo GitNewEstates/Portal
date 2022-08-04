@@ -35,10 +35,10 @@
 
 <div class="Full-Width-Container">
     <div class="row">
-        <div class="col-lg-4 col-md-4 col-sm-11 col-xs-11 e-card e-custom-card">
+        <div class="col-lg-5 col-md-5 col-sm-11 col-xs-11 e-card e-custom-card">
             @Html.EJS().ListView("listview").Enable(true).DataSource(Model.OwnedProperties).HeaderTitle("Your Properties").ShowHeader(true).ShowIcon(true).Fields(new Syncfusion.EJ2.Lists.ListViewFieldSettings { IconCss = "icon" }).Render()
         </div>
-        <div class="col-lg-5 col-md-5 col-sm-11 col-xs-11  e-card e-custom-card">
+        <div class="col-lg-6 col-md-6 col-sm-11 col-xs-11  e-card e-custom-card">
             
                 @(Html.EJS().Chart("container").Background("white").Height("200px").Series(series =>
                         {
@@ -48,8 +48,9 @@
                             YName("Amount").
                             CornerRadius(cr => cr.BottomLeft(10).BottomRight(10).TopLeft(10).TopRight(10)).
 
-                            Marker(mr => mr.DataLabel(dl => dl.Visible(true).
-                            Position(Syncfusion.EJ2.Charts.LabelPosition.Top).
+                            Marker(mr => mr.DataLabel(dl => dl.Visible(true).Name("LabelName").
+
+                            Position(Syncfusion.EJ2.Charts.LabelPosition.Bottom).
                             Font(ff => ff.FontWeight("600").Color("#ffffff")))).
                             DataSource(Model.BudgetActualDataList).
                             PointColorMapping("color").
@@ -59,10 +60,6 @@
                                 .MajorGridLines(mg => mg.Width(0))
                                 .MajorTickLines(mg => mg.Width(0))
                                 .LineStyle(mg => mg.Width(0))
-                                .LabelStyle(ls => ls.Color("#ffffff").TextAlignment(Syncfusion.EJ2.Charts.Alignment.Far))
-                                .TickPosition(Syncfusion.EJ2.Charts.AxisPosition.Inside)
-                                .LabelPosition(Syncfusion.EJ2.Charts.AxisPosition.Inside)
-
                                 .ValueType(Syncfusion.EJ2.Charts.ValueType.Category)
 
                                 ).
@@ -76,7 +73,7 @@
                                 ).
 
                            ChartArea(area => area.Border(br => br.Color("transparent"))).
-                           LegendSettings(ls => ls.Visible(true)).
+                           LegendSettings(ls => ls.Visible(false)).
                            Title("Overall Fund BVA").
                            TitleStyle(ts => ts.Color("blue")).
                            Render()
@@ -119,7 +116,7 @@
 }
 
 <style>
-    .e-card {
+    /*.e-card {
         justify-content: flex-start;
         margin-left: 10px;
         margin-right: 10px;
@@ -165,11 +162,11 @@
         background: #0591bc !important;
         color: white !important;
         justify-content: center;
-    }
+    }*/
 </style>
 
 <script type="text/javascript">
-
+    
 
 </script>
 

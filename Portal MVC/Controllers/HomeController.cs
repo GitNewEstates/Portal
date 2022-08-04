@@ -59,6 +59,8 @@ namespace Portal_MVC.Controllers
                     await homeViewModel.LoadCustomerDashboardDataAsync();
                     break;
                 case "Client":
+                    await homeViewModel.LoadClientDataAsync();
+                    await homeViewModel.LoadCustomerDashboardDataAsync();
                     homeViewModel.ViewName = "ClientDashboard";
                     
                     break;

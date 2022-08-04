@@ -13,17 +13,19 @@ namespace Portal_MVC.Models
 
         public DateTime OwnershipStartDate { get; set; }
         public DateTime OwnershipEndDate { get; set; }
+
+        public double Balance { get; set; }
     }
 
     public static class UnitMethods
     {
-        public async static Task<List<Units>> GetCurrentOwnedUnits(int ownerid, int EstateID = 0)
+        public async static Task<List<Units>> GetCurrentOwnedUnits(int ownerid, int EstateID = 0, bool includeBalance = false)
         {
             string json = "";
             if (EstateID > 0)
             {
                 json =
-                    await APIMethods.CallAPIGetEndPointAsync($"CurrentOwnerUnits/{ownerid}/{EstateID}");
+                    await APIMethods.CallAPIGetEndPointAsync($"CurrentOwnerUnits/{ownerid}/{EstateID}/{includeBalance}");
             }
             else
             {
