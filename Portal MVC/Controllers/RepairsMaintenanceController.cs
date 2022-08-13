@@ -65,42 +65,43 @@ namespace Portal_MVC.Controllers
 
         public async Task<ActionResult> RepairDetail(int repairID, string updateConfirmation = "")
         {
-            vm = new RepairsMaintenanceViewModel();
+            RepairDetailViewModel viewmodel = new RepairDetailViewModel();
             var id = User.Identity.GetUserId();
             var email = User.Identity.GetUserName();
-            await vm.SetBaseDataAsync(id, email);
-
+            await viewmodel.SetBaseDataAsync(id, email);
+            viewmodel.Repair.ID = repairID;
+            await viewmodel.SetReapir();
                 RepairID = repairID;
 
                 
-                vm.Repair = new Repairs();
+                //vm.Repair = new Repairs();
                 
-                vm.Repair = RepairMethods.GetAllRepairDetails(repairID);
-                vm.Repair.RepairHistory = new List<Repairs>();
+                //vm.Repair = RepairMethods.GetAllRepairDetails(repairID);
+                //vm.Repair.RepairHistory = new List<Repairs>();
 
-                //gets call reports
-                vm.CallReports = RepairMethods.GetRepairReport(repairID);
+                ////gets call reports
+                //vm.CallReports = RepairMethods.GetRepairReport(repairID);
 
-                //gets service charge budget and expediture 
-                vm.ServiceChargeInfo = EstateMethods.GetExpenditurebyPO(vm.Repair.PONumber);
+                ////gets service charge budget and expediture 
+                //vm.ServiceChargeInfo = EstateMethods.GetExpenditurebyPO(vm.Repair.PONumber);
 
-                //Gets contractor name
-                vm.ContractorInfo = ContractorMethods.ContractorDetailsByPO(vm.Repair.PONumber);
+                ////Gets contractor name
+                //vm.ContractorInfo = ContractorMethods.ContractorDetailsByPO(vm.Repair.PONumber);
 
-                //Gets completion cost
-                if (vm.Repair.Status == "Completed")
-                {
-                    vm.Repair.completionCost = RepairMethods.CompletedCost(vm.Repair.PONumber);
-                    vm.Repair.completionCostStr = Controls.CurrencyString(vm.Repair.completionCost);
-                }
+                ////Gets completion cost
+                //if (vm.Repair.Status == "Completed")
+                //{
+                //    vm.Repair.completionCost = RepairMethods.CompletedCost(vm.Repair.PONumber);
+                //    vm.Repair.completionCostStr = Controls.CurrencyString(vm.Repair.completionCost);
+                //}
 
-                //Repair Updates
-                vm.Repair.AutomaticUpdates = Models.RepairUpdateMethods.IsCustomerRegisteredForUpdates(repairID, (int)Session["CustomerID"]);
-                vm.AutomaticUpdateConfirmation = updateConfirmation;
-                //gets repair history
-                vm.Repair.RepairHistory = RepairMethods.GetRepairHistory(repairID);
-                vm.Repair.ID = repairID;
-                return View(vm);
+                ////Repair Updates
+                //vm.Repair.AutomaticUpdates = Models.RepairUpdateMethods.IsCustomerRegisteredForUpdates(repairID, (int)Session["CustomerID"]);
+                //vm.AutomaticUpdateConfirmation = updateConfirmation;
+                ////gets repair history
+                //vm.Repair.RepairHistory = RepairMethods.GetRepairHistory(repairID);
+                //vm.Repair.ID = repairID;
+                return View(viewmodel);
            
 
             

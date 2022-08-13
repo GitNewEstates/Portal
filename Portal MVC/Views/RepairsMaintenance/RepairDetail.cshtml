@@ -1,6 +1,6 @@
 ﻿@using Portal_MVC.Models
 
-@model Portal_MVC.Models.RepairsMaintenanceViewModel
+@model Portal_MVC.Models.RepairDetailViewModel
 
 @{
     ViewBag.Title = "Repair Detail - New Estates";
@@ -13,270 +13,117 @@
         <div class="page-header">
             <h1>Repair Details</h1>
         </div>
- 
 
-    <div class="row GradientBackground" style="min-height:50px; margin-bottom: 15px;">
-      
-                <div class="col-md-7 col-lg-7 col-sm-6">
-                    <h3>@Model.Repair.Title</h3>
-                </div>
-                <div class="col-md-5 col-lg-5 col-sm-6 status">
-                    <h4 style="margin-top: 25px;">Status: @Model.Repair.Status</h4>
-                </div>
-         
-    </div>
-
-    //Repair Details
-        <div class="">
-            <h4>@Model.Repair.Details</h4>
-            
-            @if (Model.Repair.completionCost != 0)
-            {
-                <h5>Final Total Cost: @Model.Repair.completionCostStr</h5>
-            }
-            else
-            {
-                <h5>Target Completion: @Model.Repair.TargetDatestr</h5>
-                <h5>Estimated Cost: @Model.Repair.EstimatedCostStr</h5>
-            }
-            <hr />
-        </div>
-
-
-    <div class="row">
-
-            @*Repair History*@
-        
-        <div class="col-md-6 col-lg-6">
-            @using (Html.BeginForm("AutomaticUpdates", "RepairsMaintenance", new { repairID = Model.Repair.ID }, FormMethod.Post))
-            {
-                <div class="row">
-                    <div class="container">
-                        <div @*class="col-lg-1 col-md-1 col-sm-1 col-xs-1"*@>
-                            <label class="containerChk">
-                                Receive Automatic Updates
-                                @Html.CheckBoxFor(m => m.Repair.AutomaticUpdates, new { onclick = "this.form.submit();" })
-                                <span class="checkmark"></span>
-                            </label>
-
-                        </div>
-                      
-                        @Html.TextBoxFor(m => m.Repair.ID, new { @style = "Display: none;" })
-                    </div>
-                    @if(!string.IsNullOrWhiteSpace(Model.AutomaticUpdateConfirmation))
-                    {
-                        <div class="row">
-                            <div class="container">
-                                <div class="panel">
-                                    <div class="alert alert-success alert-dismissible">
-										<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                        <p>@Model.AutomaticUpdateConfirmation</p>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    }
-                </div>
-            }	
-           
-                @if (Model.Repair.RepairHistory.Count > 0)
-				{
-                <div class="panel GradientBackground panelContainer">
-                    <div class="panel-heading" style="padding-left: 8px;">
-                        <h4>Repair History</h4>
-                    </div>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Date</th>
-                                <th>Details</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (Repairs r in Model.Repair.RepairHistory)
-							 {
-                                <tr>
-                                    <td style="width: 100px;">@r.RaisedDatestr</td>
-                                    <td>@r.UpdateNote</td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
-                </div>
-            }
-
-            @*Asset Details*@
-
-            <div class="panel" style="margin-top: 15px">
-                <div class="panel-body">
-                    @if (@Model.ContractorInfo.Name != null && @Model.ContractorInfo.Name != "")
-                    {
-                        <div class="AssetRowContainer">
-                            <div class="row">
-                                <div class="col-xs-6 col-sm-4 col-md-4 col-lg-3 AssetLabel">
-                                    <p>Contractor</p>
-                                </div>
-                                <div class="col-xs-6 col-sm-8 col-md-8 col-lg-9 AssetData">
-                                    <p>@Model.ContractorInfo.Name</p>
-                                </div>
-                            </div>
-                        </div>
-                    }
-
-                    <div class="AssetRowContainer">
-                        <div class="row">
-                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 AssetLabel">
-                                <p>Head Asset</p>
-                            </div>
-                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 AssetData">
-                                <p>@Model.Repair.HeadAssetName</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    @if (Model.Repair.SubAssetName != null && Model.Repair.SubAssetName != "")
-                    {
-                        <div class="AssetRowContainer">
-                            <div class="row">
-                                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 AssetLabel">
-                                    <p>Sub Asset</p>
-                                </div>
-                                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 AssetData">
-                                    <p>@Model.Repair.SubAssetName</p>
-                                </div>
-                            </div>
-                        </div>
-                    }
-
-                    @if (Model.Repair.SubAssetLocation != null && Model.Repair.SubAssetLocation != "")
-                    {
-                        <div class="AssetRowContainer">
-                            <div class="row">
-                                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 AssetLabel">
-                                    <p>Asset Location</p>
-                                </div>
-                                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 AssetData">
-                                    <p>@Model.Repair.SubAssetLocation</p>
-                                </div>
-                            </div>
-                        </div>
-                    }
-
-                    @if (Model.Repair.HeadAssetLocation != null && Model.Repair.HeadAssetLocation != "")
-                    {
-                        <div class="AssetRowContainer">
-                            <div class="row">
-                                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 AssetLabel">
-                                    <p>Asset Location</p>
-                                </div>
-                                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 AssetData">
-                                    <p>@Model.Repair.HeadAssetLocation</p>
-                                </div>
-                            </div>
-                        </div>
-                    }
-                </div>
-            </div>
-        </div>
-            @*Call Report*@
-            <div class="col-md-6 col-lg-6">
-                @if (Model.CallReports != null)
-                {
-                    //CALLREP0RT REPORT
-                    <div class="panel CallReportPanel ">
-                        <div class="panel-heading col-md-11 col-md-push-1 col-sm-11 col-sm-push-1 col-xs-11 col-xs-push-1" style="padding-left: 0px;">
-                            <h4>Originating Report</h4>
-
-                        </div>
-                        <div class="panel-body ">
-                            <div class="row">
-                                <div class="col-xs-11 col-sm-10 col-md-10 col-md-push-1 col-lg-10 col-lg-push-1 CallReportRow">
-                                    <div class="panelBodyLabel">
-                                        <p>Reported Date</p>
-                                    </div>
-                                    <div class="panelBodyLabel PanelBodyData">
-                                        <p>@Model.CallReports.ReportDateStr</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-11 col-sm-10 col-md-10 col-md-push-1 col-lg-10 col-lg-push-1 CallReportRow">
-                                    <div class="panelBodyLabel">
-                                        <p>Reported By</p>
-                                    </div>
-                                    <div class="panelBodyLabel PanelBodyData">
-                                        <p>@Model.CallReports.ReporterType</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-11 col-sm-10 col-md-10 col-md-push-1 col-lg-10 col-lg-push-1 CallReportRow">
-                                    <div class="panelBodyLabel">
-                                        <p>Summary</p>
-                                    </div>
-                                    <div class="panelBodyLabel PanelBodyData">
-                                        <p>@Model.CallReports.ReportTitle</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-11 col-sm-10 col-md-10 col-md-push-1 col-lg-10 col-lg-push-1 CallReportRow">
-                                    <div class="panelBodyLabel ">
-                                        <p>@Model.CallReports.ReportDetails</p>
-                                    </div>
-                                </div>
-                            </div>
-                            @*<div class="row">
-                                <div class="col-xs-11 col-sm-10 col-md-10 col-md-push-1 col-lg-10 col-lg-push-1 CallReportRow">
-                                    <div class="panelBodyLabel">
-                                        <p>Outcome</p>
-                                    </div>
-                                    <div class="panelBodyLabel PanelBodyData">
-                                        <p>@Model.CallReports.Outcome</p>
-                                    </div>
-                                </div>
-                            </div>*@
-
-                        </div>
-                    </div>
-                }
-
-
-            </div>
-        </div>
-
-        //Service Charge Info
-        <div class="container col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="Full-Width-Container">
             <div class="row">
-                <hr style="border-top: 0.5px solid #656565" />
-                    <h2>Service Charge Information</h2>
-                     <div class="panel GradientBackground">
-                         <table class="table">
-                             <thead>
-                                 <tr>
-                                     <th>Budget Schedule</th>
-                                     <th>Expenditure Heading</th>
-                                     <th>Budgeted Cost</th>
-                                     <th>Current Expenditure</th>
-                                 </tr>
-                             </thead>
-                             <tbody>
-                                 <tr>
-                                     <td>@Model.ServiceChargeInfo.SCScheduleName</td>
-                                     <td>@Model.ServiceChargeInfo.SCHeading</td>
-                                     <td>@Model.ServiceChargeInfo.TotalBudgetstr</td>
-                                     <td>@Model.ServiceChargeInfo.TotalExpstr</td>
-                                 </tr>
-                             </tbody>
-                         </table>
-                     </div>   
-               
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 e-card e-custom-card detail-card">
+                    <div class="detail-card-header">
+                        <h4>
+                            @Model.Repair.RepairTitle
+                        </h4>
+                    </div>
+                    <div class="detail-card-detail">
+                        <h5>
+                            @Model.Repair.RepairDetails
+                        </h5>
+                    </div>
+                    <div class="detail-card-inner-twocol">
+                        <div class="detail-card-inner-col1">Raised Date: </div>
+                        <div class="detail-card-inner-col2">@Model.Repair.RaisedDateStr </div>
+                    </div>
+                    <div class="detail-card-inner-twocol">
+                        <div class="detail-card-inner-col1">Target Date: </div>
+                        <div class="detail-card-inner-col2">@Model.Repair.TargetDateStr</div>
+                    </div>
+
+                    <div class="detail-card-inner-twocol">
+                        <div class="detail-card-inner-col1">Status: </div>
+                        <div class="detail-card-inner-col2">@Model.Repair.RepairStatus</div>
+                    </div>
+
+                    @if (Model.Repair.EstimatedAmount > 0)
+                    {
+                        <div class="detail-card-inner-twocol">
+                            <div class="detail-card-inner-col1">Estimated Cost: </div>
+                            <div class="detail-card-inner-col2">@Model.Repair.EstimatedAmountStr</div>
+                        </div>
+                    }
+
+                </div>
+
+                <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 e-card e-custom-card detail-card">
+                    <div class="detail-card-header">
+                        <h4>
+                            Originating Report
+                        </h4>
+                    </div>
+                    <div class="detail-card-detail">
+                        <h5>
+                            @Model.Repair.CallReport.ReportTitle
+                        </h5>
+                    </div>
+                    <div class="detail-card-inner-twocol">
+                        <div class="detail-card-inner-col1">Report Date: </div>
+                        <div class="detail-card-inner-col2">@Model.Repair.CallReport.ReportDateStr </div>
+                    </div>
+                    <div class="detail-card-inner-twocol">
+                        <div class="detail-card-inner-col1">Report Details </div>
+                        <div class="detail-card-inner-col2"><h5>@Model.Repair.CallReport.ReportDetails</h5></div>
+                    </div>
+
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    @Html.EJS().Grid("Grid").DataSource(Model.Repair.RepairUpdateList).Columns(col =>
+                    {
+                        col.Field("DateStr").HeaderText("Date").Width("100").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).AllowEditing(false).Add();
+                        col.Field("Note").HeaderText("Note").Width("300").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).Add();
+                    }).AllowPaging(true).PageSettings(page => page.PageSize(25)).EditSettings(edit => { edit.AllowEditing(false).Mode(Syncfusion.EJ2.Grids.EditMode.Normal); }).TextWrapSettings(text => { text.WrapMode(Syncfusion.EJ2.Grids.WrapMode.Content); }).Render()
                 </div>
             </div>
+        </div>
 
 
-}
+          
 
 
+            }
 
+
+<style>
+    .detail-card {
+        
+        padding-left: 15px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .detail-card-inner-twocol {
+        display: inline-flex;
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+    
+    .detail-card-inner-col1{
+        min-width: 40%;
+        max-width: 50%;
+        border-right: 2px solid grey;
+        margin-right: 15px;
+    }
+    .detail-card-inner-col2 {
+        min-width: 50%;
+        max-width: 60%;
+        margin-left: 15px;
+    }
+
+
+    .detail-card-header{
+        text-align: center;
+    }
+
+    .detail-card-detail {
+        justify-content: center;
+        border-bottom: 2px solid grey;
+        margin-bottom: 5px;
+        text-align: center;
+    }
+</style>

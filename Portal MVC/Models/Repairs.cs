@@ -63,81 +63,7 @@ namespace Portal_MVC.Models
 
     }
 
-    public static class RepairUpdateMethods
-    {
-        public static void AddNew(int customerId, int repairID)
-        {
-            string q = "insert into core.RepairUpdates values (" + customerId.ToString() + ", " +
-                repairID.ToString() + ")";
 
-
-            //DBConnectionObject db = GlobalVariables.GetConnection();
-            GlobalVariables.GetConnection().Connection.ExecuteCommand( q);
-
-
-        }
-
-        public static void Remove(int customerID, int RepairID)
-        {
-            string q = "delete from core.repairupdates where customerID = " + customerID.ToString() +
-                " and repairID = " + RepairID.ToString();
-
-            //DBConnectionObject db = GlobalVariables.GetConnection();
-            GlobalVariables.GetConnection().Connection.ExecuteCommand( q);
-        }
-
-        public static void InsertReportUpdateFailure(int RepairID, int CustomerID)
-        {
-
-            List<string> c = new List<string>()
-            {
-                "repairID",
-                "customerID",
-                "_date"
-            };
-
-            List<string> p = new List<string>()
-            {
-                "@repairID",
-                "@customerID",
-                "@_date"
-            };
-
-            List<object> o = new List<object>()
-            {
-                RepairID,
-                CustomerID,
-                DateTime.Now
-            };
-
-            //DBConnectionObject db = GlobalVariables.GetConnection();
-            GlobalVariables.GetConnection().Connection.InsertCommandCurrent( "core.RepairUpdateFailures", c, p, o);
-        }
-
-        public static bool IsCustomerRegisteredForUpdates(int RepairID, int customerID)
-        {
-            string q = "select * from core.repairupdates where customerID = " + customerID.ToString() +
-                " and repairID = " + RepairID.ToString();
-
-            bool r = false;
-
-           //DBConnectionObject db = GlobalVariables.GetConnection();
-            DataTable dt = GlobalVariables.GetConnection().Connection.GetDataTable( q);
-
-
-            if (dt.Rows.Count > 0 && dt.Rows[0][0].ToString() != "Error")
-            {
-                int id = 0;
-                   int.TryParse(dt.Rows[0][0].ToString(), out id);
-                if (id > 0)
-                {
-                    r = true;
-                }
-            }
-
-            return r;
-        }
-    }
 
     public static class RepairMethods
     {
@@ -509,8 +435,13 @@ namespace Portal_MVC.Models
 
 
             APIError = new APIError(ErrorType.None);
+            RaisedDate = new DateTime();
+            CallReport = new APICallReport();
+            RepairUpdateList = new List<RepairUpdates>();
             //UpdateUsers = new ObservableCollection<RepairUpdateUser>();
         }
+
+        public List<RepairUpdates> RepairUpdateList { get; set; }
 
         public APIError APIError { get; set; }
 
@@ -563,9 +494,30 @@ namespace Portal_MVC.Models
 
         public DateTime RaisedDate { get; set; }
 
+        public string RaisedDateStr
+        {
+            get
+            {
+                return ControlsDLL.ControlActions.DateFormatLong(RaisedDate);
+            }
+        }
+
         public DateTime TargetDate { get; set; }
+        public string TargetDateStr
+        {
+            get
+            {
+                return ControlsDLL.ControlActions.DateFormatLong(TargetDate);
+            }
+        }
         public DateTime CompletionDate { get; set; }
-        public string CompletionDateStr { get; set; }
+        public string CompletionDateStr
+        {
+            get
+            {
+                return ControlsDLL.ControlActions.DateFormatLong(CompletionDate);
+            }
+        }
 
         public int QuoteID { get; set; }
         public string DocInstanceID { get; set; }
@@ -587,6 +539,14 @@ namespace Portal_MVC.Models
             }
         }
 
+        public string EstimatedAmountStr
+        {
+            get
+            {
+                return ControlsDLL.ControlActions.DoubelToCurrencyString2DP(EstimatedAmount);
+            }
+        }
+
         public int SupplierID { get; set; }
 
         public double CostStr { get; set; }
@@ -605,7 +565,7 @@ namespace Portal_MVC.Models
 
         //used when update note done on separate string. Also a static method available
 
-
+        public APICallReport CallReport { get; set; }
 
     }
 
@@ -727,14 +687,14 @@ namespace Portal_MVC.Models
             return new APIError(ErrorType.None);
         }
 
-        public async static Task<APIRepairs> GetRepair(int RepairID)
+        public async static Task<APIRepairs> GetRepair(int RepairID, bool GetCallReport = false)
         {
             
             await APIAuthExtensions.SetAPIConfigAsync();
 
             
             string ReturnJson = await
-                GlobalVariables.APIConnection.CallAPIGetEndPointAsync($"Repairs/{RepairID}");
+                GlobalVariables.APIConnection.CallAPIGetEndPointAsync($"Repairs/{RepairID}/{GetCallReport}");
             return ReturnRepairFromAPICall(ReturnJson);
 
 
@@ -776,6 +736,219 @@ namespace Portal_MVC.Models
 
 
     }
+
+    public class RepairUpdates : IDBase
+    {
+        public RepairUpdates()
+        {
+            UpdateDate = DateTime.Now;
+        }
+
+      
+
+        public int id { get; set; }
+
+        private int _CustomerId;
+        public int CustomerId
+        {
+            get
+            {
+                return _CustomerId;
+            }
+            set
+            {
+                _CustomerId = value;
+            }
+        }
+
+        private int _repairID;
+        public int repairID
+        {
+            get
+            {
+                return _repairID;
+            }
+            set
+            {
+                _repairID = value;
+            }
+        }
+
+        private string _CustomerName;
+        public string CustomerName
+        {
+            get
+            {
+                return _CustomerName;
+            }
+            set
+            {
+                _CustomerName = value;
+            }
+        }
+
+        private string _Note;
+        public string Note
+        {
+            get
+            {
+                return _Note;
+            }
+            set
+            {
+                _Note = value;
+            }
+        }
+
+        
+        public string DateStr
+        {
+           get { return ControlsDLL.ControlActions.DateFormatLong(UpdateDate); }
+        }
+
+        private DateTime _UpdateDate;
+        public DateTime UpdateDate
+        {
+            get
+            {
+                return _UpdateDate;
+            }
+            set
+            {
+                _UpdateDate = value;
+            }
+        }
+
+        private string _AddedBy;
+        public string AddedBy
+        {
+            get
+            {
+                return _AddedBy;
+            }
+            set
+            {
+                _AddedBy = value;
+            }
+        }
+
+        public int userid { get; set; }
+    }
+
+  
+
+    public static class RepairUpdateMethods
+    {
+        public static void AddNew(int customerId, int repairID)
+        {
+            string q = "insert into core.RepairUpdates values (" + customerId.ToString() + ", " +
+                repairID.ToString() + ")";
+
+
+            //DBConnectionObject db = GlobalVariables.GetConnection();
+            GlobalVariables.GetConnection().Connection.ExecuteCommand(q);
+
+
+        }
+
+        public static void Remove(int customerID, int RepairID)
+        {
+            string q = "delete from core.repairupdates where customerID = " + customerID.ToString() +
+                " and repairID = " + RepairID.ToString();
+
+            //DBConnectionObject db = GlobalVariables.GetConnection();
+            GlobalVariables.GetConnection().Connection.ExecuteCommand(q);
+        }
+
+        public static void InsertReportUpdateFailure(int RepairID, int CustomerID)
+        {
+
+            List<string> c = new List<string>()
+            {
+                "repairID",
+                "customerID",
+                "_date"
+            };
+
+            List<string> p = new List<string>()
+            {
+                "@repairID",
+                "@customerID",
+                "@_date"
+            };
+
+            List<object> o = new List<object>()
+            {
+                RepairID,
+                CustomerID,
+                DateTime.Now
+            };
+
+            //DBConnectionObject db = GlobalVariables.GetConnection();
+            GlobalVariables.GetConnection().Connection.InsertCommandCurrent("core.RepairUpdateFailures", c, p, o);
+        }
+
+        public static bool IsCustomerRegisteredForUpdates(int RepairID, int customerID)
+        {
+            string q = "select * from core.repairupdates where customerID = " + customerID.ToString() +
+                " and repairID = " + RepairID.ToString();
+
+            bool r = false;
+
+            //DBConnectionObject db = GlobalVariables.GetConnection();
+            DataTable dt = GlobalVariables.GetConnection().Connection.GetDataTable(q);
+
+
+            if (dt.Rows.Count > 0 && dt.Rows[0][0].ToString() != "Error")
+            {
+                int id = 0;
+                int.TryParse(dt.Rows[0][0].ToString(), out id);
+                if (id > 0)
+                {
+                    r = true;
+                }
+            }
+
+            return r;
+        }
+
+        public async static Task<List<RepairUpdates>> GetRepairUpdatesAsync(int repairid)
+        {
+            string json = await APIMethods.CallAPIGetEndPointAsync($"RepairUpdate/{repairid}");
+
+            return DeserializedJSONToRepairUpdatesList(json);
+        }
+
+        public static List<RepairUpdates> DeserializedJSONToRepairUpdatesList(string json = "")
+        {
+            List<RepairUpdates> obj = new List<RepairUpdates>();
+            if (!string.IsNullOrEmpty(json))
+            {
+                try
+                {
+                    obj = JsonConvert.DeserializeObject<List<RepairUpdates>>(json);
+                }
+                catch (Exception ex)
+                {
+
+                    APIError error = new APIError(ErrorType.JSONDeserializationError)
+                    {
+                        HasError = true,
+                        Message = $"Error Deserializing JSON to Repair Update List. Error: {ex.Message}"
+                    };
+
+                    obj.Add(new RepairUpdates
+                    {
+                        APIError = error
+                    });
+                }
+            }
+
+            return obj;
+        }
+
+    }
+
     public class RepairUpdateUser
     {
         public RepairUpdateUser()

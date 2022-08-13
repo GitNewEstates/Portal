@@ -93,6 +93,7 @@ namespace Portal_MVC.Controllers
             //This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            Models.ConfirmEmailViewModel ConfEmailvm = new ConfirmEmailViewModel();
             switch (result)
             {
                 
@@ -104,9 +105,9 @@ namespace Portal_MVC.Controllers
                         await UserManager.IsEmailConfirmedAsync(user.Id);
                     if (!IsEmailConfirmed)
                     {
-                        Models.ConfirmEmailViewModel vm = new ConfirmEmailViewModel();
-                        vm.Email = user.Email;
-                        return View("ConfirmationEmailSent", vm);
+
+                        ConfEmailvm.Email = user.Email;
+                        return View("ConfirmationEmailSent", ConfEmailvm);
                     } else
                     {
                         //get roles
@@ -122,7 +123,7 @@ namespace Portal_MVC.Controllers
                             //email adminstrators
                             await EmailAdminstratorsWithUnmatchedUsers(user.Email);
                             
-                            return View("ConfirmationEmailSent");
+                            return View("ConfirmationEmailSent", ConfEmailvm);
                         }
                     
                     }
@@ -296,6 +297,7 @@ namespace Portal_MVC.Controllers
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
+                var description = model.Description;
                  
                 if (result.Succeeded)
                 {
@@ -308,7 +310,7 @@ namespace Portal_MVC.Controllers
                     {
                         if (!string.IsNullOrWhiteSpace(newuser.Id))
                         {
-                            await InsertName(model.Name, newuser.Id);
+                            await InsertName(model.Name, newuser.Id, SetSignupType(model.Description));
                         }
                     }
 
@@ -334,7 +336,30 @@ namespace Portal_MVC.Controllers
             return View(model);
         }
 
-        private async Task InsertName(string name, string userid)
+        private string SetSignupType(string Phrase)
+        {
+            switch (Phrase)
+            {
+                case "I am a Director of a RMC or RTM":
+                    return "Client";
+                case "I am the Freeholder of a building managed by New Estate Management":
+                    return "Freeholder";
+                case "I own a property in a building or estate managed by New Estate Management":
+                    return "Customer";
+                case "I am the Tenant of a property within a block or estate managed by New Estate Management":
+                    return "Tenant";
+                case "I am a supplier to New Estate Management":
+                    return "Supplier";
+                case "I work for New Estate Management":
+                    return "Colleague";
+                    
+                
+            }
+
+            return "";
+        }
+
+        private async Task InsertName(string name, string userid, string SignUpType)
         {
             List<string> c = new List<string>();
             List<string> p = new List<string>();
@@ -342,12 +367,15 @@ namespace Portal_MVC.Controllers
 
             c.Add("userid");
             c.Add("name");
+            c.Add("signuptype");
 
             p.Add("@userid");
             p.Add("@name");
+            p.Add("@SignUpType");
 
             o.Add(userid);
             o.Add(name);
+            o.Add(SignUpType);
 
             Models.GlobalVariables.CS = ConfigurationManager.ConnectionStrings["AccessConnection"].ConnectionString;
             DataTable dt = 
@@ -415,10 +443,11 @@ namespace Portal_MVC.Controllers
 
             if (result.Succeeded)
             {
+                string SignUpType = await GetSignUpType(userId);
                 //set roles
                 var user = await UserManager.FindByIdAsync(userId);
                 bool isRoleSet = 
-                    await SetUserRoles(user.Email, userId);
+                    await SetUserRoles(user.Email, userId, SignUpType);
 
                 if (!isRoleSet)
                 {
@@ -433,53 +462,114 @@ namespace Portal_MVC.Controllers
             return View(result.Succeeded ? "ConfirmEmail" : "Error");
         }
 
-        private async Task<bool> SetUserRoles(string email, string id)
+        private async Task<bool> SetUserRoles(string email, string id, string signuptype)
         {
             //returns true if role set and false if role cannot be set
 
+            switch (signuptype)
+            {
+                case "Customer":
+                    return await SetCustomerRole(email, id);
+                    
+                case "Client":
+                   return await SetClientRole(email, id);
+                    
+                case "Tenant":
+
+                    break;
+                case "Freeholder":
+
+                    break;
+                case "Supplier":
+
+                    break;
+                case "Colleague":
+                    return await SetColleagueRole(email, id);
+                    
+            }
+
+
+            return false;
+
+        }
+
+        private async Task<bool> SetCustomerRole(string email, string id)
+        {
             //test if email present in customer account
             Owner owner = await OwnerMethods.GetOwnerByEmail(email);
-            
+
             if (owner.id > 0)
             {
                 //assign to Customer Role
                 await UserManager.AddToRoleAsync(id, "Customer");
                 return true;
-            } else 
+            }
+            return false; 
+        }
+
+        private async Task<bool> SetColleagueRole(string email, string id)
+        {
+            //Test if NEM Employee
+            Models.APIUser nemuser
+                = await UserMethods.GetUserByEmail(email);
+            if (nemuser != null)
             {
-                //Test if NEM Employee
-                Models.APIUser nemuser 
-                    = await UserMethods.GetUserByEmail(email);
-                if (nemuser != null)
+                if (!string.IsNullOrWhiteSpace(nemuser.Role.Name))
                 {
-                    if (!string.IsNullOrWhiteSpace(nemuser.Role.Name))
+                    switch (nemuser.Role.Name)
                     {
-                        switch (nemuser.Role.Name)
-                        {
-                            case "Director":
+                        case "Director":
 
-                                await UserManager.AddToRoleAsync(id, "Administrator");
+                            await UserManager.AddToRoleAsync(id, "Administrator");
 
-                                break;
-                            case "Property Manager":
-                                await UserManager.AddToRoleAsync(id, "Property Manager");
-                                break;
-                            case "Manager":
-                                await UserManager.AddToRoleAsync(id, "Manager");
-                                break;
-                            case "Maintenance Operative":
-                                await UserManager.AddToRoleAsync(id, "Maintenance Operative");
-                                break;
+                            break;
+                        case "Property Manager":
+                            await UserManager.AddToRoleAsync(id, "Property Manager");
+                            break;
+                        case "Manager":
+                            await UserManager.AddToRoleAsync(id, "Manager");
+                            break;
+                        case "Maintenance Operative":
+                            await UserManager.AddToRoleAsync(id, "Maintenance Operative");
+                            break;
 
-                        }
-
-                        return true;
                     }
+
+                    return true;
                 }
             }
 
             return false;
+        }
 
+        private async Task<bool> SetClientRole(string email, string id)
+        {
+            string json = await APIMethods.CallAPIGetEndPointAsync($"IsEstateClient/{email}");
+          
+            if(json == "true")
+            {
+                await UserManager.AddToRoleAsync(id, "Client");
+                return true;
+            }
+
+            return false;
+
+        }
+        private async Task<string> GetSignUpType(string userid)
+        {
+            string q = $"select signuptype from UsersNames where userid  = '{userid}'";
+            Models.GlobalVariables.CS = ConfigurationManager.ConnectionStrings["AccessConnection"].ConnectionString;
+            DataTable dt = await GlobalVariables.GetConnection().Connection.GetDataTableAsync(q);
+            string r = "";
+
+            if (dt.Rows.Count > 0 && dt.Rows[0][0].ToString() != "Error")
+            {
+                r = dt.Rows[0][0].ToString();
+            }
+
+            Models.GlobalVariables.CS = ConfigurationManager.ConnectionStrings["DeployConnection"].ConnectionString;
+
+            return r;
         }
 
         //
@@ -487,7 +577,8 @@ namespace Portal_MVC.Controllers
         [AllowAnonymous]
         public ActionResult ForgotPassword()
         {
-            return View();
+            ForgotPasswordViewModel model = new ForgotPasswordViewModel();
+            return View(model);
         }
 
         //
@@ -508,10 +599,29 @@ namespace Portal_MVC.Controllers
 
                 // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                 // Send an email with this link
-                // string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
-                // var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
-                // await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
-                // return RedirectToAction("ForgotPasswordConfirmation", "Account");
+                string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
+                var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+
+
+                string url = HttpContext.Request.Url.Scheme + "://" + HttpContext.Request.Url.Authority +
+                Url.Action("ResetPassword", "Account", new { userid = user.Id, code = code });
+
+                string content = "Please reset your password by clicking <a href=\"" + url + "\">here</a>";
+
+                List<string> To = new List<string> { user.Email };
+                //send email
+                Models.MailService mail = new MailService("Reset Password",
+                    url, url, GlobalVariables.GetConnection(), 0, To);
+                mail = await Models.MailServiceMethods.SendMailAPI(mail);
+                if (mail.APIError != null)
+                {
+                    if (mail.APIError.HasError)
+                    {
+                        //error occurred
+                    }
+                }
+
+                return RedirectToAction("ForgotPasswordConfirmation", "Account");
             }
 
             // If we got this far, something failed, redisplay form
@@ -531,7 +641,12 @@ namespace Portal_MVC.Controllers
         [AllowAnonymous]
         public ActionResult ResetPassword(string code)
         {
-            return code == null ? View("Error") : View();
+            ResetPasswordViewModel resetPasswordViewModel = new ResetPasswordViewModel();
+            if (!string.IsNullOrEmpty(code))
+            {
+                resetPasswordViewModel.Code = code;
+            }
+            return code == null ? View("Error") : View(resetPasswordViewModel);
         }
 
         //
@@ -684,8 +799,8 @@ namespace Portal_MVC.Controllers
 
         //
         // POST: /Account/LogOff
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);

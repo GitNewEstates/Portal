@@ -14,8 +14,6 @@
     col.Field("POHeader").HeaderText("Header").Width("180").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).Add();
     col.Field("TotalCostStr").HeaderText("Value").Width("75").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).Add();
 
-
-
 }).AllowPaging(true).PageSettings(page => page.PageSize(25)).AllowFiltering(true).AllowSorting(true).EditSettings(edit => { edit.AllowEditing(false).Mode(Syncfusion.EJ2.Grids.EditMode.Normal); }).Toolbar(new List<string>() { "PdfExport" }).TextWrapSettings(text => { text.WrapMode(Syncfusion.EJ2.Grids.WrapMode.Content); }).Render()
 </div>
 

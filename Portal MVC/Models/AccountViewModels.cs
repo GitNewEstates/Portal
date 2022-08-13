@@ -66,6 +66,18 @@ namespace Portal_MVC.Models
 
     public class RegisterViewModel
     {
+        public RegisterViewModel()
+        {
+            DescriptionList = new List<string>
+            {
+                "I am a Director of a RMC or RTM",
+                "I am the Freeholder of a building managed by New Estate Management",
+                "I own a property in a building or estate managed by New Estate Management",
+                "I am the Tenant of a property within a block or estate managed by New Estate Management",
+                "I am a supplier to New Estate Management",
+                "I work for New Estate Management"
+            };
+        }
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
@@ -86,6 +98,11 @@ namespace Portal_MVC.Models
         [Display(Name = "Name")]
         public string Name { get; set; }
 
+        [Required(ErrorMessage = "Description is required.")]
+        public List<string> DescriptionList { get; set; }
+
+        [Required(ErrorMessage = "Description is required.")]
+        public string Description { get; set; }
     }
 
     public class ConfirmEmailViewModel
