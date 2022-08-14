@@ -1,5 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Data;
+using System.Threading.Tasks;
+using System.Web.Configuration;
 
 namespace Portal_MVC.Models
 {
@@ -136,5 +140,91 @@ namespace Portal_MVC.Models
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
+    }
+
+    public class TermsAgreedViewModel
+    {
+        public TermsAgreedViewModel()
+        {
+
+        }
+        public TermsAgreedViewModel(string _email)
+        {
+            TermsList = new List<string>();
+            Email = _email;
+          //  TermsAgreed = true;
+        }
+
+        public string Email { get; set;}
+
+        public List<string> TermsList { get; set; }
+  
+        public bool TermsAgreed { get; set; }
+
+    
+        public string Terms { get; set; }
+
+        public async Task GetTermsAsync()
+        {
+            string q = $"select terms from TermsText";
+            GlobalVariables.CS =
+                WebConfigurationManager.ConnectionStrings["AccessConnection"].ConnectionString;
+
+            DataTable dt = await GlobalVariables.GetConnection().Connection.GetDataTableAsync(q);
+          
+            if (dt.Rows.Count > 0 && dt.Rows[0][0].ToString() != "Error")
+            {
+                Terms = dt.Rows[0][0].ToString();
+            }
+
+            GlobalVariables.CS =
+                WebConfigurationManager.ConnectionStrings["DeployConnection"].ConnectionString;
+
+           
+        }
+
+        public async Task InsertTermsAgreedAsync(string userid)
+        {
+            GlobalVariables.CS =
+               WebConfigurationManager.ConnectionStrings["AccessConnection"].ConnectionString;
+            //delete first
+            string cmd = $"delete from terms where userid = '{userid}'";
+
+            await GlobalVariables.GetConnection().Connection.ExecuteCommandAsync(cmd);
+
+
+
+            List<string> c = new List<string>();
+            List<string> p = new List<string>();
+            List<object> o = new List<object>();
+
+        
+
+            c.Add("UserID");
+            c.Add("date");
+            c.Add("IsAgreed");
+
+            p.Add("@userid");
+            p.Add("@date");
+            p.Add("@isagreed");
+
+            o.Add(userid);
+            o.Add(DateTime.Now);
+            o.Add(TermsAgreed);
+
+            DataTable dt = await GlobalVariables.GetConnection().Connection.InsertCommandWithReturnIDAsync("terms", c, p, o);
+
+            if (dt.Rows.Count > 0 && dt.Rows[0][0].ToString() != "error")
+            {
+                //int.TryParse(dt.Rows[0][0].ToString(), out int id);
+            }
+            else
+            {
+                //error
+            }
+
+            GlobalVariables.CS =
+                WebConfigurationManager.ConnectionStrings["DeployConnection"].ConnectionString;
+        }
     }
 }

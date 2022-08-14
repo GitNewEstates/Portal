@@ -100,9 +100,11 @@ namespace Portal_MVC.Controllers
                 case SignInStatus.Success:
                     //get the user
                     var user = await UserManager.FindByEmailAsync(model.Email);
+
                     //test if email confirmed
                     var IsEmailConfirmed = 
                         await UserManager.IsEmailConfirmedAsync(user.Id);
+
                     if (!IsEmailConfirmed)
                     {
 
@@ -110,20 +112,25 @@ namespace Portal_MVC.Controllers
                         return View("ConfirmationEmailSent", ConfEmailvm);
                     } else
                     {
-                        //get roles
-                        IList<string> role = await 
-                            UserManager.GetRolesAsync(user.Id);
 
-                        bool MatchedToRole = 
-                            await MatchRoleToUser(role, user.Email);
+                        //test if terms agreed
+                        bool TermsAgreed = await IsTermsAgreed(user.Id);
+                        if (!TermsAgreed)
+                        {
+                            TermsAgreedViewModel termModel = new TermsAgreedViewModel(user.Email);
+                            await termModel.GetTermsAsync();
+                            return View("Terms", termModel);
+                        }
 
+                      
                         //if not matched to a role then redirect
-                        if (!MatchedToRole)
+                        if (!await SetRoles(user.Id, user.Email))
                         {
                             //email adminstrators
                             await EmailAdminstratorsWithUnmatchedUsers(user.Email);
                             
-                            return View("ConfirmationEmailSent", ConfEmailvm);
+                            //display no role set
+                            return View("NoRoleSet");
                         }
                     
                     }
@@ -139,6 +146,18 @@ namespace Portal_MVC.Controllers
                     return View(model);
             }
         }
+
+        private async Task<bool> SetRoles(string userID, string _email)
+        {
+            //get roles
+            IList<string> role = await
+                UserManager.GetRolesAsync(userID);
+
+            bool MatchedToRole =
+                await MatchRoleToUser(role, _email);
+
+            return MatchedToRole;
+        } 
 
         private async Task<bool> MatchRoleToUser(IList<string> Roles, string UserEmail)
         {
@@ -864,6 +883,110 @@ namespace Portal_MVC.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+
+        public async Task<ActionResult> Terms()
+        {
+            TermsAgreedViewModel model = new TermsAgreedViewModel("");
+            await model.GetTermsAsync();
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task< ActionResult> Terms(TermsAgreedViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await UserManager.FindByEmailAsync(model.Email);
+                bool AddModelErrors = false;
+                if (model.TermsList != null)
+                {
+                    if (model.TermsList.Count > 0)
+                    {
+                        if(model.TermsList.Count == 2)
+                        {
+                            AddModelErrors = true;
+                            ModelState.AddModelError(string.Empty, "Cannot only select Accept or Decline.");
+                        } else
+                        {
+                            string h = model.TermsList[0];
+                            // process accet or decline
+                            if (model.TermsList[0] == "Agreed")
+                            {
+                                model.TermsAgreed = true;
+                            } else
+                            {
+                                model.TermsAgreed = false;
+                            }
+
+
+                           await model.InsertTermsAgreedAsync(user.Id);
+
+                            if (model.TermsAgreed)
+                            {
+                                //send to account
+                                //if not matched to a role then redirect
+                                if (!await SetRoles(user.Id, user.Email))
+                                {
+                                    
+                                    //should not get here becuase cannot agree to terms if no role is set.
+                                }
+
+                                return RedirectToAction("Index", "Home");
+                            }
+                            else
+                            {
+                                AddModelErrors = true;
+                                ModelState.AddModelError(string.Empty, "Terms and Conditions must be accepted to contine;");
+                            }
+                        }
+                    } else
+                    {
+                        AddModelErrors = true;
+                        ModelState.AddModelError(string.Empty, "Must Accept or Decline Terms and Conditions");
+                    }
+                } else
+                {
+                    AddModelErrors=true;
+                    ModelState.AddModelError(string.Empty, "Error occurred retrieving the Accept or Decline Value. Values collection is null");
+                }
+
+                if (AddModelErrors)
+                {
+                    return View(model);
+                }
+
+
+            } else
+            {
+                // return errors
+                return View(model);
+            }
+            return View(model);
+        }
+
+        private async Task<bool> IsTermsAgreed(string userID)
+        {
+            string q = $"select IsAgreed from Terms where userid = '{userID}'";
+            GlobalVariables.CS =
+                WebConfigurationManager.ConnectionStrings["AccessConnection"].ConnectionString;
+
+            DataTable dt = await GlobalVariables.GetConnection().Connection.GetDataTableAsync(q);
+            bool Agreed = false;
+            if (dt.Rows.Count > 0 && dt.Rows[0][0].ToString() != "Error")
+            {
+                string IsAgreed = dt.Rows[0][0].ToString();
+                bool.TryParse(IsAgreed, out Agreed);
+            }
+
+            GlobalVariables.CS =
+                WebConfigurationManager.ConnectionStrings["DeployConnection"].ConnectionString;
+
+            return Agreed;
+
+        }
+
+       
+
         internal class ChallengeResult : HttpUnauthorizedResult
         {
             public ChallengeResult(string provider, string redirectUri)
@@ -894,4 +1017,6 @@ namespace Portal_MVC.Controllers
         }
         #endregion
     }
+
+  
 }
