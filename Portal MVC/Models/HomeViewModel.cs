@@ -15,6 +15,7 @@ namespace Portal_MVC.Models
             OwnedProperties = new List<OwnedPropertyListViewObject>();
             RepairAccordianObjects = new List<Syncfusion.EJ2.Navigations.AccordionAccordionItem>();
             AttendanceVisitCollection = new List<Syncfusion.EJ2.Navigations.AccordionAccordionItem>();
+            NotificationObjectList = new List<object>();
         }
        
         public async Task LoadCustomerDashboardDataAsync()
@@ -193,6 +194,39 @@ namespace Portal_MVC.Models
                 }
             }
 
+            if(NotificationObjectList != null)
+            {
+                NotificationObjectList.Add(new 
+                {
+                    id = 1,
+                    name = "New Repair Raised",
+                    hasChild = true
+                });
+
+                NotificationObjectList.Add(new
+                {
+                    id = 2,
+                    pid = 1,
+                    name = "Apply to all users",
+                    hasChild = true
+                });
+
+                NotificationObjectList.Add(new
+                {
+                    id = 3,
+                    name = "New Payment Raised",
+                    hasChild = true
+                });
+
+                NotificationObjectList.Add(new
+                {
+                    id = 4,
+                    pid = 3,
+                    name = "Apply to all Units",
+                    hasChild = true
+                });
+            }
+
         }
         public async Task LoadClientDataAsync()
         {
@@ -356,7 +390,7 @@ namespace Portal_MVC.Models
         public string Name { get; set; }
         public List<BudgetActualChartData> BudgetActualDataList { get; set; }
 
-        
+        public List<object> NotificationObjectList { get; set; }
         
         public List<BudgetActualChartData> ClientBVABudget { get; set; }
         public List<BudgetActualChartData> ClientBVAActual { get; set; }
@@ -462,6 +496,11 @@ namespace Portal_MVC.Models
         public string icon { get; set; }
     }
 
+    public class ChildListViewBase : ListViewBase
+    {
+
+    }
+
     public class OwnedPropertyListViewObject : ListViewBase
     {
         public OwnedPropertyListViewObject()
@@ -477,6 +516,15 @@ namespace Portal_MVC.Models
         public string IconCss { get; set; }
         public string ValueCss { get; set; }
         public string Elementid { get; set;}
+    }
+
+    public class NotificationListViewObject : ListViewBase
+    {
+        public NotificationListViewObject()
+        {
+            child = new List<object>();
+        }
+        public List<object> child { get; set; }
     }
 
    

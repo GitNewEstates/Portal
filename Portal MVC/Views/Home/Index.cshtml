@@ -4,12 +4,13 @@
 @{
     ViewBag.Title = "Select Property - New Estates";
 
-    
+
 }
 
 @using Syncfusion.EJ2.Navigations;
+@using Syncfusion.EJ2.Lists;
 
- 
+
 
 @if (Model != null)
 {
@@ -33,14 +34,14 @@
 
         }
 
-<div class="Full-Width-Container">
-    <div class="row">
-        <div class="col-lg-5 col-md-5 col-sm-11 col-xs-11 e-card e-custom-card">
-            @Html.EJS().ListView("listview").Enable(true).DataSource(Model.OwnedProperties).HeaderTitle("Your Properties").ShowHeader(true).ShowIcon(true).Fields(new Syncfusion.EJ2.Lists.ListViewFieldSettings { IconCss = "icon" }).Render()
-        </div>
-        <div class="col-lg-6 col-md-6 col-sm-11 col-xs-11  e-card e-custom-card">
-            
-                @(Html.EJS().Chart("container").Background("white").Height("200px").Series(series =>
+        <div class="Full-Width-Container">
+            <div class="row">
+                <div class="col-lg-5 col-md-5 col-sm-11 col-xs-11 e-card e-custom-card">
+                    @Html.EJS().ListView("listview").Enable(true).DataSource(Model.OwnedProperties).HeaderTitle("Your Properties").ShowHeader(true).ShowIcon(true).Fields(new Syncfusion.EJ2.Lists.ListViewFieldSettings { IconCss = "icon" }).Render()
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-11 col-xs-11  e-card e-custom-card">
+
+                    @(Html.EJS().Chart("container").Background("white").Height("200px").Series(series =>
                         {
 
                         series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Bar).
@@ -78,96 +79,91 @@
                            TitleStyle(ts => ts.Color("blue")).
                            Render()
                         )
-            
-        </div>
-    </div>
 
-    <div class="Full-Width-Container">
-        <div class="col-lg-6 col-md-6 col-sm-11 col-xs-11">
-            @if (string.IsNullOrWhiteSpace(Model.RepairErrorMessage))
-            {
-                <h6>Repairs</h6>
-                @(Html.EJS().Accordion("RepairAccordian").Items(Model.RepairAccordianObjects).ExpandMode(Syncfusion.EJ2.Navigations.ExpandMode.Multiple).Render())
-            } else {
-                <h6>@Model.RepairErrorMessage</h6>
-            }
-        </div>
-
-
-
-        <div class="col-lg-6 col-md-6 col-sm-11 col-xs-11">
-            <h6>Attendances</h6>
-            @(Html.EJS().Accordion("AttendanceAccordian").Items(Model.AttendanceVisitCollection).ExpandMode(Syncfusion.EJ2.Navigations.ExpandMode.Multiple).Render())
-        </div>
-    </div>
-
-        @*<div class="Full-Width-Container">
-            <div class="container">
-                <h6>Attendances</h6>
-                @(Html.EJS().Accordion("defaultAccordion").Items(Model.AttendanceVisitCollection).ExpandMode(Syncfusion.EJ2.Navigations.ExpandMode.Multiple).Render())
-
+                </div>
             </div>
-        </div>*@
 
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-11 col-xs-11">
+                    @if (string.IsNullOrWhiteSpace(Model.RepairErrorMessage))
+                    {
+                        <h6>Repairs</h6>
+                        @(Html.EJS().Accordion("RepairAccordian").Items(Model.RepairAccordianObjects).ExpandMode(Syncfusion.EJ2.Navigations.ExpandMode.Multiple).Render())
+                    }
+                    else
+                    {
+                        <h6>@Model.RepairErrorMessage</h6>
+                    }
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-11 col-xs-11">
+                    <h6>Attendances</h6>
+                    @(Html.EJS().Accordion("AttendanceAccordian").Items(Model.AttendanceVisitCollection).ExpandMode(Syncfusion.EJ2.Navigations.ExpandMode.Multiple).Render())
+                </div>
             </div>
+
+
+
+
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-11 col-xs-11" style="box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); padding: 0px; margin-top:15px;">
+
+                    @Html.EJS().TreeView("NotificationsTree").ShowCheckBox(true).AutoCheck(false).NodeChecked("nodeChecked").Fields(field =>
+                    field.Id("id").ParentID("pid").Text("name").HasChildren("hasChild").Expanded("expanded")
+                    .DataSource(Model.NotificationObjectList)).Render()
+
+
+
+                    @*@Html.EJS().ListView("NotificationListView").DataSource(Model.NotificationObjectList).HeaderTitle("Notification Settings").ShowHeader(true).Fields(new ListViewFieldSettings { Text = "text", Id = "id", Tooltip = "text" }).ShowCheckBox(true).Render()*@
+                </div>
+            </div>
+
+
+
+        </div>
+
+        <div class="Full-Width-Container">
+           
+        </div>
+
+        <div class="Full-Width-Container">
+           
+        </div>
 
     }
 
 }
 
-<style>
-    /*.e-card {
-        justify-content: flex-start;
-        margin-left: 10px;
-        margin-right: 10px;
-        margin-bottom: 10px;
-        height: max-content;
-    }
-    .e-listview {
-        border: none;
+
+
+<script>
+    function nodeChecked(args) {
+        
+        
+        if (args.data[0].parentID != null) {
+            var treeObj = document.getElementById('NotificationsTree');
+            var treeObjChildren = treeObj.children[0].children;
+            for (var i = 0; i <= treeObjChildren.length - 1; i++)
+            {
+                //this gets the parent li item
+                if (treeObjChildren[i].attributes['data-uid'].value == args.data[0].parentID) {
+
+                    //this is the li
+                    var parentObj = treeObjChildren[i];
+                    
+
+                    //this is the main container in li
+                    var span = parentObj.getElementsByClassName('e-frame');
+                    
+                    span[0].classList.add('e-check');
+
+                    
+                   
+                }
+                
+            }
+        }
        
     }
-
-    .e-custom-card {
-        position: relative;
-        overflow: visible;
-        border-radius: 15px;
-        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-        transition: 0.2s;
-        border-width: 1px;
-        padding: 1px;
-    }
-
-    .Full-Width-Container {
-        flex: 0 0 100%;
-    }
-
-    .e-accordion {
-        width: 100%;
-        
-    }
-
-    .e-accordion .e-acrdn-item.e-select {
-        border-color: #0591bc;
-    }
-
-    .e-accordion .e-acrdn-item .e-acrdn-header .e-acrdn-header-content {
-        color: white !important;
-    }
-
-    .e-accordion .e-acrdn-item .e-acrdn-header .e-toggle-icon {
-        color: white !important;
-    }
-    .e-acrdn-header {
-        background: #0591bc !important;
-        color: white !important;
-        justify-content: center;
-    }*/
-</style>
-
-<script type="text/javascript">
-    
-
 </script>
 
 
