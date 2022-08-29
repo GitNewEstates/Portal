@@ -36,6 +36,10 @@ namespace Portal_MVC.Controllers
 
     public class UsersViewModel : ViewModelBase
     {
+        public UsersViewModel(ViewModelLevel level = ViewModelLevel.none) : base(level)
+        {
+
+        }
         public static List<UserObject> UsersList { get; set; }
     }
 }

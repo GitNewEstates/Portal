@@ -315,8 +315,9 @@ namespace Portal_MVC.Models
 
         public string ClientId { get { return "34b94f15-90d1-4eba-96ac-eccd394e8938"; } }
         public string ClientSecret { get { return "ig18Q~Eb6UCCOgTEgJYE54_6T1tRuKXCqRMI5cbl"; } }
-        public string BaseAddress { get { return $"https://{BaseURL}/api/"; } }
-        private string BaseURL { get { return "nemapiv5.azurewebsites.net"; } }
+        public string BaseAddress { get { return $"https://{ProductionBaseURL}/api/"; } }
+        private string LocalBaseURL { get { return "localhost:7104"; } }
+        private string ProductionBaseURL { get { return "nemapiv5.azurewebsites.net"; } }
         public string ResourceId { get { return "api://3cf69ecd-aa7f-4048-ad19-26dc8823255c/.default"; } }
 
 

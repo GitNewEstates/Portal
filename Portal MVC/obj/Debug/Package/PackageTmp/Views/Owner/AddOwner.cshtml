@@ -1,0 +1,297 @@
+﻿@using Portal_MVC.Controllers
+@model Portal_MVC.Models.AddOwnersViewModel
+@using Syncfusion.EJ2.Navigations
+@{
+    ViewBag.Title = "AddUnit";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+
+
+<div class="Full-Width-Container">
+    <div class="row">
+        <div>
+            <div class="control-section e-tab-section">
+                <div class="e-sample-resize-container">
+                    <div id="add-owner-details" style="display: none">
+                        <div class="wizard-title"></div>
+                        <div class="response-align" style="text-align: center">
+                            <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-12 col-xs-12" style="text-align: left">
+                                @Html.EJS().DropDownList("Titles").DataSource(Model.Titles).Placeholder("Title").Width("200").Render()
+
+                                @Html.EJS().TextBoxFor(model => model.Owner.FirstName).CssClass("TitlesCombo").Placeholder("First Name").Render()
+                                @Html.EJS().TextBoxFor(model => model.Owner.LastName).Placeholder("Last Name").Width("100%").Render()
+                                <div class="input-validation" id="last-name-validation">
+                                    Must provide a Last Name
+                                </div>
+                                @Html.EJS().TextBoxFor(model => model.Owner.Address1).Placeholder("Address 1").Render()
+                                <div class="input-validation" id="address1-validation">
+                                    Must provide the first line of the address
+                                </div>
+                                @Html.EJS().TextBoxFor(model => model.Owner.Address2).Placeholder("Address 2").Render()
+                                @Html.EJS().TextBoxFor(model => model.Owner.Address3).Placeholder("Address 3").Render()
+                                @Html.EJS().TextBoxFor(model => model.Owner.Address4).Placeholder("Address 4").Render()
+                                @Html.EJS().TextBoxFor(model => model.Owner.PostCode).Placeholder("Post Code").Width(200).Render()
+                                <div class="input-validation" id="postcode-validation">
+                                    Must provide a Post Code
+                                </div>
+                                @Html.EJS().TextBoxFor(model => model.Owner.Email).Placeholder("Email").Render()
+                                @Html.EJS().MaskedTextBoxFor(model => model.Owner.MobilePhone).Focus("onMobilefocus").Placeholder("Mobile Phone").Mask("000000000000").Render()
+
+                                @Html.HiddenFor(m => m.Owner.id, new { id = "ownerid" })
+
+                            <div style="display: flex; justify-content: space-evenly">
+                                <div style="justify-content: flex-end" id="create-owner-button">
+
+                                    @Html.EJS().Button("save-owner").Content("Save").CssClass("e-flat e-primary").IconCss("e-btn-sb-icon fa-solid fa-floppy-disk").Render()
+                                </div>
+                                <div style="justify-content: flex-end; " id="create-owner-button">
+
+                                    @Html.EJS().Button("btn-reset").Content("Reset").CssClass("e-flat e-warning").IconCss("e-btn-sb-icon fa-solid fa-xmark").Render()
+                                </div>
+
+                            </div>
+                                <div class="input-validation input-result input-result-success" id="input-result-success">
+
+                                    <span><i class="fa-solid fa-square-check"></i></span>
+                                    <span>Owner Successfully Created</span>
+                                </div>
+                                <div class="input-validation input-result input-result-fail" id="input-result-fail">
+                                
+                                        <span><i class="fa-solid fa-square-exclamation"></i></span>
+                                        <span>Error Occurred</span>
+                                    
+                                </div>
+                            </div>
+                            
+                            </div>
+                            
+                  
+                </div>
+            </div>
+            @Html.EJS().Tab("ej2Tab").HeightAdjustMode(HeightStyles.None).Height("auto").Created("tabCreated").Items(Model.TabHeaders).Render()
+        </div>
+    </div>
+</div>
+
+<style>
+
+    input{
+        max-width: 100%;
+    }
+
+    
+    .e-tab-section .e-tab .e-content.e-control {
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    .responsive-align {
+        width: 75%;
+        margin: 0 auto;
+    }
+
+    .e-tab-section {
+        padding: 0 15px;
+    }
+
+    .wizard-title {
+        font-size: 15px;
+    }
+
+    .e-tab .e-tab-header {
+        /*background: #badfba !important;*/
+        text-align: center;
+    }
+    .e-input-group{
+        margin-top: 10px;
+    }
+    
+</style>
+
+<script>
+
+    document.getElementById("btn-reset").addEventListener('click', function () {
+        HideAllValidation();
+        EnableInputs();
+        ClearFields();
+    });
+
+    function ClearFields() {
+        document.getElementById('Titles_hidden').value = "";
+        document.getElementById('Owner_FirstName').value = "";
+        document.getElementById('Owner_LastName').value = "";
+        document.getElementById('Owner_Address1').value = "";
+        document.getElementById('Owner_Address2').value = "";
+        document.getElementById('Owner_Address3').value = "";
+        document.getElementById('Owner_Address4').value = "";
+        document.getElementById('Owner_PostCode').value = "";
+        document.getElementById('Owner_Email').value = "";
+        document.getElementById('Owner_MobilePhone').value = "";
+    }
+
+    document.getElementById("save-owner").addEventListener('click', function () {
+        HideAllValidation();
+
+        //tabObj = document.getElementById("ej2Tab").ej2_instances[0];
+        //tabObj.enableTab(1, true);
+        var Title = document.getElementById('Titles_hidden').value;
+        var FirstName = document.getElementById('Owner_FirstName').value;
+        var LastName = document.getElementById('Owner_LastName').value;
+        var Address1 = document.getElementById('Owner_Address1').value;
+        var Address2 = document.getElementById('Owner_Address2').value;
+        var Address3 = document.getElementById('Owner_Address3').value;
+        var Address4 = document.getElementById('Owner_Address4').value;
+        var PostCode = document.getElementById('Owner_PostCode').value;
+        var Email = document.getElementById('Owner_Email').value;
+        
+        var MobilePhone = document.getElementById('Owner_MobilePhone').value;
+
+        if (LastName == null || LastName == "") {
+            $('#last-name-validation').slideDown()
+            return;
+        }
+        if (Address1 == null || Address1 == "") {
+            $('#address1-validation').slideDown()
+            return;
+        }
+        if (PostCode == null || PostCode == "") {
+            $('#postcode-validation').slideDown()
+            return;
+            
+        }
+
+        var Owner = {
+            Title: Title,
+            FirstName: FirstName,
+            LastName: LastName,
+            Address1: Address1,
+            Address2: Address2,
+            Address3: Address3,
+            Address4: Address4,
+            PostCode: PostCode,
+            Email: Email,
+            MobilePhone: MobilePhone
+        }
+       
+        
+        var url = "/Owner/Create/";
+
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            data: Owner,
+            url: url
+        }).done(function (response) {
+            console.log(response)
+
+            if (response.APIError.HasError == false) {
+                
+                //DisableInputs();
+                $("#input-result-success").slideDown();
+                ClearFields();
+                //document.getElementById('ownerid').value = response.id;
+                //tabObj = document.getElementById("ej2Tab").ej2_instances[0];
+                
+
+            } else {
+                console.log('error');
+                $('#input-result-fail').slideDown();
+            }
+        });
+
+     
+
+
+
+        //$.post(url, datastring, function (data) {
+        //    console.log(data);
+        //    if (data.APIError.HasError == true) {
+
+        //        DisableInputs();
+        //        $("#input-result-success").slideDown();
+        //        document.getElementById('ownerid').value = data.id;
+        //        tabObj = document.getElementById("ej2Tab").ej2_instances[0];
+        //        tabObj.enableTab(1, true);
+
+        //    } else {
+        //        console.log('error');
+        //        $('#input-result-fail').slideDown();
+        //    }
+        //})
+
+       
+    })
+
+    function DisableInputs() {
+
+        var classname = 'e-disabled';
+        document.getElementsByClassName('e-input-group')[0].classList.add(classname);
+        document.getElementById('Titles').classList.remove(classname);
+        document.getElementById('Owner_FirstName').classList.add(classname);
+        document.getElementById('Owner_FirstName').setAttribute('disabled', 'disabled');
+        document.getElementById('Owner_LastName').setAttribute('disabled', 'disabled');
+        document.getElementById('Owner_Address1').setAttribute('disabled', 'disabled');
+        document.getElementById('Owner_Address2').setAttribute('disabled', 'disabled');
+        document.getElementById('Owner_Address3').setAttribute('disabled', 'disabled');
+        document.getElementById('Owner_Address4').setAttribute('disabled', 'disabled');
+        document.getElementById('Owner_PostCode').setAttribute('disabled', 'disabled');
+        document.getElementById('Owner_Email').setAttribute('disabled', 'disabled');
+        document.getElementById('Owner_MobilePhone').setAttribute('disabled', 'disabled');
+
+        document.getElementById('Owner_LastName').classList.add(classname);
+        document.getElementById('Owner_Address1').classList.add(classname);
+        document.getElementById('Owner_Address2').classList.add(classname);
+        document.getElementById('Owner_Address3').classList.add(classname);
+        document.getElementById('Owner_Address4').classList.add(classname);
+        document.getElementById('Owner_PostCode').classList.add(classname);
+        document.getElementById('Owner_Email').classList.add(classname);
+        document.getElementById('Owner_MobilePhone').classList.add(classname);
+    }
+
+    function EnableInputs() {
+
+        var classname = 'e-disabled';
+        document.getElementsByClassName('e-input-group')[0].classList.remove(classname);
+        document.getElementById('Titles').classList.remove(classname);
+        document.getElementById('Owner_FirstName').classList.remove(classname);
+        document.getElementById('Owner_FirstName').removeAttribute('disabled', 'disabled');
+        document.getElementById('Owner_LastName').removeAttribute('disabled', 'disabled');
+        document.getElementById('Owner_Address1').removeAttribute('disabled', 'disabled');
+        document.getElementById('Owner_Address2').removeAttribute('disabled', 'disabled');
+        document.getElementById('Owner_Address3').removeAttribute('disabled', 'disabled');
+        document.getElementById('Owner_Address4').removeAttribute('disabled', 'disabled');
+        document.getElementById('Owner_PostCode').removeAttribute('disabled', 'disabled');
+        document.getElementById('Owner_Email').removeAttribute('disabled', 'disabled');
+        document.getElementById('Owner_MobilePhone').removeAttribute('disabled', 'disabled');
+
+        document.getElementById('Owner_LastName').classList.remove(classname);
+        document.getElementById('Owner_Address1').classList.remove(classname);
+        document.getElementById('Owner_Address2').classList.remove(classname);
+        document.getElementById('Owner_Address3').classList.remove(classname);
+        document.getElementById('Owner_Address4').classList.remove(classname);
+        document.getElementById('Owner_PostCode').classList.remove(classname);
+        document.getElementById('Owner_Email').classList.remove(classname);
+        document.getElementById('Owner_MobilePhone').classList.remove(classname);
+    }
+
+    function HideAllValidation() {
+       // document.getElementById("last-name-validation").style.display = 'none';
+        $('#last-name-validation').slideUp();
+        $('#postcode-validation').slideUp()
+        $('#address1-validation').slideUp()
+    }
+
+    function onMobilefocus(args) {
+        //sets cursor position at start of MaskedTextBox
+        args.selectionStart = 0;
+       // console.log(args);
+    }
+    function tabCreated() {
+        tabObj = document.getElementById("ej2Tab").ej2_instances[0];
+        tabObj.enableTab(1, false);
+       // console.log(tabObj);
+    }
+
+</script>
+

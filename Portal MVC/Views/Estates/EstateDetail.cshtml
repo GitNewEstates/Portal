@@ -1,0 +1,145 @@
+﻿@using Portal_MVC.Controllers
+@model Portal_MVC.Controllers.EstateDetailViewModel
+@{
+    ViewBag.Title = "EstateDetail";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<div class="Full-Width-Container">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="control-section e-tab-section">
+                <div class="e-sample-resize-container">
+                    <div id="estate-details" style="display: none">
+                        <div class="response-align">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 e-card e-custom-card">
+
+                                        @if (Model.Estate.APIError.HasError)
+                                        {
+                                            <div class="estate-details-container">
+                                                <h4> Error obtaining Owner's details.</h4>
+                                                @if (!string.IsNullOrWhiteSpace(Model.Estate.APIError.Message))
+                                                {
+                                                    <h4>@Model.Estate.APIError.Message</h4>
+                                                }
+                                            </div>
+
+                                        }
+                                        else
+                                        {
+                                            <div class="estate-details-container">
+                                                <h5 style="display: none;" id="owner-id">@Model.Estate.id</h5>
+                                                <h5>@Model.Estate.Name</h5>
+                                                <h5>@Model.Estate.Address1</h5>
+                                                <h5>@Model.Estate.Address2</h5>
+                                                <h5>@Model.Estate.Address3</h5>
+                                                <h5>@Model.Estate.Address4</h5>
+                                                <h5>@Model.Estate.PostCode</h5>
+                                            </div>
+
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    @Html.EJS().Grid("access-instruction-grid").DataSource(Model.EstateAccessInstructions).RowSelected("AccessrowSelected").Columns(col =>
+                                    {
+                                    col.Field("AccessPoint").HeaderText("Access Point1").Width("100").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).AllowEditing(false).IsPrimaryKey(true).Add();
+                                    col.Field("AccessType.AccessType").HeaderText("Access Type").Width("50").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).Add();
+                                    col.Field("AccessCode").HeaderText("Access Code").Width("50").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).Add();
+                                    col.Field("AccessInstructions").HeaderText("Access Instructions").Width("150").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).Add();
+
+                                    }).AllowPaging(true).PageSettings(page => page.PageSize(5)).FilterSettings(Filter => Filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel)).Toolbar(new List<string>() { "Search" }).Render()
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div id="estate-history" style="display: none">
+                        <div class="response-align">
+                            <div>
+                                Test Content for history
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                    <div id="estate-cases" style="display: none">
+                        <div class="response-align">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                Test Content for cases
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                    <div id="estate-financial" style="display: none">
+                        <div class="response-align">
+                            <div>
+                                Test Content for financials
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                    <div id="estate-reports" style="display: none">
+                        <div class="response-align">
+                            <div>
+                                Test Content for reports
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+                @Html.EJS().Tab("ej2Tab").Height("auto").Items(Model.TabHeaders).Render()
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .estate-details-container {
+        text-align: left;
+    }
+
+    .e-tab-section .e-tab .e-content.e-control {
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    .responsive-align {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .e-tab-section {
+        padding: 0 15px;
+    }
+
+    .e-tab .e-tab-header {
+        /*background: #badfba !important;*/
+        text-align: center;
+    }
+</style>
+
+<script>
+    function AccessrowSelected(args) {
+        var grid = document.getElementById("access-instruction-grid").ej2_instances[0];
+        var selectedrecords = grid.getSelectedRecords();  // get the selected records.
+        console.log(selectedrecords);
+        var id = selectedrecords[0].id
+        window.location.href = "/Estates/AccessDetails?AccessID=" + id;
+    }
+</script>

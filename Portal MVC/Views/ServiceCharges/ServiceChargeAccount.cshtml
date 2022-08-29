@@ -1,68 +1,18 @@
 ﻿@using Portal_MVC.Models
-@model Portal_MVC.Models.ServiceChargeBudgetViewModel
+@model Portal_MVC.Controllers.UnitServiceChargesViewModel
 
 @{
     ViewBag.Title = "My Service Charge Account - New Estates";
 }
 
-@if (Session["SelectedPropertyID"] == null || (int)Session["SelectedPropertyID"] == 0)
+@if (string.IsNullOrWhiteSpace(Model.SelectedUnitID))
 {
-    <div class="container">
+    
         @Html.Partial("_SelectEstate", Model)
-    </div>
+   
 }
 else
 {
-    <div class="panel GradientBackground">
-        <table class="table">
-    <thead>
-        <tr>
-            <th>Date</th>
-            <th>Transaction Type</th>
-            <th class="MobileCollapse">Description</th>
-            <th class="MobileCollapse">Credit</th>
-            <th class="MobileCollapse">Debit</th>
-            <th class="MobileVisible">Amount</th>
-            <th>Balance</th>
-        </tr>
-    </thead>
-           @*@if (Model.MyServiceCharges != null && Model.MyServiceCharges.AllTrans != null)
-            {*@
-                @foreach (ServiceCharges s in Model.MyServiceCharges.AllTrans)
-                {
-                     <tr>
-                        <td>@s.TransDatestr</td>
-
-                        <td>@s.TransType</td>
-
-                        <td class="MobileCollapse">@s.TransDescription</td>
-
-                        @if (s.TransTypeID == 1)
-                                {
-                            <td class="MobileCollapse">@s.TransAmountstr</td>
-                        }
-                        else
-                        {
-                            <td class="MobileCollapse"></td>
-                        }
-
-                        @if (s.TransTypeID == 2)
-                                {
-                            <td class="MobileCollapse">@s.TransAmountstr</td>
-                        }
-                        else
-                        {
-                            <td class="MobileCollapse"></td>
-                        }
-
-                        <td class="MobileVisible">@s.TransAmountstr</td>
-
-                        <td>@s.BalanceStr</td>
-
-                    </tr>
-                }
-            @*}*@
-    </table>
-    </div>
+    @Html.Partial("_UnitStatement", Model.unitstatementViewModel)    
 }
 

@@ -1,0 +1,389 @@
+﻿@using Portal_MVC.Controllers
+@model Portal_MVC.Controllers.UserRoleViewModel
+@{
+    ViewBag.Title = "User Roles";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<div>
+    @Html.EJS().Grid("Grid").RowSelected("RowSelected").CellSelected("CellSelected").DataSource(Model.Users).Columns(col =>
+{
+    col.Field("Name").HeaderText("Name").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).AllowEditing(false).Add();
+    col.Field("Email").HeaderText("Email").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).IsPrimaryKey(true).Add();
+    col.Field("Admin").HeaderText("Admin").Width("50").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).EditType("booleanedit").DisplayAsCheckBox(true).Add();
+    col.Field("Manager").HeaderText("Manager").Width("50").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).EditType("booleanedit").DisplayAsCheckBox(true).Add();
+    col.Field("PropertyManager").HeaderText("Prop Manager").Width("50").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).EditType("booleanedit").DisplayAsCheckBox(true).Add();
+    col.Field("MaintenanceOperative").HeaderText("Maint Operative").Width("50").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).EditType("booleanedit").DisplayAsCheckBox(true).Add();
+    col.Field("Client").HeaderText("Client").Width("50").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).EditType("booleanedit").DisplayAsCheckBox(true).Add();
+    col.Field("Customer").HeaderText("Customer").Width("50").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).EditType("booleanedit").DisplayAsCheckBox(true).Add();
+    col.Field("Supplier").HeaderText("Supplier").Width("50").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).EditType("booleanedit").DisplayAsCheckBox(true).Add();
+
+
+}).AllowPaging(true).PageSettings(page => page.PageSize(25)).AllowFiltering(true).AllowSorting(true).EditSettings(edit => { edit.AllowEditing(true).Mode(Syncfusion.EJ2.Grids.EditMode.Normal); }).Toolbar(new List<string>() { "Edit", "Update", "Cancel" }).ActionBegin("actionBegin").ActionComplete("actionComplete").Render()
+</div>
+<div id="OriginalValue">
+
+</div>
+
+<script>
+
+
+    //to remove the original selection upon the selection of another role do the following:
+    //Get the grid
+    //get collection of the rows
+    //loop over rows
+    //get collection of td's for each row
+    //if email td matches selected row email
+    //continue loop until fin original value and deselct
+    let rowindex = -1;
+    let SelectedRole = '';
+    
+    
+    function CellSelected(args) {
+        //console.log(args);
+    }
+    function RowSelected(args) {
+        
+        rowindex = args.rowIndex;
+
+        if (args.data.Admin == true) {
+            SelectedRole = 'Admin';
+        }
+
+        if (args.data.Manager == true) {
+            SelectedRole = 'Manager';
+        }
+
+        if (args.data.PropertyManager == true) {
+            SelectedRole = 'PropManager';
+        }
+        if (args.data.MaintenanceOperative == true) {
+            SelectedRole = 'MaintenanceOperative';
+        }
+
+        if (args.data.Client == true) {
+            SelectedRole = 'Client';
+        }
+        if (args.data.Customer == true) {
+            SelectedRole = 'Customer';
+        }
+        if (args.data.Supplier == true) {
+            SelectedRole = 'Supplier';
+         }
+        
+    }
+
+    function Uncheck(KeepChecked) {
+        var table = document.getElementById('Grid_content_table');
+        
+        if (table != null) {
+            var rows = table.getElementsByTagName('tr');
+           // console.log(rows);
+            var row = rows[rowindex];
+            //console.log(row);
+           
+            //alert(rows.length);
+        } else {
+            console.log('table is null')
+        }
+
+        if (KeepChecked != 'Admin') {
+            document.getElementById("GridAdmin").parentElement.children[1].classList.remove("e-check");
+        }
+        if (KeepChecked != 'Manager') {
+            document.getElementById("GridManager").parentElement.children[1].classList.remove("e-check");
+        }
+        if (KeepChecked != 'PropManager') {
+            document.getElementById("GridPropertyManager").parentElement.children[1].classList.remove("e-check");
+        }
+        if (KeepChecked != 'MaintOp') {
+            document.getElementById("GridMaintenanceOperative").parentElement.children[1].classList.remove("e-check");
+        }
+        if (KeepChecked != 'Client') {
+            document.getElementById("GridClient").parentElement.children[1].classList.remove("e-check");
+        }
+        if (KeepChecked != 'Customer') {
+            document.getElementById("GridCustomer").parentElement.children[1].classList.remove("e-check");
+        }
+        if (KeepChecked != 'Supplier') {
+            document.getElementById("GridSupplier").parentElement.children[1].classList.remove("e-check");
+        }
+        
+    }
+
+    function actionComplete(args) {
+        if (args.requestType === "beginEdit") {
+            var AdminChk = document.getElementById("GridAdmin");
+            var ManagerChk = document.getElementById("GridManager");
+            var PropManagerChk = document.getElementById("GridPropertyManager");
+            var MaintOpChk = document.getElementById("GridMaintenanceOperative");
+            var ClientChk = document.getElementById("GridClient");
+            var CustomerChk = document.getElementById("GridCustomer");
+            var SupplierChk = document.getElementById("GridSupplier");
+
+            AdminChk.addEventListener('change', function () {
+                if (this.checked) {
+                   //is being unchecked
+                    
+                } else {
+                   //is being checked
+                    
+                    Uncheck('Admin');
+                    //alert(rowindex);
+
+                }
+            });
+
+            ManagerChk.addEventListener('change', function () {
+                if (this.checked) {
+                    //is being unchecked
+                   
+                } else {
+                    //is being checked
+                    Uncheck('Manager');
+                }
+            });
+
+            PropManagerChk.addEventListener('change', function () {
+                if (this.checked) {
+                    //is being unchecked
+                    
+                } else {
+                    //is being checked
+                    Uncheck('PropManager')
+                }
+            });
+
+            MaintOpChk.addEventListener('change', function () {
+                if (this.checked) {
+                    //is being unchecked
+                    
+                } else {
+                    //is being checked
+                    Uncheck('MaintOp');
+                }
+            });
+
+            ClientChk.addEventListener('change', function () {
+                if (this.checked) {
+                    //is being unchecked
+                    
+                } else {
+                    //is being checked
+                    Uncheck('Client')
+                }
+            });
+
+            CustomerChk.addEventListener('change', function () {
+                if (this.checked) {
+                    //is being unchecked
+                    
+                } else {
+                    //is being checked
+                    Uncheck('Customer');
+                }
+            });
+
+            SupplierChk.addEventListener('change', function () {
+                if (this.checked) {
+                    //is being unchecked
+                    
+                } else {
+                    //is being checked
+                    Uncheck('Supplier');
+                }
+            });
+        }
+
+        if (args.requestType === "save") {
+
+            //console.log(args);
+            var index = -1
+            switch (SelectedRole) {
+                case "Admin":
+                    index = 2;
+                    break;
+                case "Manager":
+                    index = 3;
+                    break;
+                case "PropManager":
+                    index = 4;
+                    break;
+                case "MaintenanceOperative":
+                    index = 5;
+                    break;
+                case "Client":
+                    index = 6;
+                    break;
+                case "Customer":
+                    index = 7;
+                    break;
+                case "Supplier":
+                    index = 8;
+                    break;
+            }
+            console.log('Inde to keep is: ' + index);
+            UncheckStatic(index);
+        }
+    }
+
+    function UncheckStatic(TDIntToKeep) {
+
+        
+        
+        var table = document.getElementById('Grid');
+        var rows1 = table.getElementsByTagName('tr');
+        var rows = table.getElementsByClassName('e-row');
+        //console.log(rows);
+        var row = rows[rowindex];
+        //console.log(row);
+        var RowBoolCells = row.getElementsByTagName('td');
+        //var RowBoolCells = row.getElementsByClassName('e-boolcell');
+        //console.log(RowBoolCells);
+        //console.log(RowBoolCells.length);
+
+        for (i = 0; i <= RowBoolCells.length - 1; i++)
+        {
+            //console.log('loop number: ' + i)
+            if (i != TDIntToKeep)
+            {
+                var TDContainer = RowBoolCells[i];
+                //console.log(TDContainer);
+
+                if (TDContainer != null || TDContainer != 'undefined')
+                {
+                    var SpanCol = TDContainer.getElementsByTagName('span');
+                    //console.log(SpanCol);
+
+                    if (SpanCol != null && SpanCol.length > 0) {
+                        //console.log(SpanCol[0]);
+                        SpanCol[0].classList.remove('e-check');
+                       // console.log('e check removed');
+                    };
+                }
+            }
+        }
+       
+    }
+    function actionBegin(args) {
+
+        if (args.requestType === "beginEdit") {
+
+            
+           // var Rows = document.getElementsByClassName
+
+            //var originalVal = '';
+            //if (args.data.Admin == 'true') {
+            //    originalVal = 'Admin';
+            //}
+
+
+            //// alert(args.rowData.Email)
+            //document.getElementById("OriginalValue").innerText
+        }
+        if (args.requestType === "save") {
+           document.getElementById("GridAdmin").parentElement.children[1].classList.add('e-checked');
+           
+            
+           
+           // GridChkInner.classList.add(" e-check");
+
+           
+
+            var RoleObj = {
+                Admin: args.data.Admin,
+                Manager: args.data.Manager,
+                PropertyManager: args.data.PropertyManager,
+                MaintenanceOperative: args.data.MaintenanceOperative,
+                Client: args.data.Client,
+                Customer: args.data.Customer,
+                Supplier: args.data.Supplier,
+                Email: args.data.Email,
+                OriginalRole: SelectedRole
+            }
+
+            //remove original role selection
+            if (SelectedRole != null) {
+                if (SelectedRole == 'Admin') {
+                    RoleObj.Admin = false;
+                } 
+                if (SelectedRole == 'Manager') {
+                    RoleObj.Manager = false;
+                }
+                if (SelectedRole == 'PropManager') {
+                    RoleObj.PropertyManager = false;
+                }
+                if (SelectedRole == 'MaintenanceOperative') {
+                    RoleObj.MaintenanceOperative = false;
+                }
+                if (SelectedRole == 'Client') {
+                    RoleObj.Client = false;
+                }
+                if (SelectedRole == 'Customer') {
+                    RoleObj.Customer = false;
+                }
+                if (SelectedRole == 'Supplier') {
+                    RoleObj.Supplier = false;
+                }
+            }
+
+
+            //reset selected role variable
+            if (RoleObj.Admin == true) {
+                SelectedRole = 'Admin';
+            }
+            if (RoleObj.Manager == true) {
+                SelectedRole = 'Manager';
+            }
+
+            if (RoleObj.PropertyManager == true) {
+                SelectedRole = 'PropManager';
+            }
+
+            if (RoleObj.MaintenanceOperative == true) {
+                SelectedRole = 'MaintenanceOperative';
+            }
+
+            if (RoleObj.Client == true) {
+                SelectedRole = 'Client';
+            }
+
+            if (RoleObj.Customer == true) {
+                SelectedRole = 'Customer';
+            }
+
+            if (RoleObj.Supplier == true) {
+                SelectedRole = 'Supplier';
+            }
+
+            if (RoleObj.Admin == true) {
+                SelectedRole = 'Admin';
+            }
+
+
+            var url = "/UserRoles/Update/";
+            $.post(url, RoleObj, function (data) {
+
+
+                if (data.APIError == true) {
+
+                    SelectedRole = data.OriginalRole;
+
+                } else {
+
+                    
+                   
+
+                }
+
+            });
+
+        }
+    }
+
+    function UnmarkOriginalValue(data) {
+
+    }
+   
+</script>
+

@@ -1,0 +1,37 @@
+﻿@using Portal_MVC.Controllers
+@model Portal_MVC.Controllers.EstateViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<div class="Full-Width-Container">
+    <div class="row">
+        <div>
+            @Html.EJS().Grid("OwnersGrid").DataSource(Model.Estates).AllowFiltering(true).AllowSelection(true).RowSelected("rowSelected").Columns(col =>
+            {
+            col.Field("id").HeaderText("ID").Width("25").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).AllowEditing(false).IsPrimaryKey(true).Add();
+            col.Field("Name").HeaderText("Name").Width("110").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).AllowEditing(false).AllowSearching(true).Add();
+
+                col.Field("Address1").HeaderText("Address 1").Width("100").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).AllowEditing(false).AllowSearching(false).AllowFiltering(false).HideAtMedia("(min-width: 992px)").Add();
+                col.Field("Address2").HeaderText("Address 2").Width("60").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).AllowEditing(false).AllowSearching(false).AllowFiltering(false).HideAtMedia("(min-width: 992px)").Add();
+                col.Field("Address3").HeaderText("Address 3").Width("60").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).AllowEditing(false).AllowSearching(false).AllowFiltering(false).HideAtMedia("(min-width: 992px)").Add();
+                col.Field("Address3").HeaderText("Address 4").Width("60").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).AllowEditing(false).AllowSearching(false).AllowFiltering(false).HideAtMedia("(min-width: 992px)").Add();
+                col.Field("PostCode").HeaderText("Post Code").Width("50").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).AllowEditing(false).AllowSearching(false).AllowFiltering(false).HideAtMedia("(min-width: 992px)").Add();
+
+            }).AllowPaging(true).PageSettings(page => page.PageSize(25)).FilterSettings(Filter => Filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel)).Toolbar(new List<string>() { "Search" }).Render()
+        </div>
+    </div>
+</div>
+
+<script>
+    function rowSelected(args) {
+        var grid = document.getElementById("OwnersGrid").ej2_instances[0];
+        var selectedrecords = grid.getSelectedRecords();  // get the selected records.
+        console.log(selectedrecords);
+        var id = selectedrecords[0].id
+        window.location.href = "/Estates/EstateDetail?EstateID=" + id;
+    }
+</script>
+
+

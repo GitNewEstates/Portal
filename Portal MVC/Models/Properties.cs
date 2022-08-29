@@ -19,6 +19,8 @@ namespace Portal_MVC.Models
 
         public string name { get; set; }
 
+        public string UniqueID { get; set; }
+
         [MaxLength(30, ErrorMessage = "Cannot be greater than 30 characters")]
         public string Address1 { get; set; }
 
@@ -94,7 +96,7 @@ namespace Portal_MVC.Models
         public static List<Properties> GetAllOwnedProperties(int CustomerID)
         {
             string q = "select Core.Units.FlatOrApt, Core.Units.UnitNumber, Core.Units.Address1, Core.Units.Address2, Core.Units.Address3, " +
-                "Core.Units.Address4, Core.Units.Address5, Core.Units.ID FROM CORE.Units inner join core.PropertyOwnership on core.PropertyOwnership.UnitID = " +
+                "Core.Units.Address4, Core.Units.Address5, Core.Units.ID, uniqueID FROM CORE.Units inner join core.PropertyOwnership on core.PropertyOwnership.UnitID = " +
                 "core.Units.ID where core.PropertyOwnership.OwnerID = " + CustomerID.ToString();
 
             List<Properties> rList = new List<Properties>();
@@ -115,17 +117,52 @@ namespace Portal_MVC.Models
                     Address3 = dr[4].ToString(), 
                     Address4 = dr[5].ToString(), 
                     Address5 = dr[6].ToString(), 
+                    UniqueID = dr[8].ToString(),
                     FullAddress = 
                     SetAddressString(Add1, dr[3].ToString(), dr[4].ToString(), dr[5].ToString(), dr[6].ToString()) });
             }
             return rList;
 
         }
+        //public async static Task<List<Properties>> GetAllOwnedPropertiesAsync(int CustomerID)
+        //{
+        //    string q = "select  Core.Units.FlatOrApt, Core.Units.UnitNumber, Core.Units.Address1, Core.Units.Address2, Core.Units.Address3, " +
+        //        "Core.Units.Address4, Core.Units.Address5, Core.Units.ID FROM CORE.Units inner join core.PropertyOwnership on core.PropertyOwnership.UnitID = " +
+        //        "core.Units.ID where core.PropertyOwnership.OwnerID = " + CustomerID.ToString();
+
+        //    List<Properties> rList = new List<Properties>();
+        //    DBConnectionObject db = GlobalVariables.GetConnection();
+        //    DataTable dt = await db.Connection.GetDataTableAsync(q);
+
+        //    foreach (DataRow dr in dt.Rows)
+        //    {
+        //        int id = 0;
+        //        if (dr[7] != DBNull.Value)
+        //        {
+        //            id = Convert.ToInt32(dr[7]);
+        //        }
+        //        string Add1 = SetAddress1(dr[0].ToString(), dr[1].ToString(), dr[2].ToString());
+        //        rList.Add(new Properties(PropertyTypes.Unit)
+        //        {
+        //            ID = id,
+        //            Address1 = Add1,
+        //            Address2 = dr[3].ToString(),
+        //            Address3 = dr[4].ToString(),
+        //            Address4 = dr[5].ToString(),
+        //            Address5 = dr[6].ToString(),
+        //            FullAddress =
+        //            SetAddressString(Add1, dr[3].ToString(), dr[4].ToString(), dr[5].ToString(), dr[6].ToString())
+        //        });
+        //    }
+        //    return rList;
+
+        //}
+
 
         public async static Task<List<Properties>> GetAllOwnedPropertiesAsync(int CustomerID)
         {
-            string q = "select Core.Units.FlatOrApt, Core.Units.UnitNumber, Core.Units.Address1, Core.Units.Address2, Core.Units.Address3, " +
-                "Core.Units.Address4, Core.Units.Address5, Core.Units.ID FROM CORE.Units inner join core.PropertyOwnership on core.PropertyOwnership.UnitID = " +
+            string q = "select distinct Core.Units.FlatOrApt, Core.Units.UnitNumber, Core.Units.Address1, Core.Units.Address2, Core.Units.Address3, " +
+                "Core.Units.Address4, Core.Units.Address5, Core.Units.ID, uniqueid FROM CORE.Units inner join core.PropertyOwnership on core.PropertyOwnership.UnitID = " +
                 "core.Units.ID where core.PropertyOwnership.OwnerID = " + CustomerID.ToString();
 
             List<Properties> rList = new List<Properties>();
@@ -148,6 +185,7 @@ namespace Portal_MVC.Models
                     Address3 = dr[4].ToString(),
                     Address4 = dr[5].ToString(),
                     Address5 = dr[6].ToString(),
+                    UniqueID = dr[8].ToString(),
                     FullAddress =
                     SetAddressString(Add1, dr[3].ToString(), dr[4].ToString(), dr[5].ToString(), dr[6].ToString())
                 });
@@ -158,8 +196,8 @@ namespace Portal_MVC.Models
 
         public async static Task<List<Properties>> GetOwnedEstatesAsync(int CustomerID)
         {
-            string q = "select Core.Estates.name, Core.Estates.Address1, Core.Estates.Address2, Core.Estates.Address3, " +
-                "Core.Estates.Address4, Core.Estates.Address5, Core.Estates.ID FROM CORE.estates " +
+            string q = "select distinct Core.Estates.name, Core.Estates.Address1, Core.Estates.Address2, Core.Estates.Address3, " +
+                "Core.Estates.Address4, Core.Estates.Address5, Core.Estates.ID, core.estates.uniqueid FROM CORE.estates " +
                 "inner join core.units on core.estates.id = core.Units.estateid " +
                 "inner join core.PropertyOwnership on core.PropertyOwnership.UnitID = core.Units.ID " +
 
@@ -188,6 +226,7 @@ namespace Portal_MVC.Models
                         Address3 = dr[3].ToString(),
                         Address4 = dr[4].ToString(),
                         Address5 = dr[5].ToString(),
+                        UniqueID = dr[7].ToString(),
                         FullAddress =
                         SetAddressString($"{dr[0]} {dr[1]}", dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), dr[5].ToString())
                     });
@@ -200,7 +239,7 @@ namespace Portal_MVC.Models
         public static List<Properties> GetAllUnitsProperties(int estateid)
         {
             string q = "select Core.Units.FlatOrApt, Core.Units.UnitNumber, Core.Units.Address1, Core.Units.Address2, Core.Units.Address3, " +
-                "Core.Units.Address4, Core.Units.Address5, Core.Units.ID FROM CORE.Units where estateid = " + estateid.ToString();
+                "Core.Units.Address4, Core.Units.Address5, Core.Units.ID, uniqueid FROM CORE.Units where estateid = " + estateid.ToString();
 
             List<Properties> rList = new List<Properties>();
            DBConnectionObject db = GlobalVariables.GetConnection();
@@ -214,7 +253,10 @@ namespace Portal_MVC.Models
                     id = Convert.ToInt32(dr[7]);
                 }
                 string Add1 = SetAddress1(dr[0].ToString(), dr[1].ToString(), dr[2].ToString());
-                rList.Add(new Properties(PropertyTypes.Unit) { ID = id, Address1 = Add1, Address2 = dr[3].ToString(), Address3 = dr[4].ToString(), Address4 = dr[5].ToString(), Address5 = dr[6].ToString(), FullAddress = SetAddressString(Add1, dr[3].ToString(), dr[4].ToString(), dr[5].ToString(), dr[6].ToString()) });
+                rList.Add(new Properties(PropertyTypes.Unit) { ID = id, Address1 = Add1, Address2 = dr[3].ToString(), 
+                    Address3 = dr[4].ToString(), Address4 = dr[5].ToString(), Address5 = dr[6].ToString(), 
+                    FullAddress = SetAddressString(Add1, dr[3].ToString(), dr[4].ToString(), dr[5].ToString(), 
+                    dr[6].ToString()), UniqueID = dr[8].ToString() });
             }
             return rList;
 

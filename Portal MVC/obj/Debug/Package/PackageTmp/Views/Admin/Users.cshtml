@@ -1,0 +1,25 @@
+﻿@using Portal_MVC.Controllers
+@model Portal_MVC.Controllers.UsersViewModel
+@{
+    ViewBag.Title = "Users";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+
+<div>
+    @Html.EJS().Grid("Grid").DataSource(Model.Users).Columns(col =>
+{
+    col.Field("Name").HeaderText("Name").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).AllowEditing(false).Add();
+    col.Field("Email").HeaderText("Email").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).IsPrimaryKey(true).Add();
+    col.Field("Admin").HeaderText("Admin").Width("50").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).EditType("booleanedit").DisplayAsCheckBox(true).Add();
+    col.Field("Manager").HeaderText("Manager").Width("50").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).EditType("booleanedit").DisplayAsCheckBox(true).Add();
+    col.Field("PropertyManager").HeaderText("Prop Manager").Width("50").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).EditType("booleanedit").DisplayAsCheckBox(true).Add();
+    col.Field("MaintenanceOperative").HeaderText("Maint Operative").Width("50").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).EditType("booleanedit").DisplayAsCheckBox(true).Add();
+    col.Field("Client").HeaderText("Client").Width("50").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).EditType("booleanedit").DisplayAsCheckBox(true).Add();
+    col.Field("Customer").HeaderText("Customer").Width("50").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).EditType("booleanedit").DisplayAsCheckBox(true).Add();
+    col.Field("Supplier").HeaderText("Supplier").Width("50").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).EditType("booleanedit").DisplayAsCheckBox(true).Add();
+
+
+}).AllowPaging(true).PageSettings(page => page.PageSize(25)).AllowFiltering(true).AllowSorting(true).EditSettings(edit => { edit.AllowEditing(true).Mode(Syncfusion.EJ2.Grids.EditMode.Normal); }).Toolbar(new List<string>() { "Edit", "Update", "Cancel" }).ActionBegin("actionBegin").ActionComplete("actionComplete").Render()
+</div>
+

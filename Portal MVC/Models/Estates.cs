@@ -109,6 +109,19 @@ namespace Portal_MVC.Models
 
     public static class APIEstateMethods
     {
+        public async static Task<List<APIEstates>> GetEstateListAsync()
+        {
+            string json = await APIMethods.CallAPIGetEndPointAsync($"EstateList");
+
+            return DeserializedJSONToEstateList(json);
+        }
+        public async static Task<APIEstates> GetEstateAsync(int id)
+        {
+            string json =
+               await APIMethods.CallAPIGetEndPointAsync($"Estate/{id}");
+
+            return DeserializedJSONToEstate(json);
+        }
         public async static Task<APIEstates> GetOpenFundBudgetAndSpendTotals(int EstateID)
         {
             string json =
@@ -139,7 +152,33 @@ namespace Portal_MVC.Models
             return obj;
         }
 
-        
+        public static List<APIEstates> DeserializedJSONToEstateList(string json = "")
+        {
+            List<APIEstates> obj = new List<APIEstates>();
+            if (!string.IsNullOrEmpty(json))
+            {
+                try
+                {
+                    obj = JsonConvert.DeserializeObject<List<APIEstates>>(json);
+                }
+                catch (Exception ex)
+                {
+
+                    obj.Add(new APIEstates
+                    {
+                        APIError = new APIError(ErrorType.APIValidationError)
+                        {
+                            HasError = true,
+                            Message = $"Error Deserializing JSON to Estate List. Error: {ex.Message}"
+                        }
+                    });
+                }
+            }
+
+            return obj;
+        }
+
+
     }
 
     

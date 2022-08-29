@@ -24,7 +24,7 @@
     <script src="https://cdn.syncfusion.com/ej2/20.2.36/dist/ej2.min.js"></script>
 
     <link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/20.2.36/fluent.css" />
-    
+
 
 
 
@@ -42,6 +42,7 @@
     @using Syncfusion.EJ2
     @using Syncfusion.EJ2.Notifications;
     @using Syncfusion.EJ2.Navigations;
+    @using Syncfusion.EJ2.DropDowns
 
 </head>
 <body>
@@ -194,9 +195,6 @@
 
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 RenderBodyContainer">
         <div style="" id="body">
-
-          
-
             @RenderBody()
         </div>
     </div>
@@ -220,8 +218,6 @@
         $(document).ready(function () {
 
             
-              
-
            
 
             @*var ActualSeriesLable = document.getElementById('container_Series_0_Point_0_Text_0');
@@ -236,20 +232,24 @@
 
             SetToastVisibility("false");
 
-            var toastObj = document.getElementById('element').ej2_instances[0];
+            var toastObj = document.getElementById('element');
+            var notificationIcon = document.getElementById("NotificationIcon");
 
-            document.getElementById("NotificationIcon").addEventListener('mouseover', function () {
+            if (notificationIcon != null)
+            {
+                notificationIcon.addEventListener('mouseover', function () {
 
-                if (toastObj != null && document.getElementById("ToastDisplayed").innerText == "false") {
-                    for (var i = 0; i <= toastObj.length -1; i++){
-                        toastObj[i].show();
+                    if (toastObj != null && document.getElementById("ToastDisplayed").innerText == "false") {
+                        for (var i = 0; i <= toastObj.length - 1; i++) {
+                            toastObj[i].show();
+
+                        }
+                        SetToastVisibility("true");
 
                     }
-                    SetToastVisibility("true");
 
-                }
-
-            });
+                });
+            }
 
             function SetToastVisibility(val) {
 
@@ -341,6 +341,11 @@
 
 
                 var url = "/Expense/Create/";
+
+
+
+
+
                 $.post(url, PortalTrans, function (data) {
 
                    // console.log(data);

@@ -1,0 +1,119 @@
+﻿@using Portal_MVC.Controllers
+@model Portal_MVC.Controllers.EstateDetailViewModel
+@{
+    ViewBag.Title = "EstateDetail";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<div class="Full-Width-Container">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="control-section e-tab-section">
+                <div class="e-sample-resize-container">
+                    <div id="estate-details" style="display: none">
+                        <div class="response-align">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 e-card e-custom-card">
+
+                                    @if (Model.Estate.APIError.HasError)
+                                    {
+                                        <div class="estate-details-container">
+                                            <h4> Error obtaining Owner's details.</h4>
+                                            @if (!string.IsNullOrWhiteSpace(Model.Estate.APIError.Message))
+                                            {
+                                                <h4>@Model.Estate.APIError.Message</h4>
+                                            }
+                                        </div>
+
+                                    }
+                                    else
+                                    {
+                                        <div class="estate-details-container">
+                                            <h5 style="display: none;" id="owner-id">@Model.Estate.id</h5>
+                                            <h5>@Model.Estate.Name</h5>
+                                            <h5>@Model.Estate.Address1</h5>
+                                            <h5>@Model.Estate.Address2</h5>
+                                            <h5>@Model.Estate.Address3</h5>
+                                            <h5>@Model.Estate.Address4</h5>
+                                            <h5>@Model.Estate.PostCode</h5>
+                                        </div>
+
+                                    }
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div id="estate-history" style="display: none">
+                        <div class="response-align">
+                            <div>
+                                Test Content for history
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                    <div id="estate-cases" style="display: none">
+                        <div class="response-align">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                Test Content for cases
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                    <div id="estate-financial" style="display: none">
+                        <div class="response-align">
+                            <div>
+                                Test Content for financials
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                    <div id="estate-reports" style="display: none">
+                        <div class="response-align">
+                            <div>
+                                Test Content for reports
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+                @Html.EJS().Tab("ej2Tab").Height("auto").Items(Model.TabHeaders).Render()
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .estate-details-container {
+        text-align: left;
+    }
+    .e-tab-section .e-tab .e-content.e-control {
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    .responsive-align {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .e-tab-section {
+        padding: 0 15px;
+    }
+
+    .e-tab .e-tab-header {
+        /*background: #badfba !important;*/
+        text-align: center;
+    }
+</style>

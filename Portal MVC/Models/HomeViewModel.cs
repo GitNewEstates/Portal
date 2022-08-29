@@ -8,7 +8,7 @@ namespace Portal_MVC.Models
 {
     public class HomeViewModel : ViewModelBase
     {
-        public HomeViewModel()
+        public HomeViewModel(ViewModelLevel level):base(level)
         {
             BudgetActualDataList = new List<BudgetActualChartData>();
             ClientFinancialListView = new List<ClientFinancialListView>();
@@ -16,14 +16,19 @@ namespace Portal_MVC.Models
             RepairAccordianObjects = new List<Syncfusion.EJ2.Navigations.AccordionAccordionItem>();
             AttendanceVisitCollection = new List<Syncfusion.EJ2.Navigations.AccordionAccordionItem>();
             NotificationObjectList = new List<object>();
+            MaintOpDashViewModel = new MaintenanceOpDashViewModel();
+            
+            
         }
-       
-        public async Task LoadCustomerDashboardDataAsync()
+        
+        public MaintenanceOpDashViewModel MaintOpDashViewModel { get; set; }
+        public async Task LoadCustomerDashboardDataAsync(string useremail)
         {
 
             APIEstates estate = new APIEstates { id = SelectedProperty.ID };
             estate = await APIEstateMethods.GetOpenFundBudgetAndSpendTotals(estate.id);
-
+            APIEstates estate1 = await APIEstateMethods.GetEstateAsync(estate.id);
+            NotificationviewModel = new NotificationSettingViewModel(useremail, estate1.Name);
             //
             string BudgetLabelName = $"£{estate.OpenFundTotalBudget}";
             string ActualLabelName = $"£{estate.OpenFundTotalCost}";
@@ -381,7 +386,12 @@ namespace Portal_MVC.Models
                 ValueCss = $"float: right;"
             });
 
+            NotificationviewModel.NewRepairNotification = true;
+
         }
+
+        
+        public NotificationSettingViewModel NotificationviewModel { get; set; }
 
         public string RepairErrorMessage { get; set; }
         public string AttendanceErrorMessage { get; set; }
@@ -410,7 +420,7 @@ namespace Portal_MVC.Models
 
     public class UnpaidInvoiceDetailViewModel : ViewModelBase
     {
-        public UnpaidInvoiceDetailViewModel()
+        public UnpaidInvoiceDetailViewModel(ViewModelLevel level = ViewModelLevel.Estate) : base(level)
         {
             UnpaidExpenditureList = new List<Expenditure>();
         }
@@ -423,7 +433,7 @@ namespace Portal_MVC.Models
 
     public class UnauthorisedExpenditureViewModel : ViewModelBase
     {
-        public UnauthorisedExpenditureViewModel()
+        public UnauthorisedExpenditureViewModel(ViewModelLevel level = ViewModelLevel.Estate) : base(level)
         {
             UnAuthExpenditureList = new List<Expenditure>();
         }
@@ -437,7 +447,7 @@ namespace Portal_MVC.Models
 
     public class OutstandPOListViewModel : ViewModelBase
     {
-        public OutstandPOListViewModel()
+        public OutstandPOListViewModel(ViewModelLevel level = ViewModelLevel.Estate) : base(level)
         {
             OutstaningPurchaseOrderList = new List<APIPurchaseOrders>();
         }
@@ -527,7 +537,148 @@ namespace Portal_MVC.Models
         public List<object> child { get; set; }
     }
 
-   
+    public class NotificationSettingViewModel 
+    {
+        public NotificationSettingViewModel(string useremail, string estatename)
+        {
+            _email = useremail;
+            _estateName = estatename;
+        }
 
+        private string _email { get; set; }
+        private string _estateName { get; set; }
+        public bool NewRepairNotification { get; set; }
+        public bool NewRepairApplyToAllUnits { get; set; }
+
+        public string NewRepairToolTip { get { return $"You will receive an email to {_email} whenever a new repair is raised at {_estateName}."; } }
+
+        public bool NewInsuranceNotification { get; set; }
+        public string NewInsuranceToolTip { get { return $"You will receive an email to {_email} whenever a new insurance policy is added to {_estateName}."; } }
+        public bool NewAttendanceLogNotification { get; set; }
+        public string NewAttendanceLogToolTip { get { return $"You will receive an email to {_email} whenever a new Attendance Log is submitted for {_estateName}."; } }
+    }
+
+   
+    public class AddOwnersViewModel : ViewModelBase
+    {
+        public AddOwnersViewModel(ViewModelLevel level = ViewModelLevel.Estate) : base(level)
+        {
+            UnitList = new List<Units>();
+            Titles = new List<string>
+            {
+                "Mr",
+                "Mrs",
+                "Miss",
+                "Dr"
+
+            };
+            //
+            Owner = new Owner();
+            TabHeaders = new List<Syncfusion.EJ2.Navigations.TabTabItem>
+            {
+                new Syncfusion.EJ2.Navigations.TabTabItem 
+                { 
+                    Header = new Syncfusion.EJ2.Navigations.TabHeader 
+                        { Text = "New Owner Details"}, 
+                    Content = "#add-owner-details" 
+                },
+                //new Syncfusion.EJ2.Navigations.TabTabItem
+                //{
+                //    Header = new Syncfusion.EJ2.Navigations.TabHeader
+                //        { Text = "Select Units"},
+                //    Content = "#select-owned-units"
+                //},
+
+            };
+        }
+        public List<Units> UnitList { get; set; }
+        public List<string> Titles { get; private set; }
+        public List<Syncfusion.EJ2.Navigations.TabTabItem> TabHeaders { get; set; }
+        public Owner Owner { get; set; }
+        public async Task LoadDataAsync()
+        {
+            //UnitList = await UnitMethods.GetUnitsAsync(SelectedProperty.ID);
+        }
+    }
+
+    public class OwnerListViewModel : ViewModelBase
+    {
+        public OwnerListViewModel(ViewModelLevel level = ViewModelLevel.Estate) : base(level)
+        {
+            OwnerList = new List<Owner>();
+          
+        }
+        public List<Owner> OwnerList { get; set; }
+        public List<string> Titles { get; private set; }
+        public async Task LoadDataAsync()
+        {
+            OwnerList = await OwnerMethods.GetAllAsync();
+        
+        }
+    }
+
+    public class OwnerDetailViewModel : ViewModelBase
+    {
+        public OwnerDetailViewModel(ViewModelLevel level = ViewModelLevel.none) : base(level)
+        {
+            Owner = new Owner();
+            Titles = new List<string>
+            {
+                "Mr",
+                "Mrs",
+                "Miss",
+                "Dr"
+
+            };
+            OwnedProperties = new List<OwnedPropertyListViewObject>();
+        }
+        public List<string> Titles { get; private set; }
+        public List<Units> UnitList { get; set; }
+        public Owner Owner { get; set; }
+        public List<OwnedPropertyListViewObject> OwnedProperties { get; set; }
+        public DateTime OwnershipStartMaxDate { get { return DateTime.Today; } }
+        public async Task LoadAsync(int id)
+        {
+            Owner = await OwnerMethods.GetOwnerByID(id);
+            if (Owner != null)
+            {
+                List<Models.Units> units = new List<Models.Units>();
+                units = await
+                    Models.UnitMethods.GetCurrentOwnedUnits(Owner.id, 0, true);
+                if (units != null)
+                {
+                    if (units.Count > 0)
+                    {
+                        if (!units[0].APIError.HasError)
+                        {
+                            foreach (var unit in units)
+                            {
+                                OwnedProperties.Add(new OwnedPropertyListViewObject
+                                {
+                                    id = unit.id,
+                                    text = $"{unit.Name} - {ControlsDLL.ControlActions.DoubelToCurrencyString2DP(unit.Balance)}"
+                                });
+                            }
+                        }
+                    }
+                }
+            }
+
+            UnitList = await UnitMethods.GetUnitsAsync();   
+        }
+    }
+
+    public class MaintenanceOpDashViewModel : ViewModelBase
+    {
+        public MaintenanceOpDashViewModel(ViewModelLevel level = ViewModelLevel.none) : base(level)
+        {
+
+        }
+    }
+
+    public class TabcontrolTabHeaders
+    {
+        public string Text { get; set; }
+    }
   
 }

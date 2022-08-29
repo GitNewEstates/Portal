@@ -3,51 +3,214 @@
 
 @{
     ViewBag.Title = "Select Property - New Estates";
+
+
 }
 
+@using Syncfusion.EJ2.Navigations;
+@using Syncfusion.EJ2.Lists;
 
-<div class="container">
-    <h4>Welcome to your Customer Portal</h4><br />
 
-</div>
+
 @if (Model != null)
 {
-    <div class="container">
-        @Html.Partial("_SelectEstate", Model.PropListViewModel)
-    </div>
-    @*<div class="container">
-            <h5>Select the property that you wish view.</h5>
-            <div class="panel GradientBackground panelContainer">
-                <table class="LinkedTable tableHover">
-                    <tbody>
-                        @foreach (Properties item in Model)
+    if (Model.SelectedProperty.ID == 0)
+    {
+        <div class="container">
+            @Html.Partial("_SelectEstate", Model)
+        </div>
+    }
+    else
+    {
+        if (Model.NotificationCount > 0)
+        {
+            for (int i = 1; i <= Model.NotificationCount; i++)
+            {
+                @Html.EJS().Toast("element").Title($"Unread Notification {i}").Content("You have unread notifications for this property").Position(p => p.X("Right")).Render();
+            }
+
+            <p id="ToastDisplayed" style="display: none"></p>
+
+
+        }
+        @Html.HiddenFor(m => m.OwnedProperties.Count, new { id = "OwnedUnitCount" })
+        @Html.HiddenFor(m => m.SelectedProperty.ID, new { id = "SelectedPropertyID" })
+        <div class="Full-Width-Container">
+            <div class="row">
+                <div class="col-lg-5 col-md-5 col-sm-11 col-xs-11 e-card e-custom-card">
+                    @Html.EJS().ListView("listview").Enable(true).DataSource(Model.OwnedProperties).HeaderTitle("Your Properties").ShowHeader(true).ShowIcon(true).Fields(new Syncfusion.EJ2.Lists.ListViewFieldSettings { IconCss = "icon" }).Render()
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-11 col-xs-11  e-card e-custom-card">
+
+                    @(Html.EJS().Chart("container").Background("white").Height("200px").Series(series =>
                         {
-                            <tr>
 
-                                @if (item.Address1 != null && item.Address1 != "")
-                                {
-                                    <td class="PropSelection">@Html.ActionLink(item.FullAddress, "PropertySummary", new { PropID = item.ID, PropType = item.PropertyType })</td>
-                                }
+                        series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Bar).
+                            XName("Name").
+                            YName("Amount").
+                            CornerRadius(cr => cr.BottomLeft(10).BottomRight(10).TopLeft(10).TopRight(10)).
 
+                            Marker(mr => mr.DataLabel(dl => dl.Visible(true).Name("LabelName").
 
-                            </tr>
-                        }
-                    </tbody>
-                </table>
+                            Position(Syncfusion.EJ2.Charts.LabelPosition.Bottom).
+                            Font(ff => ff.FontWeight("600").Color("#ffffff")))).
+                            DataSource(Model.BudgetActualDataList).
+                            PointColorMapping("color").
+                            Add();
+                        }).
+                           PrimaryXAxis(px => px.Interval(1)
+                                .MajorGridLines(mg => mg.Width(0))
+                                .MajorTickLines(mg => mg.Width(0))
+                                .LineStyle(mg => mg.Width(0))
+                                .ValueType(Syncfusion.EJ2.Charts.ValueType.Category)
+
+                                ).
+
+                           PrimaryYAxis(py => py.Minimum(0).Maximum(Model.XAxisMaxValue)
+                                .MajorGridLines(mg => mg.Width(0))
+                                .MajorTickLines(mg => mg.Width(0))
+                                .LineStyle(mg => mg.Width(0))
+                                .LabelStyle(ls => ls.Color("#ffffff"))
+
+                                ).
+
+                           ChartArea(area => area.Border(br => br.Color("transparent"))).
+                           LegendSettings(ls => ls.Visible(false)).
+                           Title("Overall Fund BVA").
+                           TitleStyle(ts => ts.Color("blue")).
+                           Render()
+                        )
+
+                </div>
             </div>
-        </div>*@
+
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-11 col-xs-11">
+                    @if (string.IsNullOrWhiteSpace(Model.RepairErrorMessage))
+                    {
+                        <h6>Repairs</h6>
+                        @(Html.EJS().Accordion("RepairAccordian").Items(Model.RepairAccordianObjects).ExpandMode(Syncfusion.EJ2.Navigations.ExpandMode.Multiple).Render())
+                    }
+                    else
+                    {
+                        <h6>@Model.RepairErrorMessage</h6>
+                    }
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-11 col-xs-11">
+                    <h6>Attendances</h6>
+                    @(Html.EJS().Accordion("AttendanceAccordian").Items(Model.AttendanceVisitCollection).ExpandMode(Syncfusion.EJ2.Navigations.ExpandMode.Multiple).Render())
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+        </div>
+
+
+        <div class="Full-Width-Container">
+            <div class="col-lg-6 col-md-6 col-sm-11 col-xs-11 e-card e-custom-card" style="margin-left: 0px; margin-top: 10px;">
+                @Html.EJS().Tooltip("RepairTooltip").Content(Model.NotificationviewModel.NewRepairToolTip).Position(Syncfusion.EJ2.Popups.Position.TopCenter).ContentTemplate(@<div>
+                    @Html.EJS().CheckBox("RepairNotificationCheck").Label("New Repair Raised").Checked(Model.NotificationviewModel.NewRepairNotification).CssClass("NewRepairNotification").Render()
+                </div>).Render()
+                @Html.EJS().CheckBox("RepairAllUnitsCheck").Label("Apply to all my properties?").Checked(Model.NotificationviewModel.NewRepairApplyToAllUnits).CssClass("NewRepairAllUnits e-small").Render()
+
+                @Html.EJS().Tooltip("InsuranceTooltip").Content(Model.NotificationviewModel.NewInsuranceToolTip).Position(Syncfusion.EJ2.Popups.Position.TopCenter).ContentTemplate(@<div>
+                    @Html.EJS().CheckBox("InsuranceNotificationCheck").Label("New Insurance Policy Uploaded").Checked(Model.NotificationviewModel.NewInsuranceNotification).CssClass("NewInsuranceNotification").Render()
+                </div>).Render()
+
+                @Html.EJS().Tooltip("AttendanceTooltip").Content(Model.NotificationviewModel.NewAttendanceLogToolTip).Position(Syncfusion.EJ2.Popups.Position.TopCenter).ContentTemplate(@<div>
+                    @Html.EJS().CheckBox("AttendanceNotificationCheck").Label("New Attendance Log submitted").Checked(Model.NotificationviewModel.NewAttendanceLogNotification).CssClass("NewAttendanceNotification").Render()
+                </div>).Render()
+            </div>
+        </div>
+
+        <div class="Full-Width-Container">
+
+        </div>
+
+    }
+
 }
 
+<style>
+    .NewRepairAllUnits {
+        display: none;
+        margin-left: 25px;
+    }
+</style>
 
 
-@*<div class="well well-lg NotificationWell">
-        <div class="NotificationTtiel">
-            <h5>Notifications</h5>
-        </div>
-    </div>
+<script>
 
-    <div class="jumbotron">
-        <h1>Second</h1>
+    var RepairNotificationCheck = document.getElementById('RepairNotificationCheck')
 
-    </div>*@
+
+
+    if (RepairNotificationCheck != null) {
+
+
+        RepairNotificationCheck.addEventListener('change', function (e) {
+            var RepairCheckWrapper = document.getElementsByClassName('NewRepairNotification')[0].getElementsByClassName('e-check');
+            var ischecked;
+            if (RepairCheckWrapper != null) {
+                if (RepairCheckWrapper.length > 0) {
+                    ischecked = true;
+
+                } else {
+                    ischecked = false;
+                }
+            } else {
+                ischecked = false;
+            }
+
+            ShowRepairForAllUnits(ischecked);
+            PostRepairAjax(ischecked);
+        })
+    }
+
+    function ShowRepairForAllUnits(val) {
+        var OwnedPropertyCount = document.getElementById("OwnedUnitCount").value;
+
+        if (OwnedPropertyCount > 1) {
+
+            var i = document.getElementsByClassName('NewRepairAllUnits')[0];
+
+            if (val == true) {
+                $(i).slideDown();
+            } else {
+                $(i).slideUp();
+            }
+        }
+
+
+    }
+
+    function PostRepairAjax(val) {
+        var SelectedPropertyID = document.getElementById("SelectedPropertyID").value;
+        var obj = {
+            IsChecked: val,
+            EstateID: SelectedPropertyID
+        }
+        var url = "/Home/RepairNotifactionAsync/";
+        console.log(url);
+        $.post(url, obj, function (data) {
+
+        });
+    }
+
+
+
+
+
+
+
+</script>
+
+
+
 

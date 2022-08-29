@@ -6,5 +6,7 @@
 
 <h3 class="text-danger">Whoops.</h3>
 <h4 class="text-danger">Slight error. Please try again. </h4>
+@if(Model != null ){
 <p>@Model.Exception.Message</p>
+}
 

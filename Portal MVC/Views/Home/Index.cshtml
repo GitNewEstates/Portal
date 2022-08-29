@@ -33,7 +33,8 @@
 
 
         }
-
+        @Html.HiddenFor(m => m.OwnedProperties.Count, new { id = "OwnedUnitCount" })
+        @Html.HiddenFor(m => m.SelectedProperty.ID, new { id = "SelectedPropertyID" })
         <div class="Full-Width-Container">
             <div class="row">
                 <div class="col-lg-5 col-md-5 col-sm-11 col-xs-11 e-card e-custom-card">
@@ -104,66 +105,110 @@
 
 
 
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-11 col-xs-11" style="box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); padding: 0px; margin-top:15px;">
-
-                    @Html.EJS().TreeView("NotificationsTree").ShowCheckBox(true).AutoCheck(false).NodeChecked("nodeChecked").Fields(field =>
-                    field.Id("id").ParentID("pid").Text("name").HasChildren("hasChild").Expanded("expanded")
-                    .DataSource(Model.NotificationObjectList)).Render()
 
 
 
-                    @*@Html.EJS().ListView("NotificationListView").DataSource(Model.NotificationObjectList).HeaderTitle("Notification Settings").ShowHeader(true).Fields(new ListViewFieldSettings { Text = "text", Id = "id", Tooltip = "text" }).ShowCheckBox(true).Render()*@
-                </div>
+
+        </div>
+
+
+        <div class="Full-Width-Container">
+            <div class="col-lg-6 col-md-6 col-sm-11 col-xs-11 e-card e-custom-card" style="margin-left: 0px; margin-top: 10px;">
+                @Html.EJS().Tooltip("RepairTooltip").Content(Model.NotificationviewModel.NewRepairToolTip).Position(Syncfusion.EJ2.Popups.Position.TopCenter).ContentTemplate(@<div>
+                    @Html.EJS().CheckBox("RepairNotificationCheck").Label("New Repair Raised").Checked(Model.NotificationviewModel.NewRepairNotification).CssClass("NewRepairNotification").Render()
+                </div>).Render()
+                @Html.EJS().CheckBox("RepairAllUnitsCheck").Label("Apply to all my properties?").Checked(Model.NotificationviewModel.NewRepairApplyToAllUnits).CssClass("NewRepairAllUnits e-small").Render()
+
+                @Html.EJS().Tooltip("InsuranceTooltip").Content(Model.NotificationviewModel.NewInsuranceToolTip).Position(Syncfusion.EJ2.Popups.Position.TopCenter).ContentTemplate(@<div>
+                    @Html.EJS().CheckBox("InsuranceNotificationCheck").Label("New Insurance Policy Uploaded").Checked(Model.NotificationviewModel.NewInsuranceNotification).CssClass("NewInsuranceNotification").Render()
+                </div>).Render()
+
+                @Html.EJS().Tooltip("AttendanceTooltip").Content(Model.NotificationviewModel.NewAttendanceLogToolTip).Position(Syncfusion.EJ2.Popups.Position.TopCenter).ContentTemplate(@<div>
+                    @Html.EJS().CheckBox("AttendanceNotificationCheck").Label("New Attendance Log submitted").Checked(Model.NotificationviewModel.NewAttendanceLogNotification).CssClass("NewAttendanceNotification").Render()
+                </div>).Render()
             </div>
-
-
-
         </div>
 
         <div class="Full-Width-Container">
-           
-        </div>
 
-        <div class="Full-Width-Container">
-           
         </div>
 
     }
 
 }
 
+<style>
+    .NewRepairAllUnits {
+        display: none;
+        margin-left: 25px;
+    }
+</style>
 
 
 <script>
-    function nodeChecked(args) {
-        
-        
-        if (args.data[0].parentID != null) {
-            var treeObj = document.getElementById('NotificationsTree');
-            var treeObjChildren = treeObj.children[0].children;
-            for (var i = 0; i <= treeObjChildren.length - 1; i++)
-            {
-                //this gets the parent li item
-                if (treeObjChildren[i].attributes['data-uid'].value == args.data[0].parentID) {
 
-                    //this is the li
-                    var parentObj = treeObjChildren[i];
-                    
+    var RepairNotificationCheck = document.getElementById('RepairNotificationCheck')
 
-                    //this is the main container in li
-                    var span = parentObj.getElementsByClassName('e-frame');
-                    
-                    span[0].classList.add('e-check');
 
-                    
-                   
+
+    if (RepairNotificationCheck != null) {
+
+
+        RepairNotificationCheck.addEventListener('change', function (e) {
+            var RepairCheckWrapper = document.getElementsByClassName('NewRepairNotification')[0].getElementsByClassName('e-check');
+            var ischecked;
+            if (RepairCheckWrapper != null) {
+                if (RepairCheckWrapper.length > 0) {
+                    ischecked = true;
+
+                } else {
+                    ischecked = false;
                 }
-                
+            } else {
+                ischecked = false;
+            }
+
+            ShowRepairForAllUnits(ischecked);
+            PostRepairAjax(ischecked);
+        })
+    }
+
+    function ShowRepairForAllUnits(val) {
+        var OwnedPropertyCount = document.getElementById("OwnedUnitCount").value;
+
+        if (OwnedPropertyCount > 1) {
+
+            var i = document.getElementsByClassName('NewRepairAllUnits')[0];
+
+            if (val == true) {
+                $(i).slideDown();
+            } else {
+                $(i).slideUp();
             }
         }
-       
+
+
     }
+
+    function PostRepairAjax(val) {
+        var SelectedPropertyID = document.getElementById("SelectedPropertyID").value;
+        var obj = {
+            IsChecked: val,
+            EstateID: SelectedPropertyID
+        }
+        var url = "/Home/RepairNotifactionAsync/";
+        console.log(url);
+        $.post(url, obj, function (data) {
+
+        });
+    }
+
+
+
+
+
+
+
 </script>
 
 

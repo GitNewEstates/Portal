@@ -295,3 +295,23 @@ label.Centre {
     background: linear-gradient(to bottom,#0591bc 0%,#045f88 100%);
 }*/
 
+.e-add-button{
+    max-width: 25px;
+    max-height: 25px;
+}
+
+.input-validation {
+    display: none;
+    padding: 5px;
+    background: -moz-linear-gradient(top,#0591bc 0%,#045f88 100%);
+    background: -webkit-linear-gradient(top,#0591bc 0%,#045f88 100%);
+    background: linear-gradient(to bottom,#0591bc 0%,#045f88 100%);
+    color: white;
+}
+
+input-result {
+    display: none;
+    text-align: center;
+    margin-top: 10px;
+}
+

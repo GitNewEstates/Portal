@@ -139,6 +139,10 @@ namespace Portal_MVC.Models
 
     public class AttendanceHistoryViewModel : ViewModelBase
     {
+        public AttendanceHistoryViewModel(ViewModelLevel level = ViewModelLevel.Estate) : base(level)
+        {
+
+        }
         public ServiceChargeBudgetViewModel PropListViewModel { get; set; }
         public IEnumerable<Models.Properties> PropertyList { get; set; }
         public string EstateName { get; set; }

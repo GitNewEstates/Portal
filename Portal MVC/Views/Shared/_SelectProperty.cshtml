@@ -1,39 +1,63 @@
 ﻿
 @using Portal_MVC.Models
-@model Portal_MVC.Models.ServiceChargeBudgetViewModel
+@model Portal_MVC.Models.ViewModelBase
 
 
-    @if (Session["SelectedPropertyID"] == null || (int)Session["SelectedPropertyID"] == 0)
-    {
-
-        <div class="container">
-            <h5>Select the property that you wish view.</h5>
-            <div class="panel GradientBackground panelContainer">
-                <table class="LinkedTable tableHover">
-                    <tbody>
-                        @if (Model != null && Model.PropertyList != null)
+@if (Model != null)
+{
+    <div class="Full-Width-Container">
+        <div class="row">
+            @foreach (Properties p in Model.Properties)
+            {
+                <div class="col-lg-3 col-md-3 col-sm-10 col-xs-10 e-card e-custom-card ">
+                    <div class="e-card-content e-card-center">
+                        <div style="margin-bottom: 5px;">
+                            <i class="fa-solid fa-building fa-3x"></i>
+                        </div>
+                        <h6>@p.Address1</h6>
+                        @if (!string.IsNullOrWhiteSpace(p.Address2))
                         {
-
-                            foreach (Properties item in Model.PropertyList)
-                            {
-                                <tr>
-
-                                    @if (item.Address1 != null && item.Address1 != "")
-                                    {
-                                        <td class="PropSelection" >
-                                    @Html.ActionLink(item.PropertyType.ToString(), Model.ViewName, Model.ControllerName, new { PropID = item.ID, PropName = item.Address1, id = "Prop" + item.ID, PropType = item.PropertyType }, null)</td>
-                                    }
-
-                                </tr>
-                            }
+                            <h6>@p.Address2</h6>
                         }
-                    </tbody>
-                </table>
-            </div>
+                        @if (!string.IsNullOrWhiteSpace(p.Address3))
+                        {
+                            <h6>@p.Address3</h6>
+                        }
+                        @if (!string.IsNullOrWhiteSpace(p.Address4))
+                        {
+                            <h6>@p.Address4</h6>
+                        }
+                        @if (!string.IsNullOrWhiteSpace(p.Address5))
+                        {
+                            <h6>@p.Address5</h6>
+                        }
+                        <div>
+                            @Html.ActionLink("Select", Model.ViewName, Model.ControllerName,
+                                                         new { @class = "e-flat", PropID = p.ID, PropName = p.Address1, id = "Prop" + p.ID, IsEstate = true }, null)
+                            @*@Html.EJS().Button("element").Content("Button").CssClass("e-flat e-primary").Render()*@
+                        </div>
+                    </div>
+
+                </div>
+            }
         </div>
+    </div>
+
+}
+
+
+
+<style>
+    .e-card-center {
+        text-align: center;
     }
 
+    h6 {
+        padding: 0px;
+        margin: 5px 0px;
+    }
+</style>
 
+<script>
 
-
-
+</script>

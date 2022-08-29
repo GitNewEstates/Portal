@@ -10,6 +10,7 @@ namespace Portal_MVC.Models
     public class Owner : PersonBase
     {
         public string Reference { get; set; }
+
     }
 
     public class OwnerMethods
@@ -21,7 +22,10 @@ namespace Portal_MVC.Models
 
             return JsonDeserialize(json); 
         }
-
+        public static string SerializeOwnerToJson(Owner owner)
+        {
+            return Newtonsoft.Json.JsonConvert.SerializeObject(owner);
+        }
         public static Owner JsonDeserialize(string json)
         {
             Owner repair = new Owner();
@@ -38,6 +42,53 @@ namespace Portal_MVC.Models
 
             return repair;
 
+        }
+        public static List<Owner> JsonDeserializeToList(string json)
+        {
+            List<Owner> list = new List<Owner>();
+            try
+            {
+                list = JsonConvert.DeserializeObject<List<Owner>>(json);
+            }
+            catch (Exception ex)
+            {
+                Owner owner = new Owner();
+
+                owner.APIError.errorType = ErrorType.JSONDeserializationError;
+                owner.APIError.HasError = true;
+
+                owner.APIError.Message = $"Error Deserializing JSON returned from API. Error:{ex.Message}";
+                list.Add(owner);
+            }
+
+            return list;
+
+        }
+
+        public async static Task<Owner> InsertAsync(Owner owner)
+        {
+            string json = OwnerMethods.SerializeOwnerToJson(owner);
+
+            string returnjson = await APIMethods.CallAPIPostEndPointAsync("Owner", json);
+
+            return JsonDeserialize(returnjson);
+        }
+
+        public async static Task<List<Owner>> GetAllAsync()
+        {
+            string json = await
+                APIMethods.CallAPIGetEndPointAsync("OwnerList");
+
+            return JsonDeserializeToList(json);
+
+        }
+
+        public async static Task<Owner> GetOwnerByID(int id)
+        {
+            string json = await
+                APIMethods.CallAPIGetEndPointAsync($"Owner/{id}");
+
+            return JsonDeserialize(json);
         }
     }
 }

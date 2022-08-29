@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using Portal_MVC.Models;
 
 namespace Portal_MVC.Controllers
 {
+    [Authorize(Roles = "Customer,Client")]
     public class ServiceChargesController : Controller
     {
         // GET: ServiceCharge
@@ -237,39 +240,60 @@ namespace Portal_MVC.Controllers
             }
         }
 
-        public ActionResult ServiceChargeAccount(int PropID = 0, string PropName = "")
+        public async Task<ActionResult> ServiceChargeAccount(string PropID = "", string PropName = "")
         {
-            if (Session["CustomerID"] != null && (int)Session["CustomerID"] != 0)
+            var id = User.Identity.GetUserId();
+            var email = User.Identity.GetUserName();
+            
+
+            UnitServiceChargesViewModel vm = new UnitServiceChargesViewModel(ViewModelLevel.Unit);
+            await vm.SetBaseDataAsync(id, email);
+            if (!string.IsNullOrWhiteSpace(PropID))
             {
-                if(PropID != 0)
-                {
-                    Session["SelectedPropertyID"] = PropID;
-                    Session["SelectedProperty"] = PropName;
-                }
+                vm.SelectedUnitID = PropID;
+                vm.SelectedUnitName = PropName;
 
-                ServiceChargeBudgetViewModel vm = new ServiceChargeBudgetViewModel();
-
-                if (Session["SelectedPropertyID"] != null && (int)Session["SelectedPropertyID"] != 0)
-                {
-                    vm.MyServiceCharges = new ServiceCharges();
-                    
-                    vm.MyServiceCharges.AllTrans = ServiceChargeMethods.AllTransactions((int)Session["SelectedPropertyID"]);
-                    vm.MyServiceCharges.AllTrans = ServiceChargeMethods.ReplaceTransactionDateWithPaidDate(vm.MyServiceCharges.AllTrans);
-                    return View(vm);
-                } else
-                {
-                    vm.PropertyList = Models.PropertyMethods.GetAllOwnedProperties((int)Session["CustomerID"]);
-                    vm.ViewName = "ServiceChargeAccount";
-                    vm.ControllerName = "ServiceCharges";
-                    return View(vm);
-                }
+            }
+            if (!string.IsNullOrWhiteSpace(vm.SelectedUnitID))
+            {
+                //Units unit = await UnitMethods.GetUnitsAsync()
+                await vm.unitstatementViewModel.LoadAsync(vm.SelectedUnitID);
             } else
             {
-                //return not logged in
-                return View("../Home/NotLoggedIn");
+                vm.ViewName = "ServiceChargeAccount";
+                vm.ControllerName = "ServiceCharges";
             }
-          
+
+            return View(vm);
+
+            
+
+           
         }
 
+    }
+
+    public class UnitServiceChargesViewModel: ViewModelBase
+    {
+        public UnitServiceChargesViewModel(ViewModelLevel level = ViewModelLevel.Unit):base(level)
+        {
+            unitstatementViewModel = new UnitStatementViewModel();
+        }
+
+        public UnitStatementViewModel unitstatementViewModel { get; set; }
+    }
+
+    public class UnitStatementViewModel
+    {
+        public UnitStatementViewModel()
+        {
+            Transactions = new List<UnitStatmentTransaction>();
+        }
+        public List<UnitStatmentTransaction> Transactions { get; set; }
+
+        public async Task LoadAsync(string SelectedUnitID)
+        {
+            Transactions = await UnitStatementMethods.GetunitStatementAsync(SelectedUnitID);
+        }
     }
 }

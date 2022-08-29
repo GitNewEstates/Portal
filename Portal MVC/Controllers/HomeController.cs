@@ -17,14 +17,14 @@ namespace Portal_MVC.Controllers
         public static List<Models.Properties> PropList { get; set; }
     }
 
-    [Authorize(Roles = "Customer,Administrator,Client")]
+    [Authorize(Roles = "Customer,Administrator,Client, Maintenance Operative")]
 
     //Controller for sign in page
     public class HomeController : Controller
     {
        
 
-        public async Task< ActionResult> Index(int PropID = 0, string PropName = "", int logdata = 0)
+        public async Task< ActionResult> Index(string PropID ="", string PropName = "", int logdata = 0)
         {
             var id = User.Identity.GetUserId();
             var email = User.Identity.GetUserName();
@@ -32,7 +32,7 @@ namespace Portal_MVC.Controllers
             
             //var auth = User.Identity.IsAuthenticated;
 
-            HomeViewModel homeViewModel = new HomeViewModel();
+            HomeViewModel homeViewModel = new HomeViewModel(ViewModelLevel.Estate);
             await homeViewModel.SetBaseDataAsync(id, email);
             
             homeViewModel.ViewName = "Index";
@@ -45,25 +45,37 @@ namespace Portal_MVC.Controllers
                     break;
                 case "Customer":
                     //Do specific work and send to Customer Dashboard
-                    if(PropID > 0)
+                    if(!string.IsNullOrWhiteSpace(PropID))
                     {
                         //selected from Estate List
-                        homeViewModel.SelectedProperty.ID = PropID;
+                        homeViewModel.SelectedProperty.ID = 1;// PropID;
                         homeViewModel.SelectedProperty.Address1 = PropName;
+
+                        homeViewModel.SelectedEstateID = PropID;
+                        homeViewModel.SelectedEstateName = PropName;
                         
                     } else
                     {
                         //Customer only has one unit
                     }
 
-                    await homeViewModel.LoadCustomerDashboardDataAsync();
+                    await homeViewModel.LoadCustomerDashboardDataAsync(email);
                     break;
                 case "Client":
                     await homeViewModel.LoadClientDataAsync();
-                    await homeViewModel.LoadCustomerDashboardDataAsync();
+                    await homeViewModel.LoadCustomerDashboardDataAsync(email);
                     homeViewModel.ViewName = "ClientDashboard";
                     
                     break;
+                case "Maintenance Operative":
+
+                    homeViewModel.ViewName = "MaintenanceOpDash";
+                    break;
+                case "Property Manager":
+
+                    homeViewModel.ViewName = "PropertyManagerDash";
+                    break;
+                   
             }
             return View(homeViewModel.ViewName, homeViewModel);
 
@@ -140,6 +152,30 @@ namespace Portal_MVC.Controllers
             //return View(homeViewModel.viewName, homeViewModel);
         }
 
+        public class NotificationObject
+        {
+            public bool IsChecked { get; set; }
+            public int EstateID { get; set; }
+        }
+
+        [HttpPost]
+        public async Task<ContentResult> RepairNotifactionAsync(NotificationObject val)
+        {
+            //get email and owner details
+            var email = User.Identity.GetUserName();
+
+            Owner owner = await
+                OwnerMethods.GetOwnerByEmail(email);
+
+            APINottificationSettings obj = new APINottificationSettings();
+            obj.NewRepair = val.IsChecked;
+            obj.EstateID = val.EstateID;
+            obj.CustomerID = owner.id;
+
+            obj = await APINottificationSettingMethods.UpdateSetting(SettingType.NewRepair,
+                obj);
+            return Content(APINottificationSettingMethods.SerializeRepairToJson(obj), "application/json");
+        }
         private HomeViewModel GetPropertySummary(HomeViewModel homeViewModel, int PropID, string PropName)
         {
             //Sends to summary of the property

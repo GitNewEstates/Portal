@@ -1,0 +1,244 @@
+﻿@using Portal_MVC.Controllers
+@model Portal_MVC.Models.OwnerDetailViewModel
+@{
+    ViewBag.Title = "OwnerDetail";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<div class="Full-Width-Container">
+    <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 e-card e-custom-card">
+
+            @if (Model.owner.APIError.HasError)
+            {
+
+
+                <div class="owner-details-container">
+                    <h4> Error obtaining Owner's details.</h4>
+                   @if (!string.IsNullOrWhiteSpace(Model.Owner.APIError.Message))
+                   {
+                    <h4>@Model.Owner.APIError.Message</h4>
+                   }
+                </div>
+
+            }
+            else
+            {
+                <div class="owner-details-container">
+                    <h5 style="display: none;" id="owner-id">@Model.Owner.id</h5>
+                    <h5>@Model.Owner.FullName</h5>
+
+                    
+                    <h5>@Model.Owner.Address1</h5>
+                    <h5>@Model.Owner.Address2</h5>
+                    <h5>@Model.Owner.Address3</h5>
+                    <h5>@Model.Owner.Address4</h5>
+                    <h5>@Model.Owner.PostCode</h5>
+
+                    @if (!string.IsNullOrWhiteSpace(Model.Owner.Email))
+                    {
+                        
+                        <h5>@Model.owner.Email</h5>
+                    }
+
+                    @if (!string.IsNullOrWhiteSpace(Model.Owner.MobilePhone))
+                    {
+                        
+                        <h5>@Model.owner.MobilePhone</h5>
+                    }
+                </div>
+                <div class="edit-owner-details-controls" style="display: none;">
+                    @Html.EJS().DropDownList("Titles").DataSource(Model.Titles).Enabled(false).Placeholder("Title").Width("200").Render()
+
+                    @Html.EJS().TextBoxFor(model => model.Owner.FirstName).CssClass("TitlesCombo").Placeholder("First Name").Enabled(false).Render()
+                    @Html.EJS().TextBoxFor(model => model.Owner.LastName).Placeholder("Last Name").Width("100%").Enabled(false).Render()
+                    <div class="input-validation" id="last-name-validation">
+                        Must provide a Last Name
+                    </div>
+                    @Html.EJS().TextBoxFor(model => model.Owner.Address1).Placeholder("Address 1").Enabled(false).Render()
+                    <div class="input-validation" id="address1-validation">
+                        Must provide the first line of the address
+                    </div>
+                    @Html.EJS().TextBoxFor(model => model.Owner.Address2).Placeholder("Address 2").Enabled(false).Render()
+                    @Html.EJS().TextBoxFor(model => model.Owner.Address3).Placeholder("Address 3").Enabled(false).Render()
+                    @Html.EJS().TextBoxFor(model => model.Owner.Address4).Placeholder("Address 4").Enabled(false).Render()
+                    @Html.EJS().TextBoxFor(model => model.Owner.PostCode).Placeholder("Post Code").Enabled(false).Width(200).Render()
+                    <div class="input-validation" id="postcode-validation">
+                        Must provide a Post Code
+                    </div>
+                    @Html.EJS().TextBoxFor(model => model.Owner.Email).Placeholder("Email").Enabled(false).Render()
+                    @Html.EJS().MaskedTextBoxFor(model => model.Owner.MobilePhone).Placeholder("Mobile Phone").Mask("000000000000").Enabled(false).Render()
+                </div>
+            }
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 e-card e-custom-card">
+            @Html.EJS().ListView("owned_properties_list").Enable(true).DataSource(Model.OwnedProperties).HeaderTitle("Owned Properties").ShowHeader(true).ShowIcon(true).Fields(new Syncfusion.EJ2.Lists.ListViewFieldSettings { IconCss = "icon" }).Render()
+            @Html.EJS().Button("btn-add-owned-unit").IconCss(Model.AddButtonIconCss).CssClass("e-flat e-primary").Content("Add").Render()
+            <div class="add-Unit-area" id="add-Unit-area">
+                <div>
+                    @Html.EJS().Grid("UnitsGrid").DataSource(Model.UnitList).RowSelected("AddUnitSelected").AllowSelection(true).Columns(col =>
+                    {
+                    col.Field("id").HeaderText("ID").Width("25").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).AllowEditing(false).IsPrimaryKey(true).Add();
+                    col.Field("Name").HeaderText("Name").Width("110").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).AllowEditing(false).AllowSearching(true).Add();
+
+                    }).AllowPaging(true).PageSettings(page => page.PageSize(10)).Toolbar(new List<string>() { "Search" }).Render()
+                </div>
+                <div id="selected_unit-detail" style="display: none;">
+                    <div id="selected-add-unit" style="text-align: left">
+
+                    </div>
+                    <div>
+                        @Html.EJS().DatePicker("ownership-startdate").Format("dd/MM/yyyy").Max(Model.OwnershipStartMaxDate).Placeholder("Ownership Start Date").CssClass("ownership-start").Render()
+                    </div>
+                </div>
+                <div class="input-validation" id="addownership-error">
+                    input validation
+                </div>
+                <div class="button-container">
+                    <div>
+                        @Html.EJS().Button("btn-confirm").IconCss(Model.ConfirmButtonIconCss).CssClass("e-flat e-primary").Content("Confirm").Render()
+                    </div>
+                    <div>
+                        @Html.EJS().Button("btn-cancel").IconCss(Model.CancelButtonIconCss).CssClass("e-flat e-warning").Content("Cancel").Render()
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .edit-owner-details-controls{
+        display: none;
+    }
+
+    .owner-details-container{
+        text-align: left;
+    }
+
+    .add-Unit-area{
+        display: none;
+    }
+
+    .button-container{
+        display: flex;
+        justify-content: space-evenly;
+    }
+    ownership-start {
+        width: 50%;
+    }
+</style>
+
+<script>
+    let SelectedNewUnit;
+    document.getElementById('btn-add-owned-unit').addEventListener('click', function () {
+        document.getElementById('ownership-startdate').value = "";
+        $('#add-Unit-area').slideDown();
+        
+    })
+
+    document.getElementById('btn-confirm').addEventListener('click', function () {
+        if (SelectedNewUnit != null) {
+            var OwnershipStart = document.getElementById('ownership-startdate').value;
+
+
+            var OwnershipObj = {
+                OwnerID: document.getElementById('owner-id').innerText,
+                UnitID: SelectedNewUnit[0].id,
+                Startdate: document.getElementById('ownership-startdate').value
+            }
+
+
+            var url = "/Owner/AddOwnedUnit/";
+            $.ajax({
+                type: 'POST',
+                dataType: 'json',
+                data: OwnershipObj,
+                url: url
+            }).done(function (response) {
+                if (response.APIError.HasError == false) {
+                    
+                    $('#add-Unit-area').slideUp();
+
+                    AddSelectedProperty(response.UnitBalance);
+
+                } else {
+                    document.getElementById('addownership-error').innerText = "Error - " + response.APIError.Message;
+                    $('#addownership-error').slideDown();
+                }
+
+            })
+            
+        }
+    })
+
+    document.getElementById('btn-cancel').addEventListener('click', function () {
+        $('#add-Unit-area').slideUp();
+        SelectedNewUnit = null;
+    })
+
+    function AddUnitSelected(args) {
+        var grid = document.getElementById("UnitsGrid").ej2_instances[0];
+        
+        SelectedNewUnit = grid.getSelectedRecords();  // get the selected records.
+        
+        document.getElementById('selected-add-unit').innerText = SelectedNewUnit[0].Name;
+        $('#selected_unit-detail').slideDown();
+        $('#addownership-error').slideUp();
+        
+    }
+
+    function AddSelectedProperty(unitbalance) {
+        var ListContainer = document.getElementById('owned_properties_list');
+
+        console.log(ListContainer.children.length);
+
+        var Listul;
+        if (ListContainer.children.length == 1) {
+
+
+            var ulContainer = document.createElement('div');
+            ulContainer.classList.add('e-content');
+
+            var Listul = document.createElement('ul');
+            Listul.classList.add('e-list-parent')
+            Listul.classList.add('e-ul');
+
+            ulContainer.appendChild(Listul);
+            ListContainer.appendChild(ulContainer);
+
+        } else {
+
+
+            Listul = ListContainer.children[1].children[0];
+        }
+
+        var NewLi = document.createElement('li');
+        NewLi.setAttribute('role', 'option');
+        NewLi.setAttribute('data-uid', SelectedNewUnit[0].id);
+        NewLi.setAttribute('aria-selected', 'false');
+        NewLi.classList.add('e-list-item');
+        NewLi.classList.add('e-level-1');
+
+        var innerdiv = document.createElement('div');
+        innerdiv.classList.add('e-text-content');
+
+        var IconDiv = document.createElement('div');
+        IconDiv.classList.add('e-list-icon');
+        IconDiv.classList.add('fa-solid');
+        IconDiv.classList.add('fa-building-user');
+
+        var iconSpan = document.createElement('span');
+        iconSpan.classList.add('e-list-text');
+        //Change the below to the info obtained via ajax call
+        iconSpan.innerText = SelectedNewUnit[0].Name + " - " + unitbalance;
+
+        innerdiv.appendChild(IconDiv);
+        innerdiv.appendChild(iconSpan);
+        NewLi.appendChild(innerdiv);
+        Listul.appendChild(NewLi);
+        
+    }
+</script>
+

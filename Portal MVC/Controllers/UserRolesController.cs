@@ -236,7 +236,7 @@ namespace Portal_MVC.Controllers
 
     public class UserRoleViewModel : ViewModelBase
     {
-        public UserRoleViewModel()
+        public UserRoleViewModel(ViewModelLevel level = ViewModelLevel.none):base(level)
         {
             Users = new List<UserRoleObject>();
         }

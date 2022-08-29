@@ -63,6 +63,29 @@
     @if (Model.RoleName == "Administrator" || Model.RoleName == "Manager" || Model.RoleName == "Property Manager" || Model.RoleName == "Maintenance Operative")
     {
         <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Estates<span class="caret"></span></a>
+            <ul class="dropdown-menu CustomSideBarNav CustomMenuUL SidebarDropDown">
+                <li>@Html.ActionLink("Estates", "Index", "Estates")</li>
+            </ul>
+        </li>
+
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Units<span class="caret"></span></a>
+            <ul class="dropdown-menu CustomSideBarNav CustomMenuUL SidebarDropDown">
+                <li>@Html.ActionLink("Unit List", "Index", "Units")</li>
+            </ul>
+        </li>
+
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Owners<span class="caret"></span></a>
+            <ul class="dropdown-menu CustomSideBarNav CustomMenuUL SidebarDropDown">
+                <li>@Html.ActionLink("Owner List", "OwnerList", "Owner")</li>
+                <li>@Html.ActionLink("Add New", "AddOwner", "Owner")</li>
+
+            </ul>
+        </li>
+
+        <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Attendance<span class="caret"></span></a>
             <ul class="dropdown-menu CustomSideBarNav CustomMenuUL SidebarDropDown">
                 <li>@Html.ActionLink("Attendance Log", "AttendanceLog", "Caretaking")</li>
@@ -73,6 +96,8 @@
 
             </ul>
         </li>
+
+
 
     }
 
@@ -89,13 +114,13 @@
         </li>
 
     }
-      @if (Model.RoleName == "Client")
+    @if (Model.RoleName == "Client")
     {
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Client<span class="caret"></span></a>
             <ul class="dropdown-menu CustomSideBarNav CustomMenuUL SidebarDropDown">
                 <li>@Html.ActionLink("Dashboard", "Index", "Client")</li>
-                
+
 
             </ul>
         </li>

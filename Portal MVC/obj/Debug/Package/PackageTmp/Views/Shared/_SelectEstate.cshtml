@@ -1,19 +1,40 @@
 ﻿
 @using Portal_MVC.Models
-@model Portal_MVC.Models.ServiceChargeBudgetViewModel
+@model Portal_MVC.Models.ViewModelBase
 
 
-@if (Session["SelectedPropertyID"] == null || (int)Session["SelectedPropertyID"] == 0)
+@if (Model != null )
 {
+    <div class="Full-Width-Container">
+        <div class="row">
+            @foreach(Properties p in Model.Properties)
+                {
+                    <div class="col-lg-3 col-md-3 col-sm-10 col-xs-10 e-card e-custom-card ">
+                        <div class="e-card-content e-card-center">
+                            <div>
+                                <i class="fa-solid fa-building fa-5x"></i>
+                            </div>
+                            <h4>@p.Address1</h4>
+                            <h5>@p.Address2</h5>
+                            <h5>@p.Address3</h5>
+                            <h5>@p.Address4</h5>
+                            <h5>@p.Address5</h5>
+                        </div>
+                        
+                    </div>
+                }
+        </div>
+    </div>
 
-    <div class="container">
+    @*<div class="container">
         <div class="panel GradientBackground panelContainer">
+           
             <table class="LinkedTable tableHover">
                 <tbody>
-                    @if (Model != null && Model.PropertyList != null)
+                    @if (Model != null && Model.Properties != null)
                     {
 
-                        foreach (Properties item in Model.PropertyList)
+                        foreach (Properties item in Model.Properties)
                         {
                             <tr>
 
@@ -29,10 +50,14 @@
                 </tbody>
             </table>
         </div>
-    </div>
+    </div>*@
 }
 
 
 
-
+<style>
+    .e-card-center {
+        text-align: center;
+    }
+</style>
 

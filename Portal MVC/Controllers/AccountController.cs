@@ -178,7 +178,7 @@ namespace Portal_MVC.Controllers
                     Session["UserType"] = 1;
 
                     return true;
-                } else if (role =="Administrator" || role == "Manager" || role == "Property Manager")
+                } else if (role =="Administrator" || role == "Manager" || role == "Property Manager" || role == "Maintenance Operative")
                 {
                     APIUser user = await UserMethods.GetUserByEmail(UserEmail);
                     if (user.id > 0)
@@ -187,6 +187,7 @@ namespace Portal_MVC.Controllers
                         Session["CustomerName"] = user.FullName;
                         Session["UserType"] = 2;
                         return true;
+
                     } else
                     {
                         return false;

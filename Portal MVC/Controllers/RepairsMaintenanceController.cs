@@ -24,6 +24,7 @@ namespace Portal_MVC.Controllers
 
         public ActionResult ViewAllRepairs(int PropID = 0)
         {
+            //need to selet estate
            
             if(Session["CustomerID"] != null && (int)Session["CustomerID"] != 0)
             {

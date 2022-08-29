@@ -9,7 +9,7 @@ namespace Portal_MVC.Models
 {
     public class RepairsMaintenanceViewModel : ViewModelBase
     {
-        public RepairsMaintenanceViewModel()
+        public RepairsMaintenanceViewModel(ViewModelLevel level = ViewModelLevel.Estate) : base(level)
         {
             Repair = new Repairs();
         }
@@ -27,7 +27,7 @@ namespace Portal_MVC.Models
     }
     public class RepairDetailViewModel : ViewModelBase
     {
-        public RepairDetailViewModel()
+        public RepairDetailViewModel(ViewModelLevel level = ViewModelLevel.none) : base(level)
         {
             Repair = new APIRepairs();
         }

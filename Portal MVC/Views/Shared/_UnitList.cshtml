@@ -1,0 +1,25 @@
+﻿
+
+@using Portal_MVC.Models
+@model Portal_MVC.Controllers.UnitListModel
+
+@using Syncfusion.EJ2
+
+<div class="Full-Width-Container">
+    <div class="row">
+        <div>
+            @Html.EJS().Grid("OwnersGrid").DataSource(Model.Units).AllowFiltering(true).AllowSelection(true).RowSelected("rowSelected").Columns(col =>
+            {
+            col.Field("id").HeaderText("ID").Width("25").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).AllowEditing(false).IsPrimaryKey(true).Add();
+         
+
+                col.Field("Address1").HeaderText("Address 1").Width("100").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).AllowEditing(false).AllowSearching(false).AllowFiltering(false).HideAtMedia("(min-width: 992px)").Add();
+                col.Field("Address2").HeaderText("Address 2").Width("60").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).AllowEditing(false).AllowSearching(false).AllowFiltering(false).HideAtMedia("(min-width: 992px)").Add();
+                col.Field("Address3").HeaderText("Address 3").Width("60").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).AllowEditing(false).AllowSearching(false).AllowFiltering(false).HideAtMedia("(min-width: 992px)").Add();
+                col.Field("Address3").HeaderText("Address 4").Width("60").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).AllowEditing(false).AllowSearching(false).AllowFiltering(false).HideAtMedia("(min-width: 992px)").Add();
+                col.Field("PostCode").HeaderText("Post Code").Width("50").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).AllowEditing(false).AllowSearching(false).AllowFiltering(false).HideAtMedia("(min-width: 992px)").Add();
+
+            }).AllowPaging(true).PageSettings(page => page.PageSize(25)).FilterSettings(Filter => Filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel)).Toolbar(new List<string>() { "Search" }).Render()
+        </div>
+    </div>
+</div>

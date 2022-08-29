@@ -110,17 +110,52 @@ namespace Portal_MVC.Models
 
     public class ViewModelBase
     {
-        public ViewModelBase(int SelectedEstateID = 0)
+        public ViewModelBase(ViewModelLevel level, int SelectedEstateID = 0)
         {
             Properties = new List<Properties>();
             SelectedProperty = new Properties(PropertyTypes.None);
             SelectedProperty.ID = SelectedEstateID;
+            Level = level;
             owner = new Owner();
         }
 
-        
+        public string AddButtonIconCss { get { return "fa-solid fa-square-plus"; } }
+        public string ConfirmButtonIconCss { get { return "fa-solid fa-square-check"; } }
+        public string CancelButtonIconCss { get { return "fa-solid fa-xmark"; } }
         public string RoleName { get; set; }
+
+        public ViewModelLevel Level { get; set; }
         public Properties SelectedProperty { get; set; }
+
+        private string _SelectedEstateID;
+        
+        public string SelectedEstateID
+        {
+            get { return _SelectedEstateID; }
+            set
+            {
+                _SelectedEstateID = value;
+                if (!string.IsNullOrWhiteSpace(_SelectedEstateID))
+                {
+                    IsPropertySelected = true;
+                }
+            }
+        }
+        public string SelectedEstateName { get; set; }
+        private string _SelectedUnitID;
+        public string SelectedUnitID
+        {
+            get { return _SelectedUnitID; }
+            set
+            {
+                _SelectedUnitID = value;
+                if(!string.IsNullOrWhiteSpace(_SelectedUnitID))
+                {
+                    IsPropertySelected = true;
+                }
+            }
+        }
+        public string SelectedUnitName { get; set; }
         public string NameofUser { get; set; }
 
         public string ViewName { get; set; }
@@ -130,7 +165,7 @@ namespace Portal_MVC.Models
 
 
         public int NotificationCount { get; set; } = 0;
-
+        public bool IsPropertySelected { get; private set; }
        public Owner owner { get; set; }    
 
         public async Task SetBaseDataAsync(string userid, string email)
@@ -148,16 +183,7 @@ namespace Portal_MVC.Models
             {
                 owner = await OwnerMethods.GetOwnerByEmail(email);
                 NameofUser = owner.FullName;
-                if (SelectedProperty.ID == 0)
-                {
-                    Properties = await PropertyMethods.GetOwnedEstatesAsync(owner.id);
-                    if (Properties.Count == 1)
-                    {
-                        SelectedProperty = Properties[0];
-                        SelectedProperty.ID = Properties[0].ID;
-                        SelectedProperty.Address1 = Properties[0].Address1;
-                    }
-                }
+                
 
 
 
@@ -170,8 +196,50 @@ namespace Portal_MVC.Models
 
             }
 
-            NotificationCount = 2;
+            if (Level == ViewModelLevel.Estate)
+            {
+                if (string.IsNullOrWhiteSpace(SelectedEstateID))
+                {
+                    Properties = await PropertyMethods.GetOwnedEstatesAsync(owner.id);
+                    if (Properties.Count == 1)
+                    {
+                        SelectedProperty = Properties[0];
+                        SelectedProperty.ID = 1;// Properties[0].UniqueID;
+                        SelectedProperty.Address1 = Properties[0].Address1;
+
+                        SelectedEstateID = Properties[0].UniqueID;
+                        SelectedEstateName = Properties[0].Address1;
+                        IsPropertySelected = true;
+                    }
+                }
+            } else if(Level == ViewModelLevel.Unit)
+            {
+                if(string.IsNullOrWhiteSpace(SelectedUnitID))
+                {
+                    Properties = Models.PropertyMethods.GetAllOwnedProperties(owner.id);
+                    if (Properties.Count == 1)
+                    {
+                        SelectedProperty = Properties[0];
+                        SelectedProperty.ID = Properties[0].ID;
+                        SelectedProperty.Address1 = Properties[0].Address1;
+
+                        SelectedUnitID = Properties[0].UniqueID;
+                        SelectedEstateName = Properties[0].Address1;
+                        IsPropertySelected= true;
+                    }
+                }
+            }
+
+
+            //NotificationCount = 2;
         }
+    }
+
+    public enum ViewModelLevel
+    {
+        Estate,
+        Unit,
+        none
     }
 
     public static class BaseHelpers
