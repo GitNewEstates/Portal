@@ -9,6 +9,7 @@ using Portal_MVC.Models;
 
 namespace Portal_MVC.Controllers
 {
+  
     public class EstatesController : Controller
     {
         private string id { get; set; }

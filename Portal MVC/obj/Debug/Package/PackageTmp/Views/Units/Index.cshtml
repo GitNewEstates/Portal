@@ -1,0 +1,19 @@
+﻿@using Portal_MVC.Models
+@model Portal_MVC.Controllers.UnitListViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+@Html.Partial("_UnitList", Model.UnitModel)
+
+
+<script>
+    function rowSelected(args) {
+        var grid = document.getElementById("OwnersGrid").ej2_instances[0];
+        var selectedrecords = grid.getSelectedRecords();  // get the selected records.
+        console.log(selectedrecords);
+        var id = selectedrecords[0].UniqueID
+        window.location.href = "/Units/UnitAccount?UnitID=" + id;
+    }
+</script>

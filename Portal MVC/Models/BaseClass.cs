@@ -55,6 +55,8 @@ namespace Portal_MVC.Models
         public int id { get; set; }
         public string DocInstanceID { get; set; }
         public APIError APIError { get; set; }
+        public string UserName { get; set; }
+        public string UserID { get; set; }
     }
 
     public class NameBase : IDBase
@@ -108,6 +110,25 @@ namespace Portal_MVC.Models
         }
     }
 
+    public class GenericJSONResponseObject
+    {
+        public GenericJSONResponseObject()
+        {
+            MemoryLocation = new VidexIntercomMemoryLocation();
+            intercom = new VidexIntercom();
+        }
+        public string JSON { get; set; }
+        public string ResponseMessage { get; set; }
+        public VidexIntercom intercom { get; set; }
+        public VidexIntercomMemoryLocation MemoryLocation { get; set; }
+
+        public void Stringify()
+        {
+            JSON = Newtonsoft.Json.JsonConvert.SerializeObject(this);
+        }
+
+     
+    }
     public class ViewModelBase
     {
         public ViewModelBase(ViewModelLevel level, int SelectedEstateID = 0)
@@ -117,12 +138,17 @@ namespace Portal_MVC.Models
             SelectedProperty.ID = SelectedEstateID;
             Level = level;
             owner = new Owner();
+            NotesList = new List<APINotes>();
         }
 
         public string AddButtonIconCss { get { return "fa-solid fa-square-plus"; } }
         public string ConfirmButtonIconCss { get { return "fa-solid fa-square-check"; } }
         public string CancelButtonIconCss { get { return "fa-solid fa-xmark"; } }
+        public string EditButtonIconCss { get { return "fa-regular fa-pen-to-square"; } }
+        public string saveButtonIconCss { get { return "fa-solid fa-floppy-disk"; } }
         public string RoleName { get; set; }
+
+        public List<APINotes> NotesList { get; set; }
 
         public ViewModelLevel Level { get; set; }
         public Properties SelectedProperty { get; set; }

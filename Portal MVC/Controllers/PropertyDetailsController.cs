@@ -45,7 +45,7 @@ namespace Portal_MVC.Controllers
                         }
                         else
                         {
-                            vm.PropListViewModel = new Models.ServiceChargeBudgetViewModel();
+                            vm.PropListViewModel = new Models.ServiceChargeBudgetViewModel(ViewModelLevel.Estate);
                             vm.PropListViewModel.PropertyList = Models.PropertyMethods.GetAllOwnedProperties((int)Session["CustomerID"]);
                             vm.ViewName = "InsurancesView";
                             vm.ControllerName = "PropertyDetails";

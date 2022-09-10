@@ -1,0 +1,122 @@
+﻿@using Portal_MVC.Controllers
+@model Portal_MVC.Controllers.VidexIntercomDetailViewModel
+@{
+    ViewBag.Title = "IntercomDetail";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<div class="Full-Width-Container">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="control-section e-tab-section">
+                <div class="e-sample-resize-container">
+                    <div id="intercom-details" style="display: none">
+                        <div class="response-align">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-4 col-xs-11 col-xs-11 e-card e-custom-card">
+                                    <div class="e-card-header">
+                                        Intercom Details
+                                    </div>
+                                    <div class="e-card-content">
+                                        <table>
+                                            <tr>
+                                                <td class="label-cell">Name</td>
+                                                <td class="label-value">@Model.Intercom.Name</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="label-cell">Description</td>
+                                                <td class="label-value">@Model.Intercom.Description</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="label-cell">Number</td>
+                                                <td class="label-value">@Model.Intercom.Number</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="label-cell">Master Code</td>
+                                                <td class="label-value">@Model.Intercom.MasterCode</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="label-cell">Admin Code</td>
+                                                <td class="label-value">@Model.Intercom.AdminCode</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="label-cell">Max Memory Locations</td>
+                                                <td class="label-value">@Model.Intercom.MaxMemoryLocations</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    @Html.EJS().Grid("IntercomMemLocations").DataSource(Model.MemLoctionList).AllowFiltering(true).AllowSelection(true).RowSelected("rowSelected").Columns(col =>
+                                    {
+                                        
+                                        col.Field("LocationNumber").HeaderText("Location Number").Width("25").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).AllowEditing(false).AllowSearching(true).Add();
+                                        col.Field("LocationName").HeaderText("Location Name").Width("50").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).AllowEditing(false).AllowSearching(false).AllowFiltering(false).Add();
+                                        col.Field("PrimaryNumber").HeaderText("Phone Numer").Width("50").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).AllowEditing(false).AllowSearching(false).AllowFiltering(false).Add();
+                                    }).AllowPaging(true).PageSettings(page => page.PageSize(25)).FilterSettings(Filter => Filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel)).Toolbar(new List<string>() { "Search" }).Render()
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div id="intercom-history" style="display: none">
+                        <div class="response-align">
+                            <div>
+                                Test Content for history
+                                @Html.EJS().TextBoxFor(model => model.Intercom.Name).Render()
+                                @*@Html.EJS().Grid("IntercomMemLocations").DataSource(Model.NotesList).AllowSelection(true).Columns(col =>
+                                {
+                                    col.Field("id").HeaderText("ID").Width("25").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).AllowEditing(false).IsPrimaryKey(true).Add();
+                                    col.Field("Date").HeaderText("Date").Width("25").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).AllowEditing(false).AllowSearching(true).Add();
+                                    col.Field("Note").HeaderText("Note").Width("50").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).AllowEditing(false).AllowSearching(false).AllowFiltering(false).HideAtMedia("(min-width: 992px)").Add();
+                                    col.Field("UserName").HeaderText("User ").Width("50").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).AllowEditing(false).AllowSearching(false).AllowFiltering(false).HideAtMedia("(min-width: 992px)").Add();
+                                }).AllowPaging(true).PageSettings(page => page.PageSize(10)).Toolbar(new List<string>() { "Search" }).Render()*@
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                @Html.EJS().Tab("ej2Tab").Height("auto").Items(Model.TabHeaders).Render()
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<style>
+    .tab-container{
+        margin-top: 10px;
+    }
+
+    .label-cell {
+        width: 40%;
+        padding-right: 15px;
+    }
+
+    .label-value {
+        width: 40%;
+        padding-right: 15px;
+    }
+</style>
+
+<script>
+        function rowSelected(args) {
+            var grid = document.getElementById("IntercomMemLocations").ej2_instances[0];
+            var selectedrecords = grid.getSelectedRecords();  // get the selected records.
+            console.log(selectedrecords);
+            var id = selectedrecords[0].id
+            window.location.href = "/VidexIntercom/MemLocationDetail?id=" + id;
+    }
+
+    
+</script>
+

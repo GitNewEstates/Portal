@@ -1,0 +1,12 @@
+﻿@using Portal_MVC.Models
+@model Portal_MVC.Models.ViewModelBase
+
+<div>
+    @Html.EJS().Grid("IntercomMemLocations").DataSource(Model.NotesList).AllowSelection(true).Columns(col =>
+    {
+        col.Field("id").HeaderText("ID").Width("25").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).AllowEditing(false).IsPrimaryKey(true).Add();
+        col.Field("Date").HeaderText("Date").Width("25").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).AllowEditing(false).AllowSearching(true).Add();
+        col.Field("Note").HeaderText("Note").Width("50").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).AllowEditing(false).AllowSearching(false).AllowFiltering(false).HideAtMedia("(min-width: 992px)").Add();
+        col.Field("UserName").HeaderText("User ").Width("50").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).AllowEditing(false).AllowSearching(false).AllowFiltering(false).HideAtMedia("(min-width: 992px)").Add();
+    }).AllowPaging(true).PageSettings(page => page.PageSize(10)).Toolbar(new List<string>() { "Search" }).Render()
+</div>

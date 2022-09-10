@@ -1,0 +1,316 @@
+﻿@using Portal_MVC.Controllers
+@model Portal_MVC.Controllers.VidexAddNewIntercomViewModel
+@using Syncfusion.EJ2.Navigations
+@{
+    ViewBag.Title = "AddNew";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+<div class="Full-Width-Container">
+    <div class="row">
+        <div>
+            <div class="control-section e-tab-section">
+                <div class="e-sample-resize-container">
+                    <div id="add-owner-details"
+                        <div class="response-align" style="text-align: center">
+                            <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-12 col-xs-12" style="text-align: left">
+                                @Html.EJS().DropDownList("Estates").DataSource(Model.Estates).Fields(new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings { Text = "Name", Value = "id" }).Placeholder("Estate").Width("200").Render()
+
+                                @Html.EJS().TextBoxFor(model => model.NewIntercom.Name).Placeholder("Name").Width("100%").Render()
+                                <div class="input-validation" id="name-validation">
+                                    Must provide a Name
+                                </div>
+                                @Html.EJS().TextBoxFor(model => model.NewIntercom.Description).Multiline(true).Placeholder("Description").Render()
+                                <div class="input-validation" id="Description-validation">
+                                    Must provide a Description
+                                </div>
+                                @Html.EJS().MaskedTextBoxFor(model => model.NewIntercom.Number).Focus("onMobilefocus").Placeholder("Phone Number").Mask("000000000000").Render()
+                                <div class="input-validation" id="number-validation">
+                                    Must provide a Master Code
+                                </div>
+                                @Html.EJS().NumericTextBoxFor(model => model.NewIntercom.MaxMemoryLocationsStr).Placeholder("Max Memory Locations").Format("0").Render()
+                                @Html.EJS().CheckBoxFor(model => model.NewIntercom.CreateMemoryLocations).Label("Create Memory Locations").CssClass("create-memory-locations").Render()
+                                @Html.EJS().MaskedTextBoxFor(model => model.NewIntercom.MasterCode).Focus("onMobilefocus").Placeholder("Master Code").Mask("0000").Render()
+
+                                <div class="input-validation" id="master-code-validation">
+                                    Must provide a Master Code
+                                </div>
+                                @Html.EJS().MaskedTextBoxFor(model => model.NewIntercom.AdminCode).Focus("onMobilefocus").Placeholder("Admin Code").Mask("0000").Render()
+
+
+                                <div class="input-validation" id="admin-code-validation">
+                                    Must provide a Admin Code
+                                </div>
+
+
+                                <div style="display: flex; margin-top: 10px; justify-content: space-evenly">
+                                    <div style="justify-content: flex-end" id="create-owner-button">
+
+                                        @Html.EJS().Button("save-intercom").Content("Save").CssClass("e-flat e-primary").IconCss("e-btn-sb-icon fa-solid fa-floppy-disk").Render()
+                                    </div>
+                                    <div style="justify-content: flex-end; " id="create-owner-button">
+
+                                        @Html.EJS().Button("btn-reset").Content("Reset").CssClass("e-flat e-warning").IconCss("e-btn-sb-icon fa-solid fa-xmark").Render()
+                                    </div>
+
+                                </div>
+                                <div class="input-validation input-result input-result-success" id="input-result-success">
+
+                                    <span><i class="fa-solid fa-square-check"></i></span>
+                                    <span>Intercom Successfully Created</span>
+                                </div>
+                                <div class="input-validation input-result input-result-fail" id="input-result-fail">
+
+                                    <span><i class="fa-solid fa-square-exclamation"></i></span>
+                                    <span>Error Occurred</span>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+
+    <style>
+
+        input {
+            max-width: 100%;
+        }
+
+
+        .e-tab-section .e-tab .e-content.e-control {
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        .responsive-align {
+            width: 75%;
+            margin: 0 auto;
+        }
+
+        .e-tab-section {
+            padding: 0 15px;
+        }
+
+        .wizard-title {
+            font-size: 15px;
+        }
+
+        .e-tab .e-tab-header {
+            /*background: #badfba !important;*/
+            text-align: center;
+        }
+
+        .e-input-group {
+            margin-top: 10px;
+        }
+
+        .input-result{
+            margin-top: 10px;
+        }
+    </style>
+
+    <script>
+
+        document.getElementById("btn-reset").addEventListener('click', function () {
+            HideAllValidation();
+            EnableInputs();
+            ClearFields();
+        });
+
+        function ClearFields() {
+            document.getElementById('Estates_hidden').value = "";
+            document.getElementById('NewIntercom_Name').value = "";
+            document.getElementById('textarea_0').value = "";
+            document.getElementById('NewIntercom_Number').value = "";
+            document.getElementById('NewIntercom_MasterCode').value = "";
+            document.getElementById('NewIntercom_AdminCode').value = "";
+            document.getElementById('NewIntercom_MaxMemoryLocationsStr').value = 0;
+        }
+
+        document.getElementById("save-intercom").addEventListener('click', function () {
+            HideAllValidation();
+
+            //tabObj = document.getElementById("ej2Tab").ej2_instances[0];
+            //tabObj.enableTab(1, true);
+            var Estate = document.getElementById('Estates_hidden').value;
+            var Name = document.getElementById('NewIntercom_Name').value;
+            var Description = document.getElementById('textarea_0').value;
+            var Number = document.getElementById('NewIntercom_Number').value;
+            var MasterCode = document.getElementById('NewIntercom_MasterCode').value;
+            var AdminCode = document.getElementById('NewIntercom_AdminCode').value;
+            var MaxMemory = document.getElementById('NewIntercom_MaxMemoryLocationsStr').value;
+
+            var memLocationWrapper = document.getElementsByClassName('create-memory-locations')[0].getElementsByClassName('e-check');
+            var ischecked;
+            if (memLocationWrapper != null) {
+                if (memLocationWrapper.length > 0) {
+                    ischecked = true;
+
+                } else {
+                    ischecked = false;
+                }
+            } else {
+                ischecked = false;
+            }
+            
+
+            if (Name == null || Name == "") {
+                $('#name-validation').slideDown()
+                return;
+            }
+            if (Description == null || Description == "") {
+                $('#Description-validation').slideDown()
+                return;
+            }
+            if (Number == null || Number == "") {
+                $('#number-validation').slideDown()
+                return;
+
+            }
+            if (MasterCode == null || MasterCode == "") {
+                $('#master-code-validation').slideDown()
+                return;
+
+            }
+
+            if (AdminCode == null || AdminCode == "") {
+                $('#admin-code-validation').slideDown()
+                return;
+
+            }
+
+            var intercom = {
+                EstateID: Estate,
+                Name: Name,
+                Description: Description,
+                Number: Number,
+                AdminCode: AdminCode,
+                MasterCode: MasterCode,
+                MaxMemoryLocationsStr: MaxMemory,
+                CreateMemoryLocations: ischecked
+                
+            }
+
+            console.log(intercom);
+
+            var url = "/VidexIntercom/Create/";
+
+            $.ajax({
+                type: 'POST',
+                dataType: 'json',
+                data: intercom,
+                url: url
+            }).done(function (response) {
+                console.log(response)
+
+                if (response.APIError.HasError == false) {
+
+                    //DisableInputs();
+                    $("#input-result-success").slideDown();
+                    ClearFields();
+
+
+                } else {
+                    console.log('error');
+                    $('#input-result-fail').slideDown();
+                }
+            });
+
+
+
+
+
+            //$.post(url, datastring, function (data) {
+            //    console.log(data);
+            //    if (data.APIError.HasError == true) {
+
+            //        DisableInputs();
+            //        $("#input-result-success").slideDown();
+            //        document.getElementById('ownerid').value = data.id;
+            //        tabObj = document.getElementById("ej2Tab").ej2_instances[0];
+            //        tabObj.enableTab(1, true);
+
+            //    } else {
+            //        console.log('error');
+            //        $('#input-result-fail').slideDown();
+            //    }
+            //})
+
+
+        })
+
+        function DisableInputs() {
+
+            var classname = 'e-disabled';
+            document.getElementsByClassName('e-input-group')[0].classList.add(classname);
+            document.getElementById('Titles').classList.remove(classname);
+            document.getElementById('Owner_FirstName').classList.add(classname);
+            document.getElementById('Owner_FirstName').setAttribute('disabled', 'disabled');
+            document.getElementById('Owner_LastName').setAttribute('disabled', 'disabled');
+            document.getElementById('Owner_Address1').setAttribute('disabled', 'disabled');
+            document.getElementById('Owner_Address2').setAttribute('disabled', 'disabled');
+            document.getElementById('Owner_Address3').setAttribute('disabled', 'disabled');
+            document.getElementById('Owner_Address4').setAttribute('disabled', 'disabled');
+            document.getElementById('Owner_PostCode').setAttribute('disabled', 'disabled');
+            document.getElementById('Owner_Email').setAttribute('disabled', 'disabled');
+            document.getElementById('Owner_MobilePhone').setAttribute('disabled', 'disabled');
+
+            document.getElementById('Owner_LastName').classList.add(classname);
+            document.getElementById('Owner_Address1').classList.add(classname);
+            document.getElementById('Owner_Address2').classList.add(classname);
+            document.getElementById('Owner_Address3').classList.add(classname);
+            document.getElementById('Owner_Address4').classList.add(classname);
+            document.getElementById('Owner_PostCode').classList.add(classname);
+            document.getElementById('Owner_Email').classList.add(classname);
+            document.getElementById('Owner_MobilePhone').classList.add(classname);
+        }
+
+        function EnableInputs() {
+
+            var classname = 'e-disabled';
+            document.getElementsByClassName('e-input-group')[0].classList.remove(classname);
+            document.getElementById('Titles').classList.remove(classname);
+            document.getElementById('Owner_FirstName').classList.remove(classname);
+            document.getElementById('Owner_FirstName').removeAttribute('disabled', 'disabled');
+            document.getElementById('Owner_LastName').removeAttribute('disabled', 'disabled');
+            document.getElementById('Owner_Address1').removeAttribute('disabled', 'disabled');
+            document.getElementById('Owner_Address2').removeAttribute('disabled', 'disabled');
+            document.getElementById('Owner_Address3').removeAttribute('disabled', 'disabled');
+            document.getElementById('Owner_Address4').removeAttribute('disabled', 'disabled');
+            document.getElementById('Owner_PostCode').removeAttribute('disabled', 'disabled');
+            document.getElementById('Owner_Email').removeAttribute('disabled', 'disabled');
+            document.getElementById('Owner_MobilePhone').removeAttribute('disabled', 'disabled');
+
+            document.getElementById('Owner_LastName').classList.remove(classname);
+            document.getElementById('Owner_Address1').classList.remove(classname);
+            document.getElementById('Owner_Address2').classList.remove(classname);
+            document.getElementById('Owner_Address3').classList.remove(classname);
+            document.getElementById('Owner_Address4').classList.remove(classname);
+            document.getElementById('Owner_PostCode').classList.remove(classname);
+            document.getElementById('Owner_Email').classList.remove(classname);
+            document.getElementById('Owner_MobilePhone').classList.remove(classname);
+        }
+
+        function HideAllValidation() {
+            // document.getElementById("last-name-validation").style.display = 'none';
+            $('#last-name-validation').slideUp();
+            $('#postcode-validation').slideUp()
+            $('#address1-validation').slideUp()
+        }
+
+        
+        function onMobilefocus(args) {
+            //sets cursor position at start of MaskedTextBox
+            args.selectionStart = 0;
+            // console.log(args);
+        }
+    </script>
+
+
+

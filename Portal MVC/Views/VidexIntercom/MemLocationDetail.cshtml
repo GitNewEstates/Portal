@@ -1,0 +1,584 @@
+﻿@using Portal_MVC.Models
+@model Portal_MVC.Controllers.MemoryLocationDetailViewModel
+@{
+    ViewBag.Title = "MemLocationDetail";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<div class="Full-Width-Container">
+    <div class="row">
+        <div style="display: flex; justify-content: center; width: 100%;">
+            <div>
+                <h3>@Model.Intercom.Name</h3>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-11 col-xs-11 e-card e-custom-card">
+            <div class="e-card-header">
+                Intercom Memory Location
+            </div>
+            <div class="e-card-content" id="memory-location-content" >
+                <div class="memory-location-details" id="memory-location-details">
+                    <table>
+                        <tr>
+                            <td class="label-cell">Memory Location</td>
+                            <td class="label-value" id="location-cell"></td>
+                        </tr>
+                        <tr>
+                            <td class="label-cell">Memory Name</td>
+                            <td class="label-value" id="location-name-cell"></td>
+                        </tr>
+                        <tr>
+                            <td class="label-cell">Primary Number</td>
+                            <td class="label-value edit-value">
+                                <div class="cell-value" id="primary-number-cell">
+
+                                </div>
+                                <div class="edit-input-controls edit-cell" id="edit-primary-number-cell-controls">
+                                    @Html.EJS().MaskedTextBox("primary-number-edit").Mask("00000000000").Render()
+                                    <div class="input-validation" id="primary-number-validation">
+
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="edit-controls" id="edit-primary-number-cell">
+                                @Html.EJS().Button("edit-primary-number").IconCss(Model.EditButtonIconCss).CssClass("e-flat e-primary icon-button no-pad").Render()
+                                @Html.EJS().Button("save-primary-number").IconCss(Model.saveButtonIconCss).CssClass("e-flat e-primary icon-button edit-cell no-pad").Render()
+                                @Html.EJS().ProgressButton("save-primary-progress").CssClass("e-flat e-primary edit-cell icon-button no-pad").Duration(60000).EnableProgress(true).Render()
+                                @Html.EJS().Button("cancel-save-primary-number").CssClass("e-flat e-warning edit-cell icon-button no-pad").IconCss(Model.CancelButtonIconCss).Render()
+                                <div class="update-progress-container" id="primary-update-container">
+                                    @*@(Html.EJS().ProgressBar("update-query-progress")
+                                    .Type(Syncfusion.EJ2.ProgressBar.ProgressType.Circular).Value(40)
+                                    .IsIndeterminate(true)
+                                    .Height("40")
+                                    .Animation(an => an.Enable(true).Delay(0).Duration(2000))
+                                    .Minimum(0).Maximum(100)
+                                    .Render())*@
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="label-cell">Divert 1</td>
+                            <td class="label-value edit-value">
+                                <div class="cell-value" id="diver1-number-cell">
+
+                                </div>
+                                <div class="edit-input-controls edit-cell">
+                                    @Html.EJS().MaskedTextBox("divert1-edit").Mask("00000000000").Render()
+                                </div>
+                            </td>
+
+
+                        </tr>
+                        <tr>
+                            <td class="label-cell">Divert 2</td>
+                            <td class="label-value edit-value">
+                                <div class="cell-value" id="diver2-number-cell">
+
+                                </div>
+                                <div class="edit-input-controls edit-cell">
+                                    @Html.EJS().MaskedTextBox("divert2-edit").Mask("00000000000").Render()
+                                </div>
+                            </td>
+
+
+                        </tr>
+                        <tr>
+                            <td class="label-cell">Divert 3</td>
+                            <td class="label-value  edit-value">
+                                <div class="cell-value" id="diver3-number-cell">
+
+                                </div>
+                                <div class="edit-input-controls edit-cell">
+                                    @Html.EJS().MaskedTextBox("divert3-edit").Mask("00000000000").Render()
+                                </div>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td class="label-cell">Access Code</td>
+                            <td class="label-value  edit-value">
+                                <div class="cell-value" id="access-code-cell">
+
+                                </div>
+                                <div class="edit-input-controls edit-cell">
+                                    @Html.EJS().MaskedTextBox("access-code-edit").Mask("0000").Render()
+                                </div>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td class="label-cell">Dial to Open</td>
+                            <td class="label-value  edit-value">
+                                <div class="cell-value" id="dto-cell">
+
+                                </div>
+                                <div class="edit-input-controls edit-cell">
+                                    @Html.EJS().CheckBox("dto-edit").Render()
+                                </div>
+                            </td>
+
+                        </tr>
+                    </table>
+                </div>
+
+
+            </div>
+            <div class="memory-location-controls">
+                @Html.HiddenFor(model => model.MemoryLocation.IntercomID)
+                @Html.HiddenFor(model => model.MemoryLocation.id)
+                @*@Html.EJS().ProgressButton("btn-query-mem-location").Content("Query").CssClass("e-flat e-primary").Render()*@
+                <div class="row">
+                    <div style="margin-left: 15px; margin-right: 15px; display: flex; flex-direction: row; align-content: space-between;">
+                        <div class="" style="">
+                            @Html.EJS().Tooltip("sync-tooltip").Content("Sync with Database").ContentTemplate(@<span>
+                                @Html.EJS().Button("btn-sync-mem-location").IconCss("fa-solid fa-rotate").CssClass("e-flat e-primary icon-button no-pad").Render()
+                                </span>).Render()
+                        </div>
+                        <div>
+                            @Html.EJS().Button("btn-query-mem-location").Content("Query").CssClass("e-flat e-primary").Render()
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="text-align: right;">
+                        @Html.EJS().Button("btn-query-next-location").Content("Next").CssClass("e-flat e-primary no-display").Render()
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 memory-location-details" id="progress-container">
+                        @(Html.EJS().ProgressBar("query-progress")
+                            .Type(Syncfusion.EJ2.ProgressBar.ProgressType.Linear).Value(40)
+                            .IsIndeterminate(true)
+                            .Height("60")
+                            .Animation(an => an.Enable(true).Delay(0).Duration(2000))
+                            .Minimum(0).Maximum(100)
+                            .Render())
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12" style="display: flex; text-align: center;">
+                <div class="col-lg-12 col-md-12 col-sm-12 input-validation" id="query-error">
+                    <div id="error-message">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-11 col-xs-11 e-card e-custom-card">
+            <div class="e-card-header">
+                Database Memory Location
+            </div>
+            <div class="e-card-content" id="db-memory-details" style="background-color: yellow;">
+                <div>
+                    <table>
+                        <tr>
+                            <td class="label-cell">Memory Location</td>
+                            <td class="label-value" id="db-location-cell">@Model.DBMemoryLocation.LocationNumber</td>
+                        </tr>
+                        <tr>
+                            <td class="label-cell">Memory Name</td>
+                            <td class="label-value" id="db-location-name-cell">@Model.DBMemoryLocation.LocationName</td>
+                        </tr>
+                        <tr>
+                            <td class="label-cell">Primary Number</td>
+                            <td class="label-value">
+                                <div class="cell-value" id="db-primary-number-cell">
+                                    @Model.DBMemoryLocation.PrimaryNumber
+                                </div>
+
+                            </td>
+
+                        </tr>
+
+                        <tr>
+                            <td class="label-cell">Divert 1</td>
+                            <td class="label-value">
+                                <div class="cell-value" id="db-diver1-number-cell">
+                                    @Model.DBMemoryLocation.Divert1
+                                </div>
+
+                            </td>
+
+
+                        </tr>
+                        <tr>
+                            <td class="label-cell">Divert 2</td>
+                            <td class="label-value edit-value">
+                                <div class="cell-value" id="db-diver2-number-cell">
+                                    @Model.DBMemoryLocation.Divert2
+                                </div>
+
+                            </td>
+
+
+                        </tr>
+                        <tr>
+                            <td class="label-cell">Divert 3</td>
+                            <td class="label-value">
+                                <div class="cell-value" id="db-diver3-number-cell">
+                                    @Model.DBMemoryLocation.Divert3
+                                </div>
+
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td class="label-cell">Access Code</td>
+                            <td class="label-value">
+                                <div class="cell-value" id="db-access-code-cell">
+                                    @Model.DBMemoryLocation.AccessCode
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label-cell">Dial to Open</td>
+                            <td class="label-value">
+                                <div class="cell-value" id="db-dto-cell">
+                                    @Model.DBMemoryLocation.DialToOpen
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="memory-location-controls" style="display: flex; text-align: center;">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        @Html.EJS().Button("btn-query-db-mem-location").Content("Next").CssClass("e-flat e-primary").Render()
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .input-validation{
+        margin-bottom: 10px;
+    }
+    .no-display{
+        display: none;
+    }
+    .update-progress-container {
+        display: none;
+    }
+    .update-progress-container:first-child:last-child {
+        width: 70px;
+    }
+    .memory-location-details {
+        display: none;
+    }
+    .label-cell{
+        width: 40%;
+        padding-right: 15px;
+    }
+    .label-value{
+        width: 40%;
+        padding-right: 15px;
+    }
+    .edit-controls{
+        width: 30%;
+        padding-right: 15px;
+    }
+    .memory-location-controls {
+        padding-bottom: 15px;
+    }
+
+    .fa-square-plus{
+        height: 100%;
+        width: 100%;
+    }
+
+    .icon-button{
+        border-width: 0px;
+        border-color: transparent;
+        padding: 0px;
+        
+    }
+
+    .no-pad{
+        padding: 0px !important;
+    }
+
+  
+
+
+    .edit-cell {
+        display: none;
+    }
+    .edit-input-controls{
+        width: 100%;
+    }
+</style>
+
+<script>
+ 
+
+    //QUERY MEMORY LOCATION
+    document.getElementById('btn-query-mem-location').addEventListener('click', function () {
+        
+
+
+        var id =  document.getElementById('MemoryLocation_id').value
+        QueryLocation(id);
+       
+
+    })
+
+    //Query Next Location
+    document.getElementById('btn-query-next-location').addEventListener('click', function () {
+        GetNextRecord();
+    })
+
+    function GetNextRecord() {
+        $('#db-memory-details').slideUp();
+        $('#memory-location-details').slideUp();
+        var id = Number(document.getElementById('MemoryLocation_id').value)
+
+        QueryLocation(id + 1);
+        document.getElementById('MemoryLocation_id').value = id + 1;
+
+        $('#db-memory-details').slideDown();
+        $('#memory-location-details').slideDown();
+    }
+
+    function QueryLocation(id) {
+        $('#memory-location-details').slideUp();
+        $('#query-error').slideUp();
+
+        var progressbar = document.getElementById('progress-container');
+
+        if (progressbar != null) {
+            progressbar.style.display = 'block';
+        }
+        document.getElementById('btn-query-mem-location').style.display = 'none';
+        document.getElementById('btn-query-next-location').style.display = 'none';
+
+        var data = {
+            id: id
+
+        }
+        console.log(data);
+        var url = "/VidexIntercom/QueryMemLocation/";
+
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            data: data,
+            url: url
+        }).done
+            (function (response) {
+
+                if (response.ResponseMessage == null || response.ResponseMessage == "")
+                {
+                    alert('error');
+                } else {
+                    if (response.ResponseMessage == "Time Out") {
+                        //timeout errror will occur if response not received within 1 minute or if
+                        //the memory location has not been initialised and so holds no data
+                        var errormessage = "<div><h5>No data was retrieved</h5></div> <div><p style=\"line-height: 20px;\">This could be due to an error or no response being received from the Intercom.</p></div>";
+
+                        DisplayQueryError(errormessage);
+                        document.getElementById('btn-query-mem-location').style.display = 'inline-block';
+
+                    } else if (response.ResponseMessage == "Found") {
+
+                        document.getElementById('location-cell').innerText = response.MemoryLocation.LocationNumber;
+                        document.getElementById('location-name-cell').innerText = response.MemoryLocation.LocationName;
+                        document.getElementById('primary-number-cell').innerText = response.MemoryLocation.PrimaryNumber;
+                        document.getElementById('diver1-number-cell').innerText = response.MemoryLocation.Divert1;
+                        document.getElementById('diver2-number-cell').innerText = response.MemoryLocation.Divert2;
+                        document.getElementById('diver3-number-cell').innerText = response.MemoryLocation.Divert3;
+                        document.getElementById('dto-cell').innerText = response.MemoryLocation.DialToOpen;
+                        document.getElementById('access-code-cell').innerText = response.MemoryLocation.AccessCode;
+
+                        $('#memory-location-details').slideDown();
+                        document.getElementById('btn-query-mem-location').style.display = 'none';
+                        document.getElementById('progress-container').style.display = 'none';
+                        document.getElementById('btn-query-mem-location').style.display = 'block';
+                        document.getElementById('btn-query-next-location').style.display = 'block';
+
+                    } else if (response.ResponseMessage == "Error") {
+                        document.getElementById('btn-query-mem-location').style.display = 'block';
+                    }
+                    else {
+                        alert('Default');
+                    }
+                }
+
+                if (progressbar != null) {
+                    progressbar.style.display = 'none';
+                }
+
+            });
+
+    }
+    function DisplayQueryError(message) {
+        var queryError = document.getElementById('error-message');
+        queryError.innerHTML = message;
+
+        $('#query-error').slideDown();
+    }
+
+    document.getElementById('edit-primary-number').addEventListener('click', function () {
+        document.getElementById('primary-number-edit').value = document.getElementById('primary-number-cell').innerText;
+        document.getElementById('edit-primary-number').style.display = 'none';
+        document.getElementById('primary-number-cell').style.display = 'none';
+
+        document.getElementById('edit-primary-number-cell-controls').style.display = 'block';
+        document.getElementById('save-primary-number').style.display = 'inline-block';
+        document.getElementById('cancel-save-primary-number').style.display = 'inline-block';
+
+        
+
+    })
+
+    document.getElementById('btn-query-db-mem-location').addEventListener('click', function () {
+        //$('#db-memory-details').slideUp();
+        //$('#memory-location-details').slideUp();
+
+        //var id = Number(document.getElementById('MemoryLocation_id').value + 1)
+        //var data = {
+        //    id: id
+
+        //}
+        //var url = "/VidexIntercom/" + GetNextRecord + "/";
+
+        //$.ajax({
+        //    type: 'POST',
+        //    dataType: 'json',
+        //    data: data,
+        //    url: url
+        //}).done
+        //    (function (response) {
+        //        console.log(response);
+        //    });
+
+        //$('#db-memory-details').slideDown();
+    })
+
+
+    //SAVE PRIMARY NUMBER
+    document.getElementById('save-primary-number').addEventListener('click', function () {
+        $("#primary-number-validation").slideUp();
+        document.getElementById('btn-query-mem-location').style.display = 'none';
+
+        //validation
+        var newNumber = document.getElementById('primary-number-edit').value;
+        var isValid = true;
+        var ErrorElement = document.getElementById('primary-number-validation');
+
+        if (newNumber.length > 0) {
+
+            if (newNumber.length != 11) {
+                ErrorElement.innerText = "Invalid number";
+                isValid = false;
+            }
+
+            if (newNumber.includes("_") == true) {
+                ErrorElement.innerText = "Invalid number";
+                isValid = false;
+            }
+        }
+        
+        
+
+        if (isValid == false) {
+            $("#primary-number-validation").slideDown();
+        }
+
+        if (isValid == true) {
+            //display progess
+            document.getElementById('primary-update-container').style.display = 'inline-block';
+
+            //hide buttons
+            document.getElementById('save-primary-number').style.display = 'none';
+            document.getElementById('cancel-save-primary-number').style.display = 'none';
+            document.getElementById('edit-primary-number').style.display = 'none';
+            document.getElementById('save-primary-progress').style.display = 'inline-block';
+            document.getElementById('save-primary-progress').click();
+
+            DoUpdateObj('EditPrimaryNumber')
+            
+        }
+    })
+
+    document.getElementById('cancel-save-primary-number').addEventListener('click', function () {
+        HideAllEditControls();
+
+        $("#primary-number-validation").slideUp();
+    })
+
+
+    //COMMON FUNCTION
+    function HideAllEditControls() {
+        document.getElementById('save-primary-number').style.display = 'none';
+        document.getElementById('cancel-save-primary-number').style.display = 'none';
+        document.getElementById('edit-primary-number-cell-controls').style.display = 'none';
+
+        document.getElementById('edit-primary-number').style.display = 'block';
+        document.getElementById('primary-number-cell').style.display = 'block';
+
+        //progress controls
+        document.getElementById('save-primary-progress').style.display = 'none';
+
+    }
+
+    function DoUpdateObj(ControllerMethod) {
+        var data = {
+            id: document.getElementById('MemoryLocation_id').value,
+            IntercomID: document.getElementById('MemoryLocation_IntercomID').value,
+            LocationName: document.getElementById('location-name-cell').innerText,
+            LocationNumber: document.getElementById('location-cell').innerText,
+            AccessCode: document.getElementById('access-code-edit').value,
+            PrimaryNumber: document.getElementById('primary-number-edit').value,
+            Divert1: document.getElementById('divert1-edit').value,
+            Divert2: document.getElementById('divert2-edit').value,
+            Divert3: document.getElementById('divert3-edit').value
+
+        }
+
+        console.log(data);
+
+        var url = "/VidexIntercom/" + ControllerMethod + "/";
+
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            data: data,
+            url: url
+            }).done
+            (function (response)
+            {
+                console.log(response);
+                if (response.ResponseMessage == null || response.ResponseMessage == "") {
+                    alert('error');
+                } else {
+                    if (response.ResponseMessage == "Time Out") {
+                        alert('Time Out');
+                    } else if (response.ResponseMessage == "Found") {
+
+
+
+                    } else {
+                        alert('Default');
+                    }
+                }
+
+                HideAllEditControls();
+                document.getElementById('btn-query-mem-location').style.display = 'inline-block';
+            });
+    }
+
+  
+   
+
+    function EditMemoryLocationDetails() {
+
+    }
+
+
+</script>

@@ -1767,3 +1767,12 @@ C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin
 C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\Microsoft.Extensions.Logging.Abstractions.xml
 C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\Microsoft.Extensions.ObjectPool.xml
 C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\Microsoft.Extensions.Options.xml
+C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\Microsoft.IdentityModel.Logging.dll
+C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\Microsoft.IdentityModel.Tokens.dll
+C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\Twilio.AspNet.Common.dll
+C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\Twilio.AspNet.Mvc.dll
+C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\Twilio.dll
+C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\Microsoft.IdentityModel.Tokens.xml
+C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\System.IdentityModel.Tokens.Jwt.xml
+C:\Users\adamn\OneDrive\Documents\Development Local\Folder\Portal\Portal MVC\bin\Twilio.xml

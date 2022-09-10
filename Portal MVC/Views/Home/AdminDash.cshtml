@@ -3,8 +3,52 @@
     Layout = "~/Views/Shared/_HomeLayout.cshtml";
 }
 
-<div>
-    <h1>Admin DashBoard</h1>
+<div class="edit-area-modal" id="edit-area">
+    <div class="edit-area-content">
+        <h5>This is the edit area</h5>
+        @Html.EJS().Button("targetButton").Content("Close Dialog").Render()
+    </div>
 </div>
+
+<div>
+    @Html.EJS().Button("btn-display-edit-area").Content("Open Dialog").Render()
+</div>
+
+<style>
+    .edit-area-modal{
+        display: none;
+        position: absolute;
+        top: 0;
+        height: 100%;
+        right: 0;
+        width: 500px;
+        background: rgba(0,0,0,0.3);
+        z-index: 999;
+    }
+</style>
+
+<script>
+    document.getElementById('targetButton').addEventListener('click', function () {
+        document.getElementById('edit-area').style.display = 'none';
+    })
+
+    document.getElementById('btn-display-edit-area').addEventListener('click', function () {
+        document.getElementById('edit-area').style.display = 'block';
+    })
+</script>
+
+@*<div id="container" style="height:400px;">
+    @Html.EJS().Button("targetButton").Content("Open Dialog").Render()
+    @Html.EJS().Dialog("dialog").Header("Dialog").Content("This is a Dialog with content").Target("#container").Width("250px").Position(p => p.).Render()
+</div>
+
+<script>
+    window.onload = function () {
+        document.getElementById('targetButton').onclick = function () {
+            var dialog = document.getElementById("dialog").ej2_instances[0]
+            dialog.show();
+        }
+    }
+</script>*@
 
 

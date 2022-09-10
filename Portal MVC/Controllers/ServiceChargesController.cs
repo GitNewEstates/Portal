@@ -20,7 +20,7 @@ namespace Portal_MVC.Controllers
         {
             if (Session["CustomerID"] != null && (int)Session["CustomerID"] != 0)
             {
-                Models.ServiceChargeBudgetViewModel mv = new Models.ServiceChargeBudgetViewModel();
+                Models.ServiceChargeBudgetViewModel mv = new Models.ServiceChargeBudgetViewModel(ViewModelLevel.none);
 
                 if (PropID > 0)
                 {
@@ -63,47 +63,54 @@ namespace Portal_MVC.Controllers
             
         }
 
-        public ActionResult ServiceChargeExpenditure(int PropID = 0, string PropName = "")
+        public async Task<ActionResult> ServiceChargeExpenditure(string PropID = "", string PropName = "")
         {
-            if (Session["CustomerID"] != null || (int)Session["CustomerID"] != 0)
+            var id = User.Identity.GetUserId();
+            var email = User.Identity.GetUserName();
+
+            Models.ServiceChargeBudgetViewModel mv = new Models.ServiceChargeBudgetViewModel(ViewModelLevel.Estate);
+            await mv.SetBaseDataAsync(id, email);
+
+            if (!string.IsNullOrWhiteSpace(PropID))
             {
-                Models.ServiceChargeBudgetViewModel mv = new Models.ServiceChargeBudgetViewModel();
+                mv.SelectedEstateName = PropName;
+                mv.SelectedEstateID = PropID;
 
-                if (PropID > 0)
-                {
-                    Session["SelectedPropertyID"] = PropID;
-                    Session["SelectedProperty"] = PropName;
-                    Session["IsDirector"] = EstateDirectors.EstateDirectorMethods.IsCustomerDirector(GlobalVariables.GetConnection(), PropID).ToString();
-                }
-
-                if (Session["SelectedPropertyID"] == null || (int)Session["SelectedPropertyID"] == 0 )
-                {
-                    //Get Property List
-
-                    mv.PropertyList = Models.PropertyMethods.GetAllOwnedProperties((int)Session["CustomerID"]);
-                    mv.ViewName = "ServiceChargeExpenditure";
-                    mv.ControllerName = "ServiceCharges";
-                }
-                else
-                {
-                    mv.Estate = Models.EstateMethods.GetEstatedByUnitID((int)Session["SelectedPropertyID"]);
-                    mv.Estate = Models.EstateMethods.GetServiceChargeExpenditure(mv.Estate);
-                }
-
-                return View("ServiceChargeExpenditure", mv);
-            } else
-            {
-                return View("../Home/NotLoggedIn");
             }
+            else
+            {
+                mv.ViewName = "ServiceChargeExpenditure";
+                mv.ControllerName = "ServiceCharges";
+            }
+
+            //if (Session["SelectedPropertyID"] == null || (int)Session["SelectedPropertyID"] == 0 )
+            //{
+            //    //Get Property List
+
+            //    mv.PropertyList = Models.PropertyMethods.GetAllOwnedProperties((int)Session["CustomerID"]);
+             
+            //}
+            //else
+            //{
+            //    mv.Estate = Models.EstateMethods.GetEstatedByUnitID((int)Session["SelectedPropertyID"]);
+            //    mv.Estate = Models.EstateMethods.GetServiceChargeExpenditure(mv.Estate);
+            //}
+
+            return View("ServiceChargeExpenditure", mv);
+            
         }
 
-        public ActionResult ServiceChargeBudget(int BudgetID = 0)
+        public async Task<ActionResult> ServiceChargeBudget(int BudgetID = 0)
         {
             if (Session["CustomerID"] != null)
             {
+                var id = User.Identity.GetUserId();
+                var email = User.Identity.GetUserName();
 
+                Models.ServiceChargeBudgetViewModel mv = new Models.ServiceChargeBudgetViewModel(ViewModelLevel.Estate);
+                await mv.SetBaseDataAsync(id, email);
 
-                Models.ServiceChargeBudgetViewModel mv = new Models.ServiceChargeBudgetViewModel();
+               
                 mv.Estate = new Estates();
                 mv.Estate.BudgetId = BudgetID;
                 mv.Estate = EstateMethods.GetServiceChargeBudget(mv.Estate, (int)Session["SelectedPropertyID"]);
@@ -128,7 +135,7 @@ namespace Portal_MVC.Controllers
                 }
 
                 //Models.GlobalVariables.SelectedProperty = property.Address1;
-                Models.ServiceChargeBudgetViewModel mv = new Models.ServiceChargeBudgetViewModel();
+                Models.ServiceChargeBudgetViewModel mv = new Models.ServiceChargeBudgetViewModel(ViewModelLevel.none);
                 mv.Estate = Models.EstateMethods.GetEstatedByUnitID((int)Session["SelectedPropertyID"]);
                 mv.Estate = Models.EstateMethods.GetServiceChargeExpenditure(mv.Estate);
                 //mv.Estate.PieChartData = new System.Data.DataTable();
@@ -153,7 +160,7 @@ namespace Portal_MVC.Controllers
                 }
 
                 //Models.GlobalVariables.SelectedProperty = property.Address1;
-                Models.ServiceChargeBudgetViewModel mv = new Models.ServiceChargeBudgetViewModel();
+                Models.ServiceChargeBudgetViewModel mv = new Models.ServiceChargeBudgetViewModel(ViewModelLevel.none);
                 mv.Estate = Models.EstateMethods.GetEstatedByUnitID((int)Session["SelectedPropertyID"]);
                 mv.Estate.BudgetList = Models.EstateMethods.GetServiceChargePeriodList(mv.Estate.EstatedID);
                 mv.ViewName = "ServiceChargeBudget";
@@ -175,7 +182,7 @@ namespace Portal_MVC.Controllers
         {
             if (Session["CustomerID"] != null || (int)Session["CustomerID"] != 0)
             {
-                Models.ServiceChargeBudgetViewModel mv = new Models.ServiceChargeBudgetViewModel();
+                Models.ServiceChargeBudgetViewModel mv = new Models.ServiceChargeBudgetViewModel(ViewModelLevel.none);
                 if ((int)Session["SelectedPropertyID"] == 0 && PropID > 0)
                 {
                     Session["SelectedPropertyID"] = PropID;
@@ -224,7 +231,7 @@ namespace Portal_MVC.Controllers
                 //}
 
                 //Models.GlobalVariables.SelectedProperty = property.Address1;
-                Models.ServiceChargeBudgetViewModel mv = new Models.ServiceChargeBudgetViewModel();
+                Models.ServiceChargeBudgetViewModel mv = new Models.ServiceChargeBudgetViewModel(ViewModelLevel.none);
                 mv.Estate = new Estates();
                 mv.Estate = Models.EstateMethods.GetEstatedByUnitID((int)Session["SelectedPropertyID"]);
                 mv.Estate.BudgetId = BudgetID;

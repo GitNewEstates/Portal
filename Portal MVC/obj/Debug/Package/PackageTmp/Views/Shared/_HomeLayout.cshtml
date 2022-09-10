@@ -233,19 +233,23 @@
             SetToastVisibility("false");
 
             var toastObj = document.getElementById('element');
+            var notificationIcon = document.getElementById("NotificationIcon");
 
-            document.getElementById("NotificationIcon").addEventListener('mouseover', function () {
+            if (notificationIcon != null)
+            {
+                notificationIcon.addEventListener('mouseover', function () {
 
-                if (toastObj != null && document.getElementById("ToastDisplayed").innerText == "false") {
-                    for (var i = 0; i <= toastObj.length -1; i++){
-                        toastObj[i].show();
+                    if (toastObj != null && document.getElementById("ToastDisplayed").innerText == "false") {
+                        for (var i = 0; i <= toastObj.length - 1; i++) {
+                            toastObj[i].show();
+
+                        }
+                        SetToastVisibility("true");
 
                     }
-                    SetToastVisibility("true");
 
-                }
-
-            });
+                });
+            }
 
             function SetToastVisibility(val) {
 

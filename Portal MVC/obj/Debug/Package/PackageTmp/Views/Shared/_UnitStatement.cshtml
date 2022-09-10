@@ -1,0 +1,24 @@
+﻿
+@using Portal_MVC.Models
+@model Portal_MVC.Controllers.UnitStatementViewModel
+
+@using Syncfusion.EJ2
+
+<div class="Full-Width-Container">
+    <div class="row">
+        <div>
+            @Html.EJS().Grid("StatementDataGrid").DataSource(Model.Transactions).AllowSorting(true).Columns(col =>
+            {
+            col.Field("DateStr").HeaderText("Date").Width("50").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).AllowEditing(false).IsPrimaryKey(true).Add();
+
+
+               col.Field("Description").HeaderText("Description").Width("150").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).AllowEditing(false).AllowSearching(false).AllowFiltering(false).HideAtMedia("(min-width: 992px)").Add();
+                col.Field("ChargeAmount").HeaderText("Charge").Width("30").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).AllowEditing(false).AllowSearching(false).AllowFiltering(false).HideAtMedia("(min-width: 992px)").Add();
+                col.Field("PaymentAmount").HeaderText("Payment").Width("30").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).AllowEditing(false).AllowSearching(false).AllowFiltering(false).HideAtMedia("(min-width: 992px)").Add();
+                col.Field("Balance").HeaderText("Balance").Width("30").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).AllowEditing(false).AllowSearching(false).AllowFiltering(false).Add();
+
+
+            }).AllowPaging(true).PageSettings(page => page.PageSize(25)).Render()
+        </div>
+    </div>
+</div>

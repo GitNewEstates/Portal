@@ -1,0 +1,31 @@
+﻿@using Portal_MVC.Controllers
+@model Portal_MVC.Controllers.VidexIntercomListViewModel
+@{
+    ViewBag.Title = "Videx Intercom List";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<div class="Full-Width-Container">
+    <div class="row">
+        <div>
+            @Html.EJS().Grid("IntercomDataGrid").DataSource(Model.IntercomList).AllowFiltering(true).AllowSelection(true).RowSelected("rowSelected").Columns(col =>
+            {
+                col.Field("id").HeaderText("ID").Width("20").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).AllowEditing(false).IsPrimaryKey(true).Add();
+                col.Field("Name").HeaderText("Name").Width("75").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).AllowEditing(false).AllowSearching(true).Add();
+                col.Field("Description").HeaderText("Description").Width("100").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).AllowEditing(false).AllowSearching(false).AllowFiltering(false).HideAtMedia("(min-width: 992px)").Add();
+                col.Field("Number").HeaderText("Phone Numer").Width("60").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).AllowEditing(false).AllowSearching(false).AllowFiltering(false).HideAtMedia("(min-width: 992px)").Add();
+            }).AllowPaging(true).PageSettings(page => page.PageSize(25)).FilterSettings(Filter => Filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel)).Toolbar(new List<string>() { "Search" }).Render()
+        </div>
+    </div>
+</div>
+
+<script>
+        function rowSelected(args) {
+            var grid = document.getElementById("IntercomDataGrid").ej2_instances[0];
+            var selectedrecords = grid.getSelectedRecords();  // get the selected records.
+            console.log(selectedrecords);
+            var id = selectedrecords[0].id
+            window.location.href = "/VidexIntercom/IntercomDetail?id=" + id;
+        }
+</script>
+

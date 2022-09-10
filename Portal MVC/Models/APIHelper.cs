@@ -45,10 +45,6 @@ namespace Portal_MVC.Models
                 else
                 {
                     return SetAPIErrorFromFailure(response);
-                  
-
-
-
                 }
             }
             catch (Exception ex)

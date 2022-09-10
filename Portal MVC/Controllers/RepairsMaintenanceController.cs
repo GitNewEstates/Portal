@@ -42,7 +42,7 @@ namespace Portal_MVC.Controllers
                 }
                 if ((int)Session["SelectedPropertyID"] == 0) //get list of properties
                 {
-                    vm.PropListViewModel = new ServiceChargeBudgetViewModel();  
+                    vm.PropListViewModel = new ServiceChargeBudgetViewModel(ViewModelLevel.Estate);  
                     vm.PropListViewModel.PropertyList = Models.PropertyMethods.GetAllOwnedProperties((int)Session["CustomerID"]);
                     vm.PropListViewModel.ControllerName = "RepairsMaintenance";
                     vm.PropListViewModel.ViewName = "ViewAllRepairs";
@@ -129,7 +129,7 @@ namespace Portal_MVC.Controllers
                     }
                     if ((int)Session["SelectedPropertyID"] == 0)
                     {
-                        vm.PropListViewModel = new ServiceChargeBudgetViewModel();
+                        vm.PropListViewModel = new ServiceChargeBudgetViewModel(ViewModelLevel.none);
                         vm.PropListViewModel.PropertyList = Models.PropertyMethods.GetAllOwnedProperties((int)Session["CustomerID"]);
                         vm.PropListViewModel.ControllerName = "RepairsMaintenance";
                         vm.PropListViewModel.ViewName = "OutstandingRepairs";
