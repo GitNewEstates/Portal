@@ -5,99 +5,120 @@
     ViewBag.Title = "Log in";
 }
 
-<div class="LogoBackground">
-    <div class="row">
-        <div class="col-sm-8 col-sm-offset-4 col-md-6 col-md-offset-4 col-lg-8 col-lg-offset-5" id="LoginControls">
-            <section id="loginForm">
-                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                {
-                    @Html.AntiForgeryToken()
-
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-md-6">
-                                @Html.LabelFor(m => m.Email, new { @class = "col-md-0 control-label", id = "formText" })
-                                @Html.HiddenFor(m => m.forwardurl)
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-12">
-                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", id = "CustomTextBox" })
-                                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-
-
+<div class="fb-container fb-container-centre">
+    <div class="fb-item">
+        <div class="fb-item-continer" id="login-controls-container">
+            <div class="e-card">
+                <div class="e-card-header">
+                    <div class="e-card-header-caption">
+                        <div class="e-card-header-title">SIGN IN</div>
                     </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-md-6">
-                                @Html.LabelFor(m => m.Password, new { @class = "col-md-0 control-label", id = "formText" })
-                            </div>
-                        </div>
+                </div>
+                <div class="e-card-content">
+                    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.HiddenFor(m => m.forwardurl)
 
-                        <div class="row">
-                            <div class="col-md-12">
-                                @Html.PasswordFor(m => m.Password, new { @class = "form-control", id = "CustomTextBox" })
-                                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                    </div>
-                    @*<div class="form-group">
-                            <div class="col-md-offset-0 col-md-10">
-                                <div class="checkbox">
-                                    @Html.CheckBoxFor(m => m.RememberMe)
-                                    @Html.LabelFor(m => m.RememberMe)
-                                </div>
-                            </div>
+                        @Html.EJS().TextBoxFor(m => m.Email).Placeholder("Email").CssClass("input-control").Render()
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+
+                        @*<div class="e-input-group input-control">
+                            <input class="e-input" type="password" placeholder="Password" value=@Model.Password>
                         </div>*@
-                    //Submit Button
-                    <div class="row">
-                        <div class="form-group">
-                            <div class="col-md-12">
-                                <input type="submit" value="Log in" class="btn btn-default customButton" id="" />
+                        @Html.EJS().TextBoxFor(m => m.Password).Placeholder("Password").Type("password").CssClass("input-control").Render()
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger validation" })
+                        <div>
+                            @Html.EJS().CheckBoxFor(m => m.RememberMe).Label("Remember Me").Render();
+                        </div>
+                        <div style="display: flex; justify-content: center; margin-bottom: 15px; margin-top: 15px;">
+                            <div>
+                                @Html.EJS().Button("btn-submit-login").CssClass("e-flat e-primary").Content("Log In").Type("submit").Render()
                             </div>
                         </div>
-                        <div>
-                            @Html.ActionLink("Forgot Password", "ForgotPassword", "Account")
+
+                        <div style="display: flex; justify-content: space-between;">
+                            <div>
+                                @*@Html.ActionLink("Register", "Register", "Account")*@
+                                @Html.EJS().Button("register").CssClass("e-link").Content("Register").Render()
+                            </div>
+
+                            <div>
+                                @Html.EJS().Button("forgot-password").CssClass("e-link").Content("Forgot Password").Render()
+                            </div>
                         </div>
+
+                    }
+                </div>
+            </div>
+        </div>
+
+        @*<div class="fb-item-continer" style="display: none;" id="register-controls-container">
+            <div class="e-card">
+                <div class="e-card-header">
+                    <div class="e-card-header-caption">
+                        <div class="e-card-header-title">REGISTER</div>
                     </div>
-                    @*<p>
-                            @Html.ActionLink("Register as a new user", "Register")
-                        </p>*@
-                    @* Enable this once you have account confirmation enabled for password reset functionality
-                        <p>
-                            @Html.ActionLink("Forgot your password?", "ForgotPassword")
-                        </p>*@
-                }
-            </section>
+                </div>
+                <div class="e-card-content">
+                    
+                </div>
+            </div>
+        </div>*@
 
-
-        </div>
-
-
-
-        @*<div class="col-md-4">
-                <section id="socialLoginForm">
-                    @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
-                </section>
-            </div>*@
-    </div>
-   
-
-
-    <div class="container">
-        <div class="col-lg-8 col-lg-offset-3 col-md-10 col-md-offset-1">
-            <h3 @*style="margin-left: auto; margin-right: auto; width:490px;"*@>Not a customer of New Estate Management?</h3>
-            @Html.ActionLink("Register", "Register", "Account")
-        </div>
-        <div class="col-lg-7 col-lg-offset-3 col-md-10 col-md-offset-1" style="margin-bottom:5%">
-            <h4 @*style="margin-left: auto; margin-right: auto; width:600px;"*@>Find out more about our Customer Portal or request a temporary login <a href="https://www.newestates.co.uk/customer-portal/">here</a></h4>
-        </div>
     </div>
 </div>
+
+
+<style>
+    input {
+        max-width: 100%;
+    }
+
+
+    .e-tab-section .e-tab .e-content.e-control {
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    .fb-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        background-color: lightgray;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        left: 0px;
+        align-items: center;
+    }
+
+    .fb-container-centre {
+        justify-content: center;
+    }
+    .fb-item{
+        width: 400px;
+        height: auto;
+        
+    }
+    .e-card{
+        
+    }
+
+    .input-control {
+        margin-bottom: 15px !important;
+    }
+
+    .validation{
+        margin-bottom: 15px;
+    }
+
+</style>
+
+
+
+
 
 
 @section Scripts {

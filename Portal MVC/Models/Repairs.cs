@@ -733,7 +733,12 @@ namespace Portal_MVC.Models
             return DeserializedJSONToRepairList(ReturnJson);
         }
 
+        public async static Task<List<APIRepairs>> GetALLRepairList(int estateid, bool OpenOnly, string uniqueid)
+        {
+            string sjon = await APIMethods.CallAPIGetEndPointAsync($"AllRepairs/{estateid}/{OpenOnly}/{uniqueid}");
 
+            return DeserializedJSONToRepairList(json: sjon);
+        }
 
     }
 

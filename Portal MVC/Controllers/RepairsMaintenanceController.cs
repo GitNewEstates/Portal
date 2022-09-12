@@ -22,46 +22,59 @@ namespace Portal_MVC.Controllers
             return View("RepairsSummary");
         }
 
-        public ActionResult ViewAllRepairs(int PropID = 0)
+        public async Task<ActionResult> ViewAllRepairs(string PropID = "")
         {
-            //need to selet estate
-           
-            if(Session["CustomerID"] != null && (int)Session["CustomerID"] != 0)
+            RepairsMaintenanceViewModel vm = new RepairsMaintenanceViewModel();
+            var id = User.Identity.GetUserId();
+            var email = User.Identity.GetUserName();
+            await vm.SetBaseDataAsync(id, email);
+            if (!string.IsNullOrWhiteSpace(PropID))
             {
-                RepairsMaintenanceViewModel vm = new RepairsMaintenanceViewModel();
-                if(PropID != 0 && (int)Session["SelectedPropertyID"] == 0) //property selected from list
-                {
-                 
-                    Session["SelectedPropertyID"] = PropID;
-                    Session["SelectedProperty"] = Models.PropertyMethods.PropertyAddress(PropID);
-                    Session["IsDirector"] = EstateDirectors.EstateDirectorMethods.IsCustomerDirector(GlobalVariables.GetConnection(), PropID).ToString();
-                    Estates e = EstateMethods.GetEstatedByUnitID((int)Session["SelectedPropertyID"]);
-
-                    Session["EstateName"] = e.EstateName;
-                    e = null;
-                }
-                if ((int)Session["SelectedPropertyID"] == 0) //get list of properties
-                {
-                    vm.PropListViewModel = new ServiceChargeBudgetViewModel(ViewModelLevel.Estate);  
-                    vm.PropListViewModel.PropertyList = Models.PropertyMethods.GetAllOwnedProperties((int)Session["CustomerID"]);
-                    vm.PropListViewModel.ControllerName = "RepairsMaintenance";
-                    vm.PropListViewModel.ViewName = "ViewAllRepairs";
-                }
-                else
-                {
-                    Estates Estate = new Estates();
-                    Estate = EstateMethods.GetEstatedByUnitID((int)Session["SelectedPropertyID"]);
-                    Session["EstateName"] = Estate.EstateName; 
-                    vm.Repair = RepairMethods.GetAllRepairs(Estate.EstatedID);
-                    
-                }
-                return View("RepairsSummary", vm);
-
+                await vm.GetAllRepairs(0, false, PropID);
             } else
             {
-                //return not logged in view
-                return View("../Home/NotLoggedIn");
+                vm.ControllerName = "RepairsMaintenance";
+                vm.ViewName = "ViewAllRepairs";
             }
+            return View("RepairsSummary", vm);
+            //need to selet estate
+
+            //if (Session["CustomerID"] != null && (int)Session["CustomerID"] != 0)
+            //{
+                
+            //    if(PropID != 0 && (int)Session["SelectedPropertyID"] == 0) //property selected from list
+            //    {
+                 
+            //        Session["SelectedPropertyID"] = PropID;
+            //        Session["SelectedProperty"] = Models.PropertyMethods.PropertyAddress(PropID);
+            //        Session["IsDirector"] = EstateDirectors.EstateDirectorMethods.IsCustomerDirector(GlobalVariables.GetConnection(), PropID).ToString();
+            //        Estates e = EstateMethods.GetEstatedByUnitID((int)Session["SelectedPropertyID"]);
+
+            //        Session["EstateName"] = e.EstateName;
+            //        e = null;
+            //    }
+            //    if ((int)Session["SelectedPropertyID"] == 0) //get list of properties
+            //    {
+            //        vm.PropListViewModel = new ServiceChargeBudgetViewModel(ViewModelLevel.Estate);  
+            //        vm.PropListViewModel.PropertyList = Models.PropertyMethods.GetAllOwnedProperties((int)Session["CustomerID"]);
+            //        vm.PropListViewModel.ControllerName = "RepairsMaintenance";
+            //        vm.PropListViewModel.ViewName = "ViewAllRepairs";
+            //    }
+            //    else
+            //    {
+            //        Estates Estate = new Estates();
+            //        Estate = EstateMethods.GetEstatedByUnitID((int)Session["SelectedPropertyID"]);
+            //        Session["EstateName"] = Estate.EstateName; 
+            //        vm.Repair = RepairMethods.GetAllRepairs(Estate.EstatedID);
+                    
+            //    }
+            //    return View("RepairsSummary", vm);
+
+            //} else
+            //{
+            //    //return not logged in view
+            //    return View("../Home/NotLoggedIn");
+            //}
         }
 
         public async Task<ActionResult> RepairDetail(int repairID, string updateConfirmation = "")
@@ -74,35 +87,7 @@ namespace Portal_MVC.Controllers
             await viewmodel.SetReapir();
                 RepairID = repairID;
 
-                
-                //vm.Repair = new Repairs();
-                
-                //vm.Repair = RepairMethods.GetAllRepairDetails(repairID);
-                //vm.Repair.RepairHistory = new List<Repairs>();
-
-                ////gets call reports
-                //vm.CallReports = RepairMethods.GetRepairReport(repairID);
-
-                ////gets service charge budget and expediture 
-                //vm.ServiceChargeInfo = EstateMethods.GetExpenditurebyPO(vm.Repair.PONumber);
-
-                ////Gets contractor name
-                //vm.ContractorInfo = ContractorMethods.ContractorDetailsByPO(vm.Repair.PONumber);
-
-                ////Gets completion cost
-                //if (vm.Repair.Status == "Completed")
-                //{
-                //    vm.Repair.completionCost = RepairMethods.CompletedCost(vm.Repair.PONumber);
-                //    vm.Repair.completionCostStr = Controls.CurrencyString(vm.Repair.completionCost);
-                //}
-
-                ////Repair Updates
-                //vm.Repair.AutomaticUpdates = Models.RepairUpdateMethods.IsCustomerRegisteredForUpdates(repairID, (int)Session["CustomerID"]);
-                //vm.AutomaticUpdateConfirmation = updateConfirmation;
-                ////gets repair history
-                //vm.Repair.RepairHistory = RepairMethods.GetRepairHistory(repairID);
-                //vm.Repair.ID = repairID;
-                return View(viewmodel);
+            return View(viewmodel);
            
 
             

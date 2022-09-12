@@ -3,81 +3,85 @@
     ViewBag.Title = "Register";
 }
 
-<div class="LogoBackground">
-    <div class="row">
-
-        
 
 
-        <div class="ControlsContainer" id="LoginControls">
-
-            @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-            {
-                @Html.AntiForgeryToken()
-                <h4>Create New Account</h4>
-                <hr />
-                @Html.ValidationSummary("", new { @class = "text-danger" })
-
-      
-
-                <div class="form-group">
-
-                <div class="row">
-                    <div class="form-group">
-                        @Html.EJS().TextBoxFor(model => model.Email).Placeholder("Email").Render()
+<div class="fb-container fb-container-centre">
+    <div class="fb-item">
+        <div class="fb-item-continer" id="login-controls-container">
+            <div class="e-card">
+                <div class="e-card-header">
+                    <div class="e-card-header-caption">
+                        <div class="e-card-header-title">REGISTER</div>
                     </div>
-
                 </div>
+                <div class="e-card-content">
+                    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary("", new { @class = "text-danger" })
 
-                <div class="row">
-                    <div class="form-group">
-                        @Html.EJS().TextBoxFor(model => model.Name).Placeholder("Name").Render()
-                    </div>
+                        @Html.EJS().TextBoxFor(model => model.Email).Placeholder("Email").CssClass("input-control").Render()
+                        @Html.EJS().TextBoxFor(model => model.Name).Placeholder("Name").CssClass("input-control").Render()
+                        @Html.EJS().DropDownList("Description").Placeholder("Which best describes you?").CssClass("input-control").DataSource(Model.DescriptionList).Fields(new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings { Value = "Description" }).Render()
+                        @Html.EJS().TextBoxFor(model => model.Password).Placeholder("Password").CssClass("input-control").Type("Password").Render()
+                        @Html.EJS().TextBoxFor(model => model.ConfirmPassword).Placeholder("Confirm Password").CssClass("input-control").Type("Password").Render()
 
+                        <div style="display: flex; justify-content: center; margin-bottom: 15px; margin-top: 15px;">
+                            <div>
+                                @Html.EJS().Button("btn-submit-register").CssClass("e-flat e-primary").Content("Register").Type("submit").Render()
+                            </div>
+                        </div>
+                    }
                 </div>
-
-                <div class="row">
-                    <div class="form-group">
-                        @Html.EJS().DropDownList("Description").Placeholder("Which best describes you?").DataSource(Model.DescriptionList).Fields(new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings { Value = "Description" }).Render()
-                    </div>
-
-                </div>
-
-                <div class="row">
-                    <div class="form-group">
-                        @Html.EJS().TextBoxFor(model => model.Password).Placeholder("Password").Type("Password").Render()
-                    </div>
-
-                </div>
-                <div class="row">
-                    <div class="form-group">
-                        @Html.EJS().TextBoxFor(model => model.ConfirmPassword).Placeholder("Confirm Password").Type("Password").Render()
-                    </div>
-
-                </div>
-
-
             </div>
-              
-
-                <div class="form-group">
-                    <div class="">
-                        <input type="submit" class="btn btn-default customButton" value="Register" />
-                    </div>
-                </div>
-             }
-
         </div>
+
     </div>
 </div>
 
+
 <style>
-    .LogoBackground {
-        display: flex !important;
-        text-align: center;
-        justify-content: center;
-        height: 80vh;
+    input {
+        max-width: 100%;
+    }
+
+
+    .e-tab-section .e-tab .e-content.e-control {
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    .fb-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        background-color: lightgray;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        left: 0px;
         align-items: center;
+    }
+
+    .fb-container-centre {
+        justify-content: center;
+    }
+
+    .fb-item {
+        width: 400px;
+        height: auto;
+    }
+
+    .e-card {
+    }
+
+    .input-control {
+        margin-bottom: 15px !important;
+    }
+
+    .validation {
+        margin-bottom: 15px;
     }
 
     .ControlsContainer {
@@ -95,9 +99,7 @@
     }
 
 
-    input {
-        max-width: 100%;
-    }
+  
 
     #Description {
         max-width: 100%;
@@ -107,6 +109,25 @@
         max-width: 100%;
     }
 </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

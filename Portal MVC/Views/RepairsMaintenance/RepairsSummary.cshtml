@@ -8,12 +8,12 @@
 {
     ViewBag.Title = "Select Property - New Estates";
     <div class="container">
-        @Html.Partial("_SelectProperty", Model.PropListViewModel);
+        @Html.Partial("_SelectEstate", Model);
     </div>
 } else
 {
     ViewBag.Title = "Repair History - New Estates";
-    <h4> @Session["EstateName"] - All Repairs</h4>
+    <h4> All Repairs</h4>
     <div class="panel GradientBackground">
         <table class="table">
             <thead>
@@ -26,18 +26,18 @@
                     
                 </tr>
             </thead>
-            @foreach (Repairs repair in Model.Repair.AllRepairs)
+            @foreach (APIRepairs repair in Model.AllRepairs)
             {
                 
                 <tr class="FurtherDetailsBelow">
                     <td class="ShowDetails">
                         <span class="glyphicon glyphicon-info-sign InfoToolTip" aria-hidden="true"></span>
                     </td>
-                    <td class="MobileCollapse"> <p>@repair.RaisedDatestr</p></td>
-                    <td><p>@repair.Title</p></td>
+                    <td class="MobileCollapse"> <p>@repair.RaisedDateStr</p></td>
+                    <td><p>@repair.RaisedDateStr</p></td>
                   
-                    <td><p>@repair.Status</p></td>
-                    <td class="MobileCollapse"><p>@repair.TargetDatestr</p></td>
+                    <td><p>@repair.RepairStatus</p></td>
+                    <td class="MobileCollapse"><p>@repair.TargetDateStr</p></td>
                 </tr>
 
                 //HideShowTableRow
@@ -56,14 +56,14 @@
                                
                            </div>
                            <div class="ShowDetailBody MobileDetails">
-                               <p>Date Raised: @repair.RaisedDatestr</p>
+                               <p>Date Raised: @repair.RaisedDateStr</p>
                            </div>
                            <div class="ShowDetailBody MobileDetails">
-                               <p>Target Completion Date: @repair.TargetDatestr</p>
+                               <p>Target Completion Date: @repair.TargetDateStr</p>
                            </div>
 
                            <div class="col-md-10">
-                               <p style="width: 100%;">@repair.Details </p>
+                               <p style="width: 100%;">@repair.RepairDetails </p>
                                
                            </div>
                            <div class="col-md-2 ViewMoreDetail">

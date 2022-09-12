@@ -1,5 +1,4 @@
 ﻿
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -85,7 +84,7 @@
 
 
         <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 LoggedInHeader GradientBackground">
-            @if(Model != null) 
+            @if (Model != null)
             {
                 if (Model.SelectedProperty != null)
                 {
@@ -105,8 +104,8 @@
 
                     </div>
 
-                    }
-             }
+                }
+            }
 
             @if (Model != null)
             {
@@ -213,12 +212,12 @@
 
     <script type="text/javascript">
 
-     
+
 
         $(document).ready(function () {
 
-            
-           
+
+
 
             @*var ActualSeriesLable = document.getElementById('container_Series_0_Point_0_Text_0');
             var BudgetLabel = @Html.Raw(Json.Encode(Model.BudgetLabelAmount));
@@ -573,7 +572,7 @@
         }
     </script>
 
-  
+
 
 
 </body>
@@ -581,4 +580,3 @@
 
 
 </html>
-

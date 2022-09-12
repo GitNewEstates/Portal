@@ -109,6 +109,7 @@ namespace Portal_MVC.Models
 
     public static class APIEstateMethods
     {
+     
         public async static Task<List<APIEstates>> GetEstateListAsync()
         {
             string json = await APIMethods.CallAPIGetEndPointAsync($"EstateList");

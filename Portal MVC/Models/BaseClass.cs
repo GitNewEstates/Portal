@@ -46,6 +46,7 @@ namespace Portal_MVC.Models
         public int CreatedBy { get; set; }
     }
 
+
     public class IDBase
     {
         public IDBase()
