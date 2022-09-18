@@ -53,6 +53,7 @@ namespace Portal_MVC.Controllers
 
                         homeViewModel.SelectedEstateID = PropID;
                         homeViewModel.SelectedEstateName = PropName;
+                        homeViewModel.PageTitle = $"{PropName} - Dashboard";
                         
                     } else
                     {

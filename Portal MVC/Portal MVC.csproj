@@ -495,6 +495,7 @@
     <Content Include="Content\ej2\material.css" />
     <Content Include="Content\ej2\tailwind-dark.css" />
     <Content Include="Content\ej2\tailwind.css" />
+    <Content Include="Content\Layout.css" />
     <Content Include="Content\navbar-fixed-top.css" />
     <Content Include="Content\NEM-menu.css" />
     <Content Include="Content\PortalPageTemplate.css" />
@@ -671,6 +672,11 @@
     <Content Include="Views\VidexIntercom\AddNew.cshtml" />
     <Content Include="Views\VidexIntercom\MemLocationDetail.cshtml" />
     <Content Include="Views\Shared\_Notes.cshtml" />
+    <Content Include="Views\Shared\_Sidebar.cshtml" />
+    <Content Include="Views\Shared\_TopNavigation.cshtml" />
+    <Content Include="Views\RepairsMaintenance\Maintenance_Dashboard.cshtml" />
+    <Content Include="Views\ServiceCharges\ServiceCharge_Dashboard.cshtml" />
+    <Content Include="Views\Estates\EstateInfo_Dashboard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

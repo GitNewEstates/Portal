@@ -16,6 +16,16 @@ namespace Portal_MVC.Controllers
         private int RepairID { get; set; }
         private RepairsMaintenanceViewModel vm { get; set; }
 
+        public async Task<ActionResult> Maintenance_Dashboard()
+        {
+            ViewModelBase vm = new ViewModelBase(ViewModelLevel.Estate);
+            var id = User.Identity.GetUserId();
+            var email = User.Identity.GetUserName();
+            await vm.SetBaseDataAsync(id, email);
+
+            return View(vm);
+        }
+
         // GET: RepairsMaintenance
         public ActionResult Summary()
         {

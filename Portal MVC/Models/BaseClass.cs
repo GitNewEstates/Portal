@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Syncfusion.EJ2.Navigations;
+using System.Collections.Generic;
 using System.Data;
 using System.Threading.Tasks;
 using System.Web.Configuration;
@@ -140,6 +141,7 @@ namespace Portal_MVC.Models
             Level = level;
             owner = new Owner();
             NotesList = new List<APINotes>();
+            popupItems = new List<ToolbarItem>();
         }
 
         public string AddButtonIconCss { get { return "fa-solid fa-square-plus"; } }
@@ -147,6 +149,10 @@ namespace Portal_MVC.Models
         public string CancelButtonIconCss { get { return "fa-solid fa-xmark"; } }
         public string EditButtonIconCss { get { return "fa-regular fa-pen-to-square"; } }
         public string saveButtonIconCss { get { return "fa-solid fa-floppy-disk"; } }
+
+        public string PageTitle { get; set; }
+
+        public List<ToolbarItem> popupItems = new List<ToolbarItem>();
         public string RoleName { get; set; }
 
         public List<APINotes> NotesList { get; set; }
@@ -260,6 +266,21 @@ namespace Portal_MVC.Models
 
             //NotificationCount = 2;
         }
+    }
+
+    public class ListViewData
+    {
+        public string Id { get; set; }
+        public string Text { get; set; }
+        public string IconCss { get; set; }
+        public string Description { get; set; }
+
+        public string url { get; set; }
+    }
+    public class DropDownViewModel
+    {
+        public string Text { get; set; }
+        public string Value { get; set; }
     }
 
     public enum ViewModelLevel

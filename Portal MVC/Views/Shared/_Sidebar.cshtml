@@ -1,0 +1,161 @@
+﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2.DropDowns
+@using Portal_MVC.Models
+@using Syncfusion.EJ2.Navigations;
+
+@{
+
+
+    List<ToolbarItem> popItems = new List<ToolbarItem>();
+    var folderTemplate = "Navigation";
+    popItems.Add(new ToolbarItem { PrefixIcon = "e-menu", TooltipText = "Menu" });
+    popItems.Add(new ToolbarItem { Template = folderTemplate });
+    Dictionary<string, object> HtmlAttribute = new Dictionary<string, object>()
+{   {"class", "sidebar-menu" } };
+    List<ListViewData> MainMenuItems = new List<ListViewData>();
+
+    //Generate sidebar menu items here based on role
+
+
+    if (Model.RoleName == "Administrator" || Model.RoleName == "Manager" ||
+        Model.RoleName == "Property Manager" || Model.RoleName == "Maintenance Operative")
+    {
+
+
+    } else if(Model.RoleName == "Customer")
+    {
+        MainMenuItems.Add(
+           new ListViewData
+           {
+
+               Id = (MainMenuItems.Count + 1).ToString(),
+               Text = "Home",
+               IconCss = "fa-solid fa-house-user",
+               url = "/Home/Index"
+
+           });
+        MainMenuItems.Add(
+       new ListViewData
+       {
+
+           Id = (MainMenuItems.Count + 1).ToString(),
+           Text = "Estate Info",
+           IconCss = "fa-solid fa-building",
+           url = "/Estates/EstateInfo_Dashboard"
+
+       });
+        MainMenuItems.Add(
+         new ListViewData
+         {
+
+             Id = (MainMenuItems.Count + 1).ToString(),
+             Text = "Repair & Maintenance",
+             IconCss = "fa-solid fa-screwdriver-wrench",
+             url = "/RepairsMaintenance/Maintenance_Dashboard"
+
+         });
+
+        MainMenuItems.Add(
+         new ListViewData
+         {
+
+             Id = (MainMenuItems.Count + 1).ToString(),
+             Text = "Service Charge",
+             IconCss = "fa-solid fa-sterling-sign",
+             url = "/ServiceCharges/ServiceCharge_Dashboard"
+
+         });
+    }
+
+    MainMenuItems.Add(
+        new ListViewData
+        {
+
+            Id = (MainMenuItems.Count + 1).ToString(),
+            Text = "Log Out",
+            IconCss = "fa-solid fa-right-from-bracket",
+            url = "/Account/LogOff"
+
+        });
+}
+
+        @{Html.EJS().Sidebar("menuSidebar").EnableDock(true).DockSize("50px").Width("220px").Target(".body-container1").IsOpen(true).ContentTemplate(@<div>
+
+    <div id="siderbar-toggle-collapse">
+        <i class="fa-solid fa-bars fa-2x" onclick="toggleSidebarCollapse()" style="padding-left: 12px; color: #0056b3;"></i>
+    </div>
+    <div id="siderbar-toggle-expand" style="display: none;">
+        <i class="fa-solid fa-bars fa-2x" onclick="toggleSidebarExpand()" style="padding-left: 12px; color: #0056b3;"></i>
+    </div>
+    <div class="main-menu">
+        <div>
+            @Html.EJS().ListView("dockList").CssClass("e-menu-list").ShowIcon(true).Select("onSelect").Fields(new Syncfusion.EJ2.Lists.ListViewFieldSettings() { Id = "Id", Text = "Text", IconCss = "IconCss" }).DataSource(MainMenuItems).Render()
+        </div>
+      
+    </div>
+
+</div>).HtmlAttributes(HtmlAttribute).Render();}
+
+        <style>
+            .e-sidebar.e-left.e-transition.e-close {
+                /*transition: transform 2.5s ease, visibility 1200ms;*/
+            }
+
+            .e-menu-wrapper ul .e-menu-item .e-menu-icon, .e-menu-container ul .e-menu-item .e-menu-icon {
+                font-size: 20px;
+            }
+
+            .e-list-item {
+                border: none !important;
+            }
+
+            .e-menu-list {
+                border: none !important;
+            }
+        </style>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                sidebarObj = document.getElementById("menuSidebar").ej2_instances[0];
+
+            });
+
+            //document.getElementById('dockList').addEventListener('click', function () {
+            //    var selecteditem = document.getElementById('menu-list').ej2_instances[0].getSelectedItems();
+            //    console.log(selecteditem);
+            //})
+
+            function toggleSidebarCollapse() {
+                toggleSidebar();
+                document.getElementById('siderbar-toggle-collapse').style.display = "none";
+                document.getElementById('siderbar-toggle-expand').style.display = "block";
+                document.getElementById('main-body-content').style.marginLeft = "50px";
+                document.getElementById('main-content-container').style.marginLeft = "-170px;";
+            }
+
+            function toggleSidebarExpand() {
+                toggleSidebar();
+                document.getElementById('siderbar-toggle-collapse').style.display = "block";
+                document.getElementById('siderbar-toggle-expand').style.display = "none";
+                document.getElementById('main-body-content').style.marginLeft = "220px";
+                document.getElementById('main-content-container').style.marginLeft = "0px";
+            }
+
+            function toggleSidebar() {
+                sidebarObj.toggle();
+
+            }
+
+            function onSelect(args) {
+                // document.getElementById("dockContent").innerHTML = args.data.Description;
+                var url = args.data.url;
+                if (url != null) {
+                    window.location.href = url;
+                }
+                console.log(args.data.Id);
+
+            }
+        </script>
+        <style>
+        </style>
+

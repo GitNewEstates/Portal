@@ -63,6 +63,16 @@ namespace Portal_MVC.Controllers
             
         }
 
+        public async Task<ActionResult> ServiceCharge_Dashboard()
+        {
+            ViewModelBase vm = new ViewModelBase(ViewModelLevel.Estate);
+            var id = User.Identity.GetUserId();
+            var email = User.Identity.GetUserName();
+            await vm.SetBaseDataAsync(id, email);
+
+            return View(vm);
+        }
+
         public async Task<ActionResult> ServiceChargeExpenditure(string PropID = "", string PropName = "")
         {
             var id = User.Identity.GetUserId();

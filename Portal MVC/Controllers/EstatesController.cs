@@ -30,6 +30,14 @@ namespace Portal_MVC.Controllers
             return View(model);
         }
 
+        public async Task<ActionResult> EstateInfo_Dashboard()
+        {
+            ViewModelBase model = new ViewModelBase(ViewModelLevel.Estate);
+            SetBaseData();
+            await model.SetBaseDataAsync(id, email);
+            return View(model);
+        }
+
         // GET: Estates/Details/5
         public async Task<ActionResult> EstateDetail(int EstateID)
         {

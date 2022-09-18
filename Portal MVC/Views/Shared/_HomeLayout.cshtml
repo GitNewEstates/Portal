@@ -23,7 +23,7 @@
     <script src="https://cdn.syncfusion.com/ej2/20.2.36/dist/ej2.min.js"></script>
 
     <link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/20.2.36/fluent.css" />
-
+    <link href="~/Content/Layout.css" rel="stylesheet" />
 
 
 
@@ -46,159 +46,34 @@
 </head>
 <body>
 
-    @*main site navigation*@
 
-    <nav class="navbar navbar-default navbar-fixed-top" id="TopNav">
-        <div>
-            <div class="navbar-header hidden-sm hidden-xs">
 
-                <a class="navbar-brand" href="http://www.newestates.co.uk">
+    <div class="fb-container-vert">
+        <div class="fb-container-inner"> @*black*@
+           
+            <div class="main-body-container">
+                
 
-                    <img src="~/Content/400-x-71.png" />
-                </a>
+                @Html.Partial("_Sidebar")
 
-            </div>
-
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-right CustomMenuUL">
-
-                    <li id="MenuTextColour"><a href="https://www.newestates.co.uk/about-us/">About Us</a></li>
-
-                    <li id="MenuTextColour" class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Services <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="https://www.newestates.co.uk/property-owners/">Property Owners</a></li>
-                            <li><a href="https://www.newestates.co.uk/developers/">Developers</a></li>
-                            <li><a href="https://www.newestates.co.uk/freeholders/">Freeholders</a></li>
-                            <li><a href="https://www.newestates.co.uk/residents-management-companies/">Resident's Management Companies</a></li>
-                            <li><a href="https://www.newestates.co.uk/social-housing/">Social Housing</a></li>
-                        </ul>
-                    </li>
-                    <li id="MenuTextColour"><a href="https://www.newestates.co.uk/Latest-news/">Latest News</a></li>
-                    <li id="MenuTextColour"><a href="https://www.newestates.co.uk/contact/">Contact</a></li>
-                </ul>
-
+                <div class="body-container" id="main-body-content">
+                    
+                    @Html.Partial("_TopNavigation")
+                  
+                    
+                    @RenderBody()
+                    
+                </div>
             </div>
         </div>
 
-
-
-        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 LoggedInHeader GradientBackground">
-            @if (Model != null)
-            {
-                if (Model.SelectedProperty != null)
-                {
-                    <div class="SelectedProperty">
-                        <h6>
-                            @Model.SelectedProperty.Address1
-                            @if (Model.NotificationCount > 0)
-                            {
-                                <div style="position:relative;display:inline-block;" id="NotificationIcon">
-                                    <i class="fa-solid fa-bell"></i>
-                                    <span class="e-badge e-badge-primary e-badge-overlap e-badge-notification NotificationNumberBadge">@Model.NotificationCount</span>
-                                </div>
-
-                                @*<i class="fa-solid fa-bell"></i>*@
-                            }
-                        </h6>
-
-                    </div>
-
-                }
-            }
-
-            @if (Model != null)
-            {
-                if (Model.NameofUser != null)
-                {
-                    <div class="CustomerName">
-                        <h6>@Model.NameofUser</h6>
-                    </div>
-                }
-            }
-        </div>
-    </nav>
-
-    @*collapsed menu*@
-    <nav class="navbar navbar-default navbar-fixed-top MobileNav" id="ss">
-        <div>
-            <div>
-                <button type="button" class="navbar-toggle collapsed CustomBurger" data-toggle="collapse" data-target="#navbar1" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-
-            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 LoggedInHeader GradientBackground">
-                @if (Model != null)
-                {
-                    if (Model.SelectedProperty != null)
-                    {
-                        <div class="SelectedProperty">
-                            <h6>@Model.SelectedProperty.Address1</h6>
-                        </div>
-
-                    }
-                }
-            </div>
-
-            <div id="navbar1" class="navbar-collapse collapse">
-                @Html.Partial("_MainMenu")
-            </div>
-        </div>
-    </nav>
-
-
-    <div class="container-fluid" id="sideNavContainer">
-        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 LoggedInHeader GradientBackground">
-            @if (Model != null)
-            {
-                if (Model.SelectedProperty != null)
-                {
-                    <div class="SelectedProperty">
-                        <h6>
-                            @Model.SelectedProperty.Address1
-                            @if (Model.NotificationCount > 0)
-                            {
-                                <div style="position:relative;display:inline-block;">
-                                    <i class="fa-solid fa-bell"></i>
-                                    <span class="e-badge e-badge-primary e-badge-overlap e-badge-notification NotificationNumberBadge">@Model.NotificationCount</span>
-                                </div>
-
-                                @*<i class="fa-solid fa-bell"></i>*@
-                            }
-                        </h6>
-
-                    </div>
-                }
-                if (Model.NameofUser != null)
-                {
-                    <div class="CustomerName">
-                        <h6>@Model.NameofUser</h6>
-                    </div>
-                }
-            }
-        </div>
-
-
-        <div class="row">
-            <div class="col-sm-2 col-md-2 col-lg-2 sidebar" id="sideNav" style="min-width: 175px">
-
-                @Html.Partial("_MainMenu")
-
-            </div>
-        </div>
-    </div>
-
-    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 RenderBodyContainer">
-        <div style="" id="body">
-            @RenderBody()
-        </div>
     </div>
 
 
+
+    
+
+    
 
 
 

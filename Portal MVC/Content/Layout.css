@@ -1,0 +1,113 @@
+﻿/*file contains css for the layout only. The content of all pages need to wrapped in a container with class main-content-container*/
+
+.main-content-container {
+    display: flex;
+    padding-top: 5px;
+    padding-left: 10px;
+    transition: margin-left .5s; /* If you want a transition effect */
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+}
+body {
+    overflow-y: auto;
+    min-height: 0px !important; /*override portal template css */
+    height: auto !important; /*override nave bar top css*/
+}
+
+.fb-container-vert {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    justify-items: stretch;
+    justify-content: stretch;
+    align-content: flex-start;
+    overflow-y: hidden;
+}
+
+.fb-container-inner {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    justify-items: stretch;
+    justify-content: stretch;
+    width: 100%;
+    height: 100%;
+}
+
+.main-body-container {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    justify-items: stretch;
+    justify-content: stretch;
+    /*height: 100%;*/
+    width: 100%
+}
+
+
+.body-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+    margin-left: 220px;
+    transition: margin-left .5s; /* If you want a transition effect */
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 0 0 0 0 !important;
+    width: 100%;
+    background-color: transparent;
+    align-items: center;
+    min-height: 100px;
+}
+
+.profile-container{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.e-avatar.image {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 40px;
+    width: 40px;
+}
+
+/*mobile css to keep sidebar collapsed*/
+@media screen and (max-width: 767px) {
+
+    .main-content-container, .nav-container {
+        
+        margin-left: -170px !important;
+    }
+
+    .nav-container {
+        
+        justify-content: center;
+        width: 100%;
+        padding-left: 10px;
+        
+    }
+    #menuSidebar {
+        width: 50px !important;
+    }
+
+    #siderbar-toggle-collapse {
+        display: none !important;
+    }
+    #siderbar-toggle-expand {
+        display: block !important;
+    }
+}

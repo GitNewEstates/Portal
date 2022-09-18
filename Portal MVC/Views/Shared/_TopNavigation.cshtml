@@ -1,0 +1,36 @@
+﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2.DropDowns
+@using Portal_MVC.Models
+
+@{ 
+    var username = Model.NameofUser;
+    var pagename = Model.PageTitle;
+}
+<div class="nav-container">
+    <div>
+        @*<a class="navbar-brand" href="#">
+            <img src="https://placeholder.pics/svg/150x50/888888/EEE/Logo" alt="Logo" height="36">
+        </a>*@
+    </div>
+    <div>
+        <h5>@pagename</h5>
+    </div>
+    <div>
+        <div id="profile-container" style="padding-right: 10px;">
+            <div class="row">
+                <div class="e-avatar image" id="profile-avatar">
+                    <a href="#"><i class="fa-regular fa-user"></i></a>
+
+                </div>
+                <div id="settings-div" style="padding-left:5px;">
+                    <h5>@username</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+   
+</style>
+

@@ -5,9 +5,8 @@
 
 @if (Model != null )
 {
-    <div class="Full-Width-Container">
-        <div class="row">
-            @foreach(Properties p in Model.Properties)
+  
+            foreach(Properties p in Model.Properties)
                 {
                     <div class="col-lg-3 col-md-3 col-sm-10 col-xs-10 e-card e-custom-card ">
                         <div class="e-card-content e-card-center">
@@ -40,8 +39,7 @@
                         
                     </div>
                 }
-        </div>
-    </div>
+   
 
     @*<div class="container">
         <div class="panel GradientBackground panelContainer">
