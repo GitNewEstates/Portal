@@ -1,0 +1,7 @@
+﻿
+@using Portal_MVC.Models
+@model Portal_MVC.Models.OwnedUnitsViewModel
+
+<div class="e-card e-custom-card">
+    @Html.EJS().ListView("listview").Enable(true).DataSource(Model.OwnedProperties).HeaderTitle("Your Properties").ShowHeader(true).ShowIcon(true).Fields(new Syncfusion.EJ2.Lists.ListViewFieldSettings { IconCss = "icon" }).Render()
+</div>

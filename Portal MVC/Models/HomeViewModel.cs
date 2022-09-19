@@ -10,111 +10,38 @@ namespace Portal_MVC.Models
     {
         public HomeViewModel(ViewModelLevel level):base(level)
         {
-            BudgetActualDataList = new List<BudgetActualChartData>();
+            
             ClientFinancialListView = new List<ClientFinancialListView>();
-            OwnedProperties = new List<OwnedPropertyListViewObject>();
             RepairAccordianObjects = new List<Syncfusion.EJ2.Navigations.AccordionAccordionItem>();
-            AttendanceVisitCollection = new List<Syncfusion.EJ2.Navigations.AccordionAccordionItem>();
+           
             NotificationObjectList = new List<object>();
             MaintOpDashViewModel = new MaintenanceOpDashViewModel();
             
             
         }
-        
+        public OpenFundBVAChartViewModel OpenFundBVAChartViewModel { get; set; }    
         public MaintenanceOpDashViewModel MaintOpDashViewModel { get; set; }
+
+        public AttendanceLogAccordianViewModel AttendanceLogAccordianViewModel { get; set; }
         public async Task LoadCustomerDashboardDataAsync(string useremail)
         {
+            
+            APIEstates estate = await APIEstateMethods.GetEstateAsync(0, SelectedEstateID);
+            NotificationviewModel = new NotificationSettingViewModel(useremail, estate.Name);
 
-            APIEstates estate = new APIEstates { id = SelectedProperty.ID };
-            estate = await APIEstateMethods.GetOpenFundBudgetAndSpendTotals(estate.id);
-            APIEstates estate1 = await APIEstateMethods.GetEstateAsync(estate.id);
-            NotificationviewModel = new NotificationSettingViewModel(useremail, estate1.Name);
-            //
-            string BudgetLabelName = $"£{estate.OpenFundTotalBudget}";
-            string ActualLabelName = $"£{estate.OpenFundTotalCost}";
-
-            double TwentyPercentofBudget = estate.OpenFundTotalBudget * 0.2;
-            double TwentyPercentofActual = estate.OpenFundTotalCost * 0.2;
-
-            //if the actual spend is less than 20% of the budget then 
-            //set the amount to 20% so that the data series renders properly
-            if(estate.OpenFundTotalBudget > estate.OpenFundTotalCost)
-            {
-                if(estate.OpenFundTotalCost < TwentyPercentofBudget)
-                {
-                    estate.OpenFundTotalCost = TwentyPercentofActual;
-                }
-            }
-
-
-
-
-            estate.OpenFundTotalCost = estate.OpenFundTotalBudget * 0.2;
-            BudgetLabelAmount = $"{ControlsDLL.ControlActions.DoubelToCurrencyString2DP(estate.OpenFundTotalCost)}";
-
-
-            if (BudgetActualDataList == null)
-            {
-                BudgetActualDataList = new List<BudgetActualChartData>();
-            }
-            BudgetActualDataList.Add(new BudgetActualChartData
-            {
-                Name = "Spend",
-                Amount = estate.OpenFundTotalCost,
-                color = "#0591bc",
-                LabelName = ActualLabelName
-
-            });
-
-            BudgetActualDataList.Add(new BudgetActualChartData
-            {
-                Name = "Budget",
-                Amount = estate.OpenFundTotalBudget,
-                color = "grey",
-                LabelName = BudgetLabelName
-            });
-
-            if (estate.OpenFundTotalBudget > estate.OpenFundTotalCost)
-            {
-                XAxisMaxValue = estate.OpenFundTotalBudget + 1000;
-
-            } else if (estate.OpenFundTotalCost > estate.OpenFundTotalBudget)
-            {
-                XAxisMaxValue = estate.OpenFundTotalCost + 1000;
-            } else
-            {
-                XAxisMaxValue = 12000;
-            }
-
-           
+            OpenFundBVAChartViewModel = new OpenFundBVAChartViewModel(estate.id);
+            await OpenFundBVAChartViewModel.GetData();
 
             if (owner != null)
             {
-                List<Models.Units> units = new List<Models.Units>();
-                units = await
-                    Models.UnitMethods.GetCurrentOwnedUnits(owner.id, SelectedProperty.ID, true);
-                if (units != null)
-                {
-                    if (units.Count > 0)
-                    {
-                        if (!units[0].APIError.HasError)
-                        {
-                            foreach (var unit in units)
-                            {
-                                OwnedProperties.Add(new OwnedPropertyListViewObject
-                                {
-                                    id = unit.id,
-                                    text = $"{unit.Name} - {ControlsDLL.ControlActions.DoubelToCurrencyString2DP(unit.Balance)}"
-                                });
-                            }
-                        }
-                    }
-                }
+                 OwnedUnitsViewModel = new OwnedUnitsViewModel(owner.id, SelectedProperty.ID, true);
+                await OwnedUnitsViewModel.GetData();
+              
             }
 
             string domainName = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority);
             List<APIRepairs> 
-                repairs = await RepairExtensions.GetRepairsList(SelectedProperty.ID, true) ;
+                repairs = await RepairExtensions.GetRepairsList(estate.id, true) ;
 
             //top 5 only
             if(repairs != null)
@@ -153,51 +80,9 @@ namespace Portal_MVC.Models
                 }
             }
 
-            List<AttendanceVisits> Attendances =
-                await AttendanceVisitMethods.GetAttendanceVisitListAsync(SelectedProperty.ID);
-
-            if (Attendances != null)
-            {
-
-                if (Attendances.Count > 0)
-                {
-                    if (Attendances[0].APIError != null)
-                    {
-                        if (Attendances[0].APIError.HasError)
-                        {
-                            AttendanceErrorMessage = Attendances[0].APIError.Message;
-                        }
-                        else
-                        {
-                            int attendancecount = Attendances.Count;
-                            if (attendancecount > 5)
-                            {
-                                attendancecount = 5;
-                            }
-
-                            if (AttendanceVisitCollection == null)
-                            {
-                                AttendanceVisitCollection = new List<Syncfusion.EJ2.Navigations.AccordionAccordionItem>();
-                            }
-
-                            for (int i = 0; i <= attendancecount - 1; i++)
-                            {
-                                AttendanceVisitCollection.Add(new Syncfusion.EJ2.Navigations.AccordionAccordionItem
-                                {
-                                    Header = $"{Utils.DateFormatLong(Attendances[i].VisitDate)} {Attendances[i].AttendanceType.Name}",
-                                    Content = $"{Attendances[i].VisitDescription} </br></br> <a href=\"{domainName}/caretaking/AttendanceDetail?VisitID={Attendances[i].id}\">View More</a>"
-                                }) ;
-                            }
-
-                        }
-
-                    }
-                    else
-                    {
-                        AttendanceErrorMessage = "Error retrieving recent attendance visit logs";
-                    }
-                }
-            }
+            //Attendance Logs
+            AttendanceLogAccordianViewModel = new AttendanceLogAccordianViewModel(estate.id, 5);
+            await AttendanceLogAccordianViewModel.GetData();
 
             if(NotificationObjectList != null)
             {
@@ -240,91 +125,92 @@ namespace Portal_MVC.Models
                 //id = SelectedProperty.ID
                 id = 32
             };
+            //rob - power tripped. 24 block 4.
 
-            await estate.GetOpenFundBVAList();
-            double chartheight = 150;
+            //await estate.GetOpenFundBVAList();
+            //double chartheight = 150;
           
-            if (estate.OpenFundList != null)
-            {
-                if(estate.OpenFundList.Count > 0)
-                {
-                    if(estate.OpenFundList[0].APIError != null)
-                    {
-                        if (estate.OpenFundList[0].APIError.HasError)
-                        {
-                            ClientBVAChartErrorMessage = estate.OpenFundList[0].APIError.Message;
+            //if (estate.OpenFundList != null)
+            //{
+            //    if(estate.OpenFundList.Count > 0)
+            //    {
+            //        if(estate.OpenFundList[0].APIError != null)
+            //        {
+            //            if (estate.OpenFundList[0].APIError.HasError)
+            //            {
+            //                ClientBVAChartErrorMessage = estate.OpenFundList[0].APIError.Message;
 
-                        } else
-                        {
+            //            } else
+            //            {
                             
-                            ClientBVABudget = new List<BudgetActualChartData>();
-                            ClientBVAActual = new List<BudgetActualChartData>();
+            //                ClientBVABudget = new List<BudgetActualChartData>();
+            //                ClientBVAActual = new List<BudgetActualChartData>();
 
-                            for (int i = 0; i <= estate.OpenFundList.Count - 1; i++)
-                            {
+            //                for (int i = 0; i <= estate.OpenFundList.Count - 1; i++)
+            //                {
 
-                                chartheight += 50;
-                                string BudgetLabelName = ControlsDLL.ControlActions.DoubelToCurrencyString2DP(estate.OpenFundList[i].TotalBudget);
-                                string ActualLabelName = ControlsDLL.ControlActions.DoubelToCurrencyString2DP(estate.OpenFundList[i].TotalSpend);
+            //                    chartheight += 50;
+            //                    string BudgetLabelName = ControlsDLL.ControlActions.DoubelToCurrencyString2DP(estate.OpenFundList[i].TotalBudget);
+            //                    string ActualLabelName = ControlsDLL.ControlActions.DoubelToCurrencyString2DP(estate.OpenFundList[i].TotalSpend);
 
-                                double TwentyPercentofBudget = estate.OpenFundList[i].TotalBudget * 0.1;
-                                double TwentyPercentofActual = estate.OpenFundList[i].TotalSpend * 0.1;
+            //                    double TwentyPercentofBudget = estate.OpenFundList[i].TotalBudget * 0.1;
+            //                    double TwentyPercentofActual = estate.OpenFundList[i].TotalSpend * 0.1;
 
-                                //if the actual spend is less than 20% of the budget then 
-                                //set the amount to 20% so that the data series renders properly
-                                if (estate.OpenFundList[i].TotalBudget > estate.OpenFundList[i].TotalSpend)
-                                {
-                                    if (estate.OpenFundList[i].TotalSpend < TwentyPercentofBudget)
-                                    {
-                                        estate.OpenFundList[i].TotalSpend = TwentyPercentofBudget;
-                                    }
-                                }
-                                //else if ()
-                                //{
-                                //    //if budget is less than 20% of actual spend
-                                //}
+            //                    //if the actual spend is less than 20% of the budget then 
+            //                    //set the amount to 20% so that the data series renders properly
+            //                    if (estate.OpenFundList[i].TotalBudget > estate.OpenFundList[i].TotalSpend)
+            //                    {
+            //                        if (estate.OpenFundList[i].TotalSpend < TwentyPercentofBudget)
+            //                        {
+            //                            estate.OpenFundList[i].TotalSpend = TwentyPercentofBudget;
+            //                        }
+            //                    }
+            //                    //else if ()
+            //                    //{
+            //                    //    //if budget is less than 20% of actual spend
+            //                    //}
 
 
-                                BudgetActualChartData BudgetData = new BudgetActualChartData
-                                {
-                                    Name = estate.OpenFundList[i].FundName,
-                                    Amount = estate.OpenFundList[i].TotalBudget,
-                                    LabelName = BudgetLabelName
+            //                    BudgetActualChartData BudgetData = new BudgetActualChartData
+            //                    {
+            //                        Name = estate.OpenFundList[i].FundName,
+            //                        Amount = estate.OpenFundList[i].TotalBudget,
+            //                        LabelName = BudgetLabelName
                                     
-                                };
+            //                    };
 
-                                BudgetActualChartData ActualData = new BudgetActualChartData
-                                {
-                                    Name = estate.OpenFundList[i].FundName,
-                                    Amount = estate.OpenFundList[i].TotalSpend,
-                                    LabelName = ActualLabelName
-                                };
+            //                    BudgetActualChartData ActualData = new BudgetActualChartData
+            //                    {
+            //                        Name = estate.OpenFundList[i].FundName,
+            //                        Amount = estate.OpenFundList[i].TotalSpend,
+            //                        LabelName = ActualLabelName
+            //                    };
 
-                                ClientBVABudget.Add(BudgetData);
-                                ClientBVAActual.Add(ActualData);
+            //                    ClientBVABudget.Add(BudgetData);
+            //                    ClientBVAActual.Add(ActualData);
 
-                                //sets the x axis value.
-                                double BudgetActualHighestVal = 0;
-                                if(estate.OpenFundList[i].TotalBudget > estate.OpenFundList[i].TotalSpend)
-                                {
-                                    BudgetActualHighestVal = estate.OpenFundList[i].TotalBudget;
-                                } else
-                                {
-                                    BudgetActualHighestVal = estate.OpenFundList[i].TotalSpend;
-                                }
+            //                    //sets the x axis value.
+            //                    double BudgetActualHighestVal = 0;
+            //                    if(estate.OpenFundList[i].TotalBudget > estate.OpenFundList[i].TotalSpend)
+            //                    {
+            //                        BudgetActualHighestVal = estate.OpenFundList[i].TotalBudget;
+            //                    } else
+            //                    {
+            //                        BudgetActualHighestVal = estate.OpenFundList[i].TotalSpend;
+            //                    }
 
-                                if(BudgetActualHighestVal > ClientXAxisMaxValue)
-                                {
-                                    ClientXAxisMaxValue = BudgetActualHighestVal;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+            //                    if(BudgetActualHighestVal > ClientXAxisMaxValue)
+            //                    {
+            //                        ClientXAxisMaxValue = BudgetActualHighestVal;
+            //                    }
+            //                }
+            //            }
+            //        }
+            //    }
+            //}
 
 
-            ClientBVAChartHeight = $"{chartheight}px";
+            //ClientBVAChartHeight = $"{chartheight}px";
 
             //Client financial Summary
             await estate.GetCurrentCashPosition();
@@ -390,15 +276,14 @@ namespace Portal_MVC.Models
 
         }
 
-        
         public NotificationSettingViewModel NotificationviewModel { get; set; }
 
         public string RepairErrorMessage { get; set; }
-        public string AttendanceErrorMessage { get; set; }
+
         public string ClientBVAChartErrorMessage { get; set; }  
         public object anonObj { get; set; }
         public string Name { get; set; }
-        public List<BudgetActualChartData> BudgetActualDataList { get; set; }
+        
 
         public List<object> NotificationObjectList { get; set; }
         
@@ -407,15 +292,11 @@ namespace Portal_MVC.Models
 
         public List<ClientFinancialListView> ClientFinancialListView { get; set; }
 
-        public List<OwnedPropertyListViewObject> OwnedProperties { get; set; }
+        
         public List<Syncfusion.EJ2.Navigations.AccordionAccordionItem> RepairAccordianObjects { get; set; }
 
-        public List<Syncfusion.EJ2.Navigations.AccordionAccordionItem> AttendanceVisitCollection { get; set; }
+        
 
-        public double XAxisMaxValue { get; set; }
-        public double ClientXAxisMaxValue { get; set; }
-        public string ClientBVAChartHeight { get; set; }
-        public string BudgetLabelAmount { get; set; }
     }
 
     public class UnpaidInvoiceDetailViewModel : ViewModelBase
@@ -511,14 +392,7 @@ namespace Portal_MVC.Models
 
     }
 
-    public class OwnedPropertyListViewObject : ListViewBase
-    {
-        public OwnedPropertyListViewObject()
-        {
-            icon = "fa-solid fa-building-user";
-        }
-        
-    }
+   
 
     public class ClientFinancialListView :ListViewBase
     {

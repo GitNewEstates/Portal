@@ -5,6 +5,12 @@
 @{ 
     var username = Model.NameofUser;
     var pagename = Model.PageTitle;
+    var SelectedEstateID = Model.SelectedEstateID;
+    var SelectedEstateName = Model.SelectedEstateName;
+    var controller = Model.ControllerName;
+    var action = Model.ViewName;
+
+
 }
 <div class="nav-container">
     <div>
@@ -17,7 +23,7 @@
     </div>
     <div>
         <div id="profile-container" style="padding-right: 10px;">
-            <div class="row">
+            <div class="user-container">
                 <div class="e-avatar image" id="profile-avatar">
                     <a href="#"><i class="fa-regular fa-user"></i></a>
 
@@ -26,11 +32,91 @@
                     <h5>@username</h5>
                 </div>
             </div>
+            <div class="property-select">
+                <div id="selected-estate-id" style="display: none">
+                    @SelectedEstateID
+                </div>
+                <div id="selected-estate-name" style="display: none">
+                    @SelectedEstateName
+                </div>
+                <div id="controller-name" style="display: none">
+                    @controller
+                </div>
+                <div id="action-name" style="display: none">
+                    @action
+                </div>
+                <div style="display: none">
+                    <table id="id-table">
+                        @foreach (var item in Model.EstateDropDownList)
+                        {
+                            <tr>
+                                <td>
+                                    @item.text
+                                </td>
+                                <td>
+                                    @item.value
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+                @if (Model.EstateDropDownList.Count > 1)
+                {
+                    @Html.EJS().DropDownList("estates").Created("EstatesCreated").Change("estateChanged").DataSource(Model.EstateDropDownList).Render()
+                }
+            </div>
         </div>
+
     </div>
 </div>
 
 <style>
    
 </style>
+
+<script>
+    function EstatesCreated() {
+        // disable the state DropDownList
+        var dropDownTextBox = document.getElementById('estates')
+        var SelectedEstateName = document.getElementById('selected-estate-name').innerText
+        if (SelectedEstateName != null || SelectedEstateName != '') {
+            dropDownTextBox.value = SelectedEstateName.trim();
+        }
+    }
+
+    function estateChanged() {
+
+        //get the dropdown object
+        var DropDownObj = document.getElementById('estates').ej2_instances[0];
+        var NewselectedEstateName = DropDownObj.value.trim();
+
+        var currentEstatename = document.getElementById('selected-estate-name').innerText.trim();
+        var currentEstateID = document.getElementById('selected-estate-id').innerText.trim();
+
+        if (NewselectedEstateName != currentEstatename) {
+            var table = document.getElementById('id-table');
+
+            for (var i = 0, row; row = table.rows[i]; i++) {
+                var text = row.cells[0].innerText.trim();
+                if (text == NewselectedEstateName) {
+                    var id = row.cells[1].innerText.trim()
+
+                    var controller = document.getElementById('controller-name').innerText.trim();
+                    var action = document.getElementById('action-name').innerText.trim();
+                    //reload the page sending the selected id
+                    window.location.href = "/" + controller + "/" + action +"?PropID=" + id;
+                }
+                
+
+            }
+        }
+
+
+        ////query the data to find the selected value
+        //var tempQuery = new ej.data.Query().where('text', 'equal', DropDownObj.value);
+        //console.log(tempQuery);
+        ////get the selected
+
+    }
+</script>
 

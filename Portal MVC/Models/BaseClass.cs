@@ -150,6 +150,10 @@ namespace Portal_MVC.Models
         public string EditButtonIconCss { get { return "fa-regular fa-pen-to-square"; } }
         public string saveButtonIconCss { get { return "fa-solid fa-floppy-disk"; } }
 
+        public OwnedUnitsViewModel OwnedUnitsViewModel { get; set; }
+        public List<DropDownViewModel> EstateDropDownList { get; set; }
+       
+
         public string PageTitle { get; set; }
 
         public List<ToolbarItem> popupItems = new List<ToolbarItem>();
@@ -175,6 +179,7 @@ namespace Portal_MVC.Models
             }
         }
         public string SelectedEstateName { get; set; }
+
         private string _SelectedUnitID;
         public string SelectedUnitID
         {
@@ -201,10 +206,13 @@ namespace Portal_MVC.Models
         public bool IsPropertySelected { get; private set; }
        public Owner owner { get; set; }    
 
-        public async Task SetBaseDataAsync(string userid, string email)
+        public async Task SetBaseDataAsync(string userid, string email, string _selectedEstateID = "")
         {
+            SelectedEstateID = _selectedEstateID;
+
             //set the role
             List<string> roles = await BaseHelpers.UserRolesList(userid);
+            
 
             foreach(string role in roles)
             {
@@ -216,36 +224,54 @@ namespace Portal_MVC.Models
             {
                 owner = await OwnerMethods.GetOwnerByEmail(email);
                 NameofUser = owner.FullName;
-                
-
-
 
             } else
             {
                 APIUser user = await UserMethods.GetUserByEmail(email);
                 NameofUser = user.FullName;
 
-          
-
             }
 
             if (Level == ViewModelLevel.Estate)
             {
+                Properties = await PropertyMethods.GetOwnedEstatesAsync(owner.id);
+                EstateDropDownList = new List<DropDownViewModel>();
+                
+                foreach (var estate in Properties)
+                {
+                    DropDownViewModel item = new DropDownViewModel();
+                    
+                    item.value = estate.UniqueID;
+                    item.text = estate.name;
+
+                    EstateDropDownList.Add(item);
+                    if(estate.UniqueID == SelectedEstateID)
+                    {
+                        SelectedEstateName = estate.name;
+                    }
+                    
+                }
                 if (string.IsNullOrWhiteSpace(SelectedEstateID))
                 {
-                    Properties = await PropertyMethods.GetOwnedEstatesAsync(owner.id);
                     if (Properties.Count == 1)
                     {
                         SelectedProperty = Properties[0];
                         SelectedProperty.ID = 1;// Properties[0].UniqueID;
                         SelectedProperty.Address1 = Properties[0].Address1;
 
+                        //both used for drop down selection in top nav
                         SelectedEstateID = Properties[0].UniqueID;
-                        SelectedEstateName = Properties[0].Address1;
+                        SelectedEstateName = Properties[0].name;
+                        
                         IsPropertySelected = true;
                     }
+                } else
+                {
+                    
+
                 }
-            } else if(Level == ViewModelLevel.Unit)
+            } 
+            else if(Level == ViewModelLevel.Unit)
             {
                 if(string.IsNullOrWhiteSpace(SelectedUnitID))
                 {
@@ -279,8 +305,10 @@ namespace Portal_MVC.Models
     }
     public class DropDownViewModel
     {
-        public string Text { get; set; }
-        public string Value { get; set; }
+        public string text { get; set; }
+        public string value { get; set; }
+
+        public bool isSelected { get; set; }
     }
 
     public enum ViewModelLevel

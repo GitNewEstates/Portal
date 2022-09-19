@@ -1,0 +1,4 @@
+﻿@using Portal_MVC.Models
+@model Portal_MVC.Models.AttendanceLogAccordianViewModel
+
+@(Html.EJS().Accordion("AttendanceAccordian").Items(Model.AttendanceVisitCollection).ExpandMode(Syncfusion.EJ2.Navigations.ExpandMode.Multiple).Render())

@@ -426,6 +426,7 @@
     <Compile Include="Models\DirectorSummaryViewModel.cs" />
     <Compile Include="Models\Documents.cs" />
     <Compile Include="Models\EstateAccess.cs" />
+    <Compile Include="Models\EstateDashboardViewModel.cs" />
     <Compile Include="Models\Estates.cs" />
     <Compile Include="Models\GlobalVariables.cs" />
     <Compile Include="Models\HomeViewModel.cs" />
@@ -449,6 +450,7 @@
     <Compile Include="Models\RepairsMaintenanceViewModel.cs" />
     <Compile Include="Models\ServiceChargeBudgetViewModel.cs" />
     <Compile Include="Models\ServiceCharges.cs" />
+    <Compile Include="Models\SharedViewModels.cs" />
     <Compile Include="Models\Supplier.cs" />
     <Compile Include="Models\TextMessage.cs" />
     <Compile Include="Models\Transaction.cs" />
@@ -677,6 +679,9 @@
     <Content Include="Views\RepairsMaintenance\Maintenance_Dashboard.cshtml" />
     <Content Include="Views\ServiceCharges\ServiceCharge_Dashboard.cshtml" />
     <Content Include="Views\Estates\EstateInfo_Dashboard.cshtml" />
+    <Content Include="Views\Shared\_OwnedUnits.cshtml" />
+    <Content Include="Views\Shared\_OpenFundBVAChart.cshtml" />
+    <Content Include="Views\Shared\_AttendanceLogAccordian.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

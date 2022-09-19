@@ -1,0 +1,49 @@
+﻿@using Portal_MVC.Models
+@model Portal_MVC.Models.OpenFundBVAChartViewModel
+
+@{ 
+    var ChartTooltip = "This chart shows the total amount of all open budgets and the amount of expenditure that that has been " +
+       "incurred";
+}
+
+
+@Html.EJS().Tooltip("BVAChartToolTip").Content(ChartTooltip).ContentTemplate(@<div>
+    @(Html.EJS().Chart("container").Background("white").Height("200px").Load("ChartLoad").Series(series =>
+                                    {
+
+                                    series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Bar).
+                                        XName("Name").
+                                        YName("Amount").
+                                        CornerRadius(cr => cr.BottomLeft(10).BottomRight(10).TopLeft(10).TopRight(10)).
+
+                                        Marker(mr => mr.DataLabel(dl => dl.Visible(true).Name("LabelName").
+
+                                        Position(Syncfusion.EJ2.Charts.LabelPosition.Bottom).
+                                        Font(ff => ff.FontWeight("600").Color("#ffffff")))).
+                                        DataSource(Model.BudgetActualDataList).
+                                        PointColorMapping("color").
+                                        Add();
+                                    }).
+                                       PrimaryXAxis(px => px.Interval(1)
+                                            .MajorGridLines(mg => mg.Width(0))
+                                            .MajorTickLines(mg => mg.Width(0))
+                                            .LineStyle(mg => mg.Width(0))
+                                            .ValueType(Syncfusion.EJ2.Charts.ValueType.Category)
+
+                                            ).
+
+                                       PrimaryYAxis(py => py.Minimum(0).Maximum(Model.XAxisMaxValue)
+                                            .MajorGridLines(mg => mg.Width(0))
+                                            .MajorTickLines(mg => mg.Width(0))
+                                            .LineStyle(mg => mg.Width(0))
+                                            .LabelStyle(ls => ls.Color("#ffffff"))
+
+                                            ).
+
+                                       ChartArea(area => area.Border(br => br.Color("transparent"))).
+                                       LegendSettings(ls => ls.Visible(false)).
+                                       Title("Title").
+                                       TitleStyle(ts => ts.Color("blue")).
+                                       Render()
+                                    )
+</div>).Position(Syncfusion.EJ2.Popups.Position.BottomCenter).Render()

@@ -3,7 +3,7 @@
 
 @{
     ViewBag.Title = "Select Property - New Estates";
-
+   
 
 }
 
@@ -14,10 +14,11 @@
 
     @if (Model != null)
     {
-        if (Model.SelectedProperty.ID == 0)
+        if (string.IsNullOrWhiteSpace(Model.SelectedEstateID))
         {
 
             @Html.Partial("_SelectEstate", Model)
+
 
         }
         else
@@ -33,54 +34,17 @@
 
 
             }
-            @Html.HiddenFor(m => m.OwnedProperties.Count, new { id = "OwnedUnitCount" })
+            @Html.HiddenFor(m => m.OwnedUnitsViewModel.OwnedProperties.Count, new { id = "OwnedUnitCount" })
             @Html.HiddenFor(m => m.SelectedProperty.ID, new { id = "SelectedPropertyID" })
             <div class="Full-Width-Container">
                 <div class="row">
-                    <div class="col-lg-5 col-md-5 col-sm-11 col-xs-11 e-card e-custom-card">
-                        @Html.EJS().ListView("listview").Enable(true).DataSource(Model.OwnedProperties).HeaderTitle("Your Properties").ShowHeader(true).ShowIcon(true).Fields(new Syncfusion.EJ2.Lists.ListViewFieldSettings { IconCss = "icon" }).Render()
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-11 col-xs-11  e-card e-custom-card">
-
-                        @(Html.EJS().Chart("container").Background("white").Height("200px").Series(series =>
-                        {
-
-                        series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Bar).
-                            XName("Name").
-                            YName("Amount").
-                            CornerRadius(cr => cr.BottomLeft(10).BottomRight(10).TopLeft(10).TopRight(10)).
-
-                            Marker(mr => mr.DataLabel(dl => dl.Visible(true).Name("LabelName").
-
-                            Position(Syncfusion.EJ2.Charts.LabelPosition.Bottom).
-                            Font(ff => ff.FontWeight("600").Color("#ffffff")))).
-                            DataSource(Model.BudgetActualDataList).
-                            PointColorMapping("color").
-                            Add();
-                        }).
-                           PrimaryXAxis(px => px.Interval(1)
-                                .MajorGridLines(mg => mg.Width(0))
-                                .MajorTickLines(mg => mg.Width(0))
-                                .LineStyle(mg => mg.Width(0))
-                                .ValueType(Syncfusion.EJ2.Charts.ValueType.Category)
-
-                                ).
-
-                           PrimaryYAxis(py => py.Minimum(0).Maximum(Model.XAxisMaxValue)
-                                .MajorGridLines(mg => mg.Width(0))
-                                .MajorTickLines(mg => mg.Width(0))
-                                .LineStyle(mg => mg.Width(0))
-                                .LabelStyle(ls => ls.Color("#ffffff"))
-
-                                ).
-
-                           ChartArea(area => area.Border(br => br.Color("transparent"))).
-                           LegendSettings(ls => ls.Visible(false)).
-                           Title("Overall Fund BVA").
-                           TitleStyle(ts => ts.Color("blue")).
-                           Render()
-                        )
-
+                    <div style="width: 100%; display: flex; flex-wrap: wrap; justify-content: space-between">
+                        <div class="col-lg-5 col-md-5 col-sm-11 col-xs-11">
+                            @Html.Partial("_OwnedUnits", Model.OwnedUnitsViewModel)
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-11 col-xs-11  e-card e-custom-card">
+                           @Html.Partial("_OpenFundBVAChart", Model.OpenFundBVAChartViewModel)
+                        </div>
                     </div>
                 </div>
 
@@ -98,17 +62,9 @@
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-11 col-xs-11">
                         <h6>Attendances</h6>
-                        @(Html.EJS().Accordion("AttendanceAccordian").Items(Model.AttendanceVisitCollection).ExpandMode(Syncfusion.EJ2.Navigations.ExpandMode.Multiple).Render())
+                        @Html.Partial("_AttendanceLogAccordian", Model.AttendanceLogAccordianViewModel)
                     </div>
                 </div>
-
-
-
-
-
-
-
-
             </div>
 
 
@@ -151,8 +107,13 @@
 
 <script>
 
+    function ChartLoad(args) {
+      
+    }
+
     var RepairNotificationCheck = document.getElementById('RepairNotificationCheck')
 
+  
 
 
     if (RepairNotificationCheck != null) {

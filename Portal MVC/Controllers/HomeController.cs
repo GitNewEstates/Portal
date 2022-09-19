@@ -33,7 +33,7 @@ namespace Portal_MVC.Controllers
             //var auth = User.Identity.IsAuthenticated;
 
             HomeViewModel homeViewModel = new HomeViewModel(ViewModelLevel.Estate);
-            await homeViewModel.SetBaseDataAsync(id, email);
+            await homeViewModel.SetBaseDataAsync(id, email, PropID);
             
             homeViewModel.ViewName = "Index";
             homeViewModel.ControllerName = "Home";
@@ -47,14 +47,8 @@ namespace Portal_MVC.Controllers
                     //Do specific work and send to Customer Dashboard
                     if(!string.IsNullOrWhiteSpace(PropID))
                     {
-                        //selected from Estate List
-                        homeViewModel.SelectedProperty.ID = 1;// PropID;
-                        homeViewModel.SelectedProperty.Address1 = PropName;
+                        homeViewModel.PageTitle = $"{homeViewModel.SelectedEstateName} - Dashboard";
 
-                        homeViewModel.SelectedEstateID = PropID;
-                        homeViewModel.SelectedEstateName = PropName;
-                        homeViewModel.PageTitle = $"{PropName} - Dashboard";
-                        
                     } else
                     {
                         //Customer only has one unit

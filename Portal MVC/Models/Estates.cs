@@ -116,10 +116,17 @@ namespace Portal_MVC.Models
 
             return DeserializedJSONToEstateList(json);
         }
-        public async static Task<APIEstates> GetEstateAsync(int id)
+        public async static Task<APIEstates> GetEstateAsync(int id, string uniqueid = "")
         {
-            string json =
-               await APIMethods.CallAPIGetEndPointAsync($"Estate/{id}");
+            string json = "";
+            if (id > 0)
+            {
+              
+                 json =   await APIMethods.CallAPIGetEndPointAsync($"Estate/{id}");
+            } else
+            {
+                json = await APIMethods.CallAPIGetEndPointAsync($"EstateByUniqueID/{uniqueid}");
+            }
 
             return DeserializedJSONToEstate(json);
         }

@@ -1,13 +1,23 @@
-﻿@using Portal_MVC.Models
-@model Portal_MVC.Models.ViewModelBase
+﻿
+
+@using Portal_MVC.Controllers
+@model Portal_MVC.Models.EstateDashboardViewModel
 @{
-    ViewBag.Title = "EstateInfo_Dashboard";
+    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_HomeLayout.cshtml";
 }
 
-
 <div class="main-content-container" id="main-content-container">
-    <h2>EstateInfo_Dashboard</h2>
+    @if(string.IsNullOrWhiteSpace(Model.SelectedEstateID))
+    {
+        @Html.Partial("_SelectEstate")
+    } else
+    {
+        <div>
+            Display dash
+        </div>
+    }
+    
 </div>
 
 

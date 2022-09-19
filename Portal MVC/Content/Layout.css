@@ -4,6 +4,7 @@
     display: flex;
     padding-top: 5px;
     padding-left: 10px;
+    padding-right: 10px;
     transition: margin-left .5s; /* If you want a transition effect */
     flex-wrap: wrap;
     align-items: center;
@@ -75,6 +76,13 @@ body {
 .profile-container{
     padding-top: 10px;
     padding-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.user-container{
+    display: flex;
+    flex-direction: row;
 }
 
 .e-avatar.image {
